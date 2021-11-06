@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho.protocol import Message
+from uecho.protocol import Message, ESV
 
-def test_message():
+
+def test_new_message():
     msg = Message()
+    msg.code == ESV.UNKNOWN
