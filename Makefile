@@ -22,7 +22,8 @@ clean:
 	rm -rf tests/*/__pycache__
 
 format:
+	yapf -ir uecho test
 	find uecho -name "*.py" | xargs pylint 
 
-test: format
+test:
 	py.test test
