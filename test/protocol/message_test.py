@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho.protocol.message import Message
+from uecho.protocol import Message
 
 def test_message():
     msg = Message()
