@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho.controller import Controller
+from uecho import Controller
+
 
 def test_controller():
     ctrl = Controller()
