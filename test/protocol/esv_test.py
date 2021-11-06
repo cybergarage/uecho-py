@@ -11,11 +11,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""
-This module includes internal classes to handle any messages of Echonet Lite protocol.
-"""
 
-from __future__ import absolute_import
+from uecho.protocol import ESV
 
-from .message import Message
-from .esv import ESV
+
+def test_new_esv():
+    esv = ESV()
+    assert esv.code == ESV.UNKNOWN

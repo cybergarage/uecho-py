@@ -12,6 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-class Message(object):
+from .esv import ESV
+
+
+class Message(ESV):
+    """
+    Message represents a protocol message of Echonet Lite.
+    """
     def __init__(self):
+        #super(ESV, self).__init__()
+        super().__init__()
+        self.TID = 0
+        self.SEOJ = 0
+        self.DEOJ = 0
+
+    def parse_string(self, string):
         pass
