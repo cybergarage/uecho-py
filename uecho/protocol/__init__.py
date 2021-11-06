@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 # Copyright (C) 2021 The uecho-py Authors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,16 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: all format test
-
-all: test
-
-clean:
-	rm -rf tests/__pycache__
-	rm -rf tests/*/__pycache__
-
-format:
-	find uecho -name "*.py" | xargs pylint 
-
-test: format
-	py.test test
+from __future__ import absolute_import
