@@ -13,5 +13,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-export PATH=$PATH:`pwd`/bin
+export PATH=$PATH:`pwd`/bin:/usr/local/bin
 export PYTHONPATH=`pwd`
