@@ -36,4 +36,4 @@ class ESV(object):
     WRITE_READ_REQUEST_ERROR = 0x5E
 
     def __init__(self, code=UNKNOWN):
-        self.code = code
+        self.ESV = code
