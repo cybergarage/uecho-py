@@ -51,13 +51,13 @@ def test_parse_message():
             0x41,  # a
             2,
             2,
+            0x41,  # a
+            0x42,  # b
+            3,
+            3,
+            0x41,  # a
             0x42,  # b
             0x43,  # c
-            3,
-            3,
-            0x44,  # d
-            0x45,  # e
-            0x46,  # f
         ])
 
         return msg_bytes
@@ -69,3 +69,10 @@ def test_parse_message():
     assert msg.DEOJ == deoj
     assert msg.ESV == ESV.NOTIFICATION
     assert msg.OPC == opc
+    assert len(msg.Properties) == opc
+    for n in range(opc):
+        prop = msg.Properties[n]
+        assert prop.Code == (n + 1)
+        assert len(prop.Data) == (n + 1)
+        for i in range(len(prop.Data)):
+            assert prop.Data[i] == (0x41 + i)

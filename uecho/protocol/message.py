@@ -14,6 +14,7 @@
 
 from uecho.util import Bytes
 from .esv import ESV
+from .property import Property
 
 
 class Message(ESV):
@@ -39,6 +40,7 @@ class Message(ESV):
         self.SEOJ = 0
         self.DEOJ = 0
         self.OPC = 0
+        self.Properties = []
 
     def parse_bytes(self, msg_bytes):
         # Frame heade
@@ -49,9 +51,27 @@ class Message(ESV):
         if msg_bytes[1] != Message.EHD2_FORMAT1:
             raise Message.ParserError()
         self.TID = Bytes.to_int(msg_bytes[2:4])
+
         # Echonet Format1 Header
         self.SEOJ = Bytes.to_int(msg_bytes[4:7])
         self.DEOJ = Bytes.to_int(msg_bytes[7:10])
         self.ESV = msg_bytes[10]
         self.OPC = msg_bytes[11]
+
+        # Propety data
+        offset = 12
+        for n in range(self.OPC):
+            if len(msg_bytes) < (offset + 1):
+                raise Message.ParserError()
+            prop = Property()
+            prop.Code = msg_bytes[offset]
+            offset += 1
+            pdc = msg_bytes[offset]
+            offset += 1
+            if len(msg_bytes) < (offset + pdc):
+                raise Message.ParserError()
+            prop.Data = msg_bytes[offset:(offset + pdc)]
+            self.Properties.append(prop)
+            offset += pdc
+
         return True
