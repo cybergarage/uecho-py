@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from uecho.util import Bytes
 from .esv import ESV
 
 
@@ -29,12 +30,28 @@ class Message(ESV):
     TID_MAX = 65535
     EOJ_SIZE = 3
 
+    class ParserError(Exception):
+        pass
+
     def __init__(self):
-        #super(ESV, self).__init__()
         super().__init__()
         self.TID = 0
         self.SEOJ = 0
         self.DEOJ = 0
+        self.OPC = 0
 
     def parse_bytes(self, msg_bytes):
-        pass
+        # Frame heade
+        if len(msg_bytes) < Message.FORMAT1_HEADER_SIZE:
+            raise Message.ParserError()
+        if msg_bytes[0] != Message.EHD1_ECHONET:
+            raise Message.ParserError()
+        if msg_bytes[1] != Message.EHD2_FORMAT1:
+            raise Message.ParserError()
+        self.TID = Bytes.to_int(msg_bytes[2:4])
+        # Echonet Format1 Header
+        self.SEOJ = Bytes.to_int(msg_bytes[4:7])
+        self.DEOJ = Bytes.to_int(msg_bytes[7:10])
+        self.ESV = msg_bytes[10]
+        self.OPC = msg_bytes[11]
+        return True
