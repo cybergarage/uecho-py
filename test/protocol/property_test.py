@@ -11,12 +11,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""
-This module includes internal classes to handle any messages of Echonet Lite protocol.
-"""
 
-from __future__ import absolute_import
+from uecho.protocol import Property
 
-from .message import Message
-from .esv import ESV
-from .property import Property
+
+def test_new_property():
+    prop = Property()
+    assert len(prop.Data) == 0
