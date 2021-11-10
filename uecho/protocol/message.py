@@ -19,6 +19,16 @@ class Message(ESV):
     """
     Message represents a protocol message of Echonet Lite.
     """
+    FRAME_HEADER_SIZE = (1 + 1 + 2)
+    FORMAT1_HEADER_SIZE = (3 + 3 + 1 + 1)
+    FORMAT1_MIN_SIZE = (FRAME_HEADER_SIZE + FORMAT1_HEADER_SIZE)
+    FORMAT1_PROPERTY_HEADER_SIZE = 2
+    EHD1_ECHONET = 0x10
+    EHD2_FORMAT1 = 0x81
+    TID_SIZE = 2
+    TID_MAX = 65535
+    EOJ_SIZE = 3
+
     def __init__(self):
         #super(ESV, self).__init__()
         super().__init__()
@@ -26,5 +36,5 @@ class Message(ESV):
         self.SEOJ = 0
         self.DEOJ = 0
 
-    def parse_string(self, string):
+    def parse_bytes(self, msg_bytes):
         pass

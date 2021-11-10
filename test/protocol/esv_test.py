@@ -17,4 +17,4 @@ from uecho.protocol import ESV
 
 def test_new_esv():
     esv = ESV()
-    assert esv.code == ESV.UNKNOWN
+    assert esv.ESV == ESV.UNKNOWN
