@@ -28,7 +28,7 @@ def test_parse_message():
     deoj = 0x0D0E0F
     opc = 3
 
-    def test_msg_bytes():
+    def generate_test_msg_bytes():
         tid_bytes = Bytes.from_int(tid, 2)
         seoj_bytes = Bytes.from_int(seoj, 3)
         deoj_bytes = Bytes.from_int(deoj, 3)
@@ -62,17 +62,24 @@ def test_parse_message():
 
         return msg_bytes
 
+    def assert_test_msg(msg):
+        assert msg.TID == tid
+        assert msg.SEOJ == seoj
+        assert msg.DEOJ == deoj
+        assert msg.ESV == ESV.NOTIFICATION
+        assert len(msg.properties) == opc
+        for n in range(opc):
+            prop = msg.properties[n]
+            assert prop.code == (n + 1)
+            assert len(prop.data) == (n + 1)
+            for i in range(len(prop.data)):
+                assert prop.data[i] == (0x41 + i)
+
     msg = Message()
-    assert msg.parse_bytes(test_msg_bytes())
-    assert msg.TID == tid
-    assert msg.SEOJ == seoj
-    assert msg.DEOJ == deoj
-    assert msg.ESV == ESV.NOTIFICATION
-    assert msg.OPC == opc
-    assert len(msg.Properties) == opc
-    for n in range(opc):
-        prop = msg.Properties[n]
-        assert prop.Code == (n + 1)
-        assert len(prop.Data) == (n + 1)
-        for i in range(len(prop.Data)):
-            assert prop.Data[i] == (0x41 + i)
+    assert msg.parse_bytes(generate_test_msg_bytes())
+    assert_test_msg(msg)
+
+    msg_bytes = msg.to_bytes()
+    msg = Message()
+    assert msg.parse_bytes(msg_bytes)
+    assert_test_msg(msg)
