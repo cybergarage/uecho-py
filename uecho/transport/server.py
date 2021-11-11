@@ -13,10 +13,14 @@
 # limitations under the License.
 
 import socket
+from abc import ABCMeta, abstractmethod
 
 
-class Server(object):
+class Server(metaclass=ABCMeta):
     PORT = 3610
+
+    # socket: socket.socket
+    # port: int
 
     def __init__(self):
         self.socket = None
@@ -27,6 +31,10 @@ class Server(object):
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
         return sock
+
+    @abstractmethod
+    def bind(self, ifaddr):
+        pass
 
     def start(self):
         if self.socket is None:
