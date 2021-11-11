@@ -14,6 +14,8 @@
 
 import socket
 from abc import ABCMeta, abstractmethod
+# from typing import List
+from .observer import Observer
 
 
 class Server(metaclass=ABCMeta):
@@ -21,10 +23,12 @@ class Server(metaclass=ABCMeta):
 
     # socket: socket.socket
     # port: int
+    # observers: List[Observer]
 
     def __init__(self):
         self.socket = None
         self.port = Server.PORT
+        self.observers = []
 
     def create_udp_socket(self):
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -35,6 +39,13 @@ class Server(metaclass=ABCMeta):
     @abstractmethod
     def bind(self, ifaddr):
         pass
+
+    def add_observer(self, observer):
+        self.observers.append(observer)
+
+    def notify(self, msg):
+        for observer in self.observers:
+            observer.message_received(msg)
 
     def start(self):
         if self.socket is None:
