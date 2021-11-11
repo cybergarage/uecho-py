@@ -26,6 +26,14 @@ class MessageManager(object):
         self.servers = []
         pass
 
+    def add_observer(self, observer):
+        for server in self.servers:
+            server.add_observer(observer)
+
+    def notify(self, msg):
+        for server in self.servers:
+            server.notify(msg)
+
     def start(self):
         for ifaddr in Interface.get_all_ipaddrs():
             userver = UnicastServer()
@@ -49,7 +57,7 @@ class MessageManager(object):
         return True
 
     def stop(self):
-        self.servers = []
         for server in self.servers:
             server.stop()
+        self.servers = []
         return True
