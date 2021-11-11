@@ -39,8 +39,7 @@ class Message(ESV):
         self.TID = 0
         self.SEOJ = 0
         self.DEOJ = 0
-        self.OPC = 0
-        self.Properties = []
+        self.properties = []
 
     def parse_bytes(self, msg_bytes):
         # Frame heade
@@ -56,22 +55,37 @@ class Message(ESV):
         self.SEOJ = Bytes.to_int(msg_bytes[4:7])
         self.DEOJ = Bytes.to_int(msg_bytes[7:10])
         self.ESV = msg_bytes[10]
-        self.OPC = msg_bytes[11]
 
         # Propety data
+        opc = msg_bytes[11]
         offset = 12
-        for n in range(self.OPC):
+        for n in range(opc):
             if len(msg_bytes) < (offset + 1):
                 raise Message.ParserError()
             prop = Property()
-            prop.Code = msg_bytes[offset]
+            prop.code = msg_bytes[offset]
             offset += 1
             pdc = msg_bytes[offset]
             offset += 1
             if len(msg_bytes) < (offset + pdc):
                 raise Message.ParserError()
-            prop.Data = msg_bytes[offset:(offset + pdc)]
-            self.Properties.append(prop)
+            prop.data = msg_bytes[offset:(offset + pdc)]
+            self.properties.append(prop)
             offset += pdc
 
         return True
+
+    def to_bytes(self):
+        msg_bytes = bytearray([Message.EHD1_ECHONET, Message.EHD2_FORMAT1])
+        msg_bytes.extend(Bytes.from_int(self.TID, 2))
+        msg_bytes.extend(Bytes.from_int(self.SEOJ, 3))
+        msg_bytes.extend(Bytes.from_int(self.DEOJ, 3))
+        msg_bytes.append(self.ESV)
+
+        msg_bytes.append(len(self.properties))
+        for prop in self.properties:
+            msg_bytes.append(prop.code)
+            msg_bytes.append(len(prop.data))
+            msg_bytes.extend(prop.data)
+
+        return msg_bytes
