@@ -17,4 +17,4 @@ from uecho.transport import Interface
 
 def test_interface():
     Interface.get_all_ipaddrs()
-    # assert 0 < len(Interface.get_all_ipaddrs())
+    assert 0 < len(Interface.get_all_ipaddrs())
