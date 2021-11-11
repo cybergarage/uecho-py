@@ -12,16 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import socket
+from .server import Server
 
-class UnicastServer(object):
+
+class UnicastServer(Server):
     def __init__(self):
-        pass
+        super().__init__()
 
     def bind(self, ifaddr):
-        return True
-
-    def start(self):
-        return True
-
-    def stop(self):
+        self.socket = self.create_udp_socket()
+        self.socket.bind((ifaddr, self.port))
         return True

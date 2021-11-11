@@ -13,11 +13,15 @@
 # limitations under the License.
 
 from .interface import Interface
+from .server import Server, Server
 from .multicast_server import MulticastServer
 from .unicast_server import UnicastServer
+# from typing import List
 
 
 class MessageManager(object):
+    # servers: List[Server]
+
     def __init__(self):
         self.servers = []
         pass
