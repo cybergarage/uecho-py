@@ -12,19 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .local_node import LocalNode
+from .node import Node
+from uecho.transport import MessageManager
 
 
-class Controller(object):
+class LocalNode(Node):
     def __init__(self):
-        self.node = LocalNode()
+        self.mgr = MessageManager()
 
     def start(self):
-        if not self.node.start():
+        if not self.mgr.start():
             return False
         return True
 
     def stop(self):
-        if not self.node.stop():
+        if not self.mgr.stop():
             return False
         return True

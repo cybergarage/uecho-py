@@ -14,4 +14,7 @@
 
 from __future__ import absolute_import
 
+from .node import Node
+from .local_node import LocalNode
+from .remote_node import RemoteNode
 from .controller import Controller

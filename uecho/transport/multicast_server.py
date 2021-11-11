@@ -12,19 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .local_node import LocalNode
 
-
-class Controller(object):
+class MulticastServer(object):
     def __init__(self):
-        self.node = LocalNode()
+        pass
+
+    def bind(self, ifaddr):
+        return True
 
     def start(self):
-        if not self.node.start():
-            return False
         return True
 
     def stop(self):
-        if not self.node.stop():
-            return False
         return True

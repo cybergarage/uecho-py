@@ -12,19 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .local_node import LocalNode
+from __future__ import absolute_import
 
-
-class Controller(object):
-    def __init__(self):
-        self.node = LocalNode()
-
-    def start(self):
-        if not self.node.start():
-            return False
-        return True
-
-    def stop(self):
-        if not self.node.stop():
-            return False
-        return True
+from .message_manager import MessageManager
+from .interface import Interface

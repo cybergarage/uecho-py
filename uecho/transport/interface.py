@@ -12,19 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .local_node import LocalNode
+import netifaces
 
 
-class Controller(object):
-    def __init__(self):
-        self.node = LocalNode()
-
-    def start(self):
-        if not self.node.start():
-            return False
-        return True
-
-    def stop(self):
-        if not self.node.stop():
-            return False
-        return True
+class Interface(object):
+    @staticmethod
+    def get_all_ipaddrs():
+        ipaddrs = []
+        for ifname in netifaces.interfaces():
+            ifaddrs = netifaces.ifaddresses(ifname)
+            if netifaces.AF_INET in ifaddrs:
+                inet = ifaddrs[netifaces.AF_INET]
+                print(inet)
+                pass
+        return ipaddrs
