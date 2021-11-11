@@ -21,8 +21,12 @@ class Interface(object):
         ipaddrs = []
         for ifname in netifaces.interfaces():
             ifaddrs = netifaces.ifaddresses(ifname)
-            if netifaces.AF_INET in ifaddrs:
-                inet = ifaddrs[netifaces.AF_INET]
-                print(inet)
-                pass
+            if netifaces.AF_INET in ifaddrs.keys():
+                inets = ifaddrs[netifaces.AF_INET]
+                for inet in inets:
+                    if 'addr' in inet.keys():
+                        ipaddr = inet['addr']
+                        if ipaddr == '127.0.0.1':
+                            continue
+                        ipaddrs.append(ipaddr)
         return ipaddrs
