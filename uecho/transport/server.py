@@ -13,14 +13,29 @@
 # limitations under the License.
 
 import socket
-from .server import Server
 
 
-class MulticastServer(Server):
+class Server(object):
+    PORT = 3610
+
     def __init__(self):
-        super().__init__()
+        self.socket = None
+        self.port = Server.PORT
 
-    def bind(self, ifaddr):
-        self.socket = self.create_udp_socket()
-        self.socket.bind(('0.0.0.0', self.port))
+    def create_udp_socket(self):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
+        return sock
+
+    def start(self):
+        if self.socket is None:
+            return False
+        return True
+
+    def stop(self):
+        if self.socket is None:
+            return False
+        self.socket.close()
+        self.socket = None
         return True
