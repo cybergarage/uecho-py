@@ -22,3 +22,4 @@ from .object import Object
 from .node_profile import NodeProfile
 from .message import Message
 from .esv import ESV
+from .property import Property
