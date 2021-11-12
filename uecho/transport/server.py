@@ -16,8 +16,11 @@ import socket
 import threading
 from abc import ABCMeta, abstractmethod
 # from typing import List
-from .observer import Observer
+
 from uecho.protocol import Message
+import uecho.log as log
+
+from .observer import Observer
 
 
 class Server(threading.Thread, metaclass=ABCMeta):
@@ -51,6 +54,8 @@ class Server(threading.Thread, metaclass=ABCMeta):
                 recv_msg_bytes, recv_from = self.socket.recvfrom(1024)
                 msg = Message()
                 if not msg.parse_bytes(recv_msg_bytes):
+                    log_msg = '%s %s' % (recv_from, recv_msg_bytes.hex())
+                    log.error(log_msg)
                     continue
                 msg.from_addr = recv_from
                 self.notify(msg)
