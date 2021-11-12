@@ -13,12 +13,14 @@
 # limitations under the License.
 
 import socket
+import threading
 from abc import ABCMeta, abstractmethod
 # from typing import List
 from .observer import Observer
+from uecho.protocol import Message
 
 
-class Server(metaclass=ABCMeta):
+class Server(threading.Thread, metaclass=ABCMeta):
     PORT = 3610
 
     # socket: socket.socket
@@ -26,6 +28,7 @@ class Server(metaclass=ABCMeta):
     # observers: List[Observer]
 
     def __init__(self):
+        super(Server, self).__init__()
         self.socket = None
         self.port = Server.PORT
         self.observers = []
@@ -40,6 +43,20 @@ class Server(metaclass=ABCMeta):
     def bind(self, ifaddr):
         pass
 
+    def run(self):
+        if self.socket is None:
+            return
+        while True:
+            try:
+                recv_msg_bytes, recv_from = self.socket.recvfrom(1024)
+                msg = Message()
+                if not msg.parse_bytes(recv_msg_bytes):
+                    continue
+                msg.from_addr = recv_from
+                self.notify(msg)
+            except:
+                break
+
     def add_observer(self, observer):
         self.observers.append(observer)
 
@@ -50,6 +67,7 @@ class Server(metaclass=ABCMeta):
     def start(self):
         if self.socket is None:
             return False
+        super(Server, self).start()
         return True
 
     def stop(self):
