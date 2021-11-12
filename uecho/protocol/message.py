@@ -90,3 +90,6 @@ class Message(ESV):
             msg_bytes.extend(prop.data)
 
         return msg_bytes
+
+    def to_string(self):
+        return self.to_bytes().hex()
