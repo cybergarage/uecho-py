@@ -40,6 +40,7 @@ class Message(ESV):
         self.SEOJ = 0
         self.DEOJ = 0
         self.properties = []
+        self.from_addr = None
 
     def parse_bytes(self, msg_bytes):
         # Frame heade
