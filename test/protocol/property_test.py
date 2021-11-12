@@ -17,4 +17,4 @@ from uecho.protocol import Property
 
 def test_new_property():
     prop = Property()
-    assert len(prop.Data) == 0
+    assert len(prop.data) == 0
