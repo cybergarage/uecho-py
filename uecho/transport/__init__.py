@@ -16,3 +16,4 @@ from __future__ import absolute_import
 
 from .message_manager import MessageManager
 from .interface import Interface
+from .observer import Observer
