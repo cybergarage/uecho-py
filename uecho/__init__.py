@@ -18,3 +18,5 @@ from .node import Node
 from .local_node import LocalNode
 from .remote_node import RemoteNode
 from .controller import Controller
+from .object import Object
+from .node_profile import NodeProfile
