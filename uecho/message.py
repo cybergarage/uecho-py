@@ -12,12 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from __future__ import absolute_import
+import uecho.protocol
 
-from .node import Node
-from .local_node import LocalNode
-from .remote_node import RemoteNode
-from .controller import Controller
-from .object import Object
-from .node_profile import NodeProfile
-from .message import Message
+
+class Message(uecho.protocol.Message):
+    def __init__(self):
+        super().__init__()
