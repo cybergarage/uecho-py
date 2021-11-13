@@ -26,4 +26,4 @@ format:
 	find uecho -name "*.py" | xargs pylint 
 
 test:
-	py.test test
+	env PYTHONPATH=`pwd` py.test test
