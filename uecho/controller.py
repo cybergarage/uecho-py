@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import time
+
 from .log.logger import debug
 from .transport.observer import Observer
 
