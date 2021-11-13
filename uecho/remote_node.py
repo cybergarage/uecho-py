@@ -46,5 +46,5 @@ class RemoteNode(Node):
             obj = Object()
             obj.set_code(Bytes.to_int(code_bytes))
             self.add_object(obj)
-        
+
         return True
