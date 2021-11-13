@@ -92,4 +92,4 @@ class Message(ESV):
         return msg_bytes
 
     def to_string(self):
-        return self.to_bytes().hex()
+        return self.to_bytes().hex().upper()
