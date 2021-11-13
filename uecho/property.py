@@ -12,23 +12,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import uecho.protocol
 
+class Property(object):
+    CODE_MIN = 0x80
+    CODE_MAX = 0xFF
 
-class Property(uecho.protocol.Property):
-    PROPERTY_CODE_MIN = 0x80
-    PROPERTY_CODE_MAX = 0xFF
+    FORMAT1_MAX_SIZE = 15
+    FORMAT2_SIZE = 18
+    FORMAT_MAX_SIZE = FORMAT2_SIZE
 
-    PROPERTY_MAP_FORMAT1_MAX_SIZE = 15
-    PROPERTY_MAP_FORMAT2_SIZE = 18
-    PROPERTY_MAP_FORMAT_MAX_SIZE = PROPERTY_MAP_FORMAT2_SIZE
-
-    PROPERTY_ATTRIBUTE_NONE = 0x00
-    PROPERTY_ATTRIBUTE_READ = 0x01
-    PROPERTY_ATTRIBUTE_WRITE = 0x02
-    PROPERTY_ATTRIBUTE_ANNO = 0x10
-    PROPERTY_ATTRIBUTE_READ_WRITE = PROPERTY_ATTRIBUTE_READ | PROPERTY_ATTRIBUTE_WRITE
-    PROPERTY_ATTRIBUTE_READ_ANNO = PROPERTY_ATTRIBUTE_READ | PROPERTY_ATTRIBUTE_ANNO
+    ATTRIBUTE_NONE = 0x00
+    ATTRIBUTE_READ = 0x01
+    ATTRIBUTE_WRITE = 0x02
+    ATTRIBUTE_ANNO = 0x10
+    ATTRIBUTE_READ_WRITE = ATTRIBUTE_READ | ATTRIBUTE_WRITE
+    ATTRIBUTE_READ_ANNO = ATTRIBUTE_READ | ATTRIBUTE_ANNO
 
     def __init__(self):
-        super().__init__()
+        self.code = 0
+        self.attr = Property.ATTRIBUTE_NONE
+        self.data = bytes()
