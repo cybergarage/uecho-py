@@ -30,6 +30,7 @@ class Server(threading.Thread):
     # observers: List[Observer]
 
     def __init__(self):
+        threading.Thread.__init__(self)
         super(Server, self).__init__()
         self.socket = None
         self.port = Server.PORT
