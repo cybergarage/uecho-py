@@ -31,3 +31,8 @@ class UnicastServer(Server):
             return False
         return self.socket.sendto(msg.to_bytes(),
                                   (MulticastServer.ADDRESS, Server.PORT))
+
+    def send_message(self, msg, addr):
+        if self.socket is None:
+            return False
+        return self.socket.sendto(msg.to_bytes(), addr)

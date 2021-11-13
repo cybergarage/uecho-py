@@ -40,6 +40,14 @@ class Manager(object):
                 server.announce_message(msg)
         return True
 
+    def send_message(self, msg, addr):
+        for server in self.servers:
+            # TODO: Select an appropriate server from the specified address
+            if isinstance(server, UnicastServer):
+                if server.send_message(msg, addr):
+                    return True
+        return False
+
     def start(self):
         for ifaddr in Interface.get_all_ipaddrs():
             userver = UnicastServer()
