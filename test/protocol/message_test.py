@@ -67,6 +67,7 @@ def test_parse_message():
         assert msg.SEOJ == seoj
         assert msg.DEOJ == deoj
         assert msg.ESV == ESV.NOTIFICATION
+        assert msg.OPC == opc
         assert len(msg.properties) == opc
         for n in range(opc):
             prop = msg.properties[n]

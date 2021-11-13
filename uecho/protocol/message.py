@@ -42,6 +42,10 @@ class Message(ESV):
         self.properties = []
         self.from_addr = None
 
+    @property
+    def OPC(self):
+        return len(self.properties)
+
     def parse_bytes(self, msg_bytes):
         # Frame heade
         if len(msg_bytes) < Message.FORMAT1_HEADER_SIZE:
