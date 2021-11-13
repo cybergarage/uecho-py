@@ -33,7 +33,7 @@ class Message(uecho.protocol.Message):
         if not isinstance(obj, Object):
             return False
         prop = Property()
-        prop.code = NodeProfile.CLASS_SELF_NODE_CLASS_LIST_S
+        prop.code = NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S
         prop_data = bytearray(1)
         prop_data.extend(Bytes.from_int(obj.code, Object.CODE_SIZE))
         prop.data = prop_data
