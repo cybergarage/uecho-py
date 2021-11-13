@@ -13,6 +13,10 @@
 # limitations under the License.
 
 import uecho.protocol
+from uecho.util import Bytes
+from .property import Property
+from .object import Object
+from .node_profile import NodeProfile
 
 
 class Message(uecho.protocol.Message):
@@ -20,4 +24,18 @@ class Message(uecho.protocol.Message):
         super().__init__()
 
     def add_property(self, prop):
+        if not isinstance(prop, Property):
+            return False
         self.properties.append(prop)
+        return True
+
+    def add_object_as_class_instance_list_property(self, obj):
+        if not isinstance(obj, Object):
+            return False
+        prop = Property()
+        prop.code = NodeProfile.CLASS_SELF_NODE_CLASS_LIST_S
+        prop_data = bytearray(1)
+        prop_data.extend(Bytes.from_int(obj.code, Object.CODE_SIZE))
+        prop.data = prop_data
+        self.properties.append(prop)
+        return True
