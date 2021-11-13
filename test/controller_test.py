@@ -22,5 +22,5 @@ def test_controller():
     ctrl = Controller()
     assert ctrl.start()
     assert ctrl.search()
-    time.sleep(100)
+    time.sleep(1)
     assert ctrl.stop()
