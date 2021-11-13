@@ -34,4 +34,17 @@ class Object(object):
     OBJECT_MANUFACTURER_UNKNOWN = OBJECT_MANUFACTURER_EVALUATION_CODE_MIN
 
     def __init__(self):
+        self.code = 0
+        self.class_group_code = 0
+        self.class_code = 0
+        self.instance_code = 0
         pass
+
+    def set_code(self, code):
+        if type(code) is int:
+            self.code = code
+            self.class_group_code = ((code >> 16) & 0xFF)
+            self.class_code = ((code >> 8) & 0xFF)
+            self.instance_code = (code & 0xFF)
+            return True
+        return False
