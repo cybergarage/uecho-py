@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .protocol import Property as ProtocolProperty
+from .protocol.property import Property as ProtocolProperty
 
 
 class Property(ProtocolProperty):
