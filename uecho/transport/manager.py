@@ -19,7 +19,7 @@ from .unicast_server import UnicastServer
 # from typing import List
 
 
-class MessageManager(object):
+class Manager(object):
     # servers: List[Server]
 
     def __init__(self):

@@ -55,7 +55,11 @@ class Controller(Observer):
         return True
 
     def __add_found_node(self, node):
+        if not isinstance(node, RemoteNode):
+            return False
+        node.controller = self
         self.found_nodes[node.ip] = node
+        return True
 
     def message_received(self, msg):
         log.debug('%s %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
