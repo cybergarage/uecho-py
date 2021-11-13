@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import time
 import uecho.log as log
 from uecho.transport import Observer
 
@@ -40,6 +41,19 @@ class Controller(Observer):
     def __init__(self):
         self.node = LocalNode()
         self.found_nodes = {}
+        self.__last_post_msg = Controller.__PostMessage()
+
+    class __PostMessage():
+        def __init__(self):
+            self.request = None
+            self.response = None
+
+        def is_waiting(self):
+            if self.request is None:
+                return False
+            if not self.response is None:
+                return False
+            return True
 
     @property
     def nodes(self):
@@ -64,11 +78,16 @@ class Controller(Observer):
 
     def message_received(self, msg):
         log.debug('%s -> %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
+
         if self.__is_node_profile_message(msg):
             node = RemoteNode()
             node.set_address(msg.from_addr)
             if node.parse_message(msg):
                 self.__add_found_node(node)
+
+        if self.__last_post_msg.is_waiting():
+            if self.__last_post_msg.request.is_response(msg):
+                self.__last_post_msg.response = msg
 
     def announce_message(self, msg):
         return self.node.announce_message(msg)
@@ -84,6 +103,20 @@ class Controller(Observer):
     def search(self):
         msg = SearchMessage()
         return self.announce_message(msg)
+
+    def post_message(self, msg, addr):
+        self.__last_post_msg = Controller.__PostMessage()
+        self.__last_post_msg.request = msg
+
+        if not self.send_message(msg, addr):
+            return None
+
+        for i in range(10):
+            time.sleep(0.2)
+            if not self.__last_post_msg.response is None:
+                break
+
+        return self.__last_post_msg.response
 
     def start(self):
         if not self.node.start():
