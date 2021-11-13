@@ -19,5 +19,5 @@ def test_node():
     node = Node()
     addr = ('127.0.0.1', 80)
     assert node.set_address(addr)
-    assert node.addr == addr[0]
+    assert node.ip == addr[0]
     assert node.port == addr[1]

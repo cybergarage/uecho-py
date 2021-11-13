@@ -27,7 +27,11 @@ class Node(object):
         return True
 
     @property
-    def addr(self):
+    def address(self):
+        return self.__address
+
+    @property
+    def ip(self):
         return self.__address[0]
 
     @property

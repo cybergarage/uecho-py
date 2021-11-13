@@ -18,14 +18,15 @@ import uecho
 import uecho.log as log
 
 if __name__ == '__main__':
-    #log.setLevel(log.DEBUG)
+    log.setLevel(log.DEBUG)
     ctrl = uecho.Controller()
     ctrl.start()
     ctrl.search()
     time.sleep(1)
     ctrl.stop()
 
-    for node in ctrl.nodes:
-        print('%s' % node.addr)
-
-
+    for i, node in enumerate(ctrl.nodes):
+        print('%s' % (node.ip))
+        for j, obj in enumerate(node.objects):
+            print('  [%d] %06X' % (j, obj.code))
+        
