@@ -12,11 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# from typing import List
+import uecho.log as log
+
 from .interface import Interface
 from .server import Server, Server
 from .multicast_server import MulticastServer
 from .unicast_server import UnicastServer
-# from typing import List
 
 
 class Manager(object):
@@ -35,12 +37,15 @@ class Manager(object):
             server.notify(msg)
 
     def announce_message(self, msg):
+        log.debug('%s <- %s' %
+                  (MulticastServer.ADDRESS.ljust(15), msg.to_string()))
         for server in self.servers:
             if isinstance(server, UnicastServer):
                 server.announce_message(msg)
         return True
 
     def send_message(self, msg, addr):
+        log.debug('%s <- %s' % (addr[0].ljust(15), msg.to_string()))
         for server in self.servers:
             # TODO: Select an appropriate server from the specified address
             if isinstance(server, UnicastServer):
