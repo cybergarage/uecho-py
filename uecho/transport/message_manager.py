@@ -34,6 +34,12 @@ class MessageManager(object):
         for server in self.servers:
             server.notify(msg)
 
+    def announce_message(self, msg):
+        for server in self.servers:
+            if isinstance(server, UnicastServer):
+                server.announce_message(msg)
+        return True
+
     def start(self):
         for ifaddr in Interface.get_all_ipaddrs():
             userver = UnicastServer()
