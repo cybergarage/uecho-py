@@ -48,10 +48,6 @@ class Message(ESV):
         return len(self.properties)
 
     def is_response(self, msg):
-        if self.to_addr[0] != msg.from_addr[0]:
-            return False
-        if self.ESV != msg.ESV:
-            return False
         if self.TID != msg.TID:
             return False
         return True
