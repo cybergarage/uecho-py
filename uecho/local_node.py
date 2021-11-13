@@ -21,15 +21,11 @@ from .node_profile import NodeProfile
 class LocalNode(Manager):
     def __init__(self):
         super(LocalNode, self).__init__()
-        self.TID = 0
-
-    def next_TID(self):
-        self.TID += 1
-        if 0xFF < self.TID:
-            self.TID = 0
-        return self.TID
 
     def announce_message(self, msg):
-        msg.TID = self.next_TID()
         msg.DEOJ = NodeProfile.OBJECT
         return super().announce_message(msg)
+
+    def send_message(self, msg, addr):
+        msg.DEOJ = NodeProfile.OBJECT
+        return super().send_message(msg, addr)

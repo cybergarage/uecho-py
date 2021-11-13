@@ -26,7 +26,13 @@ class Manager(object):
 
     def __init__(self):
         self.servers = []
-        pass
+        self.__TID = 0
+
+    def __next_TID(self):
+        self.__TID += 1
+        if 0xFF < self.__TID:
+            self.__TID = 0
+        return self.__TID
 
     def add_observer(self, observer):
         for server in self.servers:
@@ -37,6 +43,7 @@ class Manager(object):
             server.notify(msg)
 
     def announce_message(self, msg):
+        msg.TID = self.__next_TID()
         log.debug('%s <- %s' %
                   (MulticastServer.ADDRESS.ljust(15), msg.to_string()))
         for server in self.servers:
@@ -45,6 +52,7 @@ class Manager(object):
         return True
 
     def send_message(self, msg, addr):
+        msg.TID = self.__next_TID()
         log.debug('%s <- %s' % (addr[0].ljust(15), msg.to_string()))
         for server in self.servers:
             # TODO: Select an appropriate server from the specified address
