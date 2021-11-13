@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import uecho.protocol
 from uecho.util import Bytes
 from .node import Node
 from .message import Message
@@ -24,7 +25,7 @@ class RemoteNode(Node):
         pass
 
     def parse_message(self, msg):
-        if not isinstance(msg, Message):
+        if not isinstance(msg, uecho.protocol.Message):
             return False
 
         if msg.OPC < 1:

@@ -20,6 +20,7 @@ from .node_profile import NodeProfile
 from .esv import ESV
 from .message import Message
 from .property import Property
+from .remote_node import RemoteNode
 
 
 class SearchMessage(Message):
@@ -37,9 +38,25 @@ class SearchMessage(Message):
 class Controller(Observer):
     def __init__(self):
         self.node = LocalNode()
+        self.found_nodes = []
+
+    @property
+    def nodes(self):
+        return self.found_nodes
+
+    def __is_node_profile_message(self, msg):
+        if msg.ESV != ESV.NOTIFICATION and msg.ESV != ESV.READ_RESPONSE:
+            return False
+        if msg.DEOJ != NodeProfile.OBJECT and msg.DEOJ != NodeProfile.OBJECT_READ_ONLY:
+            return False
+        return True
 
     def message_received(self, msg):
-        log.debug(msg.to_string())
+        log.debug('%s %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
+        if self.__is_node_profile_message(msg):
+            node = RemoteNode()
+            if node.parse_message(msg):
+                self.found_nodes.append(node)
 
     def search(self):
         msg = SearchMessage()
