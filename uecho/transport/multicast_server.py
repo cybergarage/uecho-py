@@ -17,10 +17,13 @@ from .server import Server
 
 
 class MulticastServer(Server):
+    ADDRESS = '224.0.23.0'
+
     def __init__(self):
         super().__init__()
 
     def bind(self, ifaddr):
         self.socket = self.create_udp_socket()
         self.socket.bind(('0.0.0.0', self.port))
+        #self.socket.setsockopt(socket.IPPROTO_IP, socket.IP_MULTICAST_IF, socket.inet_aton(MulticastServer.ADDRESS)+socket.inet_aton(ifaddr))
         return True

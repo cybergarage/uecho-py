@@ -14,6 +14,7 @@
 
 import socket
 from .server import Server
+from .multicast_server import MulticastServer
 
 
 class UnicastServer(Server):
@@ -24,3 +25,9 @@ class UnicastServer(Server):
         self.socket = self.create_udp_socket()
         self.socket.bind((ifaddr, self.port))
         return True
+
+    def announce_message(self, msg):
+        if self.socket is None:
+            return False
+        return self.socket.sendto(msg.to_bytes(),
+                                  (MulticastServer.ADDRESS, Server.PORT))
