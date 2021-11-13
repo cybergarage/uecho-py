@@ -29,4 +29,3 @@ if __name__ == '__main__':
         print('%s' % (node.ip))
         for j, obj in enumerate(node.objects):
             print('  [%d] %06X' % (j, obj.code))
-        
