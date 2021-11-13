@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho.transport import MessageManager
+from uecho.transport import Manager
 
 
-def test_message_manager():
-    mgr = MessageManager()
+def test_manager():
+    mgr = Manager()
     assert mgr.start()
     assert mgr.stop()

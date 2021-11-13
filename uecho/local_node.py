@@ -12,13 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho.transport import MessageManager
+from uecho.transport import Manager
 
 from .node import Node
 from .node_profile import NodeProfile
 
 
-class LocalNode(MessageManager):
+class LocalNode(Manager):
     def __init__(self):
         super(LocalNode, self).__init__()
         self.TID = 0
