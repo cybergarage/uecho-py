@@ -33,7 +33,7 @@ class RemoteNode(Node):
 
         prop = msg.properties[0]
 
-        if prop.code != NodeProfile.CLASS_INSTANCE_LIST_NOTIFICATION and prop.code != NodeProfile.CLASS_SELF_NODE_CLASS_LIST_S:
+        if prop.code != NodeProfile.CLASS_INSTANCE_LIST_NOTIFICATION and prop.code != NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S:
             return False
 
         instance_count = prop.data[0]
