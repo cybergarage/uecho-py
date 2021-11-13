@@ -12,21 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from uecho import Node
 
-class Node(object):
-    def __init__(self):
-        self.__address = ()
 
-    def set_address(self, addr):
-        if not isinstance(addr, tuple) or len(addr) != 2:
-            return False
-        self.__address = addr
-        return True
-
-    @property
-    def addr(self):
-        return self.__address[0]
-
-    @property
-    def port(self):
-        return self.__address[1]
+def test_node():
+    node = Node()
+    addr = ('127.0.0.1', 80)
+    assert node.set_address(addr)
+    assert node.addr == addr[0]
+    assert node.port == addr[1]
