@@ -12,20 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .node import Node
 from uecho.transport import MessageManager
 
+from .node import Node
+from .node_profile import NodeProfile
 
-class LocalNode(Node):
+
+class LocalNode(MessageManager):
     def __init__(self):
-        self.mgr = MessageManager()
+        super(LocalNode, self).__init__()
+        self.TID = 0
 
-    def start(self):
-        if not self.mgr.start():
-            return False
-        return True
+    def next_TID(self):
+        self.TID += 1
+        if 0xFF < self.TID:
+            self.TID = 0
+        return self.TID
 
-    def stop(self):
-        if not self.mgr.stop():
-            return False
-        return True
+    def announce_message(self, msg):
+        msg.TID = self.next_TID()
+        msg.DEOJ = NodeProfile.OBJECT
+        return super().announce_message(msg)
