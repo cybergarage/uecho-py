@@ -41,7 +41,7 @@ class RemoteNode(Node):
             return False
 
         for n in range(instance_count):
-            offset = (Object.CODE_MAX * n) + 1
+            offset = (Object.CODE_SIZE * n) + 1
             code_bytes = prop.data[offset:(offset + Object.CODE_SIZE)]
             obj = Object()
             obj.set_code(Bytes.to_int(code_bytes))
