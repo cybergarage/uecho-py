@@ -24,7 +24,7 @@ class Bytes():
             byte_buf[idx] = ((val >> (n * 8)) & 0xFF)
         return byte_buf
 
-    def to_int(byte_buf: bytearray):
+    def to_int(byte_buf):
         val = 0
         bytes_size = len(byte_buf)
         for n in range(bytes_size):
