@@ -12,8 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import time
+import uecho.log as log
 from uecho import Controller
 
 
 def test_controller():
+    log.setLevel(log.DEBUG)
     ctrl = Controller()
+    assert ctrl.start()
+    assert ctrl.search()
+    time.sleep(1)
+    assert ctrl.stop()
