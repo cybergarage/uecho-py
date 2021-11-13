@@ -12,10 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from .object import Object
+
 
 class Node(object):
     def __init__(self):
         self.__address = ()
+        self.objects = []
 
     def set_address(self, addr):
         if not isinstance(addr, tuple) or len(addr) != 2:
@@ -30,3 +33,9 @@ class Node(object):
     @property
     def port(self):
         return self.__address[1]
+
+    def add_object(self, obj):
+        if not isinstance(obj, Object):
+            return False
+        self.objects.append(obj)
+        return True
