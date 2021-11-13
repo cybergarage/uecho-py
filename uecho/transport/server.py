@@ -14,7 +14,6 @@
 
 import socket
 import threading
-from abc import ABCMeta, abstractmethod
 # from typing import List
 
 from uecho.protocol import Message
@@ -23,7 +22,7 @@ import uecho.log as log
 from .observer import Observer
 
 
-class Server(threading.Thread, metaclass=ABCMeta):
+class Server(threading.Thread):
     PORT = 3610
 
     # socket: socket.socket
@@ -42,7 +41,6 @@ class Server(threading.Thread, metaclass=ABCMeta):
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
         return sock
 
-    @abstractmethod
     def bind(self, ifaddr):
         pass
 

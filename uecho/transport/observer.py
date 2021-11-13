@@ -12,11 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from abc import ABC, ABCMeta, abstractmethod
-from uecho.protocol import Message
 
-
-class Observer(metaclass=ABCMeta):
-    @abstractmethod
+class Observer(object):
     def message_received(self, msg):
         pass
