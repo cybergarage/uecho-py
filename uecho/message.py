@@ -18,3 +18,6 @@ import uecho.protocol
 class Message(uecho.protocol.Message):
     def __init__(self):
         super().__init__()
+
+    def add_property(self, prop):
+        self.properties.append(prop)
