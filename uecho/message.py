@@ -21,7 +21,7 @@ from .node_profile import NodeProfile
 
 class Message(uecho.protocol.Message):
     def __init__(self):
-        super().__init__()
+        super(Message, self).__init__()
 
     def add_property(self, prop):
         if not isinstance(prop, Property):

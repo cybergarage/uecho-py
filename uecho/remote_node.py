@@ -22,7 +22,7 @@ from .node_profile import NodeProfile
 
 class RemoteNode(Node):
     def __init__(self):
-        super().__init__()
+        super(RemoteNode, self).__init__()
         self.controller = None
 
     def parse_message(self, msg):

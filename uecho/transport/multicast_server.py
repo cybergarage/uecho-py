@@ -20,7 +20,7 @@ class MulticastServer(Server):
     ADDRESS = '224.0.23.0'
 
     def __init__(self):
-        super().__init__()
+        super(MulticastServer, self).__init__()
 
     def bind(self, ifaddr):
         self.socket = self.create_udp_socket()

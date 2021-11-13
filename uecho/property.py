@@ -31,5 +31,5 @@ class Property(uecho.protocol.Property):
     ATTRIBUTE_READ_ANNO = ATTRIBUTE_READ | ATTRIBUTE_ANNO
 
     def __init__(self):
-        super().__init__()
+        super(Property, self).__init__()
         self.attr = Property.ATTRIBUTE_NONE

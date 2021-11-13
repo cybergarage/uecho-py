@@ -35,7 +35,7 @@ class Message(ESV):
         pass
 
     def __init__(self):
-        super().__init__()
+        super(Message, self).__init__()
         self.TID = 0
         self.SEOJ = 0
         self.DEOJ = 0
