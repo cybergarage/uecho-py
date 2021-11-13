@@ -17,11 +17,11 @@ from setuptools import setup
 
 setup(
     name='uecho',
-    version='0.1',
-    description="Time series failure analisys utility.",
+    version='0.8.0',
+    description="uEcho for Python is a portable development framework for ECHONET Lite developers.",
     author='Satoshi Konno',
     author_email='skonno@cybergarage.org',
-    url='https://ghe.corp.yahoo.co.jp/nosql/foreman-py',
+    url='https://github.com/cybergarage/uecho-py.git',
     packages=[
         'uecho'
     ],
