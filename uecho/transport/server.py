@@ -16,8 +16,8 @@ import socket
 import threading
 # from typing import List
 
-from uecho.protocol import Message
-import uecho.log as log
+from ..protocol import Message
+from ..log import logger as log
 
 from .observer import Observer
 
