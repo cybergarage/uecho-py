@@ -18,7 +18,7 @@ from .interface import Interface
 from .server import Server, Server
 from .multicast_server import MulticastServer
 from .unicast_server import UnicastServer
-from ..log import logger as log
+from ..log.logger import debug
 
 
 class Manager(object):
@@ -44,7 +44,7 @@ class Manager(object):
 
     def announce_message(self, msg):
         msg.TID = self.__next_TID()
-        log.debug('%s <- %s' %
+        debug('%s <- %s' %
                   (MulticastServer.ADDRESS.ljust(15), msg.to_string()))
         for server in self.servers:
             if isinstance(server, UnicastServer):
@@ -53,7 +53,7 @@ class Manager(object):
 
     def send_message(self, msg, addr):
         msg.TID = self.__next_TID()
-        log.debug('%s <- %s' % (addr[0].ljust(15), msg.to_string()))
+        debug('%s <- %s' % (addr[0].ljust(15), msg.to_string()))
         for server in self.servers:
             # TODO: Select an appropriate server from the specified address
             if isinstance(server, UnicastServer):
