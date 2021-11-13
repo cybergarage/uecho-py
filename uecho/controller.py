@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .log import logger as log
+from .log.logger import debug
 from uecho.transport import Observer
 
 from .local_node import LocalNode
@@ -76,7 +76,7 @@ class Controller(Observer):
         return True
 
     def message_received(self, msg):
-        log.debug('%s -> %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
+        debug('%s -> %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
 
         if self.__is_node_profile_message(msg):
             node = RemoteNode()
