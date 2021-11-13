@@ -38,11 +38,14 @@ class SearchMessage(Message):
 class Controller(Observer):
     def __init__(self):
         self.node = LocalNode()
-        self.found_nodes = []
+        self.found_nodes = {}
 
     @property
     def nodes(self):
-        return self.found_nodes
+        nodes = []
+        for node in self.found_nodes.values():
+            nodes.append(node)
+        return nodes
 
     def __is_node_profile_message(self, msg):
         if msg.ESV != ESV.NOTIFICATION and msg.ESV != ESV.READ_RESPONSE:
@@ -51,13 +54,16 @@ class Controller(Observer):
             return False
         return True
 
+    def __add_found_node(self, node):
+        self.found_nodes[node.addr] = node
+
     def message_received(self, msg):
         log.debug('%s %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
         if self.__is_node_profile_message(msg):
             node = RemoteNode()
             node.set_address(msg.from_addr)
             if node.parse_message(msg):
-                self.found_nodes.append(node)
+                self.__add_found_node(node)
 
     def search(self):
         msg = SearchMessage()
