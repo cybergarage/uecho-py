@@ -18,7 +18,7 @@ from .object import Object
 class Node(object):
     def __init__(self):
         self.__address = ()
-        self.objects = []
+        self.__objects = {}
 
     def set_address(self, addr):
         if not isinstance(addr, tuple) or len(addr) != 2:
@@ -37,5 +37,15 @@ class Node(object):
     def add_object(self, obj):
         if not isinstance(obj, Object):
             return False
-        self.objects.append(obj)
+        self.__objects[obj.code] = obj
         return True
+
+    @property
+    def objects(self):
+        objs = []
+        for obj in self.__objects.values():
+            objs.append(obj)
+        return objs
+
+    def has_object(self, code):
+        return code in self.__objects.keys()
