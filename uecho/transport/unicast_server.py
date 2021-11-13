@@ -29,12 +29,14 @@ class UnicastServer(Server):
     def announce_message(self, msg):
         if self.socket is None:
             return False
-        return self.socket.sendto(msg.to_bytes(),
-                                  (MulticastServer.ADDRESS, Server.PORT))
+        to_addr = (MulticastServer.ADDRESS, Server.PORT)
+        msg.to_addr = to_addr
+        return self.socket.sendto(msg.to_bytes(), to_addr)
 
     def send_message(self, msg, addr):
         if not isinstance(addr, tuple) or len(addr) != 2:
             return False
         if self.socket is None:
             return False
+        msg.to_addr = addr
         return self.socket.sendto(msg.to_bytes(), addr)

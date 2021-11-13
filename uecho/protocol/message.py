@@ -41,6 +41,7 @@ class Message(ESV):
         self.DEOJ = 0
         self.properties = []
         self.from_addr = None
+        self.to_addr = None
 
     @property
     def OPC(self):
