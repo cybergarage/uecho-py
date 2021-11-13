@@ -55,6 +55,7 @@ class Controller(Observer):
         log.debug('%s %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
         if self.__is_node_profile_message(msg):
             node = RemoteNode()
+            node.set_address(msg.from_addr)
             if node.parse_message(msg):
                 self.found_nodes.append(node)
 
