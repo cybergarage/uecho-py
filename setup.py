@@ -15,12 +15,16 @@
 
 from setuptools import setup
 
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+
 setup(
     name='uecho',
     version='0.8.0',
     description="uEcho for Python is a portable development framework for ECHONET Lite developers.",
-    # long_description = file: README.md
-    # long_description_content_type = text/markdown
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     author='The uecho-py Authors',
     author_email='skonno@cybergarage.org',
     url='https://github.com/cybergarage/uecho-py.git',
