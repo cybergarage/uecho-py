@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import uecho.protocol
-from uecho.util import Bytes
+from .protocol import Message as ProtocolMessage
+from .util import Bytes
 from .node import Node
 from .message import Message
 from .object import Object
@@ -26,7 +26,7 @@ class RemoteNode(Node):
         self.controller = None
 
     def parse_message(self, msg):
-        if not isinstance(msg, uecho.protocol.Message):
+        if not isinstance(msg, ProtocolMessage):
             return False
 
         if msg.OPC < 1:

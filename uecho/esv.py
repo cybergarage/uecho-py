@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import uecho.protocol
+from .protocol.esv import ESV as ProtocolESV
 
 
-class ESV(uecho.protocol.ESV):
+class ESV(ProtocolESV):
     """
     ESV represents a ESV code in a protocol message of Echonet Lite.
     """

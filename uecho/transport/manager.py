@@ -13,12 +13,12 @@
 # limitations under the License.
 
 # from typing import List
-import uecho.log as log
 
 from .interface import Interface
 from .server import Server, Server
 from .multicast_server import MulticastServer
 from .unicast_server import UnicastServer
+from ..log import logger as log
 
 
 class Manager(object):

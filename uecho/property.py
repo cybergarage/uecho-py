@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import uecho.protocol
+from .protocol import Property as ProtocolProperty
 
 
-class Property(uecho.protocol.Property):
+class Property(ProtocolProperty):
     CODE_MIN = 0x80
     CODE_MAX = 0xFF
 

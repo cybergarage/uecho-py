@@ -12,14 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import uecho.protocol
+from .protocol import Message as ProtocolMessage
+
 from uecho.util import Bytes
 from .property import Property
 from .object import Object
 from .node_profile import NodeProfile
 
 
-class Message(uecho.protocol.Message):
+class Message(ProtocolMessage):
     def __init__(self):
         super(Message, self).__init__()
 

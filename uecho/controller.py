@@ -12,8 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import time
-import uecho.log as log
+from .log import logger as log
 from uecho.transport import Observer
 
 from .local_node import LocalNode
