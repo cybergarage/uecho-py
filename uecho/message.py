@@ -14,7 +14,7 @@
 
 from .protocol.message import Message as ProtocolMessage
 
-from uecho.util import Bytes
+from .util.bytes import Bytes
 from .property import Property
 from .object import Object
 from .node_profile import NodeProfile

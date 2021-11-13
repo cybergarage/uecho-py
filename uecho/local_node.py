@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho.transport import Manager
+from .transport.manager import Manager
 
 from .node import Node
 from .node_profile import NodeProfile
