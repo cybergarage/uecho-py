@@ -19,8 +19,8 @@ setup(
     name='uecho',
     version='0.8.0',
     description="uEcho for Python is a portable development framework for ECHONET Lite developers.",
-    long_description = file: README.md
-    long_description_content_type = text/markdown
+    # long_description = file: README.md
+    # long_description_content_type = text/markdown
     author='The uecho-py Authors',
     author_email='skonno@cybergarage.org',
     url='https://github.com/cybergarage/uecho-py.git',
