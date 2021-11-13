@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from .log.logger import debug
-from uecho.transport import Observer
+from .transport.observer import Observer
 
 from .local_node import LocalNode
 from .node_profile import NodeProfile

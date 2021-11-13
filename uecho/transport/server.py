@@ -16,7 +16,7 @@ import socket
 import threading
 # from typing import List
 
-from ..protocol import message
+from ..protocol.message import Message
 from ..log.logger import error
 
 from .observer import Observer
@@ -50,7 +50,7 @@ class Server(threading.Thread):
         while True:
             try:
                 recv_msg_bytes, recv_from = self.socket.recvfrom(1024)
-                msg = message.Message()
+                msg = Message()
                 if not msg.parse_bytes(recv_msg_bytes):
                     log_msg = '%s %s' % (recv_from, recv_msg_bytes.hex())
                     error(log_msg)
