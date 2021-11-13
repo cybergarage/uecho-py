@@ -19,7 +19,7 @@ from .multicast_server import MulticastServer
 
 class UnicastServer(Server):
     def __init__(self):
-        super().__init__()
+        super(UnicastServer, self).__init__()
 
     def bind(self, ifaddr):
         self.socket = self.create_udp_socket()
