@@ -21,6 +21,7 @@ from .esv import ESV
 from .message import Message
 from .property import Property
 from .remote_node import RemoteNode
+from .node import Node
 
 
 class SearchMessage(Message):
@@ -69,14 +70,26 @@ class Controller(Observer):
             if node.parse_message(msg):
                 self.__add_found_node(node)
 
+    def announce_message(self, msg):
+        return self.node.announce_message(msg)
+
+    def send_message(self, msg, addr):
+        to_addr = addr
+        if isinstance(addr, RemoteNode):
+            to_addr = (addr.ip, addr.port)
+        elif isinstance(addr, str):
+            to_addr = (addr, Node.PORT)
+        return self.node.send_message(msg, to_addr)
+
     def search(self):
         msg = SearchMessage()
-        return self.node.announce_message(msg)
+        return self.announce_message(msg)
 
     def start(self):
         if not self.node.start():
             return False
         self.node.add_observer(self)
+        self.search()
         return True
 
     def stop(self):
