@@ -21,7 +21,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name='uecho',
-    version='0.8.0',
+    version='0.8.1',
     description="uEcho for Python is a portable development framework for ECHONET Lite developers.",
     long_description=long_description,
     long_description_content_type='text/markdown',
