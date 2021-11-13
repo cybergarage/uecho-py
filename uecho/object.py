@@ -12,32 +12,40 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from .property import Property
+
 
 class Object(object):
-    OBJECT_OPERATING_STATUS = 0x80
-    OBJECT_MANUFACTURER_CODE = 0x8A
-    OBJECT_ANNO_PROPERTY_MAP = 0x9D
-    OBJECT_SET_PROPERTY_MAP = 0x9E
-    OBJECT_GET_PROPERTY_MAP = 0x9F
+    CODE_MIN = 0x000000
+    CODE_MAX = 0xFFFFFF
+    CODE_SIZE = 3
+    CODE_UNKNOWN = CODE_MIN
 
-    OBJECT_OPERATING_STATUS_ON = 0x30
-    OBJECT_OPERATING_STATUS_OFF = 0x31
-    OBJECT_OPERATING_STATUS_SIZE = 1
-    OBJECT_MANUFACTURER_EVALUATION_CODE_MIN = 0xFFFFF0
-    OBJECT_MANUFACTURER_EVALUATION_CODE_MAX = 0xFFFFFF
-    OBJECT_MANUFACTURER_CODE_SIZE = 3
-    OBJECT_PROPERTY_MAP_MAX_SIZE = 16
-    OBJECT_ANNO_PROPERTY_MAP_MAX_SIZE = OBJECT_PROPERTY_MAP_MAX_SIZE + 1
-    OBJECT_SET_PROPERTY_MAP_MAX_SIZE = OBJECT_PROPERTY_MAP_MAX_SIZE + 1
-    OBJECT_GET_PROPERTY_MAP_MAX_SIZE = OBJECT_PROPERTY_MAP_MAX_SIZE + 1
+    OPERATING_STATUS = 0x80
+    MANUFACTURER_CODE = 0x8A
+    ANNO_PROPERTY_MAP = 0x9D
+    SET_PROPERTY_MAP = 0x9E
+    GET_PROPERTY_MAP = 0x9F
 
-    OBJECT_MANUFACTURER_UNKNOWN = OBJECT_MANUFACTURER_EVALUATION_CODE_MIN
+    OPERATING_STATUS_ON = 0x30
+    OPERATING_STATUS_OFF = 0x31
+    OPERATING_STATUS_SIZE = 1
+    MANUFACTURER_EVALUATION_CODE_MIN = 0xFFFFF0
+    MANUFACTURER_EVALUATION_CODE_MAX = 0xFFFFFF
+    MANUFACTURER_CODE_SIZE = 3
+    PROPERTY_MAP_MAX_SIZE = 16
+    ANNO_PROPERTY_MAP_MAX_SIZE = PROPERTY_MAP_MAX_SIZE + 1
+    SET_PROPERTY_MAP_MAX_SIZE = PROPERTY_MAP_MAX_SIZE + 1
+    GET_PROPERTY_MAP_MAX_SIZE = PROPERTY_MAP_MAX_SIZE + 1
+
+    MANUFACTURER_UNKNOWN = MANUFACTURER_EVALUATION_CODE_MIN
 
     def __init__(self):
         self.code = 0
         self.class_group_code = 0
         self.class_code = 0
         self.instance_code = 0
+        self.properties = {}
         pass
 
     def set_code(self, code):
@@ -48,3 +56,9 @@ class Object(object):
             self.instance_code = (code & 0xFF)
             return True
         return False
+
+    def add_property(self, prop):
+        if not isinstance(prop, Property):
+            return False
+        self.properties[prop.code] = prop
+        return True
