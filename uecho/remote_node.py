@@ -12,9 +12,38 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from uecho.util import Bytes
 from .node import Node
+from .message import Message
+from .object import Object
+from .node_profile import NodeProfile
 
 
 class RemoteNode(Node):
     def __init__(self):
         pass
+
+    def parse_message(self, msg):
+        if not isinstance(msg, Message):
+            return False
+
+        if msg.OPC < 1:
+            return False
+
+        prop = msg.properties[0]
+
+        if prop.code != NodeProfile.CLASS_INSTANCE_LIST_NOTIFICATION and prop.code != NodeProfile.CLASS_SELF_NODE_CLASS_LIST_S:
+            return False
+
+        instance_count = prop.data[0]
+        if len(prop.data) < ((instance_count * Object.CODE_SIZE) + 1):
+            return False
+
+        for n in range(instance_count):
+            offset = (Object.CODE_MAX * n) + 1
+            code_bytes = prop.data[offset:(offset + Object.CODE_SIZE)]
+            obj = Object()
+            obj.set_code(Bytes.to_int(code_bytes))
+            self.add_object(obj)
+
+        return True
