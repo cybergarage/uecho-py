@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .protocol import Message as ProtocolMessage
+from .protocol.message import Message as ProtocolMessage
 from .util import Bytes
 from .node import Node
 from .message import Message
