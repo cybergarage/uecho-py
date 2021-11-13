@@ -21,6 +21,9 @@ clean:
 	rm -rf tests/__pycache__
 	rm -rf tests/*/__pycache__
 
+lint:
+	flake8 uecho bin test
+
 format:
 	yapf -ir uecho bin test
 	find uecho -name "*.py" | xargs pylint 
