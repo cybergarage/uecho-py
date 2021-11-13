@@ -16,6 +16,8 @@ from .object import Object
 
 
 class Node(object):
+    PORT = 3610
+
     def __init__(self):
         self.__address = ()
         self.__objects = {}
@@ -36,7 +38,7 @@ class Node(object):
 
     @property
     def port(self):
-        return self.__address[1]
+        return Node.PORT
 
     def add_object(self, obj):
         if not isinstance(obj, Object):
