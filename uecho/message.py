@@ -34,7 +34,7 @@ class Message(uecho.protocol.Message):
             return False
         prop = Property()
         prop.code = NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S
-        prop_data = bytearray(1)
+        prop_data = bytearray([1])
         prop_data.extend(Bytes.from_int(obj.code, Object.CODE_SIZE))
         prop.data = prop_data
         self.properties.append(prop)
