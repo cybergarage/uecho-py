@@ -23,7 +23,9 @@ args = sys.argv
 
 
 def usage():
-    print('Usage : uechopost <address> <obj> <esv> <property (code, data) ...>')
+    print(
+        'Usage : uechopost <address> <obj> <esv> <property (code, data) ...>')
+
 
 if __name__ == '__main__':
     #log.setLevel(log.DEBUG)
