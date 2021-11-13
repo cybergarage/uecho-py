@@ -22,7 +22,7 @@ from .node_profile import NodeProfile
 
 class RemoteNode(Node):
     def __init__(self):
-        pass
+        super().__init__()
 
     def parse_message(self, msg):
         if not isinstance(msg, uecho.protocol.Message):
@@ -46,5 +46,5 @@ class RemoteNode(Node):
             obj = Object()
             obj.set_code(Bytes.to_int(code_bytes))
             self.add_object(obj)
-
+        
         return True
