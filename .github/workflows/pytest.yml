@@ -11,11 +11,15 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v2
 
-      # Setup Python (faster than using Python container)
       - name: Setup Python
         uses: actions/setup-python@v2
         with:
           python-version: "3.x"
-      - name: Run test suite
+
+      - name: Setup pytest
         run: |
-          pipenv run test -v
+          pip install -U pytest
+
+      - name: Run pytest
+        run: |
+          pytest
