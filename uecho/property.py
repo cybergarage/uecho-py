@@ -12,8 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import uecho.protocol
 
-class Property(object):
+
+class Property(uecho.protocol.Property):
     CODE_MIN = 0x80
     CODE_MAX = 0xFF
 
@@ -29,6 +31,5 @@ class Property(object):
     ATTRIBUTE_READ_ANNO = ATTRIBUTE_READ | ATTRIBUTE_ANNO
 
     def __init__(self):
-        self.code = 0
+        super().__init__()
         self.attr = Property.ATTRIBUTE_NONE
-        self.data = bytes()
