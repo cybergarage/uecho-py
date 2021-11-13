@@ -18,3 +18,4 @@ This module includes general utility classes.
 from __future__ import absolute_import
 
 from .bytes import Bytes
+from .hex import Hex
