@@ -30,7 +30,7 @@ class SearchMessage(Message):
         self.SEOJ = NodeProfile.OBJECT
         self.DEOJ = NodeProfile.OBJECT
         prop = Property()
-        prop.code = NodeProfile.CLASS_SELF_NODE_CLASS_LIST_S
+        prop.code = NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S
         prop.data = bytearray()
         self.add_property(prop)
 
