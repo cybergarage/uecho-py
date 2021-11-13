@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/local/bin/python3
 # Copyright (C) 2021 The uecho-py Authors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,17 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: all format test
+import time
+import uecho
+import uecho.log as log
 
-all: test
+if __name__ == '__main__':
+    #log.setLevel(log.DEBUG)
+    ctrl = uecho.Controller()
+    ctrl.start()
+    ctrl.search()
+    time.sleep(1)
+    ctrl.stop()
 
-clean:
-	rm -rf tests/__pycache__
-	rm -rf tests/*/__pycache__
+    for node in ctrl.nodes:
+        print('%s' % node.addr)
 
-format:
-	yapf -ir uecho bind test
-	find uecho -name "*.py" | xargs pylint 
 
-test:
-	py.test test
