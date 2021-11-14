@@ -39,7 +39,7 @@ class SearchMessage(Message):
 
 
 class Controller(Observer):
-    """The Controller and find any devices of Echonet Lite, 
+    """The Controller and find any devices of Echonet Lite,
     send any requests to the found devices and receive the responses
     easily without building the binary protocol messages directly.
     """
@@ -59,6 +59,12 @@ class Controller(Observer):
             if self.response is not None:
                 return False
             return True
+
+    """Retures found nodes.
+
+        Returns:
+                [RemoteNode]
+    """
 
     @property
     def nodes(self):
@@ -94,8 +100,14 @@ class Controller(Observer):
             if self.__last_post_msg.request.is_response(msg):
                 self.__last_post_msg.response = msg
 
+    """Posts a multicast message to the same local network asynchronously.
+    """
+
     def announce_message(self, msg):
         return self.node.announce_message(msg)
+
+    """Posts a unicast message to the specified node asynchronously.
+    """
 
     def send_message(self, msg, addr):
         to_addr = addr
@@ -105,9 +117,18 @@ class Controller(Observer):
             to_addr = (addr, Node.PORT)
         return self.node.send_message(msg, to_addr)
 
+    """Posts a multicast read request to search all nodes in the same local network asynchronously.
+    """
+
     def search(self):
         msg = SearchMessage()
         return self.announce_message(msg)
+
+    """Posts a unicast message to the specified node and return the response message synchronously.
+
+        Returns:
+                Message
+    """
 
     def post_message(self, msg, addr):
         self.__last_post_msg = Controller.__PostMessage()
@@ -123,12 +144,18 @@ class Controller(Observer):
 
         return self.__last_post_msg.response
 
+    """ Starts the controller to listen to any multicast and unicast messages from other nodes in the same local network.
+    """
+
     def start(self):
         if not self.node.start():
             return False
         self.node.add_observer(self)
         self.search()
         return True
+
+    """ Stops the controller not to listen to any messages.
+    """
 
     def stop(self):
         if not self.node.stop():
