@@ -12,3 +12,18 @@ jobs:
         docs-folder: "doc/conf"
         pre-build-command: "pip install sphinx-rtd-theme"
         build-command: "sphinx-build -b html . _build"
+    - name: Commit documentation changes
+      run: |
+        git clone https://github.com/ammaraskar/sphinx-action-test.git --branch gh-pages --single-branch gh-pages
+        cp -r doc/conf/_build/html/* gh-pages/
+        cd gh-pages
+        git config --local user.email "skonno@cybergarage.org"
+        git config --local user.name "The uecho-py Authors"
+        git add .
+        git commit -m "Update documentation" -a || true
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        branch: gh-pages
+        directory: gh-pages
+        github_token: ${{ secrets.GITHUB_TOKEN }}
