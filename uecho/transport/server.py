@@ -43,10 +43,10 @@ class Server(threading.Thread):
         pass
 
     def run(self):
-        if self.socket is None:
-            return
         while True:
             try:
+                if self.socket is None:
+                    break
                 recv_msg_bytes, recv_from = self.socket.recvfrom(1024)
                 msg = Message()
                 if not msg.parse_bytes(recv_msg_bytes):
