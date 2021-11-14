@@ -20,6 +20,6 @@ def test_controller():
     log.setLevel(log.DEBUG)
     ctrl = Controller()
     assert ctrl is not None
-    # assert ctrl.start()
-    # assert ctrl.search()
-    # assert ctrl.stop()
+    assert ctrl.start()
+    assert ctrl.search()
+    assert ctrl.stop()
