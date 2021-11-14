@@ -17,13 +17,13 @@ You can install `uecho-py` using `pip` as the following:
 
 ## uechosearch
 
-The `uechosearch` is a sample controller to search all [ECHONET Lite][enet] nodes in the same local area network as the following usage.
+The [`uechosearch`](bin/uechsearch.py) is a sample controller to search all [ECHONET Lite][enet] nodes in the same local area network as the following usage.
 
 ```
 Usage : uechosearch
 ```
 
-The `uechosearch` searches all [ECHONET Lite][enet] device and profile objects in the local area network, and prints all found objects with the IP address as the following:
+The [`uechosearch`](bin/uechsearch.py) searches all [ECHONET Lite][enet] device and profile objects in the local area network, and prints all found objects with the IP address as the following:
 
 ```
 $ uechosearch
@@ -33,14 +33,14 @@ $ uechosearch
 
 ## uechopost
 
-The `uechopost` is a sample controller to post a message to a [ECHONET Lite][enet] node in the same local network as the following usage.
+The [`uechopost`](bin/uechopost.py) is a sample controller to post a message to a [ECHONET Lite][enet] node in the same local network as the following usage.
 
 
 ```
 Usage : uechopost <address> <obj> <esv> <property (code, data) ...>
 ```
 
-The `uechopost` can send any request message of [ECHONET Lite][enet] to an object in the specified node, and print the response message. The following example controls the power status of a [ECHONET Lite][enet] standard light device.
+The [`uechopost`](bin/uechopost.py) can send any request message of [ECHONET Lite][enet] to an object in the specified node, and print the response message. The following example controls the power status of a [ECHONET Lite][enet] standard light device.
 
 ```
 $ uechopost 192.168.aaa.bbb 029101 62 8A    --> READ REQ (62) : Manufacture Code (8A)
