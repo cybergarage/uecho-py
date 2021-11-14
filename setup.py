@@ -13,13 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from setuptools import setup
+import setuptools
 
-from pathlib import Path
-this_directory = Path(__file__).parent
-long_description = (this_directory / "README.md").read_text()
+with open("README.md", "r") as f:
+    long_description=f.read()
 
-setup(
+setuptools.setup(
     name='uecho',
     version='0.8.1',
     description="uEcho for Python is a portable development framework for ECHONET Lite developers.",
@@ -28,12 +27,10 @@ setup(
     author='The uecho-py Authors',
     author_email='skonno@cybergarage.org',
     url='https://github.com/cybergarage/uecho-py.git',
-    packages=[
-        'uecho'
-    ],
     install_requires=[
         'netifaces',
     ],
+    packages=setuptools.find_packages(),
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Other Environment',
