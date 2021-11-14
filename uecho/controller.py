@@ -39,6 +39,10 @@ class SearchMessage(Message):
 
 
 class Controller(Observer):
+    """The Controller and find any devices of Echonet Lite, 
+    send any requests to the found devices and receive the responses
+    easily without building the binary protocol messages directly.
+    """
     def __init__(self):
         self.node = LocalNode()
         self.found_nodes = {}
