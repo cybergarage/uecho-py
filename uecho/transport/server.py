@@ -19,8 +19,6 @@ import threading
 from ..protocol.message import Message
 from ..log.logger import error
 
-from .observer import Observer
-
 
 class Server(threading.Thread):
     PORT = 3610

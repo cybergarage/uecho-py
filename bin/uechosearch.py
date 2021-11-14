@@ -19,6 +19,8 @@ import uecho.log as log
 
 if __name__ == '__main__':
     # log.setLevel(log.DEBUG)
+    log.setLevel(log.ERROR)
+
     ctrl = uecho.Controller()
     ctrl.start()
     ctrl.search()

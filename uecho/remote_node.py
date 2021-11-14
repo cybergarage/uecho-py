@@ -15,7 +15,6 @@
 from .protocol.message import Message as ProtocolMessage
 from .util import Bytes
 from .node import Node
-from .message import Message
 from .object import Object
 from .node_profile import NodeProfile
 

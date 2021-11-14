@@ -29,6 +29,7 @@ def usage():
 
 if __name__ == '__main__':
     #log.setLevel(log.DEBUG)
+    log.setLevel(log.ERROR)
 
     if len(args) < 5:
         usage()

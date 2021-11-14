@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: all format test
+.PHONY: all format lint test
 
 all: test
 
@@ -25,8 +25,8 @@ lint:
 	flake8 uecho bin test
 	# find uecho -name "*.py" | xargs pylint 
 
-format:
+format: lint
 	yapf -ir uecho bin test
 
-test:
+test: format
 	env PYTHONPATH=`pwd` py.test test

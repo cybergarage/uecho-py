@@ -15,7 +15,6 @@
 # from typing import List
 
 from .interface import Interface
-from .server import Server, Server
 from .multicast_server import MulticastServer
 from .unicast_server import UnicastServer
 from ..log.logger import debug
