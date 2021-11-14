@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: clean format build uninstall upload
+.PHONY: clean format build uninstall upload doc
 
 all: test
 
@@ -43,3 +43,9 @@ uninstall:
 
 upload: build
 	python3 -m twine upload dist/*
+
+doc:
+	pip install sphinx-rtd-theme
+	mkdir -p ./doc/build
+	sphinx-apidoc -f -o ./doc/conf uecho
+	sphinx-build -b html ./doc/conf ./doc/build
