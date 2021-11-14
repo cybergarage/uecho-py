@@ -43,17 +43,17 @@ Usage : uechopost <address> <obj> <esv> <property (code, data) ...>
 The [`uechopost`](bin/uechopost.py) can send any request message of [ECHONET Lite][enet] to an object in the specified node, and print the response message. The following example controls the power status of a [ECHONET Lite][enet] standard light device.
 
 ```
-$ uechopost 192.168.aaa.bbb 029101 62 8A    --> READ REQ (62) : Manufacture Code (8A)
-192.168.aaaa.bbb 0EF001 72 8A 00000B        --> READ RES (72) : Panasonic (=0x00000B)
+$ uechopost 192.168.aaa.bbb 029101 62 8A    --> READ REQ (62) : Manufacture Code (0x8A)
+192.168.aaaa.bbb 0EF001 72 8A 00000B        --> READ RES (72) : Panasonic (0x00000B)
 
-$ uechopost 192.168.aaa.bbb 029101 62 80    --> READ REQ (62) : Operation status (=0x80)
-192.168.aaa.bbb 029101 72 80 31             --> READ RES (72) : OFF (=0x31)
+$ uechopost 192.168.aaa.bbb 029101 62 80    --> READ REQ (62) : Operation status (0x80)
+192.168.aaa.bbb 029101 72 80 31             --> READ RES (72) : OFF (0x31)
 
-$ uechopost 192.168.aaa.bbb 029101 61 80 30 --> WRITE REQ (61) : Operation status ON (=0x30)
+$ uechopost 192.168.aaa.bbb 029101 61 80 30 --> WRITE REQ (61) : Operation status ON (0x30)
 192.168.aaa.bbb 029101 71 80                --> WRITE RES (71) : (No Data)
 
-$ uechopost 192.168.aaa.bbb 029101 62 80    --> READ REQ (62) : Operation status (=0x80)
-192.168.aaa.bbb 029101 72 80 30             --> READ RES (72) : ON (=0x30)
+$ uechopost 192.168.aaa.bbb 029101 62 80    --> READ REQ (62) : Operation status (0x80)
+192.168.aaa.bbb 029101 72 80 30             --> READ RES (72) : ON (0x30)
 ```
 
 ## References
