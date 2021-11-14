@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: clean format build uninstall
+.PHONY: clean format build uninstall upload
 
 all: test
 
@@ -40,3 +40,6 @@ install: build
 
 uninstall:
 	pip uninstall -y uecho
+
+upload: build
+	python3 -m twine upload dist/*
