@@ -28,6 +28,7 @@ if __name__ == '__main__':
     ctrl.stop()
 
     for i, node in enumerate(ctrl.nodes):
-        print('%s' % (node.ip))
+        msg = ('%s ' % node.ip.ljust(15))
         for j, obj in enumerate(node.objects):
-            print('  [%d] %06X' % (j, obj.code))
+            msg += '[%d] %06X ' % (j, obj.code)
+        print(msg)
