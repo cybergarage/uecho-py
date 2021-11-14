@@ -54,7 +54,7 @@ $ uechopost 192.168.aaa.bbb 029101 62 8A    --> READ REQ (62) : Manufacture Code
 $ uechopost 192.168.aaa.bbb 029101 62 80    --> READ REQ (62) : Operation status (0x80)
 192.168.aaa.bbb 029101 72 80 31             --> READ RES (72) : OFF (0x31)
 
-$ uechopost 192.168.aaa.bbb 029101 61 80 30 --> WRITE REQ (61) : Operation status ON (0x30)
+$ uechopost 192.168.aaa.bbb 029101 61 80 30 --> WRITE REQ (61) : Operation status (0x80) ON (0x30)
 192.168.aaa.bbb 029101 71 80                --> WRITE RES (71) : (No Data)
 
 $ uechopost 192.168.aaa.bbb 029101 62 80    --> READ REQ (62) : Operation status (0x80)
