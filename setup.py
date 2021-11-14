@@ -20,7 +20,7 @@ with open("README.md", "r") as f:
 
 setuptools.setup(
     name='uecho',
-    version='0.8.1',
+    version='0.8.2',
     description="uEcho for Python is a portable development framework for ECHONET Lite developers.",
     long_description=long_description,
     long_description_content_type='text/markdown',
