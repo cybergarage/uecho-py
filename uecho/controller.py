@@ -122,9 +122,11 @@ class Controller(Observer):
 
     def post_message(self, msg, addr):
         """Posts a unicast message to the specified node and return the response message synchronously.
-
+            Args:
+                msg (Message): The request message.
+                addr (string): The node ip address.
             Returns:
-                    Message
+                Message: The response message for success, otherwise Node.
         """
         self.__last_post_msg = Controller.__PostMessage()
         self.__last_post_msg.request = msg
