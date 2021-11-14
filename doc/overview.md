@@ -17,13 +17,13 @@ You can install `uecho-py` using `pip` as the following:
 
 ## uechosearch
 
-The [`uechosearch`](bin/uechsearch.py) is a sample controller to search all [ECHONET Lite][enet] nodes in the same local area network as the following usage.
+The [`uechosearch`](bin/uechosearch.py) is a sample controller to search all [ECHONET Lite][enet] nodes in the same local area network as the following usage.
 
 ```
 Usage : uechosearch
 ```
 
-The [`uechosearch`](bin/uechsearch.py) searches all [ECHONET Lite][enet] device and profile objects in the local area network, and prints all found objects with the IP address as the following:
+The [`uechosearch`](bin/uechosearch.py) searches all [ECHONET Lite][enet] device and profile objects in the local area network, and prints all found objects with the IP address as the following:
 
 ```
 $ uechosearch
