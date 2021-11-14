@@ -47,6 +47,7 @@ class Server(threading.Thread):
             try:
                 if self.socket is None:
                     break
+                print('waiting')
                 recv_msg_bytes, recv_from = self.socket.recvfrom(1024)
                 msg = Message()
                 if not msg.parse_bytes(recv_msg_bytes):
@@ -76,4 +77,5 @@ class Server(threading.Thread):
             return False
         self.socket.close()
         self.socket = None
+        self.join()
         return True
