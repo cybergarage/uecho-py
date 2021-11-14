@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python3
 # Copyright (C) 2021 The uecho-py Authors. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");

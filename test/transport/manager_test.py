@@ -18,5 +18,5 @@ from uecho.transport import Manager
 def test_manager():
     mgr = Manager()
     assert mgr is not None
-    # assert mgr.start()
-    # assert mgr.stop()
+    assert mgr.start()
+    assert mgr.stop()
