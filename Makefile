@@ -21,12 +21,12 @@ clean:
 	rm -rf tests/__pycache__
 	rm -rf tests/*/__pycache__
 
-lint:
+format:
+	yapf -ir uecho bin test
+
+lint: format
 	flake8 uecho bin test
 	# find uecho -name "*.py" | xargs pylint 
 
-format: lint
-	yapf -ir uecho bin test
-
-test: format
+test: lint
 	env PYTHONPATH=`pwd` py.test test
