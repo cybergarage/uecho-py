@@ -60,14 +60,13 @@ class Controller(Observer):
                 return False
             return True
 
-    """Retures found nodes.
-
-        Returns:
-                [RemoteNode]
-    """
-
     @property
     def nodes(self):
+        """Retures found nodes.
+
+        Returns:
+            [RemoteNode]
+        """
         nodes = []
         for node in self.found_nodes.values():
             nodes.append(node)
@@ -100,16 +99,14 @@ class Controller(Observer):
             if self.__last_post_msg.request.is_response(msg):
                 self.__last_post_msg.response = msg
 
-    """Posts a multicast message to the same local network asynchronously.
-    """
-
     def announce_message(self, msg):
+        """Posts a multicast message to the same local network asynchronously.
+        """
         return self.node.announce_message(msg)
 
-    """Posts a unicast message to the specified node asynchronously.
-    """
-
     def send_message(self, msg, addr):
+        """Posts a unicast message to the specified node asynchronously.
+        """
         to_addr = addr
         if isinstance(addr, RemoteNode):
             to_addr = (addr.ip, addr.port)
@@ -117,20 +114,18 @@ class Controller(Observer):
             to_addr = (addr, Node.PORT)
         return self.node.send_message(msg, to_addr)
 
-    """Posts a multicast read request to search all nodes in the same local network asynchronously.
-    """
-
     def search(self):
+        """Posts a multicast read request to search all nodes in the same local network asynchronously.
+        """
         msg = SearchMessage()
         return self.announce_message(msg)
 
-    """Posts a unicast message to the specified node and return the response message synchronously.
-
-        Returns:
-                Message
-    """
-
     def post_message(self, msg, addr):
+        """Posts a unicast message to the specified node and return the response message synchronously.
+
+            Returns:
+                    Message
+        """
         self.__last_post_msg = Controller.__PostMessage()
         self.__last_post_msg.request = msg
 
@@ -144,20 +139,18 @@ class Controller(Observer):
 
         return self.__last_post_msg.response
 
-    """ Starts the controller to listen to any multicast and unicast messages from other nodes in the same local network.
-    """
-
     def start(self):
+        """ Starts the controller to listen to any multicast and unicast messages from other nodes in the same local network.
+        """
         if not self.node.start():
             return False
         self.node.add_observer(self)
         self.search()
         return True
 
-    """ Stops the controller not to listen to any messages.
-    """
-
     def stop(self):
+        """ Stops the controller not to listen to any messages.
+        """
         if not self.node.stop():
             return False
         return True
