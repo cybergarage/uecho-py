@@ -15,7 +15,7 @@ jobs:
     - name: Commit documentation changes
       run: |
         git clone https://github.com/cybergarage/uecho-py.git --branch gh-pages --single-branch gh-pages
-        cp -r doc/conf/_build/html/* gh-pages/
+        cp -r doc/conf/_build/* gh-pages/
         cd gh-pages
         git config --local user.email "skonno@cybergarage.org"
         git config --local user.name "The uecho-py Authors"
