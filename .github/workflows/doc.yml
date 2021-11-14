@@ -1,0 +1,14 @@
+name: "doc"
+
+on: [push]
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: ammaraskar/sphinx-action@master
+      with:
+        docs-folder: "doc/conf"
+        pre-build-command: "sphinx-apidoc -f -o . ../../uecho"
+        build-command: "sphinx-build -b html . _build"
