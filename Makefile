@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: clean format build
+.PHONY: clean format build uninstall
 
 all: test
 
@@ -36,3 +36,6 @@ build:
 
 install: build
 	pip install `ls -1 dist/*.tar.gz`
+
+uninstall:
+	pip uninstall -y uecho
