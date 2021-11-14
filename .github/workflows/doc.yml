@@ -18,7 +18,7 @@ jobs:
         git config --local user.name "The uecho-py Authors"
         git clone https://github.com/cybergarage/uecho-py.git --branch gh-pages --single-branch gh-pages
         mkdir -p gh-pages/docs
-        cp -r doc/conf/_build/* gh-pages/docs
+        cp -r doc/conf/_build/* gh-pages/docs/
         cd gh-pages
         git add docs
         touch docs/.nojekyll
