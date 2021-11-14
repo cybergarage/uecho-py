@@ -9,156 +9,156 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   inkscape:export-ydpi="26.063499"
-   inkscape:export-xdpi="26.063499"
-   inkscape:export-filename="/Users/skonno/Src/uecho-py/doc/img/logo.png"
-   sodipodi:docname="logo.svg"
-   inkscape:version="1.0 (4035a4f, 2020-05-01)"
-   version="1.1"
-   id="svg2"
+   width="804.24463"
    height="168.71165"
-   width="804.24463">
+   id="svg2"
+   version="1.1"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   sodipodi:docname="logo.svg"
+   inkscape:export-filename="/Users/skonno/Src/uecho-py/doc/img/logo.png"
+   inkscape:export-xdpi="26.063499"
+   inkscape:export-ydpi="26.063499">
   <defs
      id="defs4">
     <marker
-       style="overflow:visible"
+       inkscape:stockid="TriangleOutS"
+       orient="auto"
+       refY="0"
+       refX="0"
        id="TriangleOutS"
-       refX="0"
-       refY="0"
-       orient="auto"
-       inkscape:stockid="TriangleOutS">
+       style="overflow:visible">
       <path
-         inkscape:connector-curvature="0"
-         transform="scale(0.2)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         id="path4045"
          d="M 5.77,0 -2.88,5 V -5 Z"
-         id="path4045" />
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="scale(0.2)"
+         inkscape:connector-curvature="0" />
     </marker>
     <marker
-       style="overflow:visible"
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
        id="Arrow1Mend"
-       refX="0"
-       refY="0"
-       orient="auto"
-       inkscape:stockid="Arrow1Mend">
+       style="overflow:visible">
       <path
-         inkscape:connector-curvature="0"
+         id="path3906"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
          transform="matrix(-0.4,0,0,-0.4,-4,0)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         id="path3906" />
+         inkscape:connector-curvature="0" />
     </marker>
     <marker
-       style="overflow:visible"
+       inkscape:stockid="Arrow1Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
        id="Arrow1Lend"
-       refX="0"
-       refY="0"
-       orient="auto"
-       inkscape:stockid="Arrow1Lend">
+       style="overflow:visible">
       <path
-         inkscape:connector-curvature="0"
+         id="path3900"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
          transform="matrix(-0.8,0,0,-0.8,-10,0)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
-         d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         id="path3900" />
+         inkscape:connector-curvature="0" />
     </marker>
     <marker
-       style="overflow:visible"
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
        id="Arrow2Lend"
-       refX="0"
-       refY="0"
-       orient="auto"
-       inkscape:stockid="Arrow2Lend">
+       style="overflow:visible">
       <path
-         inkscape:connector-curvature="0"
-         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
-         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         id="path3918"
          style="fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
-         id="path3918" />
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         inkscape:connector-curvature="0" />
     </marker>
     <marker
-       style="overflow:visible"
-       id="Arrow1Send"
-       refX="0"
-       refY="0"
+       inkscape:stockid="Arrow1Send"
        orient="auto"
-       inkscape:stockid="Arrow1Send">
+       refY="0"
+       refX="0"
+       id="Arrow1Send"
+       style="overflow:visible">
       <path
-         inkscape:connector-curvature="0"
-         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
-         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         id="path3912"
          d="M 0,0 5,-5 -12.5,0 5,5 Z"
-         id="path3912" />
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt"
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         inkscape:connector-curvature="0" />
     </marker>
     <linearGradient
-       osb:paint="solid"
-       id="linearGradient5205">
+       id="linearGradient5205"
+       osb:paint="solid">
       <stop
-         id="stop5207"
+         style="stop-color:#370000;stop-opacity:1;"
          offset="0"
-         style="stop-color:#370000;stop-opacity:1;" />
+         id="stop5207" />
     </linearGradient>
     <linearGradient
-       xlink:href="#linearGradient900"
-       id="linearGradient907" />
+       id="linearGradient907"
+       xlink:href="#linearGradient900" />
     <linearGradient
-       xlink:href="#linearGradient900"
-       id="linearGradient906" />
+       id="linearGradient906"
+       xlink:href="#linearGradient900" />
     <linearGradient
-       xlink:href="#linearGradient900"
-       id="linearGradient905" />
+       id="linearGradient905"
+       xlink:href="#linearGradient900" />
     <linearGradient
-       xlink:href="#linearGradient900"
-       id="linearGradient904" />
+       id="linearGradient904"
+       xlink:href="#linearGradient900" />
     <linearGradient
-       xlink:href="#linearGradient900"
-       id="linearGradient903" />
+       id="linearGradient903"
+       xlink:href="#linearGradient900" />
     <linearGradient
        id="linearGradient900">
       <stop
-         style="stop-color: #000000;stop-opacity: 1.0;"
+         offset="0"
          id="stop901"
-         offset="0" />
+         style="stop-color: #000000;stop-opacity: 1.0;" />
       <stop
-         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="1"
          id="stop902"
-         offset="1" />
+         style="stop-color:#ffffff;stop-opacity:1;" />
     </linearGradient>
   </defs>
   <sodipodi:namedview
-     inkscape:document-rotation="0"
-     fit-margin-bottom="0"
-     fit-margin-right="0"
-     fit-margin-left="0"
-     fit-margin-top="0"
-     inkscape:snap-global="true"
-     inkscape:window-maximized="0"
-     inkscape:window-y="25"
-     inkscape:window-x="2602"
-     inkscape:window-height="1000"
-     inkscape:window-width="1722"
-     showguides="false"
-     showgrid="true"
-     inkscape:current-layer="layer2"
-     inkscape:document-units="px"
-     inkscape:cy="91.871017"
-     inkscape:cx="338.98909"
-     inkscape:zoom="0.78066898"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     id="base"
      pagecolor="#ffffff"
-     id="base">
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.78066898"
+     inkscape:cx="338.98909"
+     inkscape:cy="91.871017"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer2"
+     showgrid="true"
+     showguides="false"
+     inkscape:window-width="1722"
+     inkscape:window-height="1000"
+     inkscape:window-x="2602"
+     inkscape:window-y="25"
+     inkscape:window-maximized="0"
+     inkscape:snap-global="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:document-rotation="0">
     <inkscape:grid
-       originy="-927.78835"
-       originx="-131.5"
-       snapvisiblegridlinesonly="true"
-       enabled="true"
-       visible="true"
-       empspacing="5"
+       type="xygrid"
        id="grid2985"
-       type="xygrid" />
+       empspacing="5"
+       visible="true"
+       enabled="true"
+       snapvisiblegridlinesonly="true"
+       originx="-131.5"
+       originy="-927.78835" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -168,52 +168,52 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
-     transform="translate(-131.5,37.849394)"
-     id="layer1"
+     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
+     id="layer1"
+     transform="translate(-131.5,37.849394)">
     <text
-       id="text3013"
-       y="107.97291"
-       x="334.39694"
+       xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:900;font-stretch:normal;line-height:0%;font-family:'Source Code Pro';-inkscape-font-specification:'Source Code Pro Heavy';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
-       xml:space="preserve"><tspan
-         style="font-size:180px;line-height:1.25"
-         y="107.97291"
-         x="334.39694"
+       x="334.39694"
+       y="107.97291"
+       id="text3013"><tspan
+         sodipodi:role="line"
          id="tspan3021"
-         sodipodi:role="line">uEcho</tspan></text>
+         x="334.39694"
+         y="107.97291"
+         style="font-size:180px;line-height:1.25">uEcho</tspan></text>
   </g>
   <g
-     transform="translate(283.50958,189.21159)"
-     inkscape:label="Node"
+     inkscape:groupmode="layer"
      id="layer2"
-     inkscape:groupmode="layer">
+     inkscape:label="Node"
+     transform="translate(283.50958,189.21159)">
     <rect
-       y="-172.99994"
-       x="-271.00958"
-       height="140"
-       width="144"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:25;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1530"
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:25;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       width="144"
+       height="140"
+       x="-271.00958"
+       y="-172.99994" />
     <rect
-       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:28.4233;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="rect1532"
-       width="140"
-       height="51.999996"
+       y="-174.99994"
        x="-269.00958"
-       y="-174.99994" />
+       height="51.999996"
+       width="140"
+       id="rect1532"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:28.4233;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
     <rect
-       y="-124.99994"
-       x="-271.00949"
-       height="92"
-       width="55.999897"
+       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:25;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect1546"
-       style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:25;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       width="55.999897"
+       height="92"
+       x="-271.00949"
+       y="-124.99994" />
   </g>
 </svg>
