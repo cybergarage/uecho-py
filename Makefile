@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: all format lint test
+.PHONY: clean format build
 
 all: test
 
@@ -30,3 +30,9 @@ lint: format
 
 test: lint
 	env PYTHONPATH=`pwd` py.test test
+
+build:
+	python3 -m build
+
+install: build
+	pip install `ls -1 dist/*.tar.gz`
