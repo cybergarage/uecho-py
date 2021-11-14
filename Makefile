@@ -32,6 +32,7 @@ test: lint
 	env PYTHONPATH=`pwd` py.test test
 
 build:
+	rm -rf dist
 	python3 -m build
 
 install: build
