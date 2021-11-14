@@ -14,7 +14,15 @@ jobs:
         build-command: "sphinx-build -b singlehtml . _build"
     - name: Commit documentation changes
       run: |
-        git submodule add -b gh-pages git@github.com:cybergarage/uecho-py.git doc/conf/_build/
+        git config --local user.email "skonno@cybergarage.org"
+        git config --local user.name "The uecho-py Authors"
+        git clone https://github.com/cybergarage/uecho-py.git --branch gh-pages --single-branch gh-pages
+        cp -r doc/conf/_build/* gh-pages/
+        cd gh-pages
+        git add .
+        touch .nojekyll
+        git add .nojekyll
+        git commit -m "Update documentation" -a || true
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
