@@ -16,18 +16,14 @@ from uecho.util import Bytes
 
 
 def test_convert_bytes():
-    buf = bytearray(1)
     for n in range(0xFF + 1):
         assert n == Bytes.to_int(Bytes.from_int(n, 1))
 
-    buf = bytearray(2)
     for n in range(0, (0xFFFF + 1), int(0xFFFF / 0xFF)):
         assert n == Bytes.to_int(Bytes.from_int(n, 2))
 
-    buf = bytearray(3)
     for n in range(0, (0xFFFFFF + 1), int(0xFFFFFF / 0xFF)):
         assert n == Bytes.to_int(Bytes.from_int(n, 3))
 
-    buf = bytearray(4)
     for n in range(0, (0xFFFFFFFF + 1), int(0xFFFFFFFF / 0xFF)):
         assert n == Bytes.to_int(Bytes.from_int(n, 4))

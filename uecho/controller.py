@@ -52,7 +52,7 @@ class Controller(Observer):
         def is_waiting(self):
             if self.request is None:
                 return False
-            if not self.response is None:
+            if self.response is not None:
                 return False
             return True
 
@@ -114,7 +114,7 @@ class Controller(Observer):
 
         for i in range(10):
             time.sleep(0.2)
-            if not self.__last_post_msg.response is None:
+            if self.__last_post_msg.response is not None:
                 break
 
         return self.__last_post_msg.response
