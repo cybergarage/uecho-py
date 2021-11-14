@@ -11,7 +11,7 @@ jobs:
       with:
         docs-folder: "doc/conf"
         pre-build-command: "pip install sphinx-rtd-theme"
-        build-command: "sphinx-build -b singlehtml . _build"
+        build-command: "sphinx-build -b html . _build"
     - name: Commit documentation changes
       run: |
         git clone https://github.com/cybergarage/uecho-py.git --branch gh-pages --single-branch gh-pages
