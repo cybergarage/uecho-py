@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>uEcho for Python 0.8.2 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html#document-index" class="icon icon-home"> uEcho for Python
+          </a>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-uecho">uecho package</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html#document-index">uEcho for Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html#document-index" class="icon icon-home"></a> &raquo;</li>
+      <li>uEcho for Python 0.8.2 documentation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="welcome-to-uecho-for-python-s-documentation">
+<h1>Welcome to uEcho for Python’s documentation!<a class="headerlink" href="#welcome-to-uecho-for-python-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<span id="document-uecho"></span><div class="section" id="uecho-package">
+<h2>uecho package<a class="headerlink" href="#uecho-package" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="subpackages">
+<h3>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h3>
+<div class="toctree-wrapper compound">
+<span id="document-uecho.log"></span><div class="section" id="uecho-log-package">
+<h4>uecho.log package<a class="headerlink" href="#uecho-log-package" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="submodules">
+<h5>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="uecho-log-constants-module">
+<h5>uecho.log.constants module<a class="headerlink" href="#uecho-log-constants-module" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="uecho-log-logger-module">
+<h5>uecho.log.logger module<a class="headerlink" href="#uecho-log-logger-module" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="module-contents">
+<h5>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h5>
+</div>
+</div>
+<span id="document-uecho.protocol"></span><div class="section" id="uecho-protocol-package">
+<h4>uecho.protocol package<a class="headerlink" href="#uecho-protocol-package" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="submodules">
+<h5>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="module-uecho.protocol.esv">
+<span id="uecho-protocol-esv-module"></span><h5>uecho.protocol.esv module<a class="headerlink" href="#module-uecho.protocol.esv" title="Permalink to this headline">¶</a></h5>
+<dl class="class">
+<dt id="uecho.protocol.esv.ESV">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.esv.</code><code class="sig-name descname">ESV</code><span class="sig-paren">(</span><em class="sig-param">code=0</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.esv.ESV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ESV represents a ESV code in a protocol message of Echonet Lite.</p>
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.NOTIFICATION">
+<code class="sig-name descname">NOTIFICATION</code><em class="property"> = 115</em><a class="headerlink" href="#uecho.protocol.esv.ESV.NOTIFICATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.NOTIFICATION_REQUEST">
+<code class="sig-name descname">NOTIFICATION_REQUEST</code><em class="property"> = 99</em><a class="headerlink" href="#uecho.protocol.esv.ESV.NOTIFICATION_REQUEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.NOTIFICATION_REQUEST_ERROR">
+<code class="sig-name descname">NOTIFICATION_REQUEST_ERROR</code><em class="property"> = 83</em><a class="headerlink" href="#uecho.protocol.esv.ESV.NOTIFICATION_REQUEST_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.NOTIFICATION_RESPONSE">
+<code class="sig-name descname">NOTIFICATION_RESPONSE</code><em class="property"> = 122</em><a class="headerlink" href="#uecho.protocol.esv.ESV.NOTIFICATION_RESPONSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.NOTIFICATION_RESPONSE_REQUIRED">
+<code class="sig-name descname">NOTIFICATION_RESPONSE_REQUIRED</code><em class="property"> = 116</em><a class="headerlink" href="#uecho.protocol.esv.ESV.NOTIFICATION_RESPONSE_REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.READ_REQUEST">
+<code class="sig-name descname">READ_REQUEST</code><em class="property"> = 98</em><a class="headerlink" href="#uecho.protocol.esv.ESV.READ_REQUEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.READ_REQUEST_ERROR">
+<code class="sig-name descname">READ_REQUEST_ERROR</code><em class="property"> = 82</em><a class="headerlink" href="#uecho.protocol.esv.ESV.READ_REQUEST_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.READ_RESPONSE">
+<code class="sig-name descname">READ_RESPONSE</code><em class="property"> = 114</em><a class="headerlink" href="#uecho.protocol.esv.ESV.READ_RESPONSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.UNKNOWN">
+<code class="sig-name descname">UNKNOWN</code><em class="property"> = 0</em><a class="headerlink" href="#uecho.protocol.esv.ESV.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.WRITE_READ_REQUEST">
+<code class="sig-name descname">WRITE_READ_REQUEST</code><em class="property"> = 110</em><a class="headerlink" href="#uecho.protocol.esv.ESV.WRITE_READ_REQUEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.WRITE_READ_REQUEST_ERROR">
+<code class="sig-name descname">WRITE_READ_REQUEST_ERROR</code><em class="property"> = 94</em><a class="headerlink" href="#uecho.protocol.esv.ESV.WRITE_READ_REQUEST_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.WRITE_READ_RESPONSE">
+<code class="sig-name descname">WRITE_READ_RESPONSE</code><em class="property"> = 126</em><a class="headerlink" href="#uecho.protocol.esv.ESV.WRITE_READ_RESPONSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.WRITE_REQUEST">
+<code class="sig-name descname">WRITE_REQUEST</code><em class="property"> = 96</em><a class="headerlink" href="#uecho.protocol.esv.ESV.WRITE_REQUEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.WRITE_REQUEST_ERROR">
+<code class="sig-name descname">WRITE_REQUEST_ERROR</code><em class="property"> = 80</em><a class="headerlink" href="#uecho.protocol.esv.ESV.WRITE_REQUEST_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.WRITE_REQUEST_RESPONSE_REQUIRED">
+<code class="sig-name descname">WRITE_REQUEST_RESPONSE_REQUIRED</code><em class="property"> = 97</em><a class="headerlink" href="#uecho.protocol.esv.ESV.WRITE_REQUEST_RESPONSE_REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.WRITE_REQUEST_RESPONSE_REQUIRED_ERROR">
+<code class="sig-name descname">WRITE_REQUEST_RESPONSE_REQUIRED_ERROR</code><em class="property"> = 81</em><a class="headerlink" href="#uecho.protocol.esv.ESV.WRITE_REQUEST_RESPONSE_REQUIRED_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.esv.ESV.WRITE_RESPONSE">
+<code class="sig-name descname">WRITE_RESPONSE</code><em class="property"> = 113</em><a class="headerlink" href="#uecho.protocol.esv.ESV.WRITE_RESPONSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-uecho.protocol.message">
+<span id="uecho-protocol-message-module"></span><h5>uecho.protocol.message module<a class="headerlink" href="#module-uecho.protocol.message" title="Permalink to this headline">¶</a></h5>
+<dl class="class">
+<dt id="uecho.protocol.message.Message">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.message.</code><code class="sig-name descname">Message</code><a class="headerlink" href="#uecho.protocol.message.Message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.protocol.esv.ESV" title="uecho.protocol.esv.ESV"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.esv.ESV</span></code></a></p>
+<p>Message represents a protocol message of Echonet Lite.</p>
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.EHD1_ECHONET">
+<code class="sig-name descname">EHD1_ECHONET</code><em class="property"> = 16</em><a class="headerlink" href="#uecho.protocol.message.Message.EHD1_ECHONET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.EHD2_FORMAT1">
+<code class="sig-name descname">EHD2_FORMAT1</code><em class="property"> = 129</em><a class="headerlink" href="#uecho.protocol.message.Message.EHD2_FORMAT1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.EOJ_SIZE">
+<code class="sig-name descname">EOJ_SIZE</code><em class="property"> = 3</em><a class="headerlink" href="#uecho.protocol.message.Message.EOJ_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.FORMAT1_HEADER_SIZE">
+<code class="sig-name descname">FORMAT1_HEADER_SIZE</code><em class="property"> = 8</em><a class="headerlink" href="#uecho.protocol.message.Message.FORMAT1_HEADER_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.FORMAT1_MIN_SIZE">
+<code class="sig-name descname">FORMAT1_MIN_SIZE</code><em class="property"> = 12</em><a class="headerlink" href="#uecho.protocol.message.Message.FORMAT1_MIN_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.FORMAT1_PROPERTY_HEADER_SIZE">
+<code class="sig-name descname">FORMAT1_PROPERTY_HEADER_SIZE</code><em class="property"> = 2</em><a class="headerlink" href="#uecho.protocol.message.Message.FORMAT1_PROPERTY_HEADER_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.FRAME_HEADER_SIZE">
+<code class="sig-name descname">FRAME_HEADER_SIZE</code><em class="property"> = 4</em><a class="headerlink" href="#uecho.protocol.message.Message.FRAME_HEADER_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.message.Message.OPC">
+<em class="property">property </em><code class="sig-name descname">OPC</code><a class="headerlink" href="#uecho.protocol.message.Message.OPC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="uecho.protocol.message.Message.ParserError">
+<em class="property">exception </em><code class="sig-name descname">ParserError</code><a class="headerlink" href="#uecho.protocol.message.Message.ParserError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.TID_MAX">
+<code class="sig-name descname">TID_MAX</code><em class="property"> = 65535</em><a class="headerlink" href="#uecho.protocol.message.Message.TID_MAX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.TID_SIZE">
+<code class="sig-name descname">TID_SIZE</code><em class="property"> = 2</em><a class="headerlink" href="#uecho.protocol.message.Message.TID_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.message.Message.is_response">
+<code class="sig-name descname">is_response</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.message.Message.is_response" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.message.Message.parse_bytes">
+<code class="sig-name descname">parse_bytes</code><span class="sig-paren">(</span><em class="sig-param">msg_bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.message.Message.parse_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.message.Message.to_bytes">
+<code class="sig-name descname">to_bytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.message.Message.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.message.Message.to_string">
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.message.Message.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-uecho.protocol.property">
+<span id="uecho-protocol-property-module"></span><h5>uecho.protocol.property module<a class="headerlink" href="#module-uecho.protocol.property" title="Permalink to this headline">¶</a></h5>
+<dl class="class">
+<dt id="uecho.protocol.property.Property">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.property.</code><code class="sig-name descname">Property</code><a class="headerlink" href="#uecho.protocol.property.Property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Property represents a property in a protocol message of Echonet Lite.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-uecho.protocol">
+<span id="module-contents"></span><h5>Module contents<a class="headerlink" href="#module-uecho.protocol" title="Permalink to this headline">¶</a></h5>
+<p>This module includes internal classes to handle any messages of Echonet Lite protocol.</p>
+<dl class="class">
+<dt id="uecho.protocol.Message">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.</code><code class="sig-name descname">Message</code><a class="headerlink" href="#uecho.protocol.Message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.protocol.esv.ESV" title="uecho.protocol.esv.ESV"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.esv.ESV</span></code></a></p>
+<p>Message represents a protocol message of Echonet Lite.</p>
+<dl class="attribute">
+<dt id="uecho.protocol.Message.EHD1_ECHONET">
+<code class="sig-name descname">EHD1_ECHONET</code><em class="property"> = 16</em><a class="headerlink" href="#uecho.protocol.Message.EHD1_ECHONET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.EHD2_FORMAT1">
+<code class="sig-name descname">EHD2_FORMAT1</code><em class="property"> = 129</em><a class="headerlink" href="#uecho.protocol.Message.EHD2_FORMAT1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.EOJ_SIZE">
+<code class="sig-name descname">EOJ_SIZE</code><em class="property"> = 3</em><a class="headerlink" href="#uecho.protocol.Message.EOJ_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.FORMAT1_HEADER_SIZE">
+<code class="sig-name descname">FORMAT1_HEADER_SIZE</code><em class="property"> = 8</em><a class="headerlink" href="#uecho.protocol.Message.FORMAT1_HEADER_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.FORMAT1_MIN_SIZE">
+<code class="sig-name descname">FORMAT1_MIN_SIZE</code><em class="property"> = 12</em><a class="headerlink" href="#uecho.protocol.Message.FORMAT1_MIN_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.FORMAT1_PROPERTY_HEADER_SIZE">
+<code class="sig-name descname">FORMAT1_PROPERTY_HEADER_SIZE</code><em class="property"> = 2</em><a class="headerlink" href="#uecho.protocol.Message.FORMAT1_PROPERTY_HEADER_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.FRAME_HEADER_SIZE">
+<code class="sig-name descname">FRAME_HEADER_SIZE</code><em class="property"> = 4</em><a class="headerlink" href="#uecho.protocol.Message.FRAME_HEADER_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.Message.OPC">
+<em class="property">property </em><code class="sig-name descname">OPC</code><a class="headerlink" href="#uecho.protocol.Message.OPC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="exception">
+<dt id="uecho.protocol.Message.ParserError">
+<em class="property">exception </em><code class="sig-name descname">ParserError</code><a class="headerlink" href="#uecho.protocol.Message.ParserError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.TID_MAX">
+<code class="sig-name descname">TID_MAX</code><em class="property"> = 65535</em><a class="headerlink" href="#uecho.protocol.Message.TID_MAX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.TID_SIZE">
+<code class="sig-name descname">TID_SIZE</code><em class="property"> = 2</em><a class="headerlink" href="#uecho.protocol.Message.TID_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.Message.is_response">
+<code class="sig-name descname">is_response</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.Message.is_response" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.Message.parse_bytes">
+<code class="sig-name descname">parse_bytes</code><span class="sig-paren">(</span><em class="sig-param">msg_bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.Message.parse_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.Message.to_bytes">
+<code class="sig-name descname">to_bytes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.Message.to_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.Message.to_string">
+<code class="sig-name descname">to_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.Message.to_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.protocol.ESV">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.</code><code class="sig-name descname">ESV</code><span class="sig-paren">(</span><em class="sig-param">code=0</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.ESV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ESV represents a ESV code in a protocol message of Echonet Lite.</p>
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.NOTIFICATION">
+<code class="sig-name descname">NOTIFICATION</code><em class="property"> = 115</em><a class="headerlink" href="#uecho.protocol.ESV.NOTIFICATION" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.NOTIFICATION_REQUEST">
+<code class="sig-name descname">NOTIFICATION_REQUEST</code><em class="property"> = 99</em><a class="headerlink" href="#uecho.protocol.ESV.NOTIFICATION_REQUEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.NOTIFICATION_REQUEST_ERROR">
+<code class="sig-name descname">NOTIFICATION_REQUEST_ERROR</code><em class="property"> = 83</em><a class="headerlink" href="#uecho.protocol.ESV.NOTIFICATION_REQUEST_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.NOTIFICATION_RESPONSE">
+<code class="sig-name descname">NOTIFICATION_RESPONSE</code><em class="property"> = 122</em><a class="headerlink" href="#uecho.protocol.ESV.NOTIFICATION_RESPONSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.NOTIFICATION_RESPONSE_REQUIRED">
+<code class="sig-name descname">NOTIFICATION_RESPONSE_REQUIRED</code><em class="property"> = 116</em><a class="headerlink" href="#uecho.protocol.ESV.NOTIFICATION_RESPONSE_REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.READ_REQUEST">
+<code class="sig-name descname">READ_REQUEST</code><em class="property"> = 98</em><a class="headerlink" href="#uecho.protocol.ESV.READ_REQUEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.READ_REQUEST_ERROR">
+<code class="sig-name descname">READ_REQUEST_ERROR</code><em class="property"> = 82</em><a class="headerlink" href="#uecho.protocol.ESV.READ_REQUEST_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.READ_RESPONSE">
+<code class="sig-name descname">READ_RESPONSE</code><em class="property"> = 114</em><a class="headerlink" href="#uecho.protocol.ESV.READ_RESPONSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.UNKNOWN">
+<code class="sig-name descname">UNKNOWN</code><em class="property"> = 0</em><a class="headerlink" href="#uecho.protocol.ESV.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.WRITE_READ_REQUEST">
+<code class="sig-name descname">WRITE_READ_REQUEST</code><em class="property"> = 110</em><a class="headerlink" href="#uecho.protocol.ESV.WRITE_READ_REQUEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.WRITE_READ_REQUEST_ERROR">
+<code class="sig-name descname">WRITE_READ_REQUEST_ERROR</code><em class="property"> = 94</em><a class="headerlink" href="#uecho.protocol.ESV.WRITE_READ_REQUEST_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.WRITE_READ_RESPONSE">
+<code class="sig-name descname">WRITE_READ_RESPONSE</code><em class="property"> = 126</em><a class="headerlink" href="#uecho.protocol.ESV.WRITE_READ_RESPONSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.WRITE_REQUEST">
+<code class="sig-name descname">WRITE_REQUEST</code><em class="property"> = 96</em><a class="headerlink" href="#uecho.protocol.ESV.WRITE_REQUEST" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.WRITE_REQUEST_ERROR">
+<code class="sig-name descname">WRITE_REQUEST_ERROR</code><em class="property"> = 80</em><a class="headerlink" href="#uecho.protocol.ESV.WRITE_REQUEST_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.WRITE_REQUEST_RESPONSE_REQUIRED">
+<code class="sig-name descname">WRITE_REQUEST_RESPONSE_REQUIRED</code><em class="property"> = 97</em><a class="headerlink" href="#uecho.protocol.ESV.WRITE_REQUEST_RESPONSE_REQUIRED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.WRITE_REQUEST_RESPONSE_REQUIRED_ERROR">
+<code class="sig-name descname">WRITE_REQUEST_RESPONSE_REQUIRED_ERROR</code><em class="property"> = 81</em><a class="headerlink" href="#uecho.protocol.ESV.WRITE_REQUEST_RESPONSE_REQUIRED_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.ESV.WRITE_RESPONSE">
+<code class="sig-name descname">WRITE_RESPONSE</code><em class="property"> = 113</em><a class="headerlink" href="#uecho.protocol.ESV.WRITE_RESPONSE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.protocol.Property">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.</code><code class="sig-name descname">Property</code><a class="headerlink" href="#uecho.protocol.Property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Property represents a property in a protocol message of Echonet Lite.</p>
+</dd></dl>
+
+</div>
+</div>
+<span id="document-uecho.transport"></span><div class="section" id="uecho-transport-package">
+<h4>uecho.transport package<a class="headerlink" href="#uecho-transport-package" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="submodules">
+<h5>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="uecho-transport-interface-module">
+<h5>uecho.transport.interface module<a class="headerlink" href="#uecho-transport-interface-module" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="uecho-transport-manager-module">
+<h5>uecho.transport.manager module<a class="headerlink" href="#uecho-transport-manager-module" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="uecho-transport-multicast-server-module">
+<h5>uecho.transport.multicast_server module<a class="headerlink" href="#uecho-transport-multicast-server-module" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="uecho-transport-observer-module">
+<h5>uecho.transport.observer module<a class="headerlink" href="#uecho-transport-observer-module" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="uecho-transport-server-module">
+<h5>uecho.transport.server module<a class="headerlink" href="#uecho-transport-server-module" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="uecho-transport-unicast-server-module">
+<h5>uecho.transport.unicast_server module<a class="headerlink" href="#uecho-transport-unicast-server-module" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="module-contents">
+<h5>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h5>
+</div>
+</div>
+<span id="document-uecho.util"></span><div class="section" id="uecho-util-package">
+<h4>uecho.util package<a class="headerlink" href="#uecho-util-package" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="submodules">
+<h5>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h5>
+</div>
+<div class="section" id="module-uecho.util.bytes">
+<span id="uecho-util-bytes-module"></span><h5>uecho.util.bytes module<a class="headerlink" href="#module-uecho.util.bytes" title="Permalink to this headline">¶</a></h5>
+<dl class="class">
+<dt id="uecho.util.bytes.Bytes">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.util.bytes.</code><code class="sig-name descname">Bytes</code><a class="headerlink" href="#uecho.util.bytes.Bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Binary defines utility functions for converting between bytes and integer.</p>
+<dl class="method">
+<dt id="uecho.util.bytes.Bytes.from_int">
+<em class="property">classmethod </em><code class="sig-name descname">from_int</code><span class="sig-paren">(</span><em class="sig-param">val</em>, <em class="sig-param">bytes_size</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.util.bytes.Bytes.from_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.util.bytes.Bytes.to_int">
+<em class="property">classmethod </em><code class="sig-name descname">to_int</code><span class="sig-paren">(</span><em class="sig-param">byte_buf</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.util.bytes.Bytes.to_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-uecho.util.hex">
+<span id="uecho-util-hex-module"></span><h5>uecho.util.hex module<a class="headerlink" href="#module-uecho.util.hex" title="Permalink to this headline">¶</a></h5>
+<dl class="class">
+<dt id="uecho.util.hex.Hex">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.util.hex.</code><code class="sig-name descname">Hex</code><a class="headerlink" href="#uecho.util.hex.Hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.util.hex.Hex.from_string">
+<em class="property">classmethod </em><code class="sig-name descname">from_string</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.util.hex.Hex.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-uecho.util">
+<span id="module-contents"></span><h5>Module contents<a class="headerlink" href="#module-uecho.util" title="Permalink to this headline">¶</a></h5>
+<p>This module includes general utility classes.</p>
+<dl class="class">
+<dt id="uecho.util.Bytes">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.util.</code><code class="sig-name descname">Bytes</code><a class="headerlink" href="#uecho.util.Bytes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Binary defines utility functions for converting between bytes and integer.</p>
+<dl class="method">
+<dt id="uecho.util.Bytes.from_int">
+<em class="property">classmethod </em><code class="sig-name descname">from_int</code><span class="sig-paren">(</span><em class="sig-param">val</em>, <em class="sig-param">bytes_size</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.util.Bytes.from_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.util.Bytes.to_int">
+<em class="property">classmethod </em><code class="sig-name descname">to_int</code><span class="sig-paren">(</span><em class="sig-param">byte_buf</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.util.Bytes.to_int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.util.Hex">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.util.</code><code class="sig-name descname">Hex</code><a class="headerlink" href="#uecho.util.Hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.util.Hex.from_string">
+<em class="property">classmethod </em><code class="sig-name descname">from_string</code><span class="sig-paren">(</span><em class="sig-param">val</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.util.Hex.from_string" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="submodules">
+<h3>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="uecho-controller-module">
+<h3>uecho.controller module<a class="headerlink" href="#uecho-controller-module" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="uecho-esv-module">
+<h3>uecho.esv module<a class="headerlink" href="#uecho-esv-module" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="uecho-local-node-module">
+<h3>uecho.local_node module<a class="headerlink" href="#uecho-local-node-module" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="uecho-message-module">
+<h3>uecho.message module<a class="headerlink" href="#uecho-message-module" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="module-uecho.node">
+<span id="uecho-node-module"></span><h3>uecho.node module<a class="headerlink" href="#module-uecho.node" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="uecho.node.Node">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.node.</code><code class="sig-name descname">Node</code><a class="headerlink" href="#uecho.node.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="uecho.node.Node.PORT">
+<code class="sig-name descname">PORT</code><em class="property"> = 3610</em><a class="headerlink" href="#uecho.node.Node.PORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.node.Node.add_object">
+<code class="sig-name descname">add_object</code><span class="sig-paren">(</span><em class="sig-param">obj</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.node.Node.add_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.node.Node.address">
+<em class="property">property </em><code class="sig-name descname">address</code><a class="headerlink" href="#uecho.node.Node.address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.node.Node.has_object">
+<code class="sig-name descname">has_object</code><span class="sig-paren">(</span><em class="sig-param">code</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.node.Node.has_object" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.node.Node.ip">
+<em class="property">property </em><code class="sig-name descname">ip</code><a class="headerlink" href="#uecho.node.Node.ip" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.node.Node.objects">
+<em class="property">property </em><code class="sig-name descname">objects</code><a class="headerlink" href="#uecho.node.Node.objects" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.node.Node.port">
+<em class="property">property </em><code class="sig-name descname">port</code><a class="headerlink" href="#uecho.node.Node.port" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.node.Node.set_address">
+<code class="sig-name descname">set_address</code><span class="sig-paren">(</span><em class="sig-param">addr</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.node.Node.set_address" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="uecho-node-profile-module">
+<h3>uecho.node_profile module<a class="headerlink" href="#uecho-node-profile-module" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="module-uecho.object">
+<span id="uecho-object-module"></span><h3>uecho.object module<a class="headerlink" href="#module-uecho.object" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="uecho.object.Object">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.object.</code><code class="sig-name descname">Object</code><a class="headerlink" href="#uecho.object.Object" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="uecho.object.Object.ANNO_PROPERTY_MAP">
+<code class="sig-name descname">ANNO_PROPERTY_MAP</code><em class="property"> = 157</em><a class="headerlink" href="#uecho.object.Object.ANNO_PROPERTY_MAP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.ANNO_PROPERTY_MAP_MAX_SIZE">
+<code class="sig-name descname">ANNO_PROPERTY_MAP_MAX_SIZE</code><em class="property"> = 17</em><a class="headerlink" href="#uecho.object.Object.ANNO_PROPERTY_MAP_MAX_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.CODE_MAX">
+<code class="sig-name descname">CODE_MAX</code><em class="property"> = 16777215</em><a class="headerlink" href="#uecho.object.Object.CODE_MAX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.CODE_MIN">
+<code class="sig-name descname">CODE_MIN</code><em class="property"> = 0</em><a class="headerlink" href="#uecho.object.Object.CODE_MIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.CODE_SIZE">
+<code class="sig-name descname">CODE_SIZE</code><em class="property"> = 3</em><a class="headerlink" href="#uecho.object.Object.CODE_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.CODE_UNKNOWN">
+<code class="sig-name descname">CODE_UNKNOWN</code><em class="property"> = 0</em><a class="headerlink" href="#uecho.object.Object.CODE_UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.GET_PROPERTY_MAP">
+<code class="sig-name descname">GET_PROPERTY_MAP</code><em class="property"> = 159</em><a class="headerlink" href="#uecho.object.Object.GET_PROPERTY_MAP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.GET_PROPERTY_MAP_MAX_SIZE">
+<code class="sig-name descname">GET_PROPERTY_MAP_MAX_SIZE</code><em class="property"> = 17</em><a class="headerlink" href="#uecho.object.Object.GET_PROPERTY_MAP_MAX_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.MANUFACTURER_CODE">
+<code class="sig-name descname">MANUFACTURER_CODE</code><em class="property"> = 138</em><a class="headerlink" href="#uecho.object.Object.MANUFACTURER_CODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.MANUFACTURER_CODE_SIZE">
+<code class="sig-name descname">MANUFACTURER_CODE_SIZE</code><em class="property"> = 3</em><a class="headerlink" href="#uecho.object.Object.MANUFACTURER_CODE_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.MANUFACTURER_EVALUATION_CODE_MAX">
+<code class="sig-name descname">MANUFACTURER_EVALUATION_CODE_MAX</code><em class="property"> = 16777215</em><a class="headerlink" href="#uecho.object.Object.MANUFACTURER_EVALUATION_CODE_MAX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.MANUFACTURER_EVALUATION_CODE_MIN">
+<code class="sig-name descname">MANUFACTURER_EVALUATION_CODE_MIN</code><em class="property"> = 16777200</em><a class="headerlink" href="#uecho.object.Object.MANUFACTURER_EVALUATION_CODE_MIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.MANUFACTURER_UNKNOWN">
+<code class="sig-name descname">MANUFACTURER_UNKNOWN</code><em class="property"> = 16777200</em><a class="headerlink" href="#uecho.object.Object.MANUFACTURER_UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.OPERATING_STATUS">
+<code class="sig-name descname">OPERATING_STATUS</code><em class="property"> = 128</em><a class="headerlink" href="#uecho.object.Object.OPERATING_STATUS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.OPERATING_STATUS_OFF">
+<code class="sig-name descname">OPERATING_STATUS_OFF</code><em class="property"> = 49</em><a class="headerlink" href="#uecho.object.Object.OPERATING_STATUS_OFF" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.OPERATING_STATUS_ON">
+<code class="sig-name descname">OPERATING_STATUS_ON</code><em class="property"> = 48</em><a class="headerlink" href="#uecho.object.Object.OPERATING_STATUS_ON" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.OPERATING_STATUS_SIZE">
+<code class="sig-name descname">OPERATING_STATUS_SIZE</code><em class="property"> = 1</em><a class="headerlink" href="#uecho.object.Object.OPERATING_STATUS_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.PROPERTY_MAP_MAX_SIZE">
+<code class="sig-name descname">PROPERTY_MAP_MAX_SIZE</code><em class="property"> = 16</em><a class="headerlink" href="#uecho.object.Object.PROPERTY_MAP_MAX_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.SET_PROPERTY_MAP">
+<code class="sig-name descname">SET_PROPERTY_MAP</code><em class="property"> = 158</em><a class="headerlink" href="#uecho.object.Object.SET_PROPERTY_MAP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.object.Object.SET_PROPERTY_MAP_MAX_SIZE">
+<code class="sig-name descname">SET_PROPERTY_MAP_MAX_SIZE</code><em class="property"> = 17</em><a class="headerlink" href="#uecho.object.Object.SET_PROPERTY_MAP_MAX_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.object.Object.add_property">
+<code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.object.Object.add_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.object.Object.set_code">
+<code class="sig-name descname">set_code</code><span class="sig-paren">(</span><em class="sig-param">code</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.object.Object.set_code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-uecho.property">
+<span id="uecho-property-module"></span><h3>uecho.property module<a class="headerlink" href="#module-uecho.property" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="uecho.property.Property">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.property.</code><code class="sig-name descname">Property</code><a class="headerlink" href="#uecho.property.Property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="index.html#uecho.protocol.property.Property" title="uecho.protocol.property.Property"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.property.Property</span></code></a></p>
+<dl class="attribute">
+<dt id="uecho.property.Property.ATTRIBUTE_ANNO">
+<code class="sig-name descname">ATTRIBUTE_ANNO</code><em class="property"> = 16</em><a class="headerlink" href="#uecho.property.Property.ATTRIBUTE_ANNO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.ATTRIBUTE_NONE">
+<code class="sig-name descname">ATTRIBUTE_NONE</code><em class="property"> = 0</em><a class="headerlink" href="#uecho.property.Property.ATTRIBUTE_NONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.ATTRIBUTE_READ">
+<code class="sig-name descname">ATTRIBUTE_READ</code><em class="property"> = 1</em><a class="headerlink" href="#uecho.property.Property.ATTRIBUTE_READ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.ATTRIBUTE_READ_ANNO">
+<code class="sig-name descname">ATTRIBUTE_READ_ANNO</code><em class="property"> = 17</em><a class="headerlink" href="#uecho.property.Property.ATTRIBUTE_READ_ANNO" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.ATTRIBUTE_READ_WRITE">
+<code class="sig-name descname">ATTRIBUTE_READ_WRITE</code><em class="property"> = 3</em><a class="headerlink" href="#uecho.property.Property.ATTRIBUTE_READ_WRITE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.ATTRIBUTE_WRITE">
+<code class="sig-name descname">ATTRIBUTE_WRITE</code><em class="property"> = 2</em><a class="headerlink" href="#uecho.property.Property.ATTRIBUTE_WRITE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.CODE_MAX">
+<code class="sig-name descname">CODE_MAX</code><em class="property"> = 255</em><a class="headerlink" href="#uecho.property.Property.CODE_MAX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.CODE_MIN">
+<code class="sig-name descname">CODE_MIN</code><em class="property"> = 128</em><a class="headerlink" href="#uecho.property.Property.CODE_MIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.FORMAT1_MAX_SIZE">
+<code class="sig-name descname">FORMAT1_MAX_SIZE</code><em class="property"> = 15</em><a class="headerlink" href="#uecho.property.Property.FORMAT1_MAX_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.FORMAT2_SIZE">
+<code class="sig-name descname">FORMAT2_SIZE</code><em class="property"> = 18</em><a class="headerlink" href="#uecho.property.Property.FORMAT2_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.FORMAT_MAX_SIZE">
+<code class="sig-name descname">FORMAT_MAX_SIZE</code><em class="property"> = 18</em><a class="headerlink" href="#uecho.property.Property.FORMAT_MAX_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="uecho-remote-node-module">
+<h3>uecho.remote_node module<a class="headerlink" href="#uecho-remote-node-module" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="module-contents">
+<h3>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, The uecho-py Authors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
