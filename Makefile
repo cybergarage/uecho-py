@@ -23,10 +23,10 @@ clean:
 
 lint:
 	flake8 uecho bin test
+	# find uecho -name "*.py" | xargs pylint 
 
 format:
 	yapf -ir uecho bin test
-	find uecho -name "*.py" | xargs pylint 
 
 test:
 	env PYTHONPATH=`pwd` py.test test

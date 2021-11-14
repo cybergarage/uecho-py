@@ -13,9 +13,16 @@
 # limitations under the License.
 
 from __future__ import absolute_import
+
+import logging
+
 from .logger import setLevel, debug, info, warning, error
 from .constants import DEBUG, INFO, WARNING, ERROR, CRITICAL, LOGGER_NAME
-import logging
+
+__all__ = [
+    'setLevel', 'debug', 'info', 'warning', 'error', 'DEBUG', 'INFO',
+    'WARNING', 'ERROR', 'CRITICAL', 'LOGGER_NAME'
+]
 
 logger = logging.getLogger(LOGGER_NAME)
 logger.setLevel(logging.NOTSET)
