@@ -14,7 +14,6 @@
 
 from .transport.manager import Manager
 
-from .node import Node
 from .node_profile import NodeProfile
 
 
