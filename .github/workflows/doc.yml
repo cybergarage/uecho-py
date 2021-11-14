@@ -14,12 +14,12 @@ jobs:
         build-command: "sphinx-build -b singlehtml . _build"
     - name: Commit documentation changes
       run: |
-        git config --local user.email "skonno@cybergarage.org"
-        git config --local user.name "The uecho-py Authors"
         git clone https://github.com/cybergarage/uecho-py.git --branch gh-pages --single-branch gh-pages
         mkdir -p gh-pages/docs
         cp -r doc/conf/_build/* gh-pages/docs/
         cd gh-pages
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub"
         git add docs
         touch docs/.nojekyll
         git add docs/.nojekyll
