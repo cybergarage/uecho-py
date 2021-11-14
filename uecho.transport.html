@@ -43,29 +43,29 @@
 <li class="toctree-l3"><a class="reference internal" href="uecho.protocol.html">uecho.protocol package</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">uecho.transport package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#uecho-transport-interface-module">uecho.transport.interface module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#uecho-transport-manager-module">uecho.transport.manager module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#uecho-transport-multicast-server-module">uecho.transport.multicast_server module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#uecho-transport-observer-module">uecho.transport.observer module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#uecho-transport-server-module">uecho.transport.server module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#uecho-transport-unicast-server-module">uecho.transport.unicast_server module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.interface">uecho.transport.interface module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.manager">uecho.transport.manager module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.multicast_server">uecho.transport.multicast_server module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.observer">uecho.transport.observer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.server">uecho.transport.server module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.unicast_server">uecho.transport.unicast_server module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="uecho.util.html">uecho.util package</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#uecho-controller-module">uecho.controller module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#uecho-esv-module">uecho.esv module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#uecho-local-node-module">uecho.local_node module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#uecho-message-module">uecho.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.controller">uecho.controller module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.esv">uecho.esv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.local_node">uecho.local_node module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.message">uecho.message module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.node">uecho.node module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#uecho-node-profile-module">uecho.node_profile module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.node_profile">uecho.node_profile module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.object">uecho.object module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.property">uecho.property module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#uecho-remote-node-module">uecho.remote_node module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.remote_node">uecho.remote_node module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -100,26 +100,235 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="uecho-transport-interface-module">
-<h2>uecho.transport.interface module<a class="headerlink" href="#uecho-transport-interface-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.transport.interface">
+<span id="uecho-transport-interface-module"></span><h2>uecho.transport.interface module<a class="headerlink" href="#module-uecho.transport.interface" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="uecho.transport.interface.Interface">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.interface.</code><code class="sig-name descname">Interface</code><a class="headerlink" href="#uecho.transport.interface.Interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.transport.interface.Interface.get_all_ipaddrs">
+<em class="property">static </em><code class="sig-name descname">get_all_ipaddrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.interface.Interface.get_all_ipaddrs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="uecho-transport-manager-module">
-<h2>uecho.transport.manager module<a class="headerlink" href="#uecho-transport-manager-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.transport.manager">
+<span id="uecho-transport-manager-module"></span><h2>uecho.transport.manager module<a class="headerlink" href="#module-uecho.transport.manager" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="uecho.transport.manager.Manager">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.manager.</code><code class="sig-name descname">Manager</code><a class="headerlink" href="#uecho.transport.manager.Manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.transport.manager.Manager.add_observer">
+<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.manager.Manager.add_observer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.manager.Manager.announce_message">
+<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.manager.Manager.announce_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.manager.Manager.notify">
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.manager.Manager.notify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.manager.Manager.send_message">
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.manager.Manager.send_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.manager.Manager.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.manager.Manager.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.manager.Manager.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.manager.Manager.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="uecho-transport-multicast-server-module">
-<h2>uecho.transport.multicast_server module<a class="headerlink" href="#uecho-transport-multicast-server-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.transport.multicast_server">
+<span id="uecho-transport-multicast-server-module"></span><h2>uecho.transport.multicast_server module<a class="headerlink" href="#module-uecho.transport.multicast_server" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="uecho.transport.multicast_server.MulticastServer">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.multicast_server.</code><code class="sig-name descname">MulticastServer</code><a class="headerlink" href="#uecho.transport.multicast_server.MulticastServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.transport.server.Server" title="uecho.transport.server.Server"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.server.Server</span></code></a></p>
+<dl class="attribute">
+<dt id="uecho.transport.multicast_server.MulticastServer.ADDRESS">
+<code class="sig-name descname">ADDRESS</code><em class="property"> = '224.0.23.0'</em><a class="headerlink" href="#uecho.transport.multicast_server.MulticastServer.ADDRESS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.multicast_server.MulticastServer.bind">
+<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param">ifaddr</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.multicast_server.MulticastServer.bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="uecho-transport-observer-module">
-<h2>uecho.transport.observer module<a class="headerlink" href="#uecho-transport-observer-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.transport.observer">
+<span id="uecho-transport-observer-module"></span><h2>uecho.transport.observer module<a class="headerlink" href="#module-uecho.transport.observer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="uecho.transport.observer.Observer">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.observer.</code><code class="sig-name descname">Observer</code><a class="headerlink" href="#uecho.transport.observer.Observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.transport.observer.Observer.message_received">
+<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.observer.Observer.message_received" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="uecho-transport-server-module">
-<h2>uecho.transport.server module<a class="headerlink" href="#uecho-transport-server-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.transport.server">
+<span id="uecho-transport-server-module"></span><h2>uecho.transport.server module<a class="headerlink" href="#module-uecho.transport.server" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="uecho.transport.server.Server">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.server.</code><code class="sig-name descname">Server</code><a class="headerlink" href="#uecho.transport.server.Server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<dl class="attribute">
+<dt id="uecho.transport.server.Server.PORT">
+<code class="sig-name descname">PORT</code><em class="property"> = 3610</em><a class="headerlink" href="#uecho.transport.server.Server.PORT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.server.Server.add_observer">
+<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.server.Server.add_observer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.server.Server.bind">
+<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param">ifaddr</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.server.Server.bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.server.Server.create_udp_socket">
+<code class="sig-name descname">create_udp_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.server.Server.create_udp_socket" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.server.Server.notify">
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.server.Server.notify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.server.Server.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.server.Server.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method representing the thread’s activity.</p>
+<p>You may override this method in a subclass. The standard run() method
+invokes the callable object passed to the object’s constructor as the
+target argument, if any, with sequential and keyword arguments taken
+from the args and kwargs arguments, respectively.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.server.Server.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.server.Server.start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the thread’s activity.</p>
+<p>It must be called at most once per thread object. It arranges for the
+object’s run() method to be invoked in a separate thread of control.</p>
+<p>This method will raise a RuntimeError if called more than once on the
+same thread object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.server.Server.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.server.Server.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="uecho-transport-unicast-server-module">
-<h2>uecho.transport.unicast_server module<a class="headerlink" href="#uecho-transport-unicast-server-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.transport.unicast_server">
+<span id="uecho-transport-unicast-server-module"></span><h2>uecho.transport.unicast_server module<a class="headerlink" href="#module-uecho.transport.unicast_server" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="uecho.transport.unicast_server.UnicastServer">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.unicast_server.</code><code class="sig-name descname">UnicastServer</code><a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.transport.server.Server" title="uecho.transport.server.Server"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.server.Server</span></code></a></p>
+<dl class="method">
+<dt id="uecho.transport.unicast_server.UnicastServer.announce_message">
+<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.announce_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.unicast_server.UnicastServer.bind">
+<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param">ifaddr</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.bind" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.unicast_server.UnicastServer.send_message">
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.send_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.transport">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-uecho.transport" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="uecho.transport.Manager">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.</code><code class="sig-name descname">Manager</code><a class="headerlink" href="#uecho.transport.Manager" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.transport.Manager.add_observer">
+<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Manager.add_observer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.Manager.announce_message">
+<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Manager.announce_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.Manager.notify">
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Manager.notify" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.Manager.send_message">
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Manager.send_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.Manager.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Manager.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.transport.Manager.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Manager.stop" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.transport.Interface">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.</code><code class="sig-name descname">Interface</code><a class="headerlink" href="#uecho.transport.Interface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.transport.Interface.get_all_ipaddrs">
+<em class="property">static </em><code class="sig-name descname">get_all_ipaddrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Interface.get_all_ipaddrs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.transport.Observer">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.</code><code class="sig-name descname">Observer</code><a class="headerlink" href="#uecho.transport.Observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.transport.Observer.message_received">
+<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Observer.message_received" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
