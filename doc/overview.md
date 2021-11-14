@@ -6,8 +6,58 @@ The `uecho-py` is a portable and cross platform development framework for creati
 
 [enet]:http://echonet.jp/english/
 
+## Installation
+
+You can install `uecho-py` using `pip` as the following:
+
+```
+ $ pip install uecho
+ ```
+## Examples
+
+## uechosearch
+
+The `uechosearch` is a sample controller to search all [ECHONET Lite][enet] nodes in the same local area network as the following usage.
+
+```
+Usage : uechosearch
+```
+
+The `uechosearch` searches all [ECHONET Lite][enet] device and profile objects in the local area network, and prints all found objects with the IP address as the following:
+
+```
+$ uechosearch
+192.168.aaa.bbb [0] 05FF01 
+192.168.aaa.cc  [0] 0F2001 [1] 029101 
+```
+
+## uechopost
+
+The `uechopost` is a sample controller to post a message to a [ECHONET Lite][enet] node in the same local network as the following usage.
+
+
+```
+Usage : uechopost <address> <obj> <esv> <property (code, data) ...>
+```
+
+The `uechopost` can send any request message of [ECHONET Lite][enet] to an object in the specified node, and print the response message. The following example controls the power status of a [ECHONET Lite][enet] standard light device.
+
+```
+$ uechopost 192.168.aaa.bbb 029101 62 8A    --> READ REQ (62) : Manufacture Code (8A)
+192.168.aaaa.bbb 0EF001 72 8A 00000B        --> READ RES (72) : Panasonic (=0x00000B)
+
+$ uechopost 192.168.aaa.bbb 029101 62 80    --> READ REQ (62) : Operation status (=0x80)
+192.168.aaa.bbb 029101 72 80 31             --> READ RES (72) : OFF (=0x31)
+
+$ uechopost 192.168.aaa.bbb 029101 61 80 30 --> WRITE REQ (61) : Operation status ON (=0x30)
+192.168.aaa.bbb 029101 71 80                --> WRITE RES (71) : (No Data)
+
+$ uechopost 192.168.aaa.bbb 029101 62 80    --> READ REQ (62) : Operation status (=0x80)
+192.168.aaa.bbb 029101 72 80 30             --> READ RES (72) : ON (=0x30)
+```
+
 ## References
 
-* [Documents](https://cybergarage.github.io/uecho-py/)
+* [Documentation (docstring)](https://cybergarage.github.io/uecho-py/)
 
 [enet]:http://echonet.jp/english/
