@@ -28,7 +28,7 @@ def usage():
 
 
 if __name__ == '__main__':
-    #log.setLevel(log.DEBUG)
+    # log.setLevel(log.DEBUG)
     log.setLevel(log.ERROR)
 
     if len(args) < 5:
@@ -55,7 +55,7 @@ if __name__ == '__main__':
     time.sleep(1)
 
     res_msg = ctrl.post_message(msg, ipaddr)
-    if not res_msg is None:
+    if res_msg is not None:
         print('Recived: %s' % res_msg.to_string())
 
     ctrl.stop()
