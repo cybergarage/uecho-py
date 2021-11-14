@@ -65,7 +65,7 @@ class Controller(Observer):
         """Retures found nodes.
 
         Returns:
-            [RemoteNode]
+            list[RemoteNode]; The found remote node list.
         """
         nodes = []
         for node in self.found_nodes.values():
@@ -106,6 +106,10 @@ class Controller(Observer):
 
     def send_message(self, msg, addr):
         """Posts a unicast message to the specified node asynchronously.
+
+            Args:
+                msg (Message): The request message.
+                addr (string): The node ip address.
         """
         to_addr = addr
         if isinstance(addr, RemoteNode):
@@ -122,11 +126,13 @@ class Controller(Observer):
 
     def post_message(self, msg, addr):
         """Posts a unicast message to the specified node and return the response message synchronously.
+
             Args:
                 msg (Message): The request message.
                 addr (string): The node ip address.
+
             Returns:
-                Message: The response message for success, otherwise Node.
+                Message: The response message for success, otherwise None.
         """
         self.__last_post_msg = Controller.__PostMessage()
         self.__last_post_msg.request = msg
