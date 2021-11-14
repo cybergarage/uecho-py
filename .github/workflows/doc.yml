@@ -10,7 +10,7 @@ jobs:
     - uses: ammaraskar/sphinx-action@master
       with:
         docs-folder: "doc/conf"
-        pre-build-command: "pip install -y sphinx-rtd-theme netifaces"
+        pre-build-command: "pip install sphinx-rtd-theme netifaces"
         build-command: "sphinx-build -b html . _build"
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
