@@ -56,7 +56,8 @@ if __name__ == '__main__':
 
     res_msg = ctrl.post_message(msg, ipaddr)
     if res_msg is not None:
-        msg = '%s %06X %02X ' % (res_msg.from_addr[0], res_msg.SEOJ, res_msg.ESV)
+        msg = '%s %06X %02X ' % (res_msg.from_addr[0], res_msg.SEOJ,
+                                 res_msg.ESV)
         for prop in res_msg.properties:
             msg += '%02X %s ' % ((prop.code), prop.data.hex().upper())
         print(msg)

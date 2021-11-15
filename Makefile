@@ -28,6 +28,9 @@ lint: format
 	flake8 uecho bin test
 	# find uecho -name "*.py" | xargs pylint 
 
+type: format
+	mypy uecho
+
 test: lint
 	env PYTHONPATH=`pwd` py.test test
 
