@@ -22,7 +22,4 @@ from .message import Message
 from .esv import ESV
 from .property import Property
 
-__all__ = [
-    'Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'NodeProfile',
-    'Message', 'ESV', 'Property'
-]
+__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'NodeProfile', 'Message', 'ESV', 'Property']

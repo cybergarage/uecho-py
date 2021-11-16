@@ -25,8 +25,6 @@ class MulticastServer(Server):
     def bind(self, ifaddr):
         self.socket = self.create_udp_socket()
         self.socket.bind(('0.0.0.0', self.port))
-        opt = socket.inet_aton(
-            MulticastServer.ADDRESS) + socket.inet_aton(ifaddr)
-        self.socket.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP,
-                               opt)
+        opt = socket.inet_aton(MulticastServer.ADDRESS) + socket.inet_aton(ifaddr)
+        self.socket.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, opt)
         return True

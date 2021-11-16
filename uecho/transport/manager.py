@@ -43,8 +43,7 @@ class Manager(object):
 
     def announce_message(self, msg):
         msg.TID = self.__next_TID()
-        debug('%s <- %s' %
-              (MulticastServer.ADDRESS.ljust(15), msg.to_string()))
+        debug('%s <- %s' % (MulticastServer.ADDRESS.ljust(15), msg.to_string()))
         for server in self.servers:
             if isinstance(server, UnicastServer):
                 server.announce_message(msg)
