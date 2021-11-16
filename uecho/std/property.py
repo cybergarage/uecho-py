@@ -32,7 +32,7 @@ class Property(PropertyBase):
         self.set_attribute(PropertyBase.ANNO_STATUS, self.__to_attribute(chg))
 
     def __to_attribute(self, val: Any) -> int:
-        attr = Property.NONE
+        attr = Property.PROHIBITED
         if isinstance(val, int):
             attr = val
         if isinstance(val, str):
