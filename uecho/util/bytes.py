@@ -17,6 +17,7 @@ class Bytes():
     """
     Binary defines utility functions for converting between bytes and integer.
     """
+
     @classmethod
     def from_int(cls, val, bytes_size):
         byte_buf = bytearray(bytes_size)

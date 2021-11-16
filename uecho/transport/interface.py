@@ -16,6 +16,7 @@ import netifaces
 
 
 class Interface(object):
+
     @staticmethod
     def get_all_ipaddrs():
         ipaddrs = []

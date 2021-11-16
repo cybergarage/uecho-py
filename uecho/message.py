@@ -21,6 +21,7 @@ from .node_profile import NodeProfile
 
 
 class Message(ProtocolMessage):
+
     def __init__(self):
         super(Message, self).__init__()
 

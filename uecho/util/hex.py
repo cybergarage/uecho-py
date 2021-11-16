@@ -16,6 +16,7 @@ from .bytes import Bytes
 
 
 class Hex():
+
     @classmethod
     def from_string(cls, val):
         if not isinstance(val, str):

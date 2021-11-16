@@ -17,6 +17,7 @@ class Property(object):
     """
     Property represents a property in a protocol message of Echonet Lite.
     """
+
     def __init__(self):
         self.code = 0
         self.data = bytes()
