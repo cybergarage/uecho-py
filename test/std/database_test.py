@@ -24,10 +24,10 @@ def test_object_database():
     assert (obj)
 
     expecteds = [
-        [0x80, Property.REQUIRED, Property.OPTIONAL, Property.NONE, Property.REQUIRED],
-        [0xB0, Property.OPTIONAL, Property.OPTIONAL, Property.NONE, Property.NONE],
-        [0xB1, Property.REQUIRED, Property.NONE, Property.NONE, Property.REQUIRED],
-        [0xBF, Property.NONE, Property.OPTIONAL, Property.NONE, Property.NONE],
+        [0x80, Property.REQUIRED, Property.OPTIONAL, Property.PROHIBITED, Property.REQUIRED],
+        [0xB0, Property.OPTIONAL, Property.OPTIONAL, Property.PROHIBITED, Property.PROHIBITED],
+        [0xB1, Property.REQUIRED, Property.PROHIBITED, Property.PROHIBITED, Property.REQUIRED],
+        [0xBF, Property.PROHIBITED, Property.OPTIONAL, Property.PROHIBITED, Property.PROHIBITED],
     ]
 
     assert obj.get_property(0x00) is None

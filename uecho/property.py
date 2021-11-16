@@ -25,7 +25,7 @@ class Property(object):
     ANNO = 2
     ANNO_STATUS = 3
 
-    NONE = 0
+    PROHIBITED = 0
     REQUIRED = 1
     OPTIONAL = 2
 
@@ -39,10 +39,29 @@ class Property(object):
     def __init__(self):
         self.code = 0
         self.data = bytes()
-        self.attrs = [Property.NONE, Property.NONE, Property.NONE, Property.NONE]
+        self.attrs = [Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED]
 
     def set_attribute(self, typ: int, attr: int):
         self.attrs[typ] = attr
 
     def get_attribute(self, typ: int) -> int:
         return self.attrs[typ]
+
+    def __is_attribute_enabled(self, val) -> bool:
+        if (val & Property.REQUIRED):
+            return True
+        if (val & Property.OPTIONAL):
+            return True
+        return False
+
+    def is_read_enabled(self) -> bool:
+        return self.__is_attribute_enabled(self.attrs[Property.GET])
+
+    def is_write_enabled(self) -> bool:
+        return self.__is_attribute_enabled(self.attrs[Property.SET])
+
+    def is_announce_enabled(self) -> bool:
+        return self.__is_attribute_enabled(self.attrs[Property.ANNO])
+
+    def is_status_change_required(self) -> bool:
+        return self.__is_attribute_enabled(self.attrs[Property.ANNO_STATUS])
