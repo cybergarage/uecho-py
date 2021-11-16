@@ -29,7 +29,7 @@ def get_all_std_objects() -> dict:
 
 
 # Gas leak sensor (0x0001)
-obj = Object(0x00, 0x01)
+obj = Object("Gas leak sensor", 0x00, 0x01)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Gas leak occurrence status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -37,7 +37,7 @@ obj.add_property(Property(0xBF, "Gas leak occurrence status resetting", "unsigne
 __std_objects[(0x00, 0x01)] = obj
 
 # Crime prevention sensor (0x0002)
-obj = Object(0x00, 0x02)
+obj = Object("Crime prevention sensor", 0x00, 0x02)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Invasion occurrence status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -45,14 +45,14 @@ obj.add_property(Property(0xBF, "Invasion occurrence status resetting", "unsigne
 __std_objects[(0x00, 0x02)] = obj
 
 # Emergency button (0x0003)
-obj = Object(0x00, 0x03)
+obj = Object("Emergency button", 0x00, 0x03)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB1, "Emergency occurrence status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 obj.add_property(Property(0xBF, "Emergency occurrence status resetting", "unsigned char", 1, "-", "optional", "-", "-"))
 __std_objects[(0x00, 0x03)] = obj
 
 # First-aid sensor (0x0004)
-obj = Object(0x00, 0x04)
+obj = Object("First-aid sensor", 0x00, 0x04)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "First-aid occurrence status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -60,7 +60,7 @@ obj.add_property(Property(0xBF, "First-aid occurrence status resetting", "unsign
 __std_objects[(0x00, 0x04)] = obj
 
 # Earthquake sensor (0x0005)
-obj = Object(0x00, 0x05)
+obj = Object("Earthquake sensor", 0x00, 0x05)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Earthquake occurrence status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -68,7 +68,7 @@ obj.add_property(Property(0xBF, "Earthquake occurrence status resetting", "unsig
 __std_objects[(0x00, 0x05)] = obj
 
 # Electric leak sensor (0x0006)
-obj = Object(0x00, 0x06)
+obj = Object("Electric leak sensor", 0x00, 0x06)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Electric leak occurrence status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -76,14 +76,14 @@ obj.add_property(Property(0xBF, "Electric leak occurrence status resetting", "un
 __std_objects[(0x00, 0x06)] = obj
 
 # Human detection sensor (0x0007)
-obj = Object(0x00, 0x07)
+obj = Object("Human detection sensor", 0x00, 0x07)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Human detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x07)] = obj
 
 # Visitor sensor (0x0008)
-obj = Object(0x00, 0x08)
+obj = Object("Visitor sensor", 0x00, 0x08)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Visitor detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -91,7 +91,7 @@ obj.add_property(Property(0xBE, "Visitor detection holding time", "unsigned shor
 __std_objects[(0x00, 0x08)] = obj
 
 # Call sensor (0x0009)
-obj = Object(0x00, 0x09)
+obj = Object("Call sensor", 0x00, 0x09)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Call status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -99,34 +99,34 @@ obj.add_property(Property(0xBE, "Call holding time", "unsigned short", 2, "optio
 __std_objects[(0x00, 0x09)] = obj
 
 # Condensation sensor (0x000A)
-obj = Object(0x00, 0x0A)
+obj = Object("Condensation sensor", 0x00, 0x0A)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Condensation detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x0A)] = obj
 
 # Air pollution sensor (0x000B)
-obj = Object(0x00, 0x0B)
+obj = Object("Air pollution sensor", 0x00, 0x0B)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Air pollution detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x0B)] = obj
 
 # Oxygen sensor (0x000C)
-obj = Object(0x00, 0x0C)
+obj = Object("Oxygen sensor", 0x00, 0x0C)
 obj.add_property(Property(0x80, "Operation status", "unsigned short", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Measured value of oxygen concentration", "unsigned short", 2, "mandatory", "-", "-", "-"))
 __std_objects[(0x00, 0x0C)] = obj
 
 # Illuminance sensor (0x000D)
-obj = Object(0x00, 0x0D)
+obj = Object("Illuminance sensor", 0x00, 0x0D)
 obj.add_property(Property(0x80, "Operation status", "unsigned short", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Measured illuminance value 1", "unsigned short", 2, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xE1, "Measured illuminance value 2", "unsigned short", 2, "mandatory", "-", "-", "-"))
 __std_objects[(0x00, 0x0D)] = obj
 
 # Sound sensor (0x000E)
-obj = Object(0x00, 0x0E)
+obj = Object("Sound sensor", 0x00, 0x0E)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Sound detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -134,40 +134,40 @@ obj.add_property(Property(0xBE, "Sound detection holding time", "unsigned short"
 __std_objects[(0x00, 0x0E)] = obj
 
 # Mailing sensor (0x000F)
-obj = Object(0x00, 0x0F)
+obj = Object("Mailing sensor", 0x00, 0x0F)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Mailing detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x0F)] = obj
 
 # Weight sensor (0x0010)
-obj = Object(0x00, 0x10)
+obj = Object("Weight sensor", 0x00, 0x10)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Weight detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x10)] = obj
 
 # Temperature sensor (0x0011)
-obj = Object(0x00, 0x11)
+obj = Object("Temperature sensor", 0x00, 0x11)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Measured temperature value", "signed short", 2, "mandatory", "-", "-", "-"))
 __std_objects[(0x00, 0x11)] = obj
 
 # Humidity sensor (0x0012)
-obj = Object(0x00, 0x12)
+obj = Object("Humidity sensor", 0x00, 0x12)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Measured value of relative humidity", "unsigned char", 1, "mandatory", "-", "-", "-"))
 __std_objects[(0x00, 0x12)] = obj
 
 # Rain sensor (0x0013)
-obj = Object(0x00, 0x13)
+obj = Object("Rain sensor", 0x00, 0x13)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Rain detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x13)] = obj
 
 # Water level sensor (0x0014)
-obj = Object(0x00, 0x14)
+obj = Object("Water level sensor", 0x00, 0x14)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Water level over detection threshold level", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xB1, "Water level over detection status", "unsigned char", 1, "optional", "-", "-", "mandatory"))
@@ -175,7 +175,7 @@ obj.add_property(Property(0xE0, "Measured value of water level", "unsigned char"
 __std_objects[(0x00, 0x14)] = obj
 
 # Bath water level sensor (0x0015)
-obj = Object(0x00, 0x15)
+obj = Object("Bath water level sensor", 0x00, 0x15)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Bath water level over detection threshold level", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xB1, "Bath water level over detection status", "unsigned char", 1, "optional", "-", "-", "mandatory"))
@@ -183,28 +183,28 @@ obj.add_property(Property(0xE0, "Measured value of bath water level", "unsigned 
 __std_objects[(0x00, 0x15)] = obj
 
 # Bath heating status sensor (0x0016)
-obj = Object(0x00, 0x16)
+obj = Object("Bath heating status sensor", 0x00, 0x16)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Bath heating detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x16)] = obj
 
 # Water leak sensor (0x0017)
-obj = Object(0x00, 0x17)
+obj = Object("Water leak sensor", 0x00, 0x17)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Water leak detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x17)] = obj
 
 # Water overflow sensor (0x0018)
-obj = Object(0x00, 0x18)
+obj = Object("Water overflow sensor", 0x00, 0x18)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Water overflow detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x18)] = obj
 
 # Fire sensor (0x0019)
-obj = Object(0x00, 0x19)
+obj = Object("Fire sensor", 0x00, 0x19)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Fire occurrence detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -212,20 +212,20 @@ obj.add_property(Property(0xBF, "Fire occurrence detection status resetting", "u
 __std_objects[(0x00, 0x19)] = obj
 
 # Cigarette smoke sensor (0x001A)
-obj = Object(0x00, 0x1A)
+obj = Object("Cigarette smoke sensor", 0x00, 0x1A)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Smoke (cigarette) detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x1A)] = obj
 
 # CO2 sensor (0x001B)
-obj = Object(0x00, 0x1B)
+obj = Object("CO2 sensor", 0x00, 0x1B)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Measured value of CO2 concentration", "unsigned short", 2, "mandatory", "-", "-", "-"))
 __std_objects[(0x00, 0x1B)] = obj
 
 # Gas sensor (0x001C)
-obj = Object(0x00, 0x1C)
+obj = Object("Gas sensor", 0x00, 0x1C)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Gas detection status", "unsigned char", 1, "optional", "-", "-", "mandatory"))
@@ -233,7 +233,7 @@ obj.add_property(Property(0xE0, "Measured value of gas concentration", "unsigned
 __std_objects[(0x00, 0x1C)] = obj
 
 # VOC sensor (0x001D)
-obj = Object(0x00, 0x1D)
+obj = Object("VOC sensor", 0x00, 0x1D)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "VOC detection status", "unsigned char", 1, "optional", "-", "-", "mandatory"))
@@ -241,20 +241,20 @@ obj.add_property(Property(0xE0, "Measured value of VOC concentration", "unsigned
 __std_objects[(0x00, 0x1D)] = obj
 
 # Differential pressure sensor (0x001E)
-obj = Object(0x00, 0x1E)
+obj = Object("Differential pressure sensor", 0x00, 0x1E)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Measured value of differential pressure", "signed short", 2, "mandatory", "-", "-", "-"))
 __std_objects[(0x00, 0x1E)] = obj
 
 # Air speed sensor (0x001F)
-obj = Object(0x00, 0x1F)
+obj = Object("Air speed sensor", 0x00, 0x1F)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Measured value of air speed", "unsigned short", 2, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xE1, "Air flow direction", "unsigned short", 2, "optional", "-", "-", "-"))
 __std_objects[(0x00, 0x1F)] = obj
 
 # Odor sensor (0x0020)
-obj = Object(0x00, 0x20)
+obj = Object("Odor sensor", 0x00, 0x20)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Odor detection status", "unsigned char", 1, "optional", "-", "-", "-"))
@@ -262,7 +262,7 @@ obj.add_property(Property(0xE0, "Measured odor value", "unsigned char", 1, "mand
 __std_objects[(0x00, 0x20)] = obj
 
 # Flame sensor (0x0021)
-obj = Object(0x00, 0x21)
+obj = Object("Flame sensor", 0x00, 0x21)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Flame detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -270,7 +270,7 @@ obj.add_property(Property(0xBF, "Flame detection status resetting", "unsigned ch
 __std_objects[(0x00, 0x21)] = obj
 
 # Electric energy sensor (0x0022)
-obj = Object(0x00, 0x22)
+obj = Object("Electric energy sensor", 0x00, 0x22)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Integral electric energy", "unsigned long", 4, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xE1, "Medium-capacity sensor instantaneous electric energy", "signed long", 4, "optional", "-", "-", "-"))
@@ -281,7 +281,7 @@ obj.add_property(Property(0xE5, "Effective voltage value", "unsigned short", 2, 
 __std_objects[(0x00, 0x22)] = obj
 
 # Current value sensor (0x0023)
-obj = Object(0x00, 0x23)
+obj = Object("Current value sensor", 0x00, 0x23)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Measured current value 1", "unsigned long", 4, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xE1, "Rated voltage to be measured", "unsigned short", 2, "optional", "-", "-", "-"))
@@ -289,14 +289,14 @@ obj.add_property(Property(0xE2, "Measured current value 2", "unsigned long", 4, 
 __std_objects[(0x00, 0x23)] = obj
 
 # Water flow rate sensor (0x0025)
-obj = Object(0x00, 0x25)
+obj = Object("Water flow rate sensor", 0x00, 0x25)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Integral flow rate", "unsigned long", 4, "optional", "-", "-", "-"))
 obj.add_property(Property(0xE2, "Flow rate", "unsigned long", 4, "mandatory", "-", "-", "-"))
 __std_objects[(0x00, 0x25)] = obj
 
 # Micromotion sensor (0x0026)
-obj = Object(0x00, 0x26)
+obj = Object("Micromotion sensor", 0x00, 0x26)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Micromotion detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -306,7 +306,7 @@ obj.add_property(Property(0xBD, "Sampling cycle", "unsigned short", 2, "optional
 __std_objects[(0x00, 0x26)] = obj
 
 # Passage sensor (0x0027)
-obj = Object(0x00, 0x27)
+obj = Object("Passage sensor", 0x00, 0x27)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xBE, "Passage detection hold time", "unsigned char", 2, "optional", "optional", "-", "-"))
@@ -314,14 +314,14 @@ obj.add_property(Property(0xE0, "Passage detection direction", "unsigned char", 
 __std_objects[(0x00, 0x27)] = obj
 
 # Bed presence sensor (0x0028)
-obj = Object(0x00, 0x28)
+obj = Object("Bed presence sensor", 0x00, 0x28)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Bed presence detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x28)] = obj
 
 # Open/close sensor (0x0029)
-obj = Object(0x00, 0x29)
+obj = Object("Open/close sensor", 0x00, 0x29)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Degree-of-openi ng detection status 1", "unsigned char", 1, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -329,7 +329,7 @@ obj.add_property(Property(0xB1, "Degree-of-openi ng detection status 2", "unsign
 __std_objects[(0x00, 0x29)] = obj
 
 # Activity amount sensor (0x002A)
-obj = Object(0x00, 0x2A)
+obj = Object("Activity amount sensor", 0x00, 0x2A)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Activity amount level 1", "unsigned char × max 128", 0, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xE1, "Maximum number of human body ID's", "unsigned short", 2, "optional", "-", "-", "-"))
@@ -338,7 +338,7 @@ obj.add_property(Property(0xE3, "Human body existence information", "unsigned ch
 __std_objects[(0x00, 0x2A)] = obj
 
 # Human body location sensor (0x002B)
-obj = Object(0x00, 0x2B)
+obj = Object("Human body location sensor", 0x00, 0x2B)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Human body detection location 1", "unsigned char × 3 x max 128", 0, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xE1, "Maximum number of human body ID's", "unsigned short", 2, "optional", "-", "-", "-"))
@@ -347,14 +347,14 @@ obj.add_property(Property(0xE3, "Human body existence information", "unsigned ch
 __std_objects[(0x00, 0x2B)] = obj
 
 # Snow sensor (0x002C)
-obj = Object(0x00, 0x2C)
+obj = Object("Snow sensor", 0x00, 0x2C)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Detection threshold level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Snow detection status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
 __std_objects[(0x00, 0x2C)] = obj
 
 # Home air conditioner (0x0130)
-obj = Object(0x01, 0x30)
+obj = Object("Home air conditioner", 0x01, 0x30)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Operation mode setting", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xB1, "Automatic temperature control setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -402,14 +402,14 @@ obj.add_property(Property(0x96, "OFF timer setting (relative time)", "unsigned c
 __std_objects[(0x01, 0x30)] = obj
 
 # Ventilation fan (0x0133)
-obj = Object(0x01, 0x33)
+obj = Object("Ventilation fan", 0x01, 0x33)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xBF, "Ventilation auto setting", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xA0, "Set value of ventilation air flow rate", "unsigned char", 1, "optional", "optional", "-", "-"))
 __std_objects[(0x01, 0x33)] = obj
 
 # Air conditioner ventilation fan (0x0134)
-obj = Object(0x01, 0x34)
+obj = Object("Air conditioner ventilation fan", 0x01, 0x34)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xB4, "Set value of room relative humidity", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xBF, "Ventilation auto setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -421,7 +421,7 @@ obj.add_property(Property(0xC1, "Smoke (cigarette) detection status", "unsigned 
 __std_objects[(0x01, 0x34)] = obj
 
 # Air cleaner (0x0135)
-obj = Object(0x01, 0x35)
+obj = Object("Air cleaner", 0x01, 0x35)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xE1, "Filter change notice", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xA0, "Air flow rate setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -431,7 +431,7 @@ obj.add_property(Property(0xC0, "Air pollution detection status", "unsigned char
 __std_objects[(0x01, 0x35)] = obj
 
 # Humidifier (0x0139)
-obj = Object(0x01, 0x39)
+obj = Object("Humidifier", 0x01, 0x39)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xC0, "Humidifying setting 1", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
 obj.add_property(Property(0xC1, "Humidifying setting 2", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
@@ -445,7 +445,7 @@ obj.add_property(Property(0xC5, "Water amount level", "unsigned char", 1, "optio
 __std_objects[(0x01, 0x39)] = obj
 
 # Electric heater (0x0142)
-obj = Object(0x01, 0x42)
+obj = Object("Electric heater", 0x01, 0x42)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB1, "Automatic temperature control setting", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB3, "Temperature setting", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
@@ -461,7 +461,7 @@ obj.add_property(Property(0x96, "Set value of OFF timer relative time", "unsigne
 __std_objects[(0x01, 0x42)] = obj
 
 # Fan heater (0x0143)
-obj = Object(0x01, 0x43)
+obj = Object("Fan heater", 0x01, 0x43)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xB3, "Temperature setting value", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
 obj.add_property(Property(0xBB, "Measured temperature", "signed char", 1, "optional", "-", "-", "-"))
@@ -480,7 +480,7 @@ obj.add_property(Property(0xC4, "Oil amount level", "unsigned char", 1, "optiona
 __std_objects[(0x01, 0x43)] = obj
 
 # Package-type commercial air conditioner (indoor unit) (0x0145)
-obj = Object(0x01, 0x45)
+obj = Object("Package-type commercial air conditioner (indoor unit)", 0x01, 0x45)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Operation mode setting", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xB3, "Temperature setting 1", "signed char", 1, "mandatory", "mandatory", "-", "mandatory"))
@@ -523,7 +523,7 @@ obj.add_property(Property(0x96, "OFF timer setting (relative time)", "unsigned c
 __std_objects[(0x01, 0x45)] = obj
 
 # Package-type commercial air conditioner (outdoor unit) (0x0146)
-obj = Object(0x01, 0x46)
+obj = Object("Package-type commercial air conditioner (outdoor unit)", 0x01, 0x46)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Operation mode setting", "unsigned char", 1, "optional", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB8, "Rated power consumption of outdoor unit", "unsigned short × 3", 6, "optional", "-", "-", "-"))
@@ -538,7 +538,7 @@ obj.add_property(Property(0xEE, "Measured outdoor air temperature 2", "signed sh
 __std_objects[(0x01, 0x46)] = obj
 
 # Electrically operated shade (0x0260)
-obj = Object(0x02, 0x60)
+obj = Object("Electrically operated shade", 0x02, 0x60)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Open/close setting", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xE1, "Degree-of-openi ng level", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
@@ -547,7 +547,7 @@ obj.add_property(Property(0xE3, "Shade open/close speed", "unsigned char", 1, "o
 __std_objects[(0x02, 0x60)] = obj
 
 # Electrically operated shutter (0x0261)
-obj = Object(0x02, 0x61)
+obj = Object("Electrically operated shutter", 0x02, 0x61)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Open/close setting 1", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xE1, "Extent of opening 1", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -559,7 +559,7 @@ obj.add_property(Property(0xE7, "Open/close setting 2", "unsigned char", 1, "man
 __std_objects[(0x02, 0x61)] = obj
 
 # Electrically operated storm window (0x0263)
-obj = Object(0x02, 0x63)
+obj = Object("Electrically operated storm window", 0x02, 0x63)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Open/close setting 1", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xE1, "Extent of opening 1", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -571,7 +571,7 @@ obj.add_property(Property(0xE7, "Open/close setting 2", "unsigned char", 1, "opt
 __std_objects[(0x02, 0x63)] = obj
 
 # Garden sprinkler (0x0267)
-obj = Object(0x02, 0x67)
+obj = Object("Garden sprinkler", 0x02, 0x67)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Sprinkle valve open/close setting", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
 obj.add_property(Property(0xE1, "Sprinkle interval setting", "unsigned long", 1, "optional", "optional", "-", "-"))
@@ -582,7 +582,7 @@ obj.add_property(Property(0xE5, "Sprinkle duration setting", "unsigned char", 1,
 __std_objects[(0x02, 0x67)] = obj
 
 # Electric water heater (0x026B)
-obj = Object(0x02, 0x6B)
+obj = Object("Electric water heater", 0x02, 0x6B)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "“Automatic water heating” setting", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
 obj.add_property(Property(0xB1, "“Automatic water temperature control” setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -612,7 +612,7 @@ obj.add_property(Property(0xDD, "Rated power consumption of H/P unit in summerti
 __std_objects[(0x02, 0x6B)] = obj
 
 # Bidet-equipped toilet(with electrically warmed seat) (0x026E)
-obj = Object(0x02, 0x6E)
+obj = Object("Bidet-equipped toilet(with electrically warmed seat)", 0x02, 0x6E)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Temperature level of toilet seat", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xE1, "Heater setting of toilet seat", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
@@ -630,7 +630,7 @@ obj.add_property(Property(0xEC, "Seating detection status", "unsigned char", 1, 
 __std_objects[(0x02, 0x6E)] = obj
 
 # Electric key (0x026F)
-obj = Object(0x02, 0x6F)
+obj = Object("Electric key", 0x02, 0x6F)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Lock setting 1", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xE1, "Lock setting 2", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -642,7 +642,7 @@ obj.add_property(Property(0xE6, "Auto lock mode setting", "unsigned char", 1, "o
 __std_objects[(0x02, 0x6F)] = obj
 
 # Hot water generator (0x0272)
-obj = Object(0x02, 0x72)
+obj = Object("Hot water generator", 0x02, 0x72)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xD0, "Hot water heating status", "unsigned char", 1, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xD1, "Set value of hot water temperature", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -669,7 +669,7 @@ obj.add_property(Property(0x92, "Set value of ON timer relative time", "unsigned
 __std_objects[(0x02, 0x72)] = obj
 
 # Bathroom dryer (0x0273)
-obj = Object(0x02, 0x73)
+obj = Object("Bathroom dryer", 0x02, 0x73)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Operation setting", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
 obj.add_property(Property(0xB1, "Ventilation operation setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -692,7 +692,7 @@ obj.add_property(Property(0x96, "OFF timer setting (relative time)", "unsigned c
 __std_objects[(0x02, 0x73)] = obj
 
 # Home solar power generation (0x0279)
-obj = Object(0x02, 0x79)
+obj = Object("Home solar power generation", 0x02, 0x79)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xD0, "System-interconnected type", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xE0, "Measured instantaneous amount of electricity generated", "unsigned short", 2, "mandatory", "-", "-", "-"))
@@ -708,7 +708,7 @@ obj.add_property(Property(0xE9, "Rated power generation output (Independent)", "
 __std_objects[(0x02, 0x79)] = obj
 
 # Cold / hot water heat source equipment (0x027A)
-obj = Object(0x02, 0x7A)
+obj = Object("Cold / hot water heat source equipment", 0x02, 0x7A)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Operation mode setting", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xE1, "Water temperature setting 1", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
@@ -728,7 +728,7 @@ obj.add_property(Property(0x96, "Relative OFF timer setting", "unsigned char ×2
 __std_objects[(0x02, 0x7A)] = obj
 
 # Floor heater (0x027B)
-obj = Object(0x02, 0x7B)
+obj = Object("Floor heater", 0x02, 0x7B)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Temperature setting 1", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
 obj.add_property(Property(0xE1, "Temperature setting 2", "unsigned char", 1, "mandatory", "mandatory", "-", "-"))
@@ -748,7 +748,7 @@ obj.add_property(Property(0x96, "Relative OFF timer setting", "unsigned char ×2
 __std_objects[(0x02, 0x7B)] = obj
 
 # Fuel cell (0x027C)
-obj = Object(0x02, 0x7C)
+obj = Object("Fuel cell", 0x02, 0x7C)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xC1, "Measured temperature of water in water heater", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xC2, "Rated power generation output", "unsigned short", 2, "optional", "-", "-", "-"))
@@ -770,7 +770,7 @@ obj.add_property(Property(0xE2, "Tank capacity", "unsigned short", 2, "optional"
 __std_objects[(0x02, 0x7C)] = obj
 
 # Storage battery (0x027D)
-obj = Object(0x02, 0x7D)
+obj = Object("Storage battery", 0x02, 0x7D)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xC8, "Minimum/maxim um charge electric energy", "unsigned long ×2", 8, "optional", "-", "-", "-"))
 obj.add_property(Property(0xC9, "Minimum/maxim um discharge electric energy", "unsigned long ×2", 8, "optional", "-", "-", "-"))
@@ -812,7 +812,7 @@ obj.add_property(Property(0xEF, "Rated voltage (Independent)", "unsigned short",
 __std_objects[(0x02, 0x7D)] = obj
 
 # Electric vehicle (0x027E)
-obj = Object(0x02, 0x7E)
+obj = Object("Electric vehicle", 0x02, 0x7E)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xC0, "V2H stored electricity 1", "unsigned long", 4, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xC1, "V2H stored electricity 2", "unsigned short", 2, "mandatory", "-", "-", "-"))
@@ -853,7 +853,7 @@ obj.add_property(Property(0xEE, "Discharge current setting", "unsigned short", 2
 __std_objects[(0x02, 0x7E)] = obj
 
 # Engine cogeneration (0x027F)
-obj = Object(0x02, 0x7F)
+obj = Object("Engine cogeneration", 0x02, 0x7F)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xC1, "Measured temperature of water in water heater", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xC2, "Rated power generation output", "unsigned short", 2, "optional", "-", "-", "-"))
@@ -875,7 +875,7 @@ obj.add_property(Property(0xE2, "Tank capacity", "unsigned short", 2, "optional"
 __std_objects[(0x02, 0x7F)] = obj
 
 # Electric energy meter (0x0280)
-obj = Object(0x02, 0x80)
+obj = Object("Electric energy meter", 0x02, 0x80)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Integral electric energy measurement value", "unsigned long", 4, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xE2, "Integral electric energy unit", "unsigned char", 1, "mandatory", "-", "-", "-"))
@@ -884,7 +884,7 @@ obj.add_property(Property(0xE4, "Integral electric energy measurement log 2", "u
 __std_objects[(0x02, 0x80)] = obj
 
 # Water flow meter (0x0281)
-obj = Object(0x02, 0x81)
+obj = Object("Water flow meter", 0x02, 0x81)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xD0, "Flowing water classification", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xD1, "Owner classification", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -898,14 +898,14 @@ obj.add_property(Property(0xE6, "Verification expiration information", "unsigned
 __std_objects[(0x02, 0x81)] = obj
 
 # Gas meter (0x0282)
-obj = Object(0x02, 0x82)
+obj = Object("Gas meter", 0x02, 0x82)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Integral gas consumption measurement value", "unsigned long", 4, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xE2, "Integral gas consumption measurement log", "unsigned long × 48", 192, "optional", "-", "-", "-"))
 __std_objects[(0x02, 0x82)] = obj
 
 # LP gas meter (0x0283)
-obj = Object(0x02, 0x83)
+obj = Object("LP gas meter", 0x02, 0x83)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Integral gas consumption of metering data 1", "unsigned long", 4, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xE1, "Integral gas consumption of metering data 2", "unsigned long", 4, "mandatory", "-", "-", "-"))
@@ -934,7 +934,7 @@ obj.add_property(Property(0xD7, "Test call setting", "unsigned char", 1, "option
 __std_objects[(0x02, 0x83)] = obj
 
 # Distribution panel metering (0x0287)
-obj = Object(0x02, 0x87)
+obj = Object("Distribution panel metering", 0x02, 0x87)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Master rated capacity", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xB1, "Number of measurement channels (simplex)", "unsigned char", 1, "optional", "-", "-", "-"))
@@ -995,7 +995,7 @@ obj.add_property(Property(0xEF, "Measurement channel 32", "unsigned long + signe
 __std_objects[(0x02, 0x87)] = obj
 
 # Smart electric energy meter (0x0288)
-obj = Object(0x02, 0x88)
+obj = Object("Smart electric energy meter", 0x02, 0x88)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xD0, "Electric energy meter classification", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xD1, "Owner classification", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -1019,7 +1019,7 @@ obj.add_property(Property(0xEB, "Cumulative amounts of electric energy measured 
 __std_objects[(0x02, 0x88)] = obj
 
 # Smart gas meter (0x0289)
-obj = Object(0x02, 0x89)
+obj = Object("Smart gas meter", 0x02, 0x89)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Gas meter classification setting", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xE1, "Owner classification setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -1041,7 +1041,7 @@ obj.add_property(Property(0xD1, "Historical information of cumulative gas consum
 __std_objects[(0x02, 0x89)] = obj
 
 # General lighting class (0x0290)
-obj = Object(0x02, 0x90)
+obj = Object("General lighting class", 0x02, 0x90)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Illuminance level", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Light color setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -1067,14 +1067,14 @@ obj.add_property(Property(0x95, "OFF timer setting", "unsigned char ×2", 2, "op
 __std_objects[(0x02, 0x90)] = obj
 
 # Buzzer (0x02A0)
-obj = Object(0x02, 0xA0)
+obj = Object("Buzzer", 0x02, 0xA0)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB1, "Sound generation setting", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xE0, "Buzzer sound type", "unsigned char", 1, "optional", "optional", "-", "-"))
 __std_objects[(0x02, 0xA0)] = obj
 
 # Electric hot water pot(electric thermos) (0x03B2)
-obj = Object(0x03, 0xB2)
+obj = Object("Electric hot water pot(electric thermos)", 0x03, 0xB2)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Cover open/close status", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xB1, "No-water warning", "unsigned char", 1, "optional", "-", "-", "mandatory"))
@@ -1086,7 +1086,7 @@ obj.add_property(Property(0xE3, "Lock status", "unsigned char", 1, "optional", "
 __std_objects[(0x03, 0xB2)] = obj
 
 # Refrigerator (0x03B7)
-obj = Object(0x03, 0xB7)
+obj = Object("Refrigerator", 0x03, 0xB7)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Door open/close status", "unsigned char", 1, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xB1, "Door open warning", "unsigned char", 1, "optional", "-", "-", "mandatory"))
@@ -1125,7 +1125,7 @@ obj.add_property(Property(0xAD, "Deodorization function setting", "unsigned char
 __std_objects[(0x03, 0xB7)] = obj
 
 # Combination microwave oven(Electronic oven) (0x03B8)
-obj = Object(0x03, 0xB8)
+obj = Object("Combination microwave oven(Electronic oven)", 0x03, 0xB8)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Door open/close status", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xB1, "Heating status", "unsigned char", 1, "optional", "-", "-", "-"))
@@ -1150,7 +1150,7 @@ obj.add_property(Property(0xEC, "Two-stage microwave heating setting (heating po
 __std_objects[(0x03, 0xB8)] = obj
 
 # Cooking heater (0x03B9)
-obj = Object(0x03, 0xB9)
+obj = Object("Cooking heater", 0x03, 0xB9)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB1, "Heating status", "unsigned char × 4", 4, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xB2, "Heating setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -1164,7 +1164,7 @@ obj.add_property(Property(0xA2, "Radiant heater lock setting", "unsigned char", 
 __std_objects[(0x03, 0xB9)] = obj
 
 # Rice cooker (0x03BB)
-obj = Object(0x03, 0xBB)
+obj = Object("Rice cooker", 0x03, 0xBB)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Cover open/close status", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xB1, "Rice cooking status", "unsigned char", 1, "mandatory", "-", "-", "-"))
@@ -1178,7 +1178,7 @@ obj.add_property(Property(0x92, "Set value of rice cooking reservation setting r
 __std_objects[(0x03, 0xBB)] = obj
 
 # Washing machine (0x03C5)
-obj = Object(0x03, 0xC5)
+obj = Object("Washing machine", 0x03, 0xC5)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Door/cover open/close status", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xB2, "Washing machine setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -1190,7 +1190,7 @@ obj.add_property(Property(0x92, "Relative time-based ON timer setting", "unsigne
 __std_objects[(0x03, 0xC5)] = obj
 
 # Clothes dryer (0x03C6)
-obj = Object(0x03, 0xC6)
+obj = Object("Clothes dryer", 0x03, 0xC6)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Door/cover open/close status", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xB2, "Drying setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -1202,7 +1202,7 @@ obj.add_property(Property(0x92, "Relative time-based ON timer setting", "unsigne
 __std_objects[(0x03, 0xC6)] = obj
 
 # Washer and dryer (0x03D3)
-obj = Object(0x03, 0xD3)
+obj = Object("Washer and dryer", 0x03, 0xD3)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Door/cover open/close status", "unsigned char", 1, "optional", "-", "-", "-"))
 obj.add_property(Property(0xB2, "Washer and dryer setting", "unsigned char", 1, "optional", "optional", "-", "-"))
@@ -1239,20 +1239,20 @@ obj.add_property(Property(0x92, "Relative time-based ON timer setting", "unsigne
 __std_objects[(0x03, 0xD3)] = obj
 
 # Weighing machine (0x0401)
-obj = Object(0x04, 0x01)
+obj = Object("Weighing machine", 0x04, 0x01)
 obj.add_property(Property(0x80, "Operation status", "unsigned short", 1, "mandatory", "optional", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Measured value of body weight", "unsigned short", 2, "mandatory", "-", "-", "-"))
 obj.add_property(Property(0xE1, "Measured value of body fat", "unsigned short", 2, "optional", "-", "-", "-"))
 __std_objects[(0x04, 0x01)] = obj
 
 # Switch (supporting JEM-A / HA terminals) (0x05FD)
-obj = Object(0x05, 0xFD)
+obj = Object("Switch (supporting JEM-A / HA terminals)", 0x05, 0xFD)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xE0, "Connected device", "unsigned char", 12, "optional", "optional", "-", "-"))
 __std_objects[(0x05, 0xFD)] = obj
 
 # Display (0x0601)
-obj = Object(0x06, 0x01)
+obj = Object("Display", 0x06, 0x01)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Display control setting", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Character string setting acceptance status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))
@@ -1262,7 +1262,7 @@ obj.add_property(Property(0xB4, "Length of character string accepted", "unsigned
 __std_objects[(0x06, 0x01)] = obj
 
 # Television (0x0602)
-obj = Object(0x06, 0x02)
+obj = Object("Television", 0x06, 0x02)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Display control setting", "unsigned char", 1, "optional", "optional", "-", "-"))
 obj.add_property(Property(0xB1, "Character string setting acceptance status", "unsigned char", 1, "mandatory", "-", "-", "mandatory"))

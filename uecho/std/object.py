@@ -17,8 +17,9 @@ from ..object import Object as ObjectBase
 
 class Object(ObjectBase):
 
-    def __init__(self, grp_code, cls_code):
+    def __init__(self, name: str, grp_code: int, cls_code: int):
         super().__init__()
+        self.name = name
         self.group_code = grp_code
         self.class_code = cls_code
         self.properties = {}
