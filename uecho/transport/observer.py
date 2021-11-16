@@ -14,5 +14,6 @@
 
 
 class Observer(object):
+
     def message_received(self, msg):
         pass

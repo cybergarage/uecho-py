@@ -27,6 +27,7 @@ from .node import Node
 
 
 class SearchMessage(Message):
+
     def __init__(self):
         super(SearchMessage, self).__init__()
         self.ESV = ESV.READ_REQUEST
@@ -43,12 +44,14 @@ class Controller(Observer):
     send any requests to the found devices and receive the responses
     easily without building the binary protocol messages directly.
     """
+
     def __init__(self):
         self.node = LocalNode()
         self.found_nodes = {}
         self.__last_post_msg = Controller.__PostMessage()
 
     class __PostMessage():
+
         def __init__(self):
             self.request = None
             self.response = None

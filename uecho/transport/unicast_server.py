@@ -17,6 +17,7 @@ from .multicast_server import MulticastServer
 
 
 class UnicastServer(Server):
+
     def __init__(self):
         super(UnicastServer, self).__init__()
 

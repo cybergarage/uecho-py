@@ -19,5 +19,6 @@ class ESV(ProtocolESV):
     """
     ESV represents a ESV code in a protocol message of Echonet Lite.
     """
+
     def __init__(self):
         super(ESV, self).__init__()
