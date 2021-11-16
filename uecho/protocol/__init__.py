@@ -15,8 +15,6 @@
 This module includes internal classes to handle any messages of Echonet Lite protocol.
 """
 
-from __future__ import absolute_import
-
 from .message import Message
 from .esv import ESV
 from .property import Property
