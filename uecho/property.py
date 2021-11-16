@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import copy
+
 
 class Property(object):
     """Property represents a property of ECHONET Lite, and it includes the specification attributes and the dynamic data.
@@ -65,3 +67,6 @@ class Property(object):
 
     def is_status_change_required(self) -> bool:
         return self.__is_attribute_enabled(self.attrs[Property.ANNO_STATUS])
+
+    def copy(self):
+        return copy.deepcopy(self)
