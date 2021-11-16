@@ -96,3 +96,11 @@ class Object(object):
             return self.properties[code]
         except KeyError:
             return None
+
+    def copy(self):
+        obj = Object()
+        obj.code = self.code
+        obj.name = self.name
+        for prop in self.properties:
+            obj.add_property(prop.copy())
+        return obj
