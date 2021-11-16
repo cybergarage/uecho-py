@@ -63,7 +63,7 @@ class Server(threading.Thread):
 
     def notify(self, msg):
         for observer in self.observers:
-            observer.message_received(msg)
+            observer._message_received(msg)
 
     def start(self):
         if self.socket is None:
