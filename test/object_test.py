@@ -19,6 +19,6 @@ def test_object():
     obj = Object()
     assert obj.set_code(0x0EF001)
     assert obj.code == 0x0EF001
-    assert obj.instance_code == 0x01
+    assert obj.group_code == 0x0E
     assert obj.class_code == 0xF0
-    assert obj.class_group_code == 0x0E
+    assert obj.instance_code == 0x01
