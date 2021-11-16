@@ -14,6 +14,8 @@
 
 import time
 
+from uecho.object import Object
+
 from .log.logger import debug
 from .transport.observer import Observer
 
@@ -92,7 +94,17 @@ class Controller(Observer):
         if not isinstance(node, RemoteNode):
             return False
         node.controller = self
+
+        # Adds standard object attributes and properties
+        for obj in node.objects:
+            std_obj = self.__database.get_object(obj.group_code, obj.class_code)
+            if isinstance(std_obj, Object):
+                obj.name = std_obj.name
+                for std_prop in std_obj.properties:
+                    obj.add_property(std_prop.copy())
+
         self.__found_nodes[node.ip] = node
+
         return True
 
     def announce_message(self, msg):

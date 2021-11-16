@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import copy
+from typing import List
 
 
 class Property(object):
@@ -32,7 +33,7 @@ class Property(object):
     OPTIONAL = 2
 
     code: int
-    attrs: list[int]
+    attrs: List[int]
     name: str
     size: int
     data: bytes
