@@ -48,16 +48,16 @@ def test_parse_message():
             opc,
             1,
             1,
-            0x41,  # a
+            0x41,    # a
             2,
             2,
-            0x41,  # a
-            0x42,  # b
+            0x41,    # a
+            0x42,    # b
             3,
             3,
-            0x41,  # a
-            0x42,  # b
-            0x43,  # c
+            0x41,    # a
+            0x42,    # b
+            0x43,    # c
         ])
 
         return msg_bytes

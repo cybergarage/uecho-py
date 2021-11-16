@@ -22,7 +22,7 @@ clean:
 	rm -rf tests/*/__pycache__
 
 format:
-	yapf -ir uecho bin test
+	yapf -ir --style setup.cfg uecho bin test
 
 lint: format
 	flake8 uecho bin test
@@ -31,7 +31,7 @@ lint: format
 type: format
 	mypy uecho
 
-test: lint
+test: lint type
 	env PYTHONPATH=`pwd` py.test test
 
 build:
