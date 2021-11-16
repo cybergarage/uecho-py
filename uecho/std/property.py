@@ -14,35 +14,22 @@
 
 from typing import Any
 
+from ..property import Property as PropertyBase
 
-class Property(object):
-    GET = 0
-    SET = 1
-    ANNO = 2
-    ANNO_STATUS = 3
 
-    NONE = 0
-    REQUIRED = 1
-    OPTIONAL = 2
-
-    code: int
-    name: str
+class Property(PropertyBase):
     typ: str
-    size: int
-    get: int
-    set: int
-    anno: int
-    anno_status: int
 
     def __init__(self, code: int, name: str, typ: str, size: int, get: Any, set: Any, anno: Any, chg: Any):
+        super().__init__()
         self.code = code
         self.name = name
         self.typ = typ
         self.size = size
-        self.get = self.__to_attribute(get)
-        self.set = self.__to_attribute(set)
-        self.anno = self.__to_attribute(anno)
-        self.anno_status = self.__to_attribute(chg)
+        self.set_attribute(PropertyBase.GET, self.__to_attribute(get))
+        self.set_attribute(PropertyBase.SET, self.__to_attribute(set))
+        self.set_attribute(PropertyBase.ANNO, self.__to_attribute(anno))
+        self.set_attribute(PropertyBase.ANNO_STATUS, self.__to_attribute(chg))
 
     def __to_attribute(self, val: Any) -> int:
         attr = Property.NONE
@@ -54,14 +41,3 @@ class Property(object):
             elif val.lower() == "optional":
                 attr = Property.OPTIONAL
         return attr
-
-    def attribute(self, typ: int) -> int:
-        if typ == Property.GET:
-            return self.get
-        if typ == Property.SET:
-            return self.set
-        if typ == Property.ANNO:
-            return self.anno
-        if typ == Property.ANNO_STATUS:
-            return self.anno_status
-        return Property.NONE

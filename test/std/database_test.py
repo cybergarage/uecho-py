@@ -34,7 +34,7 @@ def test_object_database():
     for expected in expecteds:
         prop = obj.get_property(expected[0])
         assert prop
-        assert prop.get == expected[1]
-        assert prop.set == expected[2]
-        assert prop.anno == expected[3]
-        assert prop.anno_status == expected[4]
+        assert prop.get_attribute(Property.GET) == expected[1]
+        assert prop.get_attribute(Property.SET) == expected[2]
+        assert prop.get_attribute(Property.ANNO) == expected[3]
+        assert prop.get_attribute(Property.ANNO_STATUS) == expected[4]

@@ -12,24 +12,37 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .protocol.property import Property as ProtocolProperty
 
+class Property(object):
+    """Property represents a property that includes the specification attributes and the dynamic data.
+    """
 
-class Property(ProtocolProperty):
     CODE_MIN = 0x80
     CODE_MAX = 0xFF
 
-    FORMAT1_MAX_SIZE = 15
-    FORMAT2_SIZE = 18
-    FORMAT_MAX_SIZE = FORMAT2_SIZE
+    GET = 0
+    SET = 1
+    ANNO = 2
+    ANNO_STATUS = 3
 
-    ATTRIBUTE_NONE = 0x00
-    ATTRIBUTE_READ = 0x01
-    ATTRIBUTE_WRITE = 0x02
-    ATTRIBUTE_ANNO = 0x10
-    ATTRIBUTE_READ_WRITE = ATTRIBUTE_READ | ATTRIBUTE_WRITE
-    ATTRIBUTE_READ_ANNO = ATTRIBUTE_READ | ATTRIBUTE_ANNO
+    NONE = 0
+    REQUIRED = 1
+    OPTIONAL = 2
+
+    code: int
+    attrs: list[int]
+    name: str
+    size: int
+    data: bytes
+    anno_status: bool
 
     def __init__(self):
-        super(Property, self).__init__()
-        self.attr = Property.ATTRIBUTE_NONE
+        self.code = 0
+        self.data = bytes()
+        self.attrs = [Property.NONE, Property.NONE, Property.NONE, Property.NONE]
+
+    def set_attribute(self, typ: int, attr: int):
+        self.attrs[typ] = attr
+
+    def get_attribute(self, typ: int) -> int:
+        return self.attrs[typ]
