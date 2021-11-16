@@ -12,10 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import Union
+
 from .property import Property
 
 
 class Object(object):
+    """Object represents a object of ECHONET Lite, and it has child properties that includes the specification attributes and the dynamic data.
+    """
+
     CODE_MIN = 0x000000
     CODE_MAX = 0xFFFFFF
     CODE_SIZE = 3
@@ -40,25 +45,54 @@ class Object(object):
 
     MANUFACTURER_UNKNOWN = MANUFACTURER_EVALUATION_CODE_MIN
 
+    code: int
+    name: str
+    properties: dict
+
     def __init__(self):
         self.code = 0
-        self.class_group_code = 0
-        self.class_code = 0
-        self.instance_code = 0
+        self.name = ""
         self.properties = {}
         pass
 
-    def set_code(self, code):
+    def set_code(self, code: int) -> bool:
         if type(code) is int:
             self.code = code
-            self.class_group_code = ((code >> 16) & 0xFF)
-            self.class_code = ((code >> 8) & 0xFF)
-            self.instance_code = (code & 0xFF)
             return True
         return False
 
-    def add_property(self, prop):
+    @property
+    def group_code(self):
+        return ((self.code >> 16) & 0xFF)
+
+    @group_code.setter
+    def group_code(self, code: int):
+        self.code |= ((code & 0xFF) << 16)
+
+    @property
+    def class_code(self):
+        return ((self.code >> 8) & 0xFF)
+
+    @class_code.setter
+    def class_code(self, code: int):
+        self.code |= ((code & 0xFF) << 16)
+
+    @property
+    def instance_code(self):
+        return (self.code & 0xFF)
+
+    @instance_code.setter
+    def instance_code(self, code: int):
+        self.code |= (code & 0xFF)
+
+    def add_property(self, prop: Property) -> bool:
         if not isinstance(prop, Property):
             return False
         self.properties[prop.code] = prop
         return True
+
+    def get_property(self, code: int) -> Union[Property, None]:
+        try:
+            return self.properties[code]
+        except KeyError:
+            return None
