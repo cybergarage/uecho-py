@@ -24,19 +24,7 @@ from .message import Message
 from .property import Property
 from .remote_node import RemoteNode
 from .node import Node
-
-
-class SearchMessage(Message):
-
-    def __init__(self):
-        super(SearchMessage, self).__init__()
-        self.ESV = ESV.READ_REQUEST
-        self.SEOJ = NodeProfile.OBJECT
-        self.DEOJ = NodeProfile.OBJECT
-        prop = Property()
-        prop.code = NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S
-        prop.data = bytearray()
-        self.add_property(prop)
+from .std import ObjectDatabase
 
 
 class Controller(Observer):
@@ -45,10 +33,16 @@ class Controller(Observer):
     easily without building the binary protocol messages directly.
     """
 
+    __node: LocalNode
+    __found_nodes: dict
+    # __last_post_msg: Controller.__PostMessage
+    __database: ObjectDatabase
+
     def __init__(self):
-        self.node = LocalNode()
-        self.found_nodes = {}
+        self.__node = LocalNode()
+        self.__found_nodes = {}
         self.__last_post_msg = Controller.__PostMessage()
+        self.__database = ObjectDatabase()
 
     class __PostMessage():
 
@@ -63,6 +57,18 @@ class Controller(Observer):
                 return False
             return True
 
+    class __SearchMessage(Message):
+
+        def __init__(self):
+            super().__init__()
+            self.ESV = ESV.READ_REQUEST
+            self.SEOJ = NodeProfile.OBJECT
+            self.DEOJ = NodeProfile.OBJECT
+            prop = Property()
+            prop.code = NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S
+            prop.data = bytearray()
+            self.add_property(prop)
+
     @property
     def nodes(self):
         """Retures found nodes.
@@ -71,7 +77,7 @@ class Controller(Observer):
             list[RemoteNode]; The found remote node list.
         """
         nodes = []
-        for node in self.found_nodes.values():
+        for node in self.__found_nodes.values():
             nodes.append(node)
         return nodes
 
@@ -86,26 +92,13 @@ class Controller(Observer):
         if not isinstance(node, RemoteNode):
             return False
         node.controller = self
-        self.found_nodes[node.ip] = node
+        self.__found_nodes[node.ip] = node
         return True
-
-    def message_received(self, msg):
-        debug('%s -> %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
-
-        if self.__is_node_profile_message(msg):
-            node = RemoteNode()
-            node.set_address(msg.from_addr)
-            if node.parse_message(msg):
-                self.__add_found_node(node)
-
-        if self.__last_post_msg.is_waiting():
-            if self.__last_post_msg.request.is_response(msg):
-                self.__last_post_msg.response = msg
 
     def announce_message(self, msg):
         """Posts a multicast message to the same local network asynchronously.
         """
-        return self.node.announce_message(msg)
+        return self.__node.announce_message(msg)
 
     def send_message(self, msg, addr):
         """Posts a unicast message to the specified node asynchronously.
@@ -119,12 +112,12 @@ class Controller(Observer):
             to_addr = (addr.ip, addr.port)
         elif isinstance(addr, str):
             to_addr = (addr, Node.PORT)
-        return self.node.send_message(msg, to_addr)
+        return self.__node.send_message(msg, to_addr)
 
     def search(self):
         """Posts a multicast read request to search all nodes in the same local network asynchronously.
         """
-        msg = SearchMessage()
+        msg = Controller.__SearchMessage()
         return self.announce_message(msg)
 
     def post_message(self, msg, addr):
@@ -153,15 +146,28 @@ class Controller(Observer):
     def start(self):
         """Starts the controller to listen to any multicast and unicast messages from other nodes in the same local network, and executes search() after starting.
         """
-        if not self.node.start():
+        if not self.__node.start():
             return False
-        self.node.add_observer(self)
+        self.__node.add_observer(self)
         self.search()
         return True
 
     def stop(self):
         """ Stops the controller not to listen to any messages.
         """
-        if not self.node.stop():
+        if not self.__node.stop():
             return False
         return True
+
+    def _message_received(self, msg):
+        debug('%s -> %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
+
+        if self.__is_node_profile_message(msg):
+            node = RemoteNode()
+            node.set_address(msg.from_addr)
+            if node.parse_message(msg):
+                self.__add_found_node(node)
+
+        if self.__last_post_msg.is_waiting():
+            if self.__last_post_msg.request.is_response(msg):
+                self.__last_post_msg.response = msg
