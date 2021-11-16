@@ -151,7 +151,7 @@ class Controller(Observer):
         return self.__last_post_msg.response
 
     def start(self):
-        """ Starts the controller to listen to any multicast and unicast messages from other nodes in the same local network.
+        """Starts the controller to listen to any multicast and unicast messages from other nodes in the same local network, and executes search() after starting.
         """
         if not self.node.start():
             return False
