@@ -14,7 +14,7 @@
 
 
 class Property(object):
-    """Property represents a property that includes the specification attributes and the dynamic data.
+    """Property represents a property of ECHONET Lite, and it includes the specification attributes and the dynamic data.
     """
 
     CODE_MIN = 0x80

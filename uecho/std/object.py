@@ -12,26 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Union
-
-from .property import Property
+from ..object import Object as ObjectBase
 
 
-class Object(object):
-    grp_code: int
-    cls_code: int
-    properties: dict
+class Object(ObjectBase):
 
     def __init__(self, grp_code, cls_code):
-        self.grp_code = grp_code
-        self.cls_code = cls_code
+        super().__init__()
+        self.group_code = grp_code
+        self.class_code = cls_code
         self.properties = {}
-
-    def add_property(self, prop: Property):
-        self.properties[prop.code] = prop
-
-    def get_property(self, code: int) -> Union[Property, None]:
-        try:
-            return self.properties[code]
-        except KeyError:
-            return None
