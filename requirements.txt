@@ -1,1 +1,2 @@
 netifaces
+typing_extensions

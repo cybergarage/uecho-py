@@ -29,6 +29,7 @@ setuptools.setup(
     url='https://github.com/cybergarage/uecho-py.git',
     install_requires=[
         'netifaces',
+        'typing_extensions',	
     ],
     packages=setuptools.find_packages(),
     classifiers=[
