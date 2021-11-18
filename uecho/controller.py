@@ -26,7 +26,7 @@ from .message import Message
 from .property import Property
 from .remote_node import RemoteNode
 from .node import Node
-from .std import ObjectDatabase
+from .std import Database
 
 
 class Controller(Observer):
@@ -38,13 +38,13 @@ class Controller(Observer):
     __node: LocalNode
     __found_nodes: dict
     # __last_post_msg: Controller.__PostMessage
-    __database: ObjectDatabase
+    __database: Database
 
     def __init__(self):
         self.__node = LocalNode()
         self.__found_nodes = {}
         self.__last_post_msg = Controller.__PostMessage()
-        self.__database = ObjectDatabase()
+        self.__database = Database()
 
     class __PostMessage():
 
