@@ -14,8 +14,25 @@
 
 from typing import Union
 
+from .manufacture import Manufacture
 from .object import Object
 from .objects import get_all_std_objects
+from .manufacturers import get_all_std_manufactures
+
+
+class ManufacturerDatabase(object):
+
+    __manufacturers: dict
+
+    def __init__(self):
+        self.__manufacturers = get_all_std_manufactures()
+        pass
+
+    def get_manufacturer(self, code) -> Union[Manufacture, None]:
+        try:
+            return self.__manufacturers[(code)]
+        except KeyError:
+            return None
 
 
 class ObjectDatabase(object):
@@ -31,3 +48,9 @@ class ObjectDatabase(object):
             return self.__objects[(grp_code, cls_code)]
         except KeyError:
             return None
+
+
+class Database(ManufacturerDatabase, ObjectDatabase):
+
+    def __init__(self):
+        super().__init__()

@@ -12,9 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .database import ObjectDatabase, ManufacturerDatabase, Database
-from .object import Object
-from .manufacture import Manufacture
-from .property import Property
+from ..manufacturer import Manufacture as ManufactureBase
 
-__all__ = ['Database', 'ObjectDatabase', 'ManufacturerDatabase', 'Object', 'Property', 'Manufacture']
+
+class Manufacture(ManufactureBase):
+
+    def __init__(self, code: int, name: str):
+        super().__init__()
+        self.name = name
+        self.code = code
