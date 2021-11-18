@@ -16,20 +16,37 @@ SHELL := bash
 
 DEVICE_LIST_CSV=DeviceList.csv
 DEVICE_LIST_URL=https://raw.githubusercontent.com/SonyCSL/ECHONETLite-ObjectDatabase/master/data/csv/en/${DEVICE_LIST_CSV}
+DEVICE_LIST_SOURCE_FILE=objects.py
 
-SOURCE_FILE=objects.py
+MANUFACTURE_XLSX=list_code_e.xlsx
+MANUFACTURE_CSV=list_code_e.csv
+MANUFACTURE_LIST_URL=https://echonet.jp/wp/wp-content/uploads/pdf/General/Echonet/ManufacturerCode_en/${MANUFACTURE_XLSX}
+MANUFACTURE_LIST_SOURCE_FILE=manufacturers.py
 
-.PHONY: all devicelist clean
+#SOURCE_FILE=objects.py manufacturers.py
+SOURCE_FILE=${MANUFACTURE_LIST_SOURCE_FILE}
+
+.PHONY: all ${DEVICE_LIST_CSV} ${MANUFACTURE_CSV} clean
 
 all: ${SOURCE_FILE} clean
 
-%.py : %.pl
-	@./$< ${DEVICE_LIST_CSV} > $@
+${DEVICE_LIST_SOURCE_FILE} : ${DEVICE_LIST_CSV}
+	@./$*.pl ${DEVICE_LIST_CSV} > $@
 
-devicelist:
+${MANUFACTURE_LIST_SOURCE_FILE} : ${MANUFACTURE_CSV}
+	@./$*.pl ${MANUFACTURE_CSV} > $@
+
+${DEVICE_LIST_CSV}:
 	@wget -q -O ${DEVICE_LIST_CSV} ${DEVICE_LIST_URL}
 
-${SOURCE_FILE}: devicelist
+${MANUFACTURE_XLSX}:
+	@wget -q -O ${MANUFACTURE_XLSX} ${MANUFACTURE_LIST_URL}
+
+${MANUFACTURE_CSV}: ${MANUFACTURE_XLSX}
+	ssconvert $< $@
+
+${DEVICE_LIST_SOURCE_FILE}: ${DEVICE_LIST_CSV}
+${MANUFACTURE_LIST_SOURCE_FILE}: ${MANUFACTURE_CSV} 
 
 clean:
-	@rm -f *.csv
+	@rm -f *.csv *.xlsx
