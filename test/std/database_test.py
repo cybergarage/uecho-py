@@ -15,7 +15,21 @@
 from uecho.std import Database, Property
 
 
-def test_database():
+def test_manufacture_database():
+    db = Database()
+
+    expecteds = [
+        [0x00000B, "Panasonic"],
+        [0x000005, "Sharp"],
+    ]
+
+    for expected in expecteds:
+        man = db.get_manufacturer(expected[0])
+        assert man
+        assert man.name.startswith(expected[1])
+
+
+def test_object_database():
     db = Database()
 
     assert db.get_object(0x00, 0x00) is None
