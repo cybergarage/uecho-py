@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho.std import ObjectDatabase, Property
+from uecho.std import Database, Property
 
 
-def test_object_database():
-    db = ObjectDatabase()
+def test_database():
+    db = Database()
 
     assert db.get_object(0x00, 0x00) is None
 

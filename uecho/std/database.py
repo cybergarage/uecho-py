@@ -20,13 +20,14 @@ from .objects import get_all_std_objects
 from .manufacturers import get_all_std_manufactures
 
 
-class ManufacturerDatabase(object):
+class Database():
 
     __manufacturers: dict
+    __objects: dict
 
     def __init__(self):
         self.__manufacturers = get_all_std_manufactures()
-        pass
+        self.__objects = get_all_std_objects()
 
     def get_manufacturer(self, code) -> Union[Manufacture, None]:
         try:
@@ -34,23 +35,8 @@ class ManufacturerDatabase(object):
         except KeyError:
             return None
 
-
-class ObjectDatabase(object):
-
-    __objects: dict
-
-    def __init__(self):
-        self.__objects = get_all_std_objects()
-        pass
-
     def get_object(self, grp_code: int, cls_code: int) -> Union[Object, None]:
         try:
             return self.__objects[(grp_code, cls_code)]
         except KeyError:
             return None
-
-
-class Database(ManufacturerDatabase, ObjectDatabase):
-
-    def __init__(self):
-        super().__init__()

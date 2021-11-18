@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .database import ObjectDatabase, ManufacturerDatabase, Database
+from .database import Database
 from .object import Object
 from .manufacture import Manufacture
 from .property import Property
