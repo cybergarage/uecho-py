@@ -12,13 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import List
 import netifaces
 
 
 class Interface(object):
 
     @staticmethod
-    def get_all_ipaddrs() -> list[str]:
+    def get_all_ipaddrs() -> List[str]:
         ipaddrs = []
         for ifname in netifaces.interfaces():
             ifaddrs = netifaces.ifaddresses(ifname)
