@@ -28,6 +28,7 @@ from .protocol.message import Message as ProtocolMessage
 from .property import Property
 from .remote_node import RemoteNode
 from .node import Node
+from .manufacturer import Manufacture
 from .std import Database
 
 
@@ -84,6 +85,12 @@ class Controller(Observer):
         for node in self.__found_nodes.values():
             nodes.append(node)
         return nodes
+
+    def get_standard_manufacturer(self, code: int) -> Union[Manufacture, None]:
+        return self.__database.get_manufacturer(code)
+
+    def get_standard_object(self, grp_code: int, cls_code: int) -> Union[Object, None]:
+        return self.__database.get_object(grp_code, cls_code)
 
     def __is_node_profile_message(self, msg: ProtocolMessage):
         if msg.ESV != ESV.NOTIFICATION and msg.ESV != ESV.READ_RESPONSE:
