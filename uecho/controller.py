@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import time
-from typing import Any, Union, List
+from typing import Any, Union, List, Tuple
 
 from uecho.object import Object
 
@@ -121,7 +121,7 @@ class Controller(Observer):
         """
         return self.__node.announce_message(msg)
 
-    def send_message(self, msg: Message, addr: Union[tuple[str, int], str, RemoteNode]):
+    def send_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]):
         """Posts a unicast message to the specified node asynchronously.
 
             Args:
