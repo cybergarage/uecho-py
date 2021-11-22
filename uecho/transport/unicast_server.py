@@ -14,6 +14,7 @@
 
 from .server import Server
 from .multicast_server import MulticastServer
+from ..protocol.message import Message
 
 
 class UnicastServer(Server):
@@ -21,22 +22,26 @@ class UnicastServer(Server):
     def __init__(self):
         super(UnicastServer, self).__init__()
 
-    def bind(self, ifaddr):
-        self.socket = self.create_udp_socket()
-        self.socket.bind((ifaddr, self.port))
+    def bind(self, ifaddr: str) -> bool:
+        self.sock = self.create_udp_socket()
+        self.sock.bind((ifaddr, self.port))
         return True
 
-    def announce_message(self, msg):
-        if self.socket is None:
+    def announce_message(self, msg: Message) -> bool:
+        if self.sock is None:
             return False
         to_addr = (MulticastServer.ADDRESS, Server.PORT)
         msg.to_addr = to_addr
-        return self.socket.sendto(msg.to_bytes(), to_addr)
+        if self.sock.sendto(msg.to_bytes(), to_addr) <= 0:
+            return False
+        return True
 
-    def send_message(self, msg, addr):
+    def send_message(self, msg: Message, addr) -> bool:
         if not isinstance(addr, tuple) or len(addr) != 2:
             return False
-        if self.socket is None:
+        if self.sock is None:
             return False
         msg.to_addr = addr
-        return self.socket.sendto(msg.to_bytes(), addr)
+        if self.sock.sendto(msg.to_bytes(), addr) <= 0:
+            return False
+        return True

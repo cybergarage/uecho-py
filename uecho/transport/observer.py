@@ -12,8 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from ..protocol.message import Message
+
 
 class Observer(object):
 
-    def _message_received(self, msg):
+    def _message_received(self, msg: Message):
         pass

@@ -12,22 +12,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# from typing import List
-
+from typing import Any
 from .interface import Interface
 from .multicast_server import MulticastServer
 from .unicast_server import UnicastServer
+from .server import Server
+from ..protocol.message import Message
 from ..log.logger import debug
 
 
 class Manager(object):
-    # servers: List[Server]
+
+    servers: list[Server]
+    __TID: int
 
     def __init__(self):
         self.servers = []
         self.__TID = 0
 
-    def __next_TID(self):
+    def __next_TID(self) -> int:
         self.__TID += 1
         if 0xFF < self.__TID:
             self.__TID = 0
@@ -37,11 +40,11 @@ class Manager(object):
         for server in self.servers:
             server.add_observer(observer)
 
-    def notify(self, msg):
+    def notify(self, msg: Message):
         for server in self.servers:
             server.notify(msg)
 
-    def announce_message(self, msg):
+    def announce_message(self, msg: Message) -> bool:
         msg.TID = self.__next_TID()
         debug('%s <- %s' % (MulticastServer.ADDRESS.ljust(15), msg.to_string()))
         for server in self.servers:
@@ -49,7 +52,7 @@ class Manager(object):
                 server.announce_message(msg)
         return True
 
-    def send_message(self, msg, addr):
+    def send_message(self, msg: Message, addr) -> bool:
         msg.TID = self.__next_TID()
         debug('%s <- %s' % (addr[0].ljust(15), msg.to_string()))
         for server in self.servers:
@@ -59,7 +62,7 @@ class Manager(object):
                     return True
         return False
 
-    def start(self):
+    def start(self) -> Any:
         for ifaddr in Interface.get_all_ipaddrs():
             userver = UnicastServer()
             if not userver.bind(ifaddr):
@@ -81,7 +84,7 @@ class Manager(object):
 
         return True
 
-    def stop(self):
+    def stop(self) -> Any:
         for server in self.servers:
             server.stop()
         self.servers = []
