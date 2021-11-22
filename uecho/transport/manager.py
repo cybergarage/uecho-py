@@ -62,8 +62,10 @@ class Manager(object):
                     return True
         return False
 
-    def start(self) -> Any:
-        for ifaddr in Interface.get_all_ipaddrs():
+    def start(self, ifaddrs: list[str] = []) -> Any:
+        if len(ifaddrs) <= 0:
+            ifaddrs = Interface.get_all_ipaddrs()
+        for ifaddr in ifaddrs:
             userver = UnicastServer()
             if not userver.bind(ifaddr):
                 self.stop()
