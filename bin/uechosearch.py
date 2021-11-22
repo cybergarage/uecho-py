@@ -45,8 +45,21 @@ if __name__ == '__main__':
     time.sleep(1)
     ctrl.stop()
 
+    if not args.verbose:
+        for i, node in enumerate(ctrl.nodes):
+            msg = ('%s ' % node.ip.ljust(15))
+            for j, obj in enumerate(node.objects):
+                msg += '[%d] %06X ' % (j, obj.code)
+            print(msg)
+        exit(0)
+
     for i, node in enumerate(ctrl.nodes):
         msg = ('%s ' % node.ip.ljust(15))
-        for j, obj in enumerate(node.objects):
-            msg += '[%d] %06X ' % (j, obj.code)
         print(msg)
+        res_msg = ctrl.post_message(create_manufacture_request_message(), node)
+        print(res_msg)
+        for j, obj in enumerate(node.objects):
+            msg = '[%d] %06X ' % (j, obj.code)
+            if 0 < len(obj.name):
+                msg += '(%s)' % obj.name
+            print(msg)
