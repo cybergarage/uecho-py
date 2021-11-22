@@ -14,7 +14,7 @@
 
 import socket
 import threading
-from typing import Any, Union
+from typing import Any, Union, List
 
 from ..protocol.message import Message
 from ..log.logger import error
@@ -26,7 +26,7 @@ class Server(threading.Thread):
 
     sock: Union[socket.socket, None]
     port: int
-    observers: list[Observer]
+    observers: List[Observer]
 
     def __init__(self):
         super(Server, self).__init__()

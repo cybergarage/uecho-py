@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import time
-from typing import Any, Union
+from typing import Any, Union, List
 
 from uecho.object import Object
 
@@ -75,11 +75,11 @@ class Controller(Observer):
         self.__database = Database()
 
     @property
-    def nodes(self):
+    def nodes(self) -> List[RemoteNode]:
         """Retures found nodes.
 
         Returns:
-            list[RemoteNode]; The found remote node list.
+            List[RemoteNode]; The found remote node list.
         """
         nodes = []
         for node in self.__found_nodes.values():
