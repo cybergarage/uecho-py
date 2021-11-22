@@ -25,13 +25,13 @@ class Message(ProtocolMessage):
     def __init__(self):
         super(Message, self).__init__()
 
-    def add_property(self, prop):
+    def add_property(self, prop: Property):
         if not isinstance(prop, Property):
             return False
         self.properties.append(prop)
         return True
 
-    def add_object_as_class_instance_list_property(self, obj):
+    def add_object_as_class_instance_list_property(self, obj: Object):
         if not isinstance(obj, Object):
             return False
         prop = Property()
