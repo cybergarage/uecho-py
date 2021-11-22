@@ -29,7 +29,7 @@ class Database():
         self.__manufacturers = get_all_std_manufactures()
         self.__objects = get_all_std_objects()
 
-    def get_manufacturer(self, code) -> Union[Manufacture, None]:
+    def get_manufacturer(self, code: int) -> Union[Manufacture, None]:
         try:
             return self.__manufacturers[(code)]
         except KeyError:
