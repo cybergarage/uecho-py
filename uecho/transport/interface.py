@@ -18,7 +18,7 @@ import netifaces
 class Interface(object):
 
     @staticmethod
-    def get_all_ipaddrs():
+    def get_all_ipaddrs() -> list[str]:
         ipaddrs = []
         for ifname in netifaces.interfaces():
             ifaddrs = netifaces.ifaddresses(ifname)

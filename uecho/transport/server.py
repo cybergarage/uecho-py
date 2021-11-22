@@ -14,40 +14,41 @@
 
 import socket
 import threading
-# from typing import List
+from typing import Any, Union
 
 from ..protocol.message import Message
 from ..log.logger import error
+from .observer import Observer
 
 
 class Server(threading.Thread):
     PORT = 3610
 
-    # socket: socket.socket
-    # port: int
-    # observers: List[Observer]
+    sock: Union[socket.socket, None]
+    port: int
+    observers: list[Observer]
 
     def __init__(self):
         super(Server, self).__init__()
-        self.socket = None
+        self.sock = None
         self.port = Server.PORT
         self.observers = []
 
-    def create_udp_socket(self):
+    def create_udp_socket(self) -> socket.socket:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEPORT, 1)
         return sock
 
-    def bind(self, ifaddr):
+    def bind(self, ifaddr: str) -> bool:
         pass
 
     def run(self):
         while True:
             try:
-                if self.socket is None:
+                if self.sock is None:
                     break
-                recv_msg_bytes, recv_from = self.socket.recvfrom(1024)
+                recv_msg_bytes, recv_from = self.sock.recvfrom(1024)
                 msg = Message()
                 if not msg.parse_bytes(recv_msg_bytes):
                     log_msg = '%s %s' % (recv_from, recv_msg_bytes.hex())
@@ -61,24 +62,24 @@ class Server(threading.Thread):
     def add_observer(self, observer):
         self.observers.append(observer)
 
-    def notify(self, msg):
+    def notify(self, msg: Message):
         for observer in self.observers:
             observer._message_received(msg)
 
-    def start(self):
-        if self.socket is None:
+    def start(self) -> Any:
+        if self.sock is None:
             return False
         super(Server, self).start()
         return True
 
-    def stop(self):
-        if self.socket is None:
+    def stop(self) -> Any:
+        if self.sock is None:
             return False
         try:
-            self.socket.shutdown(socket.SHUT_RDWR)
+            self.sock.shutdown(socket.SHUT_RDWR)
         except:
             pass
-        self.socket.close()
-        self.socket = None
+        self.sock.close()
+        self.sock = None
         self.join()
         return True
