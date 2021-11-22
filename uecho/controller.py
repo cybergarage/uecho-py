@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import time
+from typing import Any, Union
 
 from uecho.object import Object
 
@@ -23,6 +24,7 @@ from .local_node import LocalNode
 from .node_profile import NodeProfile
 from .esv import ESV
 from .message import Message
+from .protocol.message import Message as ProtocolMessage
 from .property import Property
 from .remote_node import RemoteNode
 from .node import Node
@@ -34,17 +36,6 @@ class Controller(Observer):
     send any requests to the found devices and receive the responses
     easily without building the binary protocol messages directly.
     """
-
-    __node: LocalNode
-    __found_nodes: dict
-    # __last_post_msg: Controller.__PostMessage
-    __database: Database
-
-    def __init__(self):
-        self.__node = LocalNode()
-        self.__found_nodes = {}
-        self.__last_post_msg = Controller.__PostMessage()
-        self.__database = Database()
 
     class __PostMessage():
 
@@ -71,6 +62,17 @@ class Controller(Observer):
             prop.data = bytearray()
             self.add_property(prop)
 
+    __node: LocalNode
+    __found_nodes: dict
+    # __last_post_msg: Controller.__PostMessage
+    __database: Database
+
+    def __init__(self):
+        self.__node = LocalNode()
+        self.__found_nodes = {}
+        self.__last_post_msg = Controller.__PostMessage()
+        self.__database = Database()
+
     @property
     def nodes(self):
         """Retures found nodes.
@@ -83,7 +85,7 @@ class Controller(Observer):
             nodes.append(node)
         return nodes
 
-    def __is_node_profile_message(self, msg):
+    def __is_node_profile_message(self, msg: ProtocolMessage):
         if msg.ESV != ESV.NOTIFICATION and msg.ESV != ESV.READ_RESPONSE:
             return False
         if msg.DEOJ != NodeProfile.OBJECT and msg.DEOJ != NodeProfile.OBJECT_READ_ONLY:
@@ -107,12 +109,12 @@ class Controller(Observer):
 
         return True
 
-    def announce_message(self, msg):
+    def announce_message(self, msg: Message):
         """Posts a multicast message to the same local network asynchronously.
         """
         return self.__node.announce_message(msg)
 
-    def send_message(self, msg, addr):
+    def send_message(self, msg: Message, addr: Union[tuple[str, int], str, RemoteNode]):
         """Posts a unicast message to the specified node asynchronously.
 
             Args:
@@ -132,7 +134,7 @@ class Controller(Observer):
         msg = Controller.__SearchMessage()
         return self.announce_message(msg)
 
-    def post_message(self, msg, addr):
+    def post_message(self, msg: Message, addr: Union[tuple[str, int], str, RemoteNode]):
         """Posts a unicast message to the specified node and return the response message synchronously.
 
             Args:
@@ -155,7 +157,7 @@ class Controller(Observer):
 
         return self.__last_post_msg.response
 
-    def start(self):
+    def start(self) -> Any:
         """Starts the controller to listen to any multicast and unicast messages from other nodes in the same local network, and executes search() after starting.
         """
         if not self.__node.start():
@@ -164,14 +166,14 @@ class Controller(Observer):
         self.search()
         return True
 
-    def stop(self):
+    def stop(self) -> Any:
         """ Stops the controller not to listen to any messages.
         """
         if not self.__node.stop():
             return False
         return True
 
-    def _message_received(self, msg):
+    def _message_received(self, msg: ProtocolMessage):
         debug('%s -> %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
 
         if self.__is_node_profile_message(msg):
