@@ -39,7 +39,7 @@ class Property(ProtocolProperty):
     anno_status: bool
 
     def __init__(self):
-        super(ProtocolProperty, self).__init__()
+        super().__init__()
         self.attrs = [Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED]
 
     def set_attribute(self, typ: int, attr: int):

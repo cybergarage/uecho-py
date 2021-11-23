@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho import Object
+from uecho import Object, Property
 
 
 def test_object():
@@ -22,3 +22,9 @@ def test_object():
     assert obj.group_code == 0x0E
     assert obj.class_code == 0xF0
     assert obj.instance_code == 0x01
+
+
+def test_property():
+    prop = Property()
+    assert prop.code == 0
+    assert len(prop.data) == 0
