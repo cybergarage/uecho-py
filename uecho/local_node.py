@@ -24,8 +24,8 @@ class LocalNode(Manager):
 
     def announce_message(self, msg):
         msg.DEOJ = NodeProfile.OBJECT
-        return super(LocalNode, self).announce_message(msg)
+        return super().announce_message(msg)
 
     def send_message(self, msg, addr):
         msg.DEOJ = NodeProfile.OBJECT
-        return super(LocalNode, self).send_message(msg, addr)
+        return super().send_message(msg, addr)
