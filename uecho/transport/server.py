@@ -51,12 +51,20 @@ class Server(threading.Thread):
             try:
                 if self.sock is None:
                     break
+
                 recv_msg_bytes, recv_from = self.sock.recvfrom(1024)
+
+                # Ignores self messages
+                if recv_from == (self.ifaddr, self.port):
+                    continue
+
                 recv_msg_prefix = '%s:%s <- %s:%s' % (self.ifaddr.ljust(15), str(self.port).ljust(5), recv_from[0].ljust(15), str(recv_from[1]).ljust(5))
+
                 msg = Message()
                 if not msg.parse_bytes(recv_msg_bytes):
                     error('%s %s' % (recv_msg_prefix, recv_msg_bytes.hex()))
                     continue
+
                 msg.from_addr = recv_from
                 debug('%s %s' % (recv_msg_prefix, msg.to_string()))
                 self.notify(msg)
