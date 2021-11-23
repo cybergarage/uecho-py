@@ -254,7 +254,7 @@ from the args and kwargs arguments, respectively.</p>
 
 <dl class="attribute">
 <dt id="uecho.transport.server.Server.sock">
-<code class="sig-name descname">sock</code><em class="property">: Union[socket.socket, None]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.server.Server.sock" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">sock</code><em class="property">: Optional[socket.socket]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.server.Server.sock" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -303,7 +303,7 @@ same thread object.</p>
 
 <dl class="method">
 <dt id="uecho.transport.unicast_server.UnicastServer.send_message">
-<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.send_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message, addr: Optional[Tuple[str, int]]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.send_message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
