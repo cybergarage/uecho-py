@@ -132,7 +132,7 @@ class Controller(Observer):
         """
         to_addr = addr
         if isinstance(addr, RemoteNode):
-            to_addr = (addr.ip, Node.PORT)
+            to_addr = (addr.ip, addr.port)
         elif isinstance(addr, str):
             to_addr = (addr, Node.PORT)
         return self.__node.send_message(msg, to_addr)
