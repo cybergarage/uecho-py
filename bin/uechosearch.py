@@ -15,16 +15,16 @@
 
 import time
 import argparse
-from uecho import Controller, Message, Property, Object, NodeProfile
+from uecho import Controller, Message, Property, Object, NodeProfile, ESV
 import uecho.log as log
 
 
 def create_manufacture_request_message() -> Message:
     msg = Message()
     msg.DEOJ = NodeProfile.OBJECT
-    msg.ESV = Object.MANUFACTURER_CODE
+    msg.ESV = ESV.READ_REQUEST
     prop = Property()
-    prop.code = Property.GET
+    prop.code = Object.MANUFACTURER_CODE
     msg.add_property(prop)
     return msg
 
@@ -41,9 +41,7 @@ if __name__ == '__main__':
 
     ctrl = Controller()
     ctrl.start()
-    ctrl.search()
     time.sleep(1)
-    ctrl.stop()
 
     if not args.verbose:
         for i, node in enumerate(ctrl.nodes):
@@ -51,19 +49,20 @@ if __name__ == '__main__':
             for j, obj in enumerate(node.objects):
                 msg += '[%d] %06X ' % (j, obj.code)
             print(msg)
-        exit(0)
+    else:
+        for i, node in enumerate(ctrl.nodes):
+            node_msg = ('%s ' % node.ip.ljust(15))
+            req_msg = create_manufacture_request_message()
+            res_msg = ctrl.post_message(req_msg, node)
+            if res_msg is not None:
+                if 0 < len(res_msg.properties):
+                    res_prop = res_msg.properties[0]
+                    node_msg += '(%s)' % ctrl.get_standard_manufacturer_name(res_prop.data)
+            print(node_msg)
+            for j, obj in enumerate(node.objects):
+                prop_msg = ' [%d] %06X ' % (j, obj.code)
+                if 0 < len(obj.name):
+                    prop_msg += '(%s)' % obj.name
+                print(prop_msg)
 
-    for i, node in enumerate(ctrl.nodes):
-        msg = ('%s ' % node.ip.ljust(15))
-        res_msg = ctrl.post_message(create_manufacture_request_message(), node)
-        if isinstance(res_msg, Message):
-            if 0 < len(res_msg.properties):
-                res_prop = res_msg.properties[0]
-        else:
-            msg += ' (Unknown)'
-        print(msg)
-        for j, obj in enumerate(node.objects):
-            msg = '[%d] %06X ' % (j, obj.code)
-            if 0 < len(obj.name):
-                msg += '(%s)' % obj.name
-            print(msg)
+    ctrl.stop()
