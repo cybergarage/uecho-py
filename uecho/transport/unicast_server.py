@@ -16,6 +16,7 @@ from typing import Optional, Tuple
 from .server import Server
 from .multicast_server import MulticastServer
 from ..protocol.message import Message
+from ..log.logger import debug
 
 
 class UnicastServer(Server):
@@ -24,6 +25,8 @@ class UnicastServer(Server):
         super().__init__()
 
     def bind(self, ifaddr: str) -> bool:
+        if not super().bind(ifaddr):
+            return False
         self.sock = self.create_udp_socket()
         self.sock.bind((ifaddr, self.port))
         return True
@@ -33,6 +36,7 @@ class UnicastServer(Server):
             return False
         to_addr = (MulticastServer.ADDRESS, Server.PORT)
         msg.to_addr = to_addr
+        debug('-> %s:%s %s' % (MulticastServer.ADDRESS.ljust(15), str(Server.PORT).ljust(5), msg.to_string()))
         if self.sock.sendto(msg.to_bytes(), to_addr) <= 0:
             return False
         return True
@@ -43,6 +47,7 @@ class UnicastServer(Server):
         if self.sock is None:
             return False
         msg.to_addr = addr
+        debug('%s <- %s' % (addr[0].ljust(15), msg.to_string()))
         if self.sock.sendto(msg.to_bytes(), addr) <= 0:
             return False
         return True

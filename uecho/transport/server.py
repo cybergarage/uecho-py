@@ -25,12 +25,14 @@ class Server(threading.Thread):
     PORT = 3610
 
     sock: Optional[socket.socket]
+    ifaddr: str
     port: int
     observers: List[Observer]
 
     def __init__(self):
         super().__init__()
         self.sock = None
+        self.ifaddr = ""
         self.port = Server.PORT
         self.observers = []
 
@@ -41,7 +43,8 @@ class Server(threading.Thread):
         return sock
 
     def bind(self, ifaddr: str) -> bool:
-        pass
+        self.ifaddr = ifaddr
+        return True
 
     def run(self):
         while True:
