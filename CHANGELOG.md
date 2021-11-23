@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.8.4 - 2021/11/??
+
+- Change to ignore self multicast and unicast messages
+
 ## 0.8.3 - 2021/11/23
 
 - Add standard manufacture and object database of ECHONET Lite
