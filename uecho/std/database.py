@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Union
+from typing import Optional
 
 from .manufacture import Manufacture
 from .object import Object
@@ -29,13 +29,13 @@ class Database():
         self.__manufacturers = get_all_std_manufactures()
         self.__objects = get_all_std_objects()
 
-    def get_manufacturer(self, code: int) -> Union[Manufacture, None]:
+    def get_manufacturer(self, code: int) -> Optional[Manufacture]:
         try:
             return self.__manufacturers[(code)]
         except KeyError:
             return None
 
-    def get_object(self, grp_code: int, cls_code: int) -> Union[Object, None]:
+    def get_object(self, grp_code: int, cls_code: int) -> Optional[Object]:
         try:
             return self.__objects[(grp_code, cls_code)]
         except KeyError:

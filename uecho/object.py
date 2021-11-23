@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Union
+from typing import Optional
 
 from .property import Property
 
@@ -91,7 +91,7 @@ class Object(object):
         self.properties[prop.code] = prop
         return True
 
-    def get_property(self, code: int) -> Union[Property, None]:
+    def get_property(self, code: int) -> Optional[Property]:
         try:
             return self.properties[code]
         except KeyError:

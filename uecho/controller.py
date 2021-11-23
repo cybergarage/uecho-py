@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import time
-from typing import Any, Union, List, Tuple
+from typing import Any, Union, List, Tuple, Optional
 
 from uecho.object import Object
 
@@ -40,8 +40,8 @@ class Controller(Observer):
 
     class __PostMessage():
 
-        request: Union[Message, None]
-        response: Union[Message, None]
+        request: Optional[Message]
+        response: Optional[Message]
 
         def __init__(self):
             self.request = None
@@ -89,10 +89,10 @@ class Controller(Observer):
             nodes.append(node)
         return nodes
 
-    def get_standard_manufacturer(self, code: int) -> Union[Manufacture, None]:
+    def get_standard_manufacturer(self, code: int) -> Optional[Manufacture]:
         return self.__database.get_manufacturer(code)
 
-    def get_standard_object(self, grp_code: int, cls_code: int) -> Union[Object, None]:
+    def get_standard_object(self, grp_code: int, cls_code: int) -> Optional[Object]:
         return self.__database.get_object(grp_code, cls_code)
 
     def __is_node_profile_message(self, msg: ProtocolMessage):
@@ -144,7 +144,7 @@ class Controller(Observer):
         msg = Controller.__SearchMessage()
         return self.announce_message(msg)
 
-    def post_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> Union[Message, None]:
+    def post_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> Optional[Message]:
         """Posts a unicast message to the specified node and return the response message synchronously.
 
             Args:
