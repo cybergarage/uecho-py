@@ -14,7 +14,7 @@
 
 import socket
 import threading
-from typing import Any, Union, List
+from typing import Any, Optional, List
 
 from ..protocol.message import Message
 from ..log.logger import error
@@ -24,7 +24,7 @@ from .observer import Observer
 class Server(threading.Thread):
     PORT = 3610
 
-    sock: Union[socket.socket, None]
+    sock: Optional[socket.socket]
     port: int
     observers: List[Observer]
 
