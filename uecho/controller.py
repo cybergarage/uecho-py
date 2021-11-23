@@ -17,7 +17,6 @@ from typing import Any, Union, List, Tuple, Optional
 
 from uecho.object import Object
 
-from .log.logger import debug
 from .transport.observer import Observer
 
 from .local_node import LocalNode
@@ -133,7 +132,7 @@ class Controller(Observer):
         """
         to_addr = addr
         if isinstance(addr, RemoteNode):
-            to_addr = (addr.ip, addr.port)
+            to_addr = (addr.ip, Node.PORT)
         elif isinstance(addr, str):
             to_addr = (addr, Node.PORT)
         return self.__node.send_message(msg, to_addr)
@@ -184,11 +183,6 @@ class Controller(Observer):
         return True
 
     def _message_received(self, msg: ProtocolMessage):
-        from_addr = ""
-        if isinstance(msg.from_addr, tuple):
-            from_addr = msg.from_addr[0]
-        debug('%s -> %s' % (from_addr.ljust(15), msg.to_string()))
-
         if self.__is_node_profile_message(msg):
             node = RemoteNode()
             node.set_address(msg.from_addr)

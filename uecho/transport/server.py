@@ -17,7 +17,7 @@ import threading
 from typing import Any, Optional, List
 
 from ..protocol.message import Message
-from ..log.logger import error
+from ..log.logger import error, debug
 from .observer import Observer
 
 
@@ -52,12 +52,13 @@ class Server(threading.Thread):
                 if self.sock is None:
                     break
                 recv_msg_bytes, recv_from = self.sock.recvfrom(1024)
+                recv_msg_prefix = '%s:%s <- %s:%s' % (self.ifaddr.ljust(15), str(self.port).ljust(5), recv_from[0].ljust(15), str(recv_from[1]).ljust(5))
                 msg = Message()
                 if not msg.parse_bytes(recv_msg_bytes):
-                    log_msg = '%s %s' % (recv_from, recv_msg_bytes.hex())
-                    error(log_msg)
+                    error('%s %s' % (recv_msg_prefix, recv_msg_bytes.hex()))
                     continue
                 msg.from_addr = recv_from
+                debug('%s %s' % (recv_msg_prefix, msg.to_string()))
                 self.notify(msg)
             except:
                 break

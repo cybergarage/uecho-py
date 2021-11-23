@@ -36,7 +36,7 @@ class UnicastServer(Server):
             return False
         to_addr = (MulticastServer.ADDRESS, Server.PORT)
         msg.to_addr = to_addr
-        debug('-> %s:%s %s' % (MulticastServer.ADDRESS.ljust(15), str(Server.PORT).ljust(5), msg.to_string()))
+        debug('%s:%s -> %s:%s %s' % (self.ifaddr.ljust(15), str(self.port).ljust(5), MulticastServer.ADDRESS.ljust(15), str(Server.PORT).ljust(5), msg.to_string()))
         if self.sock.sendto(msg.to_bytes(), to_addr) <= 0:
             return False
         return True
@@ -47,7 +47,7 @@ class UnicastServer(Server):
         if self.sock is None:
             return False
         msg.to_addr = addr
-        debug('%s <- %s' % (addr[0].ljust(15), msg.to_string()))
+        debug('%s:%s -> %s:%s %s' % (self.ifaddr.ljust(15), str(self.port).ljust(5), addr[0].ljust(15), str(addr[1]).ljust(5), msg.to_string()))
         if self.sock.sendto(msg.to_bytes(), addr) <= 0:
             return False
         return True
