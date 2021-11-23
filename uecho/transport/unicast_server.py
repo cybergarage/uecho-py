@@ -16,7 +16,7 @@ from typing import Optional, Tuple
 from .server import Server
 from .multicast_server import MulticastServer
 from ..protocol.message import Message
-from ..log.logger import debug
+from ..log.logger import debug, error
 
 
 class UnicastServer(Server):
@@ -36,9 +36,11 @@ class UnicastServer(Server):
             return False
         to_addr = (MulticastServer.ADDRESS, Server.PORT)
         msg.to_addr = to_addr
-        debug('%s:%s -> %s:%s %s' % (self.ifaddr.ljust(15), str(self.port).ljust(5), MulticastServer.ADDRESS.ljust(15), str(Server.PORT).ljust(5), msg.to_string()))
+        msg_str = '%s:%s -> %s:%s %s' % (self.ifaddr.ljust(15), str(self.port).ljust(5), MulticastServer.ADDRESS.ljust(15), str(Server.PORT).ljust(5), msg.to_string())
         if self.sock.sendto(msg.to_bytes(), to_addr) <= 0:
+            error(msg_str)
             return False
+        debug(msg_str)
         return True
 
     def send_message(self, msg: Message, addr: Optional[Tuple[str, int]]) -> bool:
@@ -47,7 +49,9 @@ class UnicastServer(Server):
         if self.sock is None:
             return False
         msg.to_addr = addr
-        debug('%s:%s -> %s:%s %s' % (self.ifaddr.ljust(15), str(self.port).ljust(5), addr[0].ljust(15), str(addr[1]).ljust(5), msg.to_string()))
+        msg_str = '%s:%s -> %s:%s %s' % (self.ifaddr.ljust(15), str(self.port).ljust(5), addr[0].ljust(15), str(addr[1]).ljust(5), msg.to_string())
         if self.sock.sendto(msg.to_bytes(), addr) <= 0:
+            error(msg_str)
             return False
+        debug(msg_str)
         return True
