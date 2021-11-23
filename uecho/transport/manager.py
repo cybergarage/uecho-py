@@ -63,6 +63,9 @@ class Manager(object):
         return False
 
     def start(self, ifaddrs: List[str] = []) -> Any:
+        if not self.stop():
+            return False
+
         if len(ifaddrs) <= 0:
             ifaddrs = Interface.get_all_ipaddrs()
         for ifaddr in ifaddrs:
@@ -83,6 +86,9 @@ class Manager(object):
                 self.stop()
                 return False
             self.servers.append(mserver)
+
+        if len(self.servers) <= 0:
+            return False
 
         return True
 
