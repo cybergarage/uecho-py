@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import List, Tuple, Any, Optional
 from ..util.bytes import Bytes
 from .esv import ESV
 from .property import Property
@@ -34,6 +35,13 @@ class Message(ESV):
     class ParserError(Exception):
         pass
 
+    TID: int
+    SEOJ: int
+    DEOJ: int
+    properties: List[Property]
+    from_addr: Optional[Tuple[str, int]]
+    to_addr: Optional[Tuple[str, int]]
+
     def __init__(self):
         super(Message, self).__init__()
         self.TID = 0
@@ -46,6 +54,12 @@ class Message(ESV):
     @property
     def OPC(self):
         return len(self.properties)
+
+    def add_property(self, prop: Any) -> bool:
+        if not isinstance(prop, Property):
+            return False
+        self.properties.append(prop)
+        return True
 
     def is_response(self, msg):
         if self.TID != msg.TID:
