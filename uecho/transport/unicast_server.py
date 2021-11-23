@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import Optional, Tuple
 from .server import Server
 from .multicast_server import MulticastServer
 from ..protocol.message import Message
@@ -36,7 +37,7 @@ class UnicastServer(Server):
             return False
         return True
 
-    def send_message(self, msg: Message, addr) -> bool:
+    def send_message(self, msg: Message, addr: Optional[Tuple[str, int]]) -> bool:
         if not isinstance(addr, tuple) or len(addr) != 2:
             return False
         if self.sock is None:
