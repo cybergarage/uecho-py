@@ -25,13 +25,7 @@ class Message(ProtocolMessage):
     def __init__(self):
         super(Message, self).__init__()
 
-    def add_property(self, prop: Property):
-        if not isinstance(prop, Property):
-            return False
-        self.properties.append(prop)
-        return True
-
-    def add_object_as_class_instance_list_property(self, obj: Object):
+    def add_object_as_class_instance_list_property(self, obj: Object) -> bool:
         if not isinstance(obj, Object):
             return False
         prop = Property()
@@ -39,5 +33,5 @@ class Message(ProtocolMessage):
         prop_data = bytearray([1])
         prop_data.extend(Bytes.from_int(obj.code, Object.CODE_SIZE))
         prop.data = prop_data
-        self.properties.append(prop)
+        self.add_property(prop)
         return True
