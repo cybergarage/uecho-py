@@ -21,4 +21,4 @@ class ESV(ProtocolESV):
     """
 
     def __init__(self):
-        super(ESV, self).__init__()
+        super().__init__()

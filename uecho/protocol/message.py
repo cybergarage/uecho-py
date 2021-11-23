@@ -43,7 +43,7 @@ class Message(ESV):
     to_addr: Optional[Tuple[str, int]]
 
     def __init__(self):
-        super(Message, self).__init__()
+        super().__init__()
         self.TID = 0
         self.SEOJ = 0
         self.DEOJ = 0

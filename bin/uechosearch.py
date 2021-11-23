@@ -20,7 +20,7 @@ import uecho.log as log
 
 
 def create_manufacture_request_message() -> Message:
-    msg = Message
+    msg = Message()
     msg.DEOJ = NodeProfile.OBJECT
     msg.ESV = Object.MANUFACTURER_CODE
     prop = Property()
@@ -55,9 +55,13 @@ if __name__ == '__main__':
 
     for i, node in enumerate(ctrl.nodes):
         msg = ('%s ' % node.ip.ljust(15))
-        print(msg)
         res_msg = ctrl.post_message(create_manufacture_request_message(), node)
-        print(res_msg)
+        if isinstance(res_msg, Message):
+            if 0 < len(res_msg.properties):
+                res_prop = res_msg.properties[0]
+        else:
+            msg += ' (Unknown)'
+        print(msg)
         for j, obj in enumerate(node.objects):
             msg = '[%d] %06X ' % (j, obj.code)
             if 0 < len(obj.name):

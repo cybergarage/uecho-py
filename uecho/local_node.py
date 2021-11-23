@@ -20,7 +20,7 @@ from .node_profile import NodeProfile
 class LocalNode(Manager):
 
     def __init__(self):
-        super(LocalNode, self).__init__()
+        super().__init__()
 
     def announce_message(self, msg):
         msg.DEOJ = NodeProfile.OBJECT

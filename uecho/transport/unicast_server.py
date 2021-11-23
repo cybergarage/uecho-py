@@ -21,7 +21,7 @@ from ..protocol.message import Message
 class UnicastServer(Server):
 
     def __init__(self):
-        super(UnicastServer, self).__init__()
+        super().__init__()
 
     def bind(self, ifaddr: str) -> bool:
         self.sock = self.create_udp_socket()
