@@ -40,6 +40,9 @@ class Controller(Observer):
 
     class __PostMessage():
 
+        request: Union[Message, None]
+        response: Union[Message, None]
+
         def __init__(self):
             self.request = None
             self.response = None
@@ -116,12 +119,12 @@ class Controller(Observer):
 
         return True
 
-    def announce_message(self, msg: Message):
+    def announce_message(self, msg: Message) -> bool:
         """Posts a multicast message to the same local network asynchronously.
         """
         return self.__node.announce_message(msg)
 
-    def send_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]):
+    def send_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> bool:
         """Posts a unicast message to the specified node asynchronously.
 
             Args:
@@ -135,13 +138,13 @@ class Controller(Observer):
             to_addr = (addr, Node.PORT)
         return self.__node.send_message(msg, to_addr)
 
-    def search(self):
+    def search(self) -> bool:
         """Posts a multicast read request to search all nodes in the same local network asynchronously.
         """
         msg = Controller.__SearchMessage()
         return self.announce_message(msg)
 
-    def post_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]):
+    def post_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> Union[Message, None]:
         """Posts a unicast message to the specified node and return the response message synchronously.
 
             Args:
