@@ -200,6 +200,11 @@
 <dd><p>Bases: <a class="reference internal" href="#uecho.protocol.esv.ESV" title="uecho.protocol.esv.ESV"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.esv.ESV</span></code></a></p>
 <p>Message represents a protocol message of Echonet Lite.</p>
 <dl class="attribute">
+<dt id="uecho.protocol.message.Message.DEOJ">
+<code class="sig-name descname">DEOJ</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.message.Message.DEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="uecho.protocol.message.Message.EHD1_ECHONET">
 <code class="sig-name descname">EHD1_ECHONET</code><em class="property"> = 16</em><a class="headerlink" href="#uecho.protocol.message.Message.EHD1_ECHONET" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -246,6 +251,16 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="uecho.protocol.message.Message.SEOJ">
+<code class="sig-name descname">SEOJ</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.message.Message.SEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.TID">
+<code class="sig-name descname">TID</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.message.Message.TID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="uecho.protocol.message.Message.TID_MAX">
 <code class="sig-name descname">TID_MAX</code><em class="property"> = 65535</em><a class="headerlink" href="#uecho.protocol.message.Message.TID_MAX" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -256,6 +271,16 @@
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.protocol.message.Message.add_property">
+<code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Any</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.message.Message.add_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.from_addr">
+<code class="sig-name descname">from_addr</code><em class="property">: Optional[Tuple[str, int]]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.message.Message.from_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="uecho.protocol.message.Message.is_response">
 <code class="sig-name descname">is_response</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.message.Message.is_response" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -263,6 +288,16 @@
 <dl class="method">
 <dt id="uecho.protocol.message.Message.parse_bytes">
 <code class="sig-name descname">parse_bytes</code><span class="sig-paren">(</span><em class="sig-param">msg_bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.message.Message.parse_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.properties">
+<code class="sig-name descname">properties</code><em class="property">: List[Property]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.message.Message.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.to_addr">
+<code class="sig-name descname">to_addr</code><em class="property">: Optional[Tuple[str, int]]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.message.Message.to_addr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -306,6 +341,11 @@
 <em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.</code><code class="sig-name descname">Message</code><a class="headerlink" href="#uecho.protocol.Message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#uecho.protocol.esv.ESV" title="uecho.protocol.esv.ESV"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.esv.ESV</span></code></a></p>
 <p>Message represents a protocol message of Echonet Lite.</p>
+<dl class="attribute">
+<dt id="uecho.protocol.Message.DEOJ">
+<code class="sig-name descname">DEOJ</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Message.DEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="uecho.protocol.Message.EHD1_ECHONET">
 <code class="sig-name descname">EHD1_ECHONET</code><em class="property"> = 16</em><a class="headerlink" href="#uecho.protocol.Message.EHD1_ECHONET" title="Permalink to this definition">¶</a></dt>
@@ -353,6 +393,16 @@
 </dd></dl>
 
 <dl class="attribute">
+<dt id="uecho.protocol.Message.SEOJ">
+<code class="sig-name descname">SEOJ</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Message.SEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.TID">
+<code class="sig-name descname">TID</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Message.TID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="uecho.protocol.Message.TID_MAX">
 <code class="sig-name descname">TID_MAX</code><em class="property"> = 65535</em><a class="headerlink" href="#uecho.protocol.Message.TID_MAX" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -363,6 +413,16 @@
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.protocol.Message.add_property">
+<code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Any</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.Message.add_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.from_addr">
+<code class="sig-name descname">from_addr</code><em class="property">: Optional[Tuple[str, int]]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Message.from_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="uecho.protocol.Message.is_response">
 <code class="sig-name descname">is_response</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.Message.is_response" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -370,6 +430,16 @@
 <dl class="method">
 <dt id="uecho.protocol.Message.parse_bytes">
 <code class="sig-name descname">parse_bytes</code><span class="sig-paren">(</span><em class="sig-param">msg_bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.Message.parse_bytes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.properties">
+<code class="sig-name descname">properties</code><em class="property">: List[Property]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Message.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.to_addr">
+<code class="sig-name descname">to_addr</code><em class="property">: Optional[Tuple[str, int]]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Message.to_addr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">

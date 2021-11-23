@@ -140,7 +140,7 @@ send any requests to the found devices and receive the responses
 easily without building the binary protocol messages directly.</p>
 <dl class="method">
 <dt id="uecho.controller.Controller.announce_message">
-<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.controller.Controller.announce_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.controller.Controller.announce_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a multicast message to the same local network asynchronously.</p>
 </dd></dl>
 
@@ -167,7 +167,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.controller.Controller.post_message">
-<code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.controller.Controller.post_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; Optional[uecho.message.Message]<a class="headerlink" href="#uecho.controller.Controller.post_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a unicast message to the specified node and return the response message synchronously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -187,13 +187,13 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.controller.Controller.search">
-<code class="sig-name descname">search</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.controller.Controller.search" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">search</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.controller.Controller.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a multicast read request to search all nodes in the same local network asynchronously.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="uecho.controller.Controller.send_message">
-<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.controller.Controller.send_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.controller.Controller.send_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a unicast message to the specified node asynchronously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -260,14 +260,39 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.message.Message">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.message.</code><code class="sig-name descname">Message</code><a class="headerlink" href="#uecho.message.Message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="uecho.protocol.html#uecho.protocol.message.Message" title="uecho.protocol.message.Message"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.message.Message</span></code></a></p>
-<dl class="method">
-<dt id="uecho.message.Message.add_object_as_class_instance_list_property">
-<code class="sig-name descname">add_object_as_class_instance_list_property</code><span class="sig-paren">(</span><em class="sig-param">obj: uecho.object.Object</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.message.Message.add_object_as_class_instance_list_property" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="uecho.message.Message.DEOJ">
+<code class="sig-name descname">DEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.message.Message.DEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.message.Message.SEOJ">
+<code class="sig-name descname">SEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.message.Message.SEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.message.Message.TID">
+<code class="sig-name descname">TID</code><em class="property"> = None</em><a class="headerlink" href="#uecho.message.Message.TID" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.message.Message.add_property">
-<code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.message.Message.add_property" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.message.Message.add_object_as_class_instance_list_property">
+<code class="sig-name descname">add_object_as_class_instance_list_property</code><span class="sig-paren">(</span><em class="sig-param">obj: uecho.object.Object</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.message.Message.add_object_as_class_instance_list_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.message.Message.from_addr">
+<code class="sig-name descname">from_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.message.Message.from_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.message.Message.properties">
+<code class="sig-name descname">properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.message.Message.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.message.Message.to_addr">
+<code class="sig-name descname">to_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.message.Message.to_addr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -671,7 +696,7 @@ easily without building the binary protocol messages directly.</p>
 <dl class="class">
 <dt id="uecho.property.Property">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.property.</code><code class="sig-name descname">Property</code><a class="headerlink" href="#uecho.property.Property" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="uecho.protocol.html#uecho.protocol.property.Property" title="uecho.protocol.property.Property"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.property.Property</span></code></a></p>
 <p>Property represents a property of ECHONET Lite, and it includes the specification attributes and the dynamic data.</p>
 <dl class="attribute">
 <dt id="uecho.property.Property.ANNO">
@@ -728,19 +753,9 @@ easily without building the binary protocol messages directly.</p>
 <code class="sig-name descname">attrs</code><em class="property">: List[int]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.property.Property.attrs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="uecho.property.Property.code">
-<code class="sig-name descname">code</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#uecho.property.Property.code" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="uecho.property.Property.copy">
 <code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.property.Property.copy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.property.Property.data">
-<code class="sig-name descname">data</code><em class="property">: bytes</em><em class="property"> = None</em><a class="headerlink" href="#uecho.property.Property.data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -889,7 +904,7 @@ send any requests to the found devices and receive the responses
 easily without building the binary protocol messages directly.</p>
 <dl class="method">
 <dt id="uecho.Controller.announce_message">
-<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Controller.announce_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Controller.announce_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a multicast message to the same local network asynchronously.</p>
 </dd></dl>
 
@@ -916,7 +931,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.Controller.post_message">
-<code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Controller.post_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; Optional[uecho.message.Message]<a class="headerlink" href="#uecho.Controller.post_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a unicast message to the specified node and return the response message synchronously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -936,13 +951,13 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.Controller.search">
-<code class="sig-name descname">search</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Controller.search" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">search</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Controller.search" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a multicast read request to search all nodes in the same local network asynchronously.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="uecho.Controller.send_message">
-<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Controller.send_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Controller.send_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a unicast message to the specified node asynchronously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -1310,14 +1325,39 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.Message">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">Message</code><a class="headerlink" href="#uecho.Message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="uecho.protocol.html#uecho.protocol.message.Message" title="uecho.protocol.message.Message"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.message.Message</span></code></a></p>
-<dl class="method">
-<dt id="uecho.Message.add_object_as_class_instance_list_property">
-<code class="sig-name descname">add_object_as_class_instance_list_property</code><span class="sig-paren">(</span><em class="sig-param">obj: uecho.object.Object</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Message.add_object_as_class_instance_list_property" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="uecho.Message.DEOJ">
+<code class="sig-name descname">DEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Message.DEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.Message.SEOJ">
+<code class="sig-name descname">SEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Message.SEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.Message.TID">
+<code class="sig-name descname">TID</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Message.TID" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.Message.add_property">
-<code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Message.add_property" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.Message.add_object_as_class_instance_list_property">
+<code class="sig-name descname">add_object_as_class_instance_list_property</code><span class="sig-paren">(</span><em class="sig-param">obj: uecho.object.Object</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Message.add_object_as_class_instance_list_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.Message.from_addr">
+<code class="sig-name descname">from_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Message.from_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.Message.properties">
+<code class="sig-name descname">properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Message.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.Message.to_addr">
+<code class="sig-name descname">to_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Message.to_addr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1332,7 +1372,7 @@ easily without building the binary protocol messages directly.</p>
 <dl class="class">
 <dt id="uecho.Property">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">Property</code><a class="headerlink" href="#uecho.Property" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#module-uecho.object" title="uecho.object"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="uecho.protocol.html#uecho.protocol.property.Property" title="uecho.protocol.property.Property"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.property.Property</span></code></a></p>
 <p>Property represents a property of ECHONET Lite, and it includes the specification attributes and the dynamic data.</p>
 <dl class="attribute">
 <dt id="uecho.Property.ANNO">
@@ -1389,19 +1429,9 @@ easily without building the binary protocol messages directly.</p>
 <code class="sig-name descname">attrs</code><em class="property">: List[int]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.Property.attrs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="attribute">
-<dt id="uecho.Property.code">
-<code class="sig-name descname">code</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#uecho.Property.code" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="uecho.Property.copy">
 <code class="sig-name descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Property.copy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.Property.data">
-<code class="sig-name descname">data</code><em class="property">: bytes</em><em class="property"> = None</em><a class="headerlink" href="#uecho.Property.data" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
