@@ -184,7 +184,10 @@ class Controller(Observer):
         return True
 
     def _message_received(self, msg: ProtocolMessage):
-        debug('%s -> %s' % (msg.from_addr[0].ljust(15), msg.to_string()))
+        from_addr = ""
+        if isinstance(msg.from_addr, tuple):
+            from_addr = msg.from_addr[0]
+        debug('%s -> %s' % (from_addr.ljust(15), msg.to_string()))
 
         if self.__is_node_profile_message(msg):
             node = RemoteNode()
