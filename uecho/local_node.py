@@ -13,8 +13,8 @@
 # limitations under the License.
 
 from .transport.manager import Manager
-
 from .node_profile import NodeProfile
+from .protocol.message import Message
 
 
 class LocalNode(Manager):
@@ -22,10 +22,10 @@ class LocalNode(Manager):
     def __init__(self):
         super().__init__()
 
-    def announce_message(self, msg):
-        msg.DEOJ = NodeProfile.OBJECT
+    def announce_message(self, msg: Message) -> bool:
+        msg.SEOJ = NodeProfile.OBJECT
         return super().announce_message(msg)
 
-    def send_message(self, msg, addr):
-        msg.DEOJ = NodeProfile.OBJECT
+    def send_message(self, msg: Message, addr) -> bool:
+        msg.SEOJ = NodeProfile.OBJECT
         return super().send_message(msg, addr)
