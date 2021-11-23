@@ -23,6 +23,8 @@ class MulticastServer(Server):
         super().__init__()
 
     def bind(self, ifaddr: str) -> bool:
+        if not super().bind(ifaddr):
+            return False
         self.sock = self.create_udp_socket()
         self.sock.bind(('0.0.0.0', self.port))
         opt = socket.inet_aton(MulticastServer.ADDRESS) + socket.inet_aton(ifaddr)
