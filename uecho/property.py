@@ -14,9 +14,10 @@
 
 import copy
 from typing import List
+from .protocol.property import Property as ProtocolProperty
 
 
-class Property(object):
+class Property(ProtocolProperty):
     """Property represents a property of ECHONET Lite, and it includes the specification attributes and the dynamic data.
     """
 
@@ -32,16 +33,13 @@ class Property(object):
     REQUIRED = 1
     OPTIONAL = 2
 
-    code: int
     attrs: List[int]
     name: str
     size: int
-    data: bytes
     anno_status: bool
 
     def __init__(self):
-        self.code = 0
-        self.data = bytes()
+        super(ProtocolProperty, self).__init__()
         self.attrs = [Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED]
 
     def set_attribute(self, typ: int, attr: int):
