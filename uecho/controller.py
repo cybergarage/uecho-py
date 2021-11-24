@@ -94,8 +94,8 @@ class Controller(Observer):
     def get_standard_manufacturer_name(self, code: Union[int, bytes]) -> Optional[str]:
         return self.__database.get_manufacturer_name(code)
 
-    def get_standard_object(self, grp_code: int, cls_code: int) -> Optional[Object]:
-        return self.__database.get_object((grp_code, cls_code))
+    def get_standard_object(self, code: Union[Object, int, Tuple[int, int]]) -> Optional[Object]:
+        return self.__database.get_object(code)
 
     def __is_node_profile_message(self, msg: ProtocolMessage):
         if msg.ESV != ESV.NOTIFICATION and msg.ESV != ESV.READ_RESPONSE:
@@ -111,7 +111,7 @@ class Controller(Observer):
 
         # Adds standard object attributes and properties
         for obj in node.objects:
-            std_obj = self.__database.get_object(obj.group_code, obj.class_code)
+            std_obj = self.get_standard_object(obj.group_code, obj.class_code)
             if isinstance(std_obj, Object):
                 obj.name = std_obj.name
                 for std_prop in std_obj.properties:

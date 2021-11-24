@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import annotations
+
 from typing import Optional, Union, Tuple
 
 from .property import Property
@@ -55,8 +57,10 @@ class Object(object):
         self.properties = {}
         pass
 
-    def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int]]) -> bool:
-        if type(code) is int:
+    def set_code(self, code: Union[Object, int, Tuple[int, int], Tuple[int, int, int]]) -> bool:
+        if isinstance(code, Object):
+            self.code = code.code
+        elif type(code) is int:
             self.code = code
             return True
         elif type(code) is tuple:
