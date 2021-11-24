@@ -57,7 +57,7 @@ def test_object_database():
 def test_appendix_object_database():
     db = Database()
 
-    obj = db.get_object((0x20, 0x91))
+    obj = db.get_object((0x02, 0x91))
     assert (obj)
 
     expecteds = [
