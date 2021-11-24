@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Optional
+from typing import Optional, Union, Tuple
 
 from .property import Property
 
@@ -55,10 +55,21 @@ class Object(object):
         self.properties = {}
         pass
 
-    def set_code(self, code: int) -> bool:
+    def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int]]) -> bool:
         if type(code) is int:
             self.code = code
             return True
+        elif type(code) is tuple:
+            tuple_n = len(code)
+            if tuple_n == 2:
+                self.group_code = code[0]
+                self.class_code = code[1]
+                return True
+            elif tuple_n == 3:
+                self.group_code = code[0]
+                self.class_code = code[1]
+                self.instance_code = code[2]
+                return True
         return False
 
     @property
@@ -75,7 +86,7 @@ class Object(object):
 
     @class_code.setter
     def class_code(self, code: int):
-        self.code |= ((code & 0xFF) << 16)
+        self.code |= ((code & 0xFF) << 8)
 
     @property
     def instance_code(self):
