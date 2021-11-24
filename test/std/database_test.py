@@ -32,9 +32,9 @@ def test_manufacture_database():
 def test_object_database():
     db = Database()
 
-    assert db.get_object(0x00, 0x00) is None
+    assert db.get_object((0x00, 0x00)) is None
 
-    obj = db.get_object(0x00, 0x01)
+    obj = db.get_object((0x00, 0x01))
     assert (obj)
 
     expecteds = [

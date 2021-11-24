@@ -95,7 +95,7 @@ class Controller(Observer):
         return self.__database.get_manufacturer_name(code)
 
     def get_standard_object(self, grp_code: int, cls_code: int) -> Optional[Object]:
-        return self.__database.get_object(grp_code, cls_code)
+        return self.__database.get_object((grp_code, cls_code))
 
     def __is_node_profile_message(self, msg: ProtocolMessage):
         if msg.ESV != ESV.NOTIFICATION and msg.ESV != ESV.READ_RESPONSE:
