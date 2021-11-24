@@ -19,7 +19,7 @@ class Bytes():
     """
 
     @classmethod
-    def from_int(cls, val, bytes_size):
+    def from_int(cls, val: int, bytes_size: int) -> bytes:
         byte_buf = bytearray(bytes_size)
         for n in range(bytes_size):
             idx = (bytes_size - 1) - n
@@ -27,7 +27,7 @@ class Bytes():
         return byte_buf
 
     @classmethod
-    def to_int(cls, byte_buf):
+    def to_int(cls, byte_buf: bytes) -> int:
         val = 0
         bytes_size = len(byte_buf)
         for n in range(bytes_size):

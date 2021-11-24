@@ -18,7 +18,7 @@ from .bytes import Bytes
 class Hex():
 
     @classmethod
-    def from_string(cls, val):
+    def from_string(cls, val: str) -> int:
         if not isinstance(val, str):
             return 0
         return Bytes.to_int(bytes.fromhex(val))
