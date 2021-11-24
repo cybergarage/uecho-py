@@ -56,7 +56,7 @@ class Database():
         except KeyError:
             return None
 
-    def get_object(self, code: Union[int, Tuple[int, int]]) -> Optional[Object]:
+    def get_object(self, code: Union[Object, int, Tuple[int, int]]) -> Optional[Object]:
         obj = Object()
         if not obj.set_code(code):
             return None
