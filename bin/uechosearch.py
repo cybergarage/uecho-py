@@ -60,9 +60,14 @@ if __name__ == '__main__':
                     node_msg += '(%s)' % ctrl.get_standard_manufacturer_name(res_prop.data)
             print(node_msg)
             for j, obj in enumerate(node.objects):
-                prop_msg = ' [%d] %06X ' % (j, obj.code)
+                obj_msg = '[%d] %06X ' % (j, obj.code)
                 if 0 < len(obj.name):
-                    prop_msg += '(%s)' % obj.name
-                print(prop_msg)
+                    obj_msg += '(%s) ' % obj.name
+                print(obj_msg)
+                for k, prop in enumerate(obj.properties):
+                    prop_msg = '[%d] [%d] %02X ' % (j, k, prop.code)
+                    if 0 < len(prop.name):
+                        prop_msg += '(%s) ' % prop.name
+                    print(prop_msg)
 
     ctrl.stop()
