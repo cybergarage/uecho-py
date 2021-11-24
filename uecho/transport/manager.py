@@ -65,8 +65,6 @@ class Manager(object):
         return True
 
     def send_message(self, msg: Message, addr) -> bool:
-        print('mgr %s %d' % (addr, len(self.servers)))
-
         msg.TID = self.__next_TID()
         for server in self.servers:
             # TODO: Select an appropriate server from the specified address
