@@ -29,7 +29,6 @@ from .remote_node import RemoteNode
 from .node import Node
 from .manufacturer import Manufacture
 from .std import Database
-from .util import Bytes
 
 
 class Controller(Observer):
@@ -90,18 +89,10 @@ class Controller(Observer):
         return nodes
 
     def get_standard_manufacturer(self, code: Union[int, bytes]) -> Optional[Manufacture]:
-        man_code = 0
-        if isinstance(code, int):
-            man_code = code
-        elif isinstance(code, bytes):
-            man_code = Bytes.to_int(code)
-        return self.__database.get_manufacturer(man_code)
+        return self.__database.get_manufacturer(code)
 
-    def get_standard_manufacturer_name(self, code: Union[int, bytes]) -> str:
-        man = self.get_standard_manufacturer(code)
-        if man is not None:
-            return man.name
-        return ""
+    def get_standard_manufacturer_name(self, code: Union[int, bytes]) -> Optional[str]:
+        return self.__database.get_manufacturer_name(code)
 
     def get_standard_object(self, grp_code: int, cls_code: int) -> Optional[Object]:
         return self.__database.get_object(grp_code, cls_code)

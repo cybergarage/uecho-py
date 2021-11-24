@@ -12,12 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Optional
+from typing import Optional, Union
 
 from .manufacture import Manufacture
 from .object import Object
 from .objects import get_all_std_objects
 from .manufacturers import get_all_std_manufactures
+from ..util import Bytes
 
 
 class Database():
@@ -29,11 +30,25 @@ class Database():
         self.__manufacturers = get_all_std_manufactures()
         self.__objects = get_all_std_objects()
 
-    def get_manufacturer(self, code: int) -> Optional[Manufacture]:
+    def __get_manufacturer(self, code: int) -> Optional[Manufacture]:
         try:
             return self.__manufacturers[(code)]
         except KeyError:
             return None
+
+    def get_manufacturer(self, code: Union[int, bytes]) -> Optional[Manufacture]:
+        man_code = 0
+        if isinstance(code, int):
+            man_code = code
+        elif isinstance(code, bytes):
+            man_code = Bytes.to_int(code)
+        return self.__get_manufacturer(man_code)
+
+    def get_manufacturer_name(self, code: Union[int, bytes]) -> Optional[str]:
+        man = self.get_manufacturer(code)
+        if man is not None:
+            return man.name
+        return None
 
     def get_object(self, grp_code: int, cls_code: int) -> Optional[Object]:
         try:
