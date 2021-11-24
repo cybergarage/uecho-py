@@ -41,11 +41,16 @@ print<<HEADER;
 
 from .object import Object
 from .property import Property
+from .objects_appendix import get_all_std_appendix_objects
 
 __std_objects: dict = {}
 
+
 def get_all_std_objects() -> dict:
-  return __std_objects
+    all_std_objects = {}
+    all_std_objects.update(__std_objects)
+    all_std_objects.update(get_all_std_appendix_objects())
+    return all_std_objects
 
 HEADER
 
