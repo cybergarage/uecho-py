@@ -22,4 +22,3 @@ class Object(ObjectBase):
         self.name = name
         self.group_code = grp_code
         self.class_code = cls_code
-        self.properties = {}

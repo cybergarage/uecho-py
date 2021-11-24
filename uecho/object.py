@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Optional, Union, Tuple, Any
+from typing import Optional, Union, Tuple, Dict, Any, List
 
 from .property import Property
 
@@ -47,12 +47,12 @@ class Object(object):
 
     code: int
     name: str
-    properties: dict
+    __properties: Dict[int, Property]
 
     def __init__(self):
         self.code = 0
         self.name = ""
-        self.properties = {}
+        self.__properties = {}
         pass
 
     def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
@@ -98,15 +98,19 @@ class Object(object):
     def instance_code(self, code: int):
         self.code |= (code & 0xFF)
 
+    @property
+    def properties(self) -> List[Property]:
+        return self.__properties.values()
+
     def add_property(self, prop: Property) -> bool:
         if not isinstance(prop, Property):
             return False
-        self.properties[prop.code] = prop
+        self.__properties[prop.code] = prop
         return True
 
     def get_property(self, code: int) -> Optional[Property]:
         try:
-            return self.properties[code]
+            return self.__properties[code]
         except KeyError:
             return None
 
@@ -114,6 +118,6 @@ class Object(object):
         obj = Object()
         obj.code = self.code
         obj.name = self.name
-        for prop in self.properties:
+        for prop in self.__properties:
             obj.add_property(prop.copy())
         return obj
