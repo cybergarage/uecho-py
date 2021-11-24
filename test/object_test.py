@@ -17,28 +17,49 @@ from uecho import Object, Property
 
 def test_object_code():
     obj = Object()
+
     assert obj.set_code(0x0EF001)
     assert obj.code == 0x0EF001
     assert obj.group_code == 0x0E
     assert obj.class_code == 0xF0
     assert obj.instance_code == 0x01
 
+    assert obj.set_code(0x029101)
+    assert obj.code == 0x029101
+    assert obj.group_code == 0x02
+    assert obj.class_code == 0x91
+    assert obj.instance_code == 0x01
+
 
 def test_object_tuple_code():
     obj = Object()
+
     assert obj.set_code((0x0E, 0xF0, 0x01))
     assert obj.code == 0x0EF001
     assert obj.group_code == 0x0E
     assert obj.class_code == 0xF0
     assert obj.instance_code == 0x01
 
+    assert obj.set_code((0x02, 0x91, 0x01))
+    assert obj.code == 0x029101
+    assert obj.group_code == 0x02
+    assert obj.class_code == 0x91
+    assert obj.instance_code == 0x01
+
 
 def test_object_tuple_group_class_code():
     obj = Object()
+
     assert obj.set_code((0x0E, 0xF0))
     assert obj.code == 0x0EF000
     assert obj.group_code == 0x0E
     assert obj.class_code == 0xF0
+    assert obj.instance_code == 0x00
+
+    assert obj.set_code((0x02, 0x91))
+    assert obj.code == 0x029100
+    assert obj.group_code == 0x02
+    assert obj.class_code == 0x91
     assert obj.instance_code == 0x00
 
 

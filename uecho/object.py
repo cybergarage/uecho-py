@@ -64,10 +64,12 @@ class Object(object):
         elif type(code) is tuple:
             tuple_n = len(code)
             if tuple_n == 2:
+                self.code = 0
                 self.group_code = code[0]
                 self.class_code = code[1]
                 return True
             elif tuple_n == 3:
+                self.code = 0
                 self.group_code = code[0]
                 self.class_code = code[1]
                 self.instance_code = code[2]
