@@ -52,3 +52,24 @@ def test_object_database():
         assert prop.get_attribute(Property.SET) == expected[2]
         assert prop.get_attribute(Property.ANNO) == expected[3]
         assert prop.get_attribute(Property.ANNO_STATUS) == expected[4]
+
+
+def test_appendix_object_database():
+    db = Database()
+
+    obj = db.get_object((0x20, 0x91))
+    assert (obj)
+
+    expecteds = [
+        [0x80, Property.REQUIRED, Property.REQUIRED, Property.PROHIBITED, Property.REQUIRED],
+        [0xB0, Property.OPTIONAL, Property.OPTIONAL, Property.PROHIBITED, Property.PROHIBITED],
+    ]
+
+    assert obj.get_property(0x00) is None
+    for expected in expecteds:
+        prop = obj.get_property(expected[0])
+        assert prop
+        assert prop.get_attribute(Property.GET) == expected[1]
+        assert prop.get_attribute(Property.SET) == expected[2]
+        assert prop.get_attribute(Property.ANNO) == expected[3]
+        assert prop.get_attribute(Property.ANNO_STATUS) == expected[4]
