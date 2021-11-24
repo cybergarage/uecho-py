@@ -34,3 +34,7 @@ class Bytes():
             idx = (bytes_size - 1) - n
             val += (byte_buf[idx]) << (n * 8)
         return val
+
+    @classmethod
+    def from_string(cls, val: str) -> bytes:
+        return bytes.fromhex(val)
