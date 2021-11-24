@@ -28,11 +28,11 @@ def get_all_std_appendix_objects() -> dict:
     return __std_appendix_objects
 
 
-# Mono functional lighting (0x2091)
-obj = Object("Mono functional lighting", 0x20, 0x91)
+# Mono functional lighting (0x02091)
+obj = Object("Mono functional lighting", 0x02, 0x91)
 obj.add_property(Property(0x80, "Operation status", "unsigned char", 1, "mandatory", "mandatory", "-", "mandatory"))
 obj.add_property(Property(0xB0, "Illuminance level setting", "unsigned char", 1, "optional", "optional", "-", "-"))
-__std_appendix_objects[(0x20, 0x91)] = obj
+__std_appendix_objects[(0x02, 0x91)] = obj
 
 # Controller (0x05FF)
 obj = Object("Controller", 0x05, 0xFF)
