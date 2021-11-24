@@ -111,11 +111,12 @@ class Controller(Observer):
 
         # Adds standard object attributes and properties
         for obj in node.objects:
-            std_obj = self.get_standard_object(obj.group_code, obj.class_code)
+            std_obj = self.get_standard_object((obj.group_code, obj.class_code))
             if isinstance(std_obj, Object):
                 obj.name = std_obj.name
                 for std_prop in std_obj.properties:
-                    obj.add_property(std_prop.copy())
+                    prop = std_prop.copy()
+                    obj.add_property(prop)
 
         self.__found_nodes[node.ip] = node
 
