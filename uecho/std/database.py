@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Optional, Union
+from typing import Optional, Union, Tuple
 
 from .manufacture import Manufacture
 from .object import Object
@@ -50,8 +50,14 @@ class Database():
             return man.name
         return None
 
-    def get_object(self, grp_code: int, cls_code: int) -> Optional[Object]:
+    def __get_object(self, grp_code: int, cls_code: int) -> Optional[Object]:
         try:
             return self.__objects[(grp_code, cls_code)]
         except KeyError:
             return None
+
+    def get_object(self, code: Union[int, Tuple[int, int]]) -> Optional[Object]:
+        obj = Object()
+        if not obj.set_code(code):
+            return None
+        return self.__get_object(obj.group_code, obj.class_code)

@@ -32,6 +32,7 @@ def test_object_tuple_code():
     assert obj.class_code == 0xF0
     assert obj.instance_code == 0x01
 
+
 def test_object_tuple_group_class_code():
     obj = Object()
     assert obj.set_code((0x0E, 0xF0))
@@ -39,6 +40,7 @@ def test_object_tuple_group_class_code():
     assert obj.group_code == 0x0E
     assert obj.class_code == 0xF0
     assert obj.instance_code == 0x00
+
 
 def test_property():
     prop = Property()
