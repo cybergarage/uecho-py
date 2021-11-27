@@ -21,7 +21,7 @@ import uecho.log as log
 
 def create_read_manufacture_code_message() -> Message:
     msg = Message()
-    msg.DEOJ = NodeProfile.OBJECT
+    msg.DEOJ = NodeProfile.CODE
     msg.ESV = ESV.READ_REQUEST
     msg_prop = Property()
     msg_prop.code = Object.MANUFACTURER_CODE

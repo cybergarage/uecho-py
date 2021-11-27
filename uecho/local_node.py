@@ -23,9 +23,9 @@ class LocalNode(Manager):
         super().__init__()
 
     def announce_message(self, msg: Message) -> bool:
-        msg.SEOJ = NodeProfile.OBJECT
+        msg.SEOJ = NodeProfile.CODE
         return super().announce_message(msg)
 
     def send_message(self, msg: Message, addr) -> bool:
-        msg.SEOJ = NodeProfile.OBJECT
+        msg.SEOJ = NodeProfile.CODE
         return super().send_message(msg, addr)
