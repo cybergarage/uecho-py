@@ -263,7 +263,7 @@ easily without building the binary protocol messages directly.</p>
 <span id="uecho-message-module"></span><h2>uecho.message module<a class="headerlink" href="#module-uecho.message" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="uecho.message.Message">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.message.</code><code class="sig-name descname">Message</code><a class="headerlink" href="#uecho.message.Message" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">uecho.message.</code><code class="sig-name descname">Message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message = None</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.message.Message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="uecho.protocol.html#uecho.protocol.message.Message" title="uecho.protocol.message.Message"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.message.Message</span></code></a></p>
 <dl class="attribute">
 <dt id="uecho.message.Message.DEOJ">
@@ -316,7 +316,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.node.Node.add_object">
-<code class="sig-name descname">add_object</code><span class="sig-paren">(</span><em class="sig-param">obj</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.node.Node.add_object" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_object</code><span class="sig-paren">(</span><em class="sig-param">obj: uecho.object.Object</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.node.Node.add_object" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -326,7 +326,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.node.Node.has_object">
-<code class="sig-name descname">has_object</code><span class="sig-paren">(</span><em class="sig-param">code</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.node.Node.has_object" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">has_object</code><span class="sig-paren">(</span><em class="sig-param">code: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.node.Node.has_object" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -346,7 +346,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.node.Node.set_address">
-<code class="sig-name descname">set_address</code><span class="sig-paren">(</span><em class="sig-param">addr</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.node.Node.set_address" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_address</code><span class="sig-paren">(</span><em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.node.Node.set_address" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -769,8 +769,18 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.property.Property.is_announce_required">
+<code class="sig-name descname">is_announce_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.property.Property.is_announce_required" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="uecho.property.Property.is_read_enabled">
 <code class="sig-name descname">is_read_enabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.property.Property.is_read_enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.property.Property.is_read_required">
+<code class="sig-name descname">is_read_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.property.Property.is_read_required" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -781,6 +791,11 @@ easily without building the binary protocol messages directly.</p>
 <dl class="method">
 <dt id="uecho.property.Property.is_write_enabled">
 <code class="sig-name descname">is_write_enabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.property.Property.is_write_enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.property.Property.is_write_required">
+<code class="sig-name descname">is_write_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.property.Property.is_write_required" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -809,7 +824,7 @@ easily without building the binary protocol messages directly.</p>
 <dd><p>Bases: <a class="reference internal" href="#uecho.node.Node" title="uecho.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.node.Node</span></code></a></p>
 <dl class="method">
 <dt id="uecho.remote_node.RemoteNode.parse_message">
-<code class="sig-name descname">parse_message</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.remote_node.RemoteNode.parse_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parse_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.remote_node.RemoteNode.parse_message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -828,7 +843,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.Node.add_object">
-<code class="sig-name descname">add_object</code><span class="sig-paren">(</span><em class="sig-param">obj</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Node.add_object" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">add_object</code><span class="sig-paren">(</span><em class="sig-param">obj: uecho.object.Object</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Node.add_object" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -838,7 +853,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.Node.has_object">
-<code class="sig-name descname">has_object</code><span class="sig-paren">(</span><em class="sig-param">code</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Node.has_object" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">has_object</code><span class="sig-paren">(</span><em class="sig-param">code: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Node.has_object" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -858,7 +873,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.Node.set_address">
-<code class="sig-name descname">set_address</code><span class="sig-paren">(</span><em class="sig-param">addr</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Node.set_address" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_address</code><span class="sig-paren">(</span><em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Node.set_address" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -890,7 +905,7 @@ easily without building the binary protocol messages directly.</p>
 <dd><p>Bases: <a class="reference internal" href="#uecho.node.Node" title="uecho.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.node.Node</span></code></a></p>
 <dl class="method">
 <dt id="uecho.RemoteNode.parse_message">
-<code class="sig-name descname">parse_message</code><span class="sig-paren">(</span><em class="sig-param">msg</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.RemoteNode.parse_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">parse_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.RemoteNode.parse_message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1323,7 +1338,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="class">
 <dt id="uecho.Message">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">Message</code><a class="headerlink" href="#uecho.Message" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">Message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message = None</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="uecho.protocol.html#uecho.protocol.message.Message" title="uecho.protocol.message.Message"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.protocol.message.Message</span></code></a></p>
 <dl class="attribute">
 <dt id="uecho.Message.DEOJ">
@@ -1445,8 +1460,18 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.Property.is_announce_required">
+<code class="sig-name descname">is_announce_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Property.is_announce_required" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="uecho.Property.is_read_enabled">
 <code class="sig-name descname">is_read_enabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Property.is_read_enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.Property.is_read_required">
+<code class="sig-name descname">is_read_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Property.is_read_required" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1457,6 +1482,11 @@ easily without building the binary protocol messages directly.</p>
 <dl class="method">
 <dt id="uecho.Property.is_write_enabled">
 <code class="sig-name descname">is_write_enabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Property.is_write_enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.Property.is_write_required">
+<code class="sig-name descname">is_write_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Property.is_write_required" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
