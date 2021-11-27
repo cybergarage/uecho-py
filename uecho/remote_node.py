@@ -12,11 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .protocol.message import Message as ProtocolMessage
 from .util import Bytes
 from .node import Node
 from .object import Object
 from .node_profile import NodeProfile
+from .message import Message
 
 
 class RemoteNode(Node):
@@ -25,8 +25,8 @@ class RemoteNode(Node):
         super().__init__()
         self.controller = None
 
-    def parse_message(self, msg):
-        if not isinstance(msg, ProtocolMessage):
+    def parse_message(self, msg: Message) -> bool:
+        if not isinstance(msg, Message):
             return False
 
         if msg.OPC < 1:

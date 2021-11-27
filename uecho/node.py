@@ -12,11 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import List, Tuple, Optional, Dict
 from .object import Object
 
 
 class Node(object):
     PORT = 3610
+
+    __address: Optional[Tuple[str, int]]
+    __objects: Dict[int, Object]
 
     def __init__(self):
         self.__address = ()
@@ -29,29 +33,33 @@ class Node(object):
         return True
 
     @property
-    def address(self):
+    def address(self) -> Optional[Tuple[str, int]]:
         return self.__address
 
     @property
-    def ip(self):
+    def ip(self) -> Optional[str]:
+        if len(self.__address) != 2:
+            return None
         return self.__address[0]
 
     @property
-    def port(self):
+    def port(self) -> Optional[int]:
+        if len(self.__address) != 2:
+            return None
         return Node.PORT
 
-    def add_object(self, obj):
+    def add_object(self, obj: Object) -> bool:
         if not isinstance(obj, Object):
             return False
         self.__objects[obj.code] = obj
         return True
 
     @property
-    def objects(self):
+    def objects(self) -> List[Object]:
         objs = []
         for obj in self.__objects.values():
             objs.append(obj)
         return objs
 
-    def has_object(self, code):
+    def has_object(self, code: int):
         return code in self.__objects.keys()

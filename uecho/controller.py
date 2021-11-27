@@ -186,7 +186,9 @@ class Controller(Observer):
             return False
         return True
 
-    def _message_received(self, msg: ProtocolMessage):
+    def _message_received(self, prpto_msg: ProtocolMessage):
+        msg = Message(prpto_msg)
+
         if self.__is_node_profile_message(msg):
             node = RemoteNode()
             node.set_address(msg.from_addr)
