@@ -26,7 +26,7 @@ class Node(object):
         self.__address = ()
         self.__objects = {}
 
-    def set_address(self, addr):
+    def set_address(self, addr) -> bool:
         if not isinstance(addr, tuple) or len(addr) != 2:
             return False
         self.__address = addr
@@ -37,15 +37,15 @@ class Node(object):
         return self.__address
 
     @property
-    def ip(self) -> Optional[str]:
+    def ip(self) -> str:
         if len(self.__address) != 2:
-            return None
+            return ""
         return self.__address[0]
 
     @property
-    def port(self) -> Optional[int]:
+    def port(self) -> int:
         if len(self.__address) != 2:
-            return None
+            return 0
         return Node.PORT
 
     def add_object(self, obj: Object) -> bool:
@@ -61,5 +61,5 @@ class Node(object):
             objs.append(obj)
         return objs
 
-    def has_object(self, code: int):
+    def has_object(self, code: int) -> bool:
         return code in self.__objects.keys()
