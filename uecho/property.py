@@ -55,6 +55,11 @@ class Property(ProtocolProperty):
             return True
         return False
 
+    def __is_attribute_required(self, val) -> bool:
+        if (val & Property.REQUIRED):
+            return True
+        return False
+
     def is_read_enabled(self) -> bool:
         return self.__is_attribute_enabled(self.attrs[Property.GET])
 
@@ -63,6 +68,15 @@ class Property(ProtocolProperty):
 
     def is_announce_enabled(self) -> bool:
         return self.__is_attribute_enabled(self.attrs[Property.ANNO])
+
+    def is_read_required(self) -> bool:
+        return self.__is_attribute_required(self.attrs[Property.GET])
+
+    def is_write_required(self) -> bool:
+        return self.__is_attribute_required(self.attrs[Property.SET])
+
+    def is_announce_required(self) -> bool:
+        return self.__is_attribute_required(self.attrs[Property.ANNO])
 
     def is_status_change_required(self) -> bool:
         return self.__is_attribute_enabled(self.attrs[Property.ANNO_STATUS])
