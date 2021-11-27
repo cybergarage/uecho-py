@@ -57,7 +57,7 @@ class Message(ESV):
         return False
 
     @property
-    def OPC(self):
+    def OPC(self) -> int:
         return len(self.properties)
 
     def add_property(self, prop: Any) -> bool:
@@ -71,7 +71,7 @@ class Message(ESV):
             return False
         return True
 
-    def parse_bytes(self, msg_bytes):
+    def parse_bytes(self, msg_bytes) -> bool:
         # Frame heade
         if len(msg_bytes) < Message.FORMAT1_HEADER_SIZE:
             raise Message.ParserError()
@@ -105,7 +105,10 @@ class Message(ESV):
 
         return True
 
-    def to_bytes(self):
+    def parse_hexstring(self, hes_string: str) -> bool:
+        return self.parse_bytes(Bytes.from_string(hes_string))
+
+    def to_bytes(self) -> bytes:
         msg_bytes = bytearray([Message.EHD1_ECHONET, Message.EHD2_FORMAT1])
         msg_bytes.extend(Bytes.from_int(self.TID, 2))
         msg_bytes.extend(Bytes.from_int(self.SEOJ, 3))
@@ -120,5 +123,5 @@ class Message(ESV):
 
         return msg_bytes
 
-    def to_string(self):
+    def to_string(self) -> str:
         return self.to_bytes().hex().upper()
