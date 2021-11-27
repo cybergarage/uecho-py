@@ -12,8 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .protocol.message import Message as ProtocolMessage
+from typing import Tuple, Union
 
+from .protocol.message import Message as ProtocolMessage
 from .util.bytes import Bytes
 from .property import Property
 from .object import Object
@@ -28,6 +29,27 @@ class Message(ProtocolMessage):
             self.parse_bytes(msg.to_bytes())
             self.from_addr = msg.from_addr
             self.to_addr = msg.to_addr
+
+    def add_property(self, prop: Union[Property, Tuple[int, bytes], int]) -> bool:
+        """Adds the specified property to the message.
+
+        Args:
+            prop (Union[Property, Tuple[int, bytes]]): The new property. The property code is required, but the property bytes are optional.
+
+        Returns:
+            bool: Returns True when the specified property is added, Otherwise False.
+        """
+        new_prop = prop
+        if isinstance(prop, int):
+            new_prop = Property()
+            new_prop.code = prop
+        elif isinstance(prop, tuple):
+            if len(prop) != 2:
+                return False
+            new_prop = Property()
+            new_prop.code = prop[0]
+            new_prop.data = prop[1]
+        return super().add_property(new_prop)
 
     def add_object_as_class_instance_list_property(self, obj: Object) -> bool:
         if not isinstance(obj, Object):
