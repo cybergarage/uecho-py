@@ -19,13 +19,23 @@ from uecho import Controller, Message, Property, Object, NodeProfile, ESV
 import uecho.log as log
 
 
-def create_manufacture_request_message() -> Message:
+def create_read_manufacture_code_message() -> Message:
     msg = Message()
     msg.DEOJ = NodeProfile.OBJECT
     msg.ESV = ESV.READ_REQUEST
-    prop = Property()
-    prop.code = Object.MANUFACTURER_CODE
-    msg.add_property(prop)
+    msg_prop = Property()
+    msg_prop.code = Object.MANUFACTURER_CODE
+    msg.add_property(msg_prop)
+    return msg
+
+
+def create_read_property_message(obj: Object, prop: Property) -> Message:
+    msg = Message()
+    msg.DEOJ = obj.code
+    msg.ESV = ESV.READ_REQUEST
+    msg_prop = Property()
+    msg_prop.code = prop.code
+    msg.add_property(msg_prop)
     return msg
 
 
@@ -52,7 +62,7 @@ if __name__ == '__main__':
     else:
         for i, node in enumerate(ctrl.nodes):
             node_msg = ('%s ' % node.ip.ljust(15))
-            req_msg = create_manufacture_request_message()
+            req_msg = create_read_manufacture_code_message()
             res_msg = ctrl.post_message(req_msg, node)
             if res_msg is not None:
                 if 0 < len(res_msg.properties):
@@ -65,9 +75,16 @@ if __name__ == '__main__':
                     obj_msg += '(%s) ' % obj.name
                 print(obj_msg)
                 for k, prop in enumerate(obj.properties):
+                    if not prop.is_read_required():
+                        continue
                     prop_msg = '[%d] [%d] %02X ' % (j, k, prop.code)
                     if 0 < len(prop.name):
                         prop_msg += '(%s) ' % prop.name
+                    req_msg = create_read_property_message(obj, prop)
+                    res_msg = ctrl.post_message(req_msg, node)
+                    if res_msg is not None:
+                        for res_prop in res_msg.properties:
+                            prop_msg += '%s ' % res_prop.data.hex()
                     print(prop_msg)
 
     ctrl.stop()
