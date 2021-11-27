@@ -15,7 +15,6 @@
 import uecho.log as log
 from uecho import Controller
 from uecho.protocol import Message
-from uecho.util import Bytes
 
 
 def test_controller():
@@ -27,11 +26,11 @@ def test_controller():
 
 
 def test_controller_message_received():
-    msg_bytes = ["108100010EF0010EF0017201D6040105FF01", "108100010EF0010EF0017201D607020F2001029101"]
+    msg_strs = ["108100010EF0010EF0017201D6040105FF01", "108100010EF0010EF0017201D607020F2001029101"]
 
-    for msg_byte in msg_bytes:
+    for msg_str in msg_strs:
         msg = Message()
         msg.from_addr = ("127.0.0.1", 80)
-        assert msg.parse_bytes(Bytes.from_string(msg_byte))
+        assert msg.parse_hexstring(msg_str)
         ctrl = Controller()
         ctrl._message_received(msg)
