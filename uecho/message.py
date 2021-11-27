@@ -22,8 +22,10 @@ from .node_profile import NodeProfile
 
 class Message(ProtocolMessage):
 
-    def __init__(self):
+    def __init__(self, msg: ProtocolMessage = None):
         super().__init__()
+        if isinstance(msg, ProtocolMessage):
+            self.parse_bytes(msg.to_bytes())
 
     def add_object_as_class_instance_list_property(self, obj: Object) -> bool:
         if not isinstance(obj, Object):

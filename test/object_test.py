@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho import Object, Property
+from uecho import Object, Property, Message
+from uecho.protocol import Message as ProtocolMessage
 
 
 def test_object_code():
@@ -63,7 +64,18 @@ def test_object_tuple_group_class_code():
     assert obj.instance_code == 0x00
 
 
-def test_property():
+def test_new_property():
     prop = Property()
     assert prop.code == 0
     assert len(prop.data) == 0
+
+
+def test_new_message():
+
+    msg_strs = ["108100010EF0010EF0017201D6040105FF01", "108100010EF0010EF0017201D607020F2001029101"]
+
+    for msg_str in msg_strs:
+        proto_msg = ProtocolMessage()
+        assert proto_msg.parse_hexstring(msg_str)
+        msg = Message(proto_msg)
+        assert msg == proto_msg
