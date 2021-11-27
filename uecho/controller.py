@@ -58,8 +58,8 @@ class Controller(Observer):
         def __init__(self):
             super().__init__()
             self.ESV = ESV.READ_REQUEST
-            self.SEOJ = NodeProfile.OBJECT
-            self.DEOJ = NodeProfile.OBJECT
+            self.SEOJ = NodeProfile.CODE
+            self.DEOJ = NodeProfile.CODE
             prop = Property()
             prop.code = NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S
             prop.data = bytearray()
@@ -100,7 +100,7 @@ class Controller(Observer):
     def __is_node_profile_message(self, msg: ProtocolMessage):
         if msg.ESV != ESV.NOTIFICATION and msg.ESV != ESV.READ_RESPONSE:
             return False
-        if msg.DEOJ != NodeProfile.OBJECT and msg.DEOJ != NodeProfile.OBJECT_READ_ONLY:
+        if msg.DEOJ != NodeProfile.CODE and msg.DEOJ != NodeProfile.CODE_READ_ONLY:
             return False
         return True
 

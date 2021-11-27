@@ -16,8 +16,7 @@ from .object import Object
 
 
 class NodeProfile(Object):
-    OBJECT = 0x0EF001
-    OBJECT_READ_ONLY = 0x0EF002
+    CODE = 0x0EF001
     CLASS_CODE = 0xF0
     INSTANCE_GENERAL_CODE = 0x01
     INSTANCE_TRANSMISSION_ONLY_CODE = 0x02
@@ -53,4 +52,13 @@ class NodeProfile(Object):
     LOWER_COMMUNICATION_LAYER_PROTOCOL_TYPE = 0xFE
 
     def __init__(self):
+        self.code = NodeProfile.CODE
         pass
+
+
+class NodeProfileReadOnly(Object):
+    CODE = 0x0EF002
+
+    def __init__(self):
+        super().__init__()
+        self.code = NodeProfileReadOnly.CODE
