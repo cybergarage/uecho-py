@@ -26,6 +26,8 @@ class Message(ProtocolMessage):
         super().__init__()
         if isinstance(msg, ProtocolMessage):
             self.parse_bytes(msg.to_bytes())
+            self.from_addr = msg.from_addr
+            self.to_addr = msg.to_addr
 
     def add_object_as_class_instance_list_property(self, obj: Object) -> bool:
         if not isinstance(obj, Object):
