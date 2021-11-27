@@ -51,6 +51,11 @@ class Message(ESV):
         self.from_addr = None
         self.to_addr = None
 
+    def __eq__(self, other):
+        if isinstance(other, Message):
+            return self.to_bytes() == other.to_bytes()
+        return False
+
     @property
     def OPC(self):
         return len(self.properties)

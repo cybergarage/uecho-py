@@ -21,6 +21,12 @@ def test_new_message():
     msg.ESV == ESV.UNKNOWN
 
 
+def test_message_equals():
+    msg = Message()
+    msg.ESV == ESV.UNKNOWN
+    assert msg == msg
+
+
 def test_parse_message():
 
     tid = 100
