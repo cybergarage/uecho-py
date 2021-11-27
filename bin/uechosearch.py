@@ -23,9 +23,7 @@ def create_read_manufacture_code_message() -> Message:
     msg = Message()
     msg.DEOJ = NodeProfile.CODE
     msg.ESV = ESV.READ_REQUEST
-    msg_prop = Property()
-    msg_prop.code = Object.MANUFACTURER_CODE
-    msg.add_property(msg_prop)
+    msg.add_property(Object.MANUFACTURER_CODE)
     return msg
 
 
@@ -33,9 +31,7 @@ def create_read_property_message(obj: Object, prop: Property) -> Message:
     msg = Message()
     msg.DEOJ = obj.code
     msg.ESV = ESV.READ_REQUEST
-    msg_prop = Property()
-    msg_prop.code = prop.code
-    msg.add_property(msg_prop)
+    msg.add_property(prop.code)
     return msg
 
 
