@@ -285,6 +285,23 @@ easily without building the binary protocol messages directly.</p>
 <code class="sig-name descname">add_object_as_class_instance_list_property</code><span class="sig-paren">(</span><em class="sig-param">obj: uecho.object.Object</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.message.Message.add_object_as_class_instance_list_property" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="uecho.message.Message.add_property">
+<code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Union[uecho.property.Property, Tuple[int, bytes], int]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.message.Message.add_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the specified property to the message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prop</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#uecho.property.Property" title="uecho.property.Property"><em>Property</em></a><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – The new property. The property code is required, but the property bytes are optional.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified property is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="attribute">
 <dt id="uecho.message.Message.from_addr">
 <code class="sig-name descname">from_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.message.Message.from_addr" title="Permalink to this definition">¶</a></dt>
@@ -494,6 +511,11 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="uecho.node_profile.NodeProfile.CODE">
+<code class="sig-name descname">CODE</code><em class="property"> = 978945</em><a class="headerlink" href="#uecho.node_profile.NodeProfile.CODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="uecho.node_profile.NodeProfile.INSTANCE_GENERAL_CODE">
 <code class="sig-name descname">INSTANCE_GENERAL_CODE</code><em class="property"> = 1</em><a class="headerlink" href="#uecho.node_profile.NodeProfile.INSTANCE_GENERAL_CODE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -509,16 +531,6 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.node_profile.NodeProfile.OBJECT">
-<code class="sig-name descname">OBJECT</code><em class="property"> = 978945</em><a class="headerlink" href="#uecho.node_profile.NodeProfile.OBJECT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.node_profile.NodeProfile.OBJECT_READ_ONLY">
-<code class="sig-name descname">OBJECT_READ_ONLY</code><em class="property"> = 978946</em><a class="headerlink" href="#uecho.node_profile.NodeProfile.OBJECT_READ_ONLY" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="uecho.node_profile.NodeProfile.code">
 <code class="sig-name descname">code</code><em class="property"> = None</em><a class="headerlink" href="#uecho.node_profile.NodeProfile.code" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -526,6 +538,27 @@ easily without building the binary protocol messages directly.</p>
 <dl class="attribute">
 <dt id="uecho.node_profile.NodeProfile.name">
 <code class="sig-name descname">name</code><em class="property"> = None</em><a class="headerlink" href="#uecho.node_profile.NodeProfile.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.node_profile.NodeProfileReadOnly">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.node_profile.</code><code class="sig-name descname">NodeProfileReadOnly</code><a class="headerlink" href="#uecho.node_profile.NodeProfileReadOnly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.object.Object" title="uecho.object.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.object.Object</span></code></a></p>
+<dl class="attribute">
+<dt id="uecho.node_profile.NodeProfileReadOnly.CODE">
+<code class="sig-name descname">CODE</code><em class="property"> = 978946</em><a class="headerlink" href="#uecho.node_profile.NodeProfileReadOnly.CODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.node_profile.NodeProfileReadOnly.code">
+<code class="sig-name descname">code</code><em class="property"> = None</em><a class="headerlink" href="#uecho.node_profile.NodeProfileReadOnly.code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.node_profile.NodeProfileReadOnly.name">
+<code class="sig-name descname">name</code><em class="property"> = None</em><a class="headerlink" href="#uecho.node_profile.NodeProfileReadOnly.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1300,6 +1333,11 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="uecho.NodeProfile.CODE">
+<code class="sig-name descname">CODE</code><em class="property"> = 978945</em><a class="headerlink" href="#uecho.NodeProfile.CODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="uecho.NodeProfile.INSTANCE_GENERAL_CODE">
 <code class="sig-name descname">INSTANCE_GENERAL_CODE</code><em class="property"> = 1</em><a class="headerlink" href="#uecho.NodeProfile.INSTANCE_GENERAL_CODE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1312,16 +1350,6 @@ easily without building the binary protocol messages directly.</p>
 <dl class="attribute">
 <dt id="uecho.NodeProfile.LOWER_COMMUNICATION_LAYER_PROTOCOL_TYPE">
 <code class="sig-name descname">LOWER_COMMUNICATION_LAYER_PROTOCOL_TYPE</code><em class="property"> = 254</em><a class="headerlink" href="#uecho.NodeProfile.LOWER_COMMUNICATION_LAYER_PROTOCOL_TYPE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.NodeProfile.OBJECT">
-<code class="sig-name descname">OBJECT</code><em class="property"> = 978945</em><a class="headerlink" href="#uecho.NodeProfile.OBJECT" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.NodeProfile.OBJECT_READ_ONLY">
-<code class="sig-name descname">OBJECT_READ_ONLY</code><em class="property"> = 978946</em><a class="headerlink" href="#uecho.NodeProfile.OBJECT_READ_ONLY" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -1359,6 +1387,23 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.Message.add_object_as_class_instance_list_property">
 <code class="sig-name descname">add_object_as_class_instance_list_property</code><span class="sig-paren">(</span><em class="sig-param">obj: uecho.object.Object</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Message.add_object_as_class_instance_list_property" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.Message.add_property">
+<code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Union[uecho.property.Property, Tuple[int, bytes], int]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Message.add_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the specified property to the message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prop</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#uecho.property.Property" title="uecho.property.Property"><em>Property</em></a><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – The new property. The property code is required, but the property bytes are optional.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified property is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="uecho.Message.from_addr">
