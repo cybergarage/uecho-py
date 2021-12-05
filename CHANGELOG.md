@@ -3,6 +3,7 @@
 ## 0.8.4 - 2021/11/??
 
 - Change to ignore self multicast and unicast messages
+- Improve uechosearch print all mandatory readable property values using the standard database in the verbose mode
 
 ## 0.8.3 - 2021/11/23
 

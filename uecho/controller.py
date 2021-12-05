@@ -31,17 +31,14 @@ from .std import Database
 
 
 class ControleListener(metaclass=abc.ABCMeta):
-
+    """ControleListener is an abstract listener class to listen to response and announce messages for nodes.
+    """
     @abc.abstractmethod
     def node_add(self, node: RemoteNode):
         pass
 
     @abc.abstractmethod
     def node_updated(self, node: RemoteNode):
-        pass
-
-    @abc.abstractmethod
-    def message_received(self, msg: Message):
         pass
 
 
@@ -81,14 +78,16 @@ class Controller(Observer):
 
     __node: LocalNode
     __found_nodes: dict
-    # __last_post_msg: Controller.__PostMessage
+    __last_post_msg: Any    # Controller.__PostMessage
     __database: Database
+    __listeners: List[ControleListener]
 
     def __init__(self):
         self.__node = LocalNode()
         self.__found_nodes = {}
         self.__last_post_msg = Controller.__PostMessage()
         self.__database = Database()
+        self.__listeners = []
 
     @property
     def nodes(self) -> List[RemoteNode]:
@@ -101,6 +100,22 @@ class Controller(Observer):
         for node in self.__found_nodes.values():
             nodes.append(node)
         return nodes
+
+    def add_listener(self, listener: ControleListener):
+        """Adds a listener to listen to response and announce messages for nodes.
+
+        Args:
+            listener (ControleListener): A listener implemented abstract methods of ControleListener. 
+        """
+        self.__listeners.append(listener)
+
+    def remove_listener(self, listener: ControleListener):
+        """Removes the specified listener.
+
+        Args:
+            listener (ControleListener): The listener which is already added.
+        """
+        self.__listeners.remove(listener)
 
     def get_standard_manufacturer(self, code: Union[int, bytes]) -> Optional[Manufacture]:
         return self.__database.get_manufacturer(code)
