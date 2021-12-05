@@ -13,12 +13,11 @@
 # limitations under the License.
 
 import time
+import abc
 from typing import Any, Union, List, Tuple, Optional
 
-from uecho.object import Object
-
+from .object import Object
 from .transport.observer import Observer
-
 from .local_node import LocalNode
 from .node_profile import NodeProfile
 from .esv import ESV
@@ -29,6 +28,21 @@ from .remote_node import RemoteNode
 from .node import Node
 from .manufacturer import Manufacture
 from .std import Database
+
+
+class ControleListener(metaclass=abc.ABCMeta):
+
+    @abc.abstractmethod
+    def node_add(self, node: RemoteNode):
+        pass
+
+    @abc.abstractmethod
+    def node_updated(self, node: RemoteNode):
+        pass
+
+    @abc.abstractmethod
+    def message_received(self, msg: Message):
+        pass
 
 
 class Controller(Observer):
