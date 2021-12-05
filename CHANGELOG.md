@@ -2,6 +2,7 @@
 
 ## 0.8.4 - 2021/11/??
 
+- Add ControleListener to listen to response and announce messages for nodes
 - Change to ignore self multicast and unicast messages
 - Improve uechosearch print all mandatory readable property values using the standard database in the verbose mode
 
