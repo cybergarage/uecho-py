@@ -28,6 +28,7 @@ from .remote_node import RemoteNode
 from .node import Node
 from .manufacturer import Manufacture
 from .std import Database
+from .const import DEFAULT_POST_MSG_RERTY, DEFAULT_POST_MSG_WAIT
 
 
 class ControleListener(metaclass=abc.ABCMeta):
@@ -206,8 +207,8 @@ class Controller(Observer):
         if not self.send_message(msg, addr):
             return None
 
-        for i in range(10):
-            time.sleep(0.2)
+        for i in range(DEFAULT_POST_MSG_RERTY):
+            time.sleep(DEFAULT_POST_MSG_WAIT)
             if self.__last_post_msg.response is not None:
                 break
 
