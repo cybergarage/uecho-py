@@ -33,6 +33,7 @@ from .std import Database
 class ControleListener(metaclass=abc.ABCMeta):
     """ControleListener is an abstract listener class to listen to response and announce messages for nodes.
     """
+
     @abc.abstractmethod
     def node_add(self, node: RemoteNode):
         pass
@@ -105,7 +106,7 @@ class Controller(Observer):
         """Adds a listener to listen to response and announce messages for nodes.
 
         Args:
-            listener (ControleListener): A listener implemented abstract methods of ControleListener. 
+            listener (ControleListener): A listener implemented abstract methods of ControleListener.
         """
         self.__listeners.append(listener)
 
@@ -116,6 +117,14 @@ class Controller(Observer):
             listener (ControleListener): The listener which is already added.
         """
         self.__listeners.remove(listener)
+
+    def __notify_node_added(self, node: RemoteNode):
+        for listener in self.__listeners:
+            listener.node_add(node)
+
+    def __notify_node_updated(self, node: RemoteNode):
+        for listener in self.__listeners:
+            listener.node_add(node)
 
     def get_standard_manufacturer(self, code: Union[int, bytes]) -> Optional[Manufacture]:
         return self.__database.get_manufacturer(code)
@@ -146,6 +155,11 @@ class Controller(Observer):
                 for std_prop in std_obj.properties:
                     prop = std_prop.copy()
                     obj.add_property(prop)
+
+        if node.ip not in self.__found_nodes:
+            self.__notify_node_added(node)
+        else:
+            self.__notify_node_updated(node)
 
         self.__found_nodes[node.ip] = node
 
