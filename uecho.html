@@ -132,12 +132,40 @@
 <div class="section" id="module-uecho.controller">
 <span id="uecho-controller-module"></span><h2>uecho.controller module<a class="headerlink" href="#module-uecho.controller" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
+<dt id="uecho.controller.ControleListener">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.controller.</code><code class="sig-name descname">ControleListener</code><a class="headerlink" href="#uecho.controller.ControleListener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>ControleListener is an abstract listener class to listen to response and announce messages for nodes.</p>
+<dl class="method">
+<dt id="uecho.controller.ControleListener.node_add">
+<em class="property">abstract </em><code class="sig-name descname">node_add</code><span class="sig-paren">(</span><em class="sig-param">node: uecho.remote_node.RemoteNode</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.controller.ControleListener.node_add" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.controller.ControleListener.node_updated">
+<em class="property">abstract </em><code class="sig-name descname">node_updated</code><span class="sig-paren">(</span><em class="sig-param">node: uecho.remote_node.RemoteNode</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.controller.ControleListener.node_updated" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="uecho.controller.Controller">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.controller.</code><code class="sig-name descname">Controller</code><a class="headerlink" href="#uecho.controller.Controller" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="uecho.transport.html#uecho.transport.observer.Observer" title="uecho.transport.observer.Observer"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.observer.Observer</span></code></a></p>
 <p>The Controller and find any devices of Echonet Lite,
 send any requests to the found devices and receive the responses
 easily without building the binary protocol messages directly.</p>
+<dl class="method">
+<dt id="uecho.controller.Controller.add_listener">
+<code class="sig-name descname">add_listener</code><span class="sig-paren">(</span><em class="sig-param">listener: uecho.controller.ControleListener</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.controller.Controller.add_listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a listener to listen to response and announce messages for nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>listener</strong> (<a class="reference internal" href="#uecho.controller.ControleListener" title="uecho.controller.ControleListener"><em>ControleListener</em></a>) – A listener implemented abstract methods of ControleListener.</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="method">
 <dt id="uecho.controller.Controller.announce_message">
 <code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.controller.Controller.announce_message" title="Permalink to this definition">¶</a></dt>
@@ -186,6 +214,17 @@ easily without building the binary protocol messages directly.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message">Message</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.controller.Controller.remove_listener">
+<code class="sig-name descname">remove_listener</code><span class="sig-paren">(</span><em class="sig-param">listener: uecho.controller.ControleListener</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.controller.Controller.remove_listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the specified listener.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>listener</strong> (<a class="reference internal" href="#uecho.controller.ControleListener" title="uecho.controller.ControleListener"><em>ControleListener</em></a>) – The listener which is already added.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -951,6 +990,17 @@ easily without building the binary protocol messages directly.</p>
 send any requests to the found devices and receive the responses
 easily without building the binary protocol messages directly.</p>
 <dl class="method">
+<dt id="uecho.Controller.add_listener">
+<code class="sig-name descname">add_listener</code><span class="sig-paren">(</span><em class="sig-param">listener: uecho.controller.ControleListener</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Controller.add_listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a listener to listen to response and announce messages for nodes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>listener</strong> (<a class="reference internal" href="#uecho.controller.ControleListener" title="uecho.controller.ControleListener"><em>ControleListener</em></a>) – A listener implemented abstract methods of ControleListener.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="uecho.Controller.announce_message">
 <code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Controller.announce_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a multicast message to the same local network asynchronously.</p>
@@ -998,6 +1048,17 @@ easily without building the binary protocol messages directly.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message">Message</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.Controller.remove_listener">
+<code class="sig-name descname">remove_listener</code><span class="sig-paren">(</span><em class="sig-param">listener: uecho.controller.ControleListener</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Controller.remove_listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes the specified listener.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>listener</strong> (<a class="reference internal" href="#uecho.controller.ControleListener" title="uecho.controller.ControleListener"><em>ControleListener</em></a>) – The listener which is already added.</p>
 </dd>
 </dl>
 </dd></dl>
