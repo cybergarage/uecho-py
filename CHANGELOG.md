@@ -1,6 +1,10 @@
 # Change Log
 
-## 0.8.4 - 2021/11/??
+## 0.8.5 - 2021/12/??
+
+- Update standard object database based on Machine Readable Appendix Release M
+
+## 0.8.4 - 2021/12/05
 
 - Add ControleListener to listen to response and announce messages for nodes
 - Change to ignore self multicast and unicast messages
