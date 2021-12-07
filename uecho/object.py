@@ -77,6 +77,14 @@ class Object(object):
         return False
 
     def is_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
+        """Checks whether the object has the specified code or belongs to the specified tuple codes.
+
+        Args:
+            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A single code or tuple codes
+
+        Returns:
+            bool: True if the object belongs to the specified code, otherwise False.
+        """
         if isinstance(code, Object):
             if self.code == code.code:
                 return True
@@ -106,6 +114,14 @@ class Object(object):
         return False
 
     def is_group(self, code: int) -> bool:
+        """Checks the object belongs to the specified group.
+
+        Args:
+            code (int): A group code
+
+        Returns:
+            bool: True if the object belongs to the specified group, otherwise False.
+        """
         return self.is_code((code,))
 
     @property
