@@ -105,6 +105,9 @@ class Object(object):
                 return True
         return False
 
+    def is_group(self, code: int) -> bool:
+        return self.is_code((code,))
+
     @property
     def group_code(self):
         return ((self.code >> 16) & 0xFF)
