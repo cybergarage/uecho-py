@@ -80,7 +80,7 @@ class Object(object):
         """Checks whether the object has the specified code or belongs to the specified tuple codes.
 
         Args:
-            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A single code or tuple codes
+            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A single code or tuple codes.
 
         Returns:
             bool: True if the object belongs to the specified code, otherwise False.
@@ -117,12 +117,24 @@ class Object(object):
         """Checks the object belongs to the specified group.
 
         Args:
-            code (int): A group code
+            code (int): A group code.
 
         Returns:
             bool: True if the object belongs to the specified group, otherwise False.
         """
         return self.is_code((code,))
+
+    def is_class(self, group_code: int, class_code: int) -> bool:
+        """Checks the object belongs to the specified group and class.
+
+        Args:
+            group_code (int): A group code.
+            class_code (int): A class code.
+
+        Returns:
+            bool: True if the object belongs to the specified group and class, otherwise False.
+        """
+        return self.is_code((group_code, class_code))
 
     @property
     def group_code(self):
