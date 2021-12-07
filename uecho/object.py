@@ -76,6 +76,35 @@ class Object(object):
                 return True
         return False
 
+    def is_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
+        if isinstance(code, Object):
+            if self.code == code.code:
+                return True
+        elif type(code) is int:
+            if self.code == code:
+                return True
+        elif type(code) is tuple:
+            tuple_n = len(code)
+            if tuple_n == 1:
+                if self.group_code != code[0]:
+                    return False
+                return True
+            if tuple_n == 2:
+                if self.group_code != code[0]:
+                    return False
+                if self.class_code != code[1]:
+                    return False
+                return True
+            elif tuple_n == 3:
+                if self.group_code != code[0]:
+                    return False
+                if self.class_code != code[1]:
+                    return False
+                if self.instance_code != code[2]:
+                    return False
+                return True
+        return False
+
     @property
     def group_code(self):
         return ((self.code >> 16) & 0xFF)
