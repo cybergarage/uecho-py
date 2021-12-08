@@ -163,6 +163,7 @@ class Controller(Observer):
             self.__notify_node_updated(node)
 
         self.__found_nodes[node.ip] = node
+        node.controller = self
 
         return True
 
@@ -174,9 +175,12 @@ class Controller(Observer):
     def send_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> bool:
         """Posts a unicast message to the specified node asynchronously.
 
-            Args:
-                msg (Message): The request message.
-                addr (string): The node ip address.
+        Args:
+            msg (Message): The request message.
+            addr (Union[Tuple[str, int], str, RemoteNode]): The destination node.
+
+        Returns:
+            bool: True if successful, otherwise False.
         """
         to_addr = addr
         if isinstance(addr, RemoteNode):
@@ -194,12 +198,12 @@ class Controller(Observer):
     def post_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> Optional[Message]:
         """Posts a unicast message to the specified node and return the response message synchronously.
 
-            Args:
-                msg (Message): The request message.
-                addr (string): The node ip address.
+        Args:
+            msg (Message): The request message.
+            addr (Union[Tuple[str, int], str, RemoteNode]): The destination node.
 
-            Returns:
-                Message: The response message for success, otherwise None.
+        Returns:
+            Optional[Message]: The response message if successful receiving the response message, otherwise None.
         """
         self.__last_post_msg = Controller.__PostMessage()
         self.__last_post_msg.request = msg
