@@ -52,6 +52,7 @@ class Node(object):
         if not isinstance(obj, Object):
             return False
         self.__objects[obj.code] = obj
+        obj.node = self
         return True
 
     @property

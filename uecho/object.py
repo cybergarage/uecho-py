@@ -48,14 +48,23 @@ class Object(object):
     code: int
     name: str
     __properties: Dict[int, Property]
+    node: Optional[Any]
 
     def __init__(self):
         self.code = 0
         self.name = ""
         self.__properties = {}
-        pass
+        self.node = None
 
     def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
+        """Sets the spcecified code as the object code.
+
+        Args:
+            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A code or tuple code.
+
+        Returns:
+            bool: True if the specified code is valid, otherwise False.
+        """
         if isinstance(code, Object):
             self.code = code.code
         elif type(code) is int:
@@ -77,10 +86,10 @@ class Object(object):
         return False
 
     def is_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
-        """Checks whether the object has the specified code or belongs to the specified tuple codes.
+        """Checks whether the object has the specified code or belongs to the specified tuple code.
 
         Args:
-            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A single code or tuple codes.
+            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A single code or tuple code.
 
         Returns:
             bool: True if the object belongs to the specified code, otherwise False.
@@ -168,6 +177,7 @@ class Object(object):
         if not isinstance(prop, Property):
             return False
         self.__properties[prop.code] = prop
+        prop.object = self
         return True
 
     def get_property(self, code: int) -> Optional[Property]:

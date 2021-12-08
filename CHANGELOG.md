@@ -10,7 +10,7 @@
 
 ## 0.8.5 - 2021/12/??
 
-- Update standard object database based on Machine Readable Appendix Release M
+- Add Property::post_message() and send_message()
 
 ## 0.8.4 - 2021/12/05
 
