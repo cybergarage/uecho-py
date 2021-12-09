@@ -14,29 +14,28 @@
 
 SHELL := bash
 
-DEVICE_LIST_CSV=DeviceList.csv
-DEVICE_LIST_URL=https://raw.githubusercontent.com/SonyCSL/ECHONETLite-ObjectDatabase/master/data/csv/en/${DEVICE_LIST_CSV}
-DEVICE_LIST_SOURCE_FILE=objects.py
+SOURCE_FILES= \
+	${MANUFACTURE_LIST_SOURCE_FILE} \
+	${SCSL_DEVICE_LIST_SOURCE_FILE}
 
+.PHONY: all ${SOURCE_FILES} clean
+
+all: ${SOURCE_FILES} clean
+
+clean:
+	@rm -f *.csv *.xlsx
+
+############################################################
+# Manufactuer 
+############################################################
+
+MANUFACTURE_LIST_SOURCE_FILE=manufacturers.py
 MANUFACTURE_XLSX=list_code_e.xlsx
 MANUFACTURE_CSV=list_code_e.csv
 MANUFACTURE_LIST_URL=https://echonet.jp/wp/wp-content/uploads/pdf/General/Echonet/ManufacturerCode_en/${MANUFACTURE_XLSX}
-MANUFACTURE_LIST_SOURCE_FILE=manufacturers.py
-
-SOURCE_FILE=${MANUFACTURE_LIST_SOURCE_FILE} ${DEVICE_LIST_SOURCE_FILE}
-
-.PHONY: all ${DEVICE_LIST_CSV} ${MANUFACTURE_CSV} clean
-
-all: ${SOURCE_FILE} clean
-
-${DEVICE_LIST_SOURCE_FILE} : ${DEVICE_LIST_CSV}
-	@./objects.pl ${DEVICE_LIST_CSV} > $@
 
 ${MANUFACTURE_LIST_SOURCE_FILE} : ${MANUFACTURE_CSV}
 	@./manufacturers.pl ${MANUFACTURE_CSV} > $@
-
-${DEVICE_LIST_CSV}:
-	@wget -q -O ${DEVICE_LIST_CSV} ${DEVICE_LIST_URL}
 
 ${MANUFACTURE_XLSX}:
 	@wget -q -O ${MANUFACTURE_XLSX} ${MANUFACTURE_LIST_URL}
@@ -44,8 +43,20 @@ ${MANUFACTURE_XLSX}:
 ${MANUFACTURE_CSV}: ${MANUFACTURE_XLSX}
 	@-ssconvert $< $@
 
-${DEVICE_LIST_SOURCE_FILE}: ${DEVICE_LIST_CSV}
 ${MANUFACTURE_LIST_SOURCE_FILE}: ${MANUFACTURE_CSV} 
 
-clean:
-	@rm -f *.csv *.xlsx
+############################################################
+# Machine-readable database from Sony CSL
+############################################################
+
+SCSL_DEVICE_LIST_SOURCE_FILE=objects_scsl.py
+SCSL_DEVICE_LIST_CSV=DeviceList.csv
+SCSL_DEVICE_LIST_URL=https://raw.githubusercontent.com/SonyCSL/ECHONETLite-ObjectDatabase/master/data/csv/en/${SCSL_DEVICE_LIST_CSV}
+
+${SCSL_DEVICE_LIST_SOURCE_FILE} : ${SCSL_DEVICE_LIST_CSV}
+	@./objects_scsl.pl ${SCSL_DEVICE_LIST_CSV} > $@
+
+${SCSL_DEVICE_LIST_CSV}:
+	@wget -q -O ${SCSL_DEVICE_LIST_CSV} ${SCSL_DEVICE_LIST_URL}
+
+${SCSL_DEVICE_LIST_SOURCE_FILE}: ${SCSL_DEVICE_LIST_CSV}
