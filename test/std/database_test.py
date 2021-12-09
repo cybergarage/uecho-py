@@ -38,10 +38,10 @@ def test_object_database():
     assert (obj)
 
     expecteds = [
-        [0x80, Property.REQUIRED, Property.OPTIONAL, Property.PROHIBITED, Property.REQUIRED],
-        [0xB0, Property.OPTIONAL, Property.OPTIONAL, Property.PROHIBITED, Property.PROHIBITED],
-        [0xB1, Property.REQUIRED, Property.PROHIBITED, Property.PROHIBITED, Property.REQUIRED],
-        [0xBF, Property.PROHIBITED, Property.OPTIONAL, Property.PROHIBITED, Property.PROHIBITED],
+        [0x80, Property.REQUIRED, Property.OPTIONAL, Property.REQUIRED],
+        [0xB0, Property.OPTIONAL, Property.OPTIONAL, Property.PROHIBITED],
+        [0xB1, Property.REQUIRED, Property.PROHIBITED, Property.REQUIRED],
+        [0xBF, Property.PROHIBITED, Property.OPTIONAL, Property.PROHIBITED],
     ]
 
     assert obj.get_property(0x00) is None
@@ -51,7 +51,6 @@ def test_object_database():
         assert prop.get_attribute(Property.GET) == expected[1]
         assert prop.get_attribute(Property.SET) == expected[2]
         assert prop.get_attribute(Property.ANNO) == expected[3]
-        assert prop.get_attribute(Property.ANNO_STATUS) == expected[4]
 
 
 def test_mra_object_database():
@@ -61,8 +60,8 @@ def test_mra_object_database():
     assert (obj)
 
     expecteds = [
-        [0x80, Property.REQUIRED, Property.REQUIRED, Property.REQUIRED, Property.REQUIRED],
-        [0xB0, Property.OPTIONAL, Property.OPTIONAL, Property.OPTIONAL, Property.OPTIONAL],
+        [0x80, Property.REQUIRED, Property.REQUIRED, Property.REQUIRED],
+        [0xB0, Property.OPTIONAL, Property.OPTIONAL, Property.OPTIONAL],
     ]
 
     assert obj.get_property(0x00) is None
@@ -72,4 +71,3 @@ def test_mra_object_database():
         assert prop.get_attribute(Property.GET) == expected[1]
         assert prop.get_attribute(Property.SET) == expected[2]
         assert prop.get_attribute(Property.ANNO) == expected[3]
-        assert prop.get_attribute(Property.ANNO_STATUS) == expected[4]

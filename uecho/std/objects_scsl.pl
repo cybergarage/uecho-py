@@ -99,14 +99,13 @@ while(<DEVLIST>){
     $data_rng =~ s/^\"|\"$//g;
     $data_type =~ s/^\"|\"$//g;
 
-    printf("obj.add_property(Property(0x%s, \"%s\", \"%s\", %d, \"%s\", \"%s\", \"%s\", \"%s\"))\n",
+    printf("obj.add_property(Property(0x%s, \"%s\", \"%s\", %d, \"%s\", \"%s\", \"%s\"))\n",
       $epc,
       $name,
       $data_type,
       $data_size,
       $get_rule,
       $set_rule,
-      $anno_rule,
       $stat_chg,
       );
   }

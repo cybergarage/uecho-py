@@ -88,9 +88,8 @@ foreach my $device_json_file(@device_json_files){
     my $get_rule = %{$rules}{'get'};
     my $set_rule = %{$rules}{'set'};
     my $anno_rule = %{$rules}{'inf'};
-    my $stat_chg = %{$rules}{'inf'};
     my $data_type = "";
-    printf("obj.add_property(Property(%s, \"%s\", \"%s\", %d, \"%s\", \"%s\", \"%s\", \"%s\"))\n",
+    printf("obj.add_property(Property(%s, \"%s\", \"%s\", %d, \"%s\", \"%s\", \"%s\"))\n",
       $epc,
       $name,
       $data_type,
@@ -98,7 +97,6 @@ foreach my $device_json_file(@device_json_files){
       $get_rule,
       $set_rule,
       $anno_rule,
-      $stat_chg,
       );
    }
   printf("__std_mra_objects[(0x%s, 0x%s)] = obj\n\n", $grp_code, $cls_code);

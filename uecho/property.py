@@ -27,7 +27,6 @@ class Property(ProtocolProperty):
     GET = 0
     SET = 1
     ANNO = 2
-    ANNO_STATUS = 3
 
     PROHIBITED = 0
     REQUIRED = 1
@@ -77,9 +76,6 @@ class Property(ProtocolProperty):
 
     def is_announce_required(self) -> bool:
         return self.__is_attribute_required(self.attrs[Property.ANNO])
-
-    def is_status_change_required(self) -> bool:
-        return self.__is_attribute_enabled(self.attrs[Property.ANNO_STATUS])
 
     def copy(self):
         return copy.deepcopy(self)

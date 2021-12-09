@@ -20,7 +20,7 @@ from ..property import Property as PropertyBase
 class Property(PropertyBase):
     typ: str
 
-    def __init__(self, code: int, name: str, typ: str, size: int, get: Any, set: Any, anno: Any, chg: Any):
+    def __init__(self, code: int, name: str, typ: str, size: int, get: Any, set: Any, anno: Any):
         super().__init__()
         self.code = code
         self.name = name
@@ -29,7 +29,6 @@ class Property(PropertyBase):
         self.set_attribute(PropertyBase.GET, self.__to_attribute(get))
         self.set_attribute(PropertyBase.SET, self.__to_attribute(set))
         self.set_attribute(PropertyBase.ANNO, self.__to_attribute(anno))
-        self.set_attribute(PropertyBase.ANNO_STATUS, self.__to_attribute(chg))
 
     def __to_attribute(self, val: Any) -> int:
         attr = Property.PROHIBITED
