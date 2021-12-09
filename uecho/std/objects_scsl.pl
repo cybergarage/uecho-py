@@ -41,16 +41,13 @@ print<<HEADER;
 
 from .object import Object
 from .property import Property
-from .objects_appendix import get_all_std_appendix_objects
 
-__std_objects: dict = {}
+__std_scsl_objects: dict = {}
 
 
-def get_all_std_objects() -> dict:
-    all_std_objects = {}
-    all_std_objects.update(__std_objects)
-    all_std_objects.update(get_all_std_appendix_objects())
-    return all_std_objects
+def get_all_std_scsl_objects() -> dict:
+    return __std_scsl_objects
+
 
 HEADER
 
@@ -114,7 +111,7 @@ while(<DEVLIST>){
       );
   }
   close(DEV);
-  printf("__std_objects[(0x%s, 0x%s)] = obj\n\n", $grp_code, $cls_code);
+  printf("__std_scsl_objects[(0x%s, 0x%s)] = obj\n\n", $grp_code, $cls_code);
 }
 close(DEVLIST);
 print<<FOTTER;
