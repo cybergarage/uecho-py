@@ -80,11 +80,6 @@ class Property(ProtocolProperty):
     def is_announce_required(self) -> bool:
         return self.__is_attribute_required(self.attrs[Property.ANNO])
 
-<<<<<<< HEAD
-=======
-    def is_status_change_required(self) -> bool:
-        return self.__is_attribute_enabled(self.attrs[Property.ANNO_STATUS])
-
     def __create_message(self, esv: int, data: bytes = bytearray()):
         msg = Message()
         msg.DEOJ = self.object.code
@@ -122,6 +117,5 @@ class Property(ProtocolProperty):
         msg = self.__create_message(esv, data)
         return self.object.node.controller.post_message(msg, self.object.node)
 
->>>>>>> 681a85ec27d828bbe9edd941fc271e11a71d37a8
     def copy(self):
         return copy.deepcopy(self)
