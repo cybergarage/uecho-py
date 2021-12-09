@@ -13,8 +13,9 @@
 # limitations under the License.
 
 import copy
-from typing import List
+from typing import List, Optional, Any
 from .protocol.property import Property as ProtocolProperty
+from .protocol.message import Message
 
 
 class Property(ProtocolProperty):
@@ -36,10 +37,12 @@ class Property(ProtocolProperty):
     name: str
     size: int
     anno_status: bool
+    object: Optional[Any]
 
     def __init__(self):
         super().__init__()
         self.attrs = [Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED]
+        self.object = None
 
     def set_attribute(self, typ: int, attr: int):
         self.attrs[typ] = attr
@@ -77,5 +80,48 @@ class Property(ProtocolProperty):
     def is_announce_required(self) -> bool:
         return self.__is_attribute_required(self.attrs[Property.ANNO])
 
+<<<<<<< HEAD
+=======
+    def is_status_change_required(self) -> bool:
+        return self.__is_attribute_enabled(self.attrs[Property.ANNO_STATUS])
+
+    def __create_message(self, esv: int, data: bytes = bytearray()):
+        msg = Message()
+        msg.DEOJ = self.object.code
+        msg.ESV = esv
+        prop = Property()
+        prop.code = self.code
+        prop.data = data
+        msg.add_property(prop)
+        return msg
+
+    def send_message(self, esv: int, data: bytes = bytearray()) -> bool:
+        """Posts a unicast message to the property asynchronously.
+
+
+        Args:
+            esv (int): A service type of ECHONET Lite.
+            data (bytes, optional): : A property data. Defaults to bytearray().
+
+        Returns:
+            bool: True if successful, otherwise False.
+        """
+        msg = self.__create_message(esv, data)
+        return self.object.node.controller.send_message(msg, self.object.node)
+
+    def post_message(self, esv: int, data: bytes = bytearray()) -> Optional[Message]:
+        """Posts a unicast message to the property and return the response message synchronously.
+
+        Args:
+            esv (int): A service type of ECHONET Lite.
+            data (bytes, optional): A property data. Defaults to bytearray().
+
+        Returns:
+            Optional[Message]: The response message if successful receiving the response message, otherwise None.
+        """
+        msg = self.__create_message(esv, data)
+        return self.object.node.controller.post_message(msg, self.object.node)
+
+>>>>>>> 681a85ec27d828bbe9edd941fc271e11a71d37a8
     def copy(self):
         return copy.deepcopy(self)

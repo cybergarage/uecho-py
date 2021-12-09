@@ -76,8 +76,14 @@ if __name__ == '__main__':
                     prop_msg = '[%d] [%d] %02X ' % (j, k, prop.code)
                     if 0 < len(prop.name):
                         prop_msg += '(%s) ' % prop.name
+
+                    # The example creates a message of ECHONET Lite for an explanation,
                     req_msg = create_read_property_message(obj, prop)
                     res_msg = ctrl.post_message(req_msg, node)
+                    # However, you can post the same message using Property.post_message() more easily
+                    # as the following.
+                    # res_msg = prop.post_message(ESV.READ_REQUEST)
+
                     if res_msg is not None:
                         for res_prop in res_msg.properties:
                             prop_msg += '%s ' % res_prop.data.hex()

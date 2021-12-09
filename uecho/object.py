@@ -48,14 +48,23 @@ class Object(object):
     code: int
     name: str
     __properties: Dict[int, Property]
+    node: Optional[Any]
 
     def __init__(self):
         self.code = 0
         self.name = ""
         self.__properties = {}
-        pass
+        self.node = None
 
     def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
+        """Sets the spcecified code as the object code.
+
+        Args:
+            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A code or tuple code.
+
+        Returns:
+            bool: True if the specified code is valid, otherwise False.
+        """
         if isinstance(code, Object):
             self.code = code.code
         elif type(code) is int:
@@ -75,6 +84,66 @@ class Object(object):
                 self.instance_code = code[2]
                 return True
         return False
+
+    def is_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
+        """Checks whether the object has the specified code or belongs to the specified tuple code.
+
+        Args:
+            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A single code or tuple code.
+
+        Returns:
+            bool: True if the object belongs to the specified code, otherwise False.
+        """
+        if isinstance(code, Object):
+            if self.code == code.code:
+                return True
+        elif type(code) is int:
+            if self.code == code:
+                return True
+        elif type(code) is tuple:
+            tuple_n = len(code)
+            if tuple_n == 1:
+                if self.group_code != code[0]:
+                    return False
+                return True
+            if tuple_n == 2:
+                if self.group_code != code[0]:
+                    return False
+                if self.class_code != code[1]:
+                    return False
+                return True
+            elif tuple_n == 3:
+                if self.group_code != code[0]:
+                    return False
+                if self.class_code != code[1]:
+                    return False
+                if self.instance_code != code[2]:
+                    return False
+                return True
+        return False
+
+    def is_group(self, code: int) -> bool:
+        """Checks the object belongs to the specified group.
+
+        Args:
+            code (int): A group code.
+
+        Returns:
+            bool: True if the object belongs to the specified group, otherwise False.
+        """
+        return self.is_code((code,))
+
+    def is_class(self, group_code: int, class_code: int) -> bool:
+        """Checks the object belongs to the specified group and class.
+
+        Args:
+            group_code (int): A group code.
+            class_code (int): A class code.
+
+        Returns:
+            bool: True if the object belongs to the specified group and class, otherwise False.
+        """
+        return self.is_code((group_code, class_code))
 
     @property
     def group_code(self):
@@ -108,6 +177,7 @@ class Object(object):
         if not isinstance(prop, Property):
             return False
         self.__properties[prop.code] = prop
+        prop.object = self
         return True
 
     def get_property(self, code: int) -> Optional[Property]:
