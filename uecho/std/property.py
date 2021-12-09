@@ -36,7 +36,7 @@ class Property(PropertyBase):
         if isinstance(val, int):
             attr = val
         if isinstance(val, str):
-            if val.lower() == "mandatory":
+            if val.lower() == "mandatory" or val.lower() == "required":
                 attr = Property.REQUIRED
             elif val.lower() == "optional":
                 attr = Property.OPTIONAL

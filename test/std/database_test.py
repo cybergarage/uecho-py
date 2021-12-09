@@ -54,15 +54,15 @@ def test_object_database():
         assert prop.get_attribute(Property.ANNO_STATUS) == expected[4]
 
 
-def test_appendix_object_database():
+def test_mra_object_database():
     db = Database()
 
     obj = db.get_object((0x02, 0x91))
     assert (obj)
 
     expecteds = [
-        [0x80, Property.REQUIRED, Property.REQUIRED, Property.PROHIBITED, Property.REQUIRED],
-        [0xB0, Property.OPTIONAL, Property.OPTIONAL, Property.PROHIBITED, Property.PROHIBITED],
+        [0x80, Property.REQUIRED, Property.REQUIRED, Property.REQUIRED, Property.REQUIRED],
+        [0xB0, Property.OPTIONAL, Property.OPTIONAL, Property.OPTIONAL, Property.OPTIONAL],
     ]
 
     assert obj.get_property(0x00) is None
