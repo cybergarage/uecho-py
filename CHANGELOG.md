@@ -1,14 +1,19 @@
 # Change Log
 
+## 0.9.0 - 2022/??/??
+
+- Add Device class to create original ECHONET Lite devices easily
+
 ## 0.8.5 - 2021/12/??
 
 - Update standard object database based on Machine Readable Appendix Release M of ECHONET consortium
+- Add Property::post_message() and send_message()
 
 ## 0.8.4 - 2021/12/05
 
 - Add ControleListener to listen to response and announce messages for nodes
 - Change to ignore self multicast and unicast messages
-- Improve uechosearch print all mandatory readable property values using the standard database in the verbose mode
+- Improve uechosearch to print all mandatory readable property values using the standard database in the verbose mode
 
 ## 0.8.3 - 2021/11/23
 
