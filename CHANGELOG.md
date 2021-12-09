@@ -2,7 +2,7 @@
 
 ## 0.8.5 - 2021/12/??
 
-- Update standard object database based on Machine Readable Appendix Release M
+- Update standard object database based on Machine Readable Appendix Release M of ECHONET consortium
 
 ## 0.8.4 - 2021/12/05
 
