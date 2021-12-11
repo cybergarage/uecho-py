@@ -15,6 +15,7 @@
 from typing import Optional, Union, Tuple, Dict, Any, List
 
 from .property import Property
+from .protocol.message import Message
 
 
 class Object(object):
@@ -185,6 +186,55 @@ class Object(object):
             return self.__properties[code]
         except KeyError:
             return None
+
+    def __create_message(self, esv: int, props: List[Tuple[int, bytes]]):
+        msg = Message()
+        msg.DEOJ = self.code
+        msg.ESV = esv
+        if not isinstance(props, list):
+            return None
+        for prop in props:
+            if not isinstance(prop, tuple) or len(prop) != 2:
+                return None
+            if not isinstance(prop[0], int):
+                return None
+            if not isinstance(prop[1], bytes) and not isinstance(prop[1], bytearray):
+                return None
+            req = Property()
+            req.code = prop[0]
+            req.data = prop[1]
+            msg.add_property(req)
+        return msg
+
+    def send_message(self, esv: int, props: List[Tuple[int, bytes]]) -> bool:
+        """Sends a unicast message to the specified property asynchronously.
+
+        Args:
+            esv (int): A service type of ECHONET Lite.
+            props (List[Tuple[int, bytes]]): List of a request property tuple (property code, property data).
+
+        Returns:
+            bool: True if successful, otherwise False.
+        """
+        msg = self.__create_message(esv, props)
+        if msg is None:
+            return False
+        return self.node.controller.send_message(msg, self.node)
+
+    def post_message(self, esv: int, props: List[Tuple[int, bytes]]) -> Optional[Any]:
+        """Posts a unicast message to the specified property asynchronously.
+
+        Args:
+            esv (int): A service type of ECHONET Lite.
+            props (List[Tuple[int, bytes]]): List of a request property tuple (property code, property data).
+
+        Returns:
+            Optional[Message]: The response message if successful receiving the response message, otherwise None.
+        """
+        msg = self.__create_message(esv, props)
+        if msg is None:
+            return None
+        return self.node.controller.post_message(msg, self.node)
 
     def copy(self):
         obj = Object()

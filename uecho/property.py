@@ -80,18 +80,8 @@ class Property(ProtocolProperty):
     def is_announce_required(self) -> bool:
         return self.__is_attribute_required(self.attrs[Property.ANNO])
 
-    def __create_message(self, esv: int, data: bytes = bytearray()):
-        msg = Message()
-        msg.DEOJ = self.object.code
-        msg.ESV = esv
-        prop = Property()
-        prop.code = self.code
-        prop.data = data
-        msg.add_property(prop)
-        return msg
-
     def send_message(self, esv: int, data: bytes = bytearray()) -> bool:
-        """Posts a unicast message to the property asynchronously.
+        """Sends a unicast message to the property asynchronously.
 
 
         Args:
@@ -101,8 +91,7 @@ class Property(ProtocolProperty):
         Returns:
             bool: True if successful, otherwise False.
         """
-        msg = self.__create_message(esv, data)
-        return self.object.node.controller.send_message(msg, self.object.node)
+        return self.object.send_message(esv, [(self.code, data)])
 
     def post_message(self, esv: int, data: bytes = bytearray()) -> Optional[Message]:
         """Posts a unicast message to the property and return the response message synchronously.
@@ -114,8 +103,7 @@ class Property(ProtocolProperty):
         Returns:
             Optional[Message]: The response message if successful receiving the response message, otherwise None.
         """
-        msg = self.__create_message(esv, data)
-        return self.object.node.controller.post_message(msg, self.object.node)
+        return self.object.post_message(esv, [(self.code, data)])
 
     def copy(self):
         return copy.deepcopy(self)
