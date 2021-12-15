@@ -826,9 +826,49 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.object.Object.post_message">
+<code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">esv: int, props: List[Tuple[int, bytes]]</em><span class="sig-paren">)</span> &#x2192; Optional[Any]<a class="headerlink" href="#uecho.object.Object.post_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Posts a unicast message to the specified property asynchronously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>esv</strong> (<em>int</em>) – A service type of ECHONET Lite.</p></li>
+<li><p><strong>props</strong> (<em>List</em><em>[</em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – List of a request property tuple (property code, property data).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The response message if successful receiving the response message, otherwise None.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message">Message</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="uecho.object.Object.properties">
 <em class="property">property </em><code class="sig-name descname">properties</code><a class="headerlink" href="#uecho.object.Object.properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.object.Object.send_message">
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">esv: int, props: List[Tuple[int, bytes]]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.object.Object.send_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a unicast message to the specified property asynchronously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>esv</strong> (<em>int</em>) – A service type of ECHONET Lite.</p></li>
+<li><p><strong>props</strong> (<em>List</em><em>[</em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – List of a request property tuple (property code, property data).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successful, otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="uecho.object.Object.set_code">
@@ -980,7 +1020,7 @@ easily without building the binary protocol messages directly.</p>
 <dl class="method">
 <dt id="uecho.property.Property.send_message">
 <code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">esv: int</em>, <em class="sig-param">data: bytes = bytearray(b'')</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.property.Property.send_message" title="Permalink to this definition">¶</a></dt>
-<dd><p>Posts a unicast message to the property asynchronously.</p>
+<dd><p>Sends a unicast message to the property asynchronously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -1440,9 +1480,49 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.Object.post_message">
+<code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">esv: int, props: List[Tuple[int, bytes]]</em><span class="sig-paren">)</span> &#x2192; Optional[Any]<a class="headerlink" href="#uecho.Object.post_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Posts a unicast message to the specified property asynchronously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>esv</strong> (<em>int</em>) – A service type of ECHONET Lite.</p></li>
+<li><p><strong>props</strong> (<em>List</em><em>[</em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – List of a request property tuple (property code, property data).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The response message if successful receiving the response message, otherwise None.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message">Message</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="uecho.Object.properties">
 <em class="property">property </em><code class="sig-name descname">properties</code><a class="headerlink" href="#uecho.Object.properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.Object.send_message">
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">esv: int, props: List[Tuple[int, bytes]]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Object.send_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sends a unicast message to the specified property asynchronously.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>esv</strong> (<em>int</em>) – A service type of ECHONET Lite.</p></li>
+<li><p><strong>props</strong> (<em>List</em><em>[</em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – List of a request property tuple (property code, property data).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if successful, otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="uecho.Object.set_code">
@@ -1832,7 +1912,7 @@ easily without building the binary protocol messages directly.</p>
 <dl class="method">
 <dt id="uecho.Property.send_message">
 <code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">esv: int</em>, <em class="sig-param">data: bytes = bytearray(b'')</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Property.send_message" title="Permalink to this definition">¶</a></dt>
-<dd><p>Posts a unicast message to the property asynchronously.</p>
+<dd><p>Sends a unicast message to the property asynchronously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
