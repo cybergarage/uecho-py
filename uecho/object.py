@@ -51,8 +51,8 @@ class Object(object):
     __properties: Dict[int, Property]
     node: Optional[Any]
 
-    def __init__(self):
-        self.code = 0
+    def __init__(self, code: int = 0):
+        self.code = code
         self.name = ""
         self.__properties = {}
         self.node = None

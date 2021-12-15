@@ -47,8 +47,11 @@ class RemoteNode(Node):
         for n in range(instance_count):
             offset = (Object.CODE_SIZE * n) + 1
             code_bytes = prop.data[offset:(offset + Object.CODE_SIZE)]
-            obj = Object()
-            obj.set_code(Bytes.to_int(code_bytes))
+            obj = Object(Bytes.to_int(code_bytes))
             self.add_object(obj)
+
+        # Is the node a general node?
+        if 0 < len(self.objects):
+            self.add_object(Object(0x0EF001))
 
         return True
