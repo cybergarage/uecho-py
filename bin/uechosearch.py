@@ -57,6 +57,8 @@ if __name__ == '__main__':
             print(msg)
     else:
         for i, node in enumerate(ctrl.nodes):
+            if 0 < i:
+                print()
             node_msg = ('%s ' % node.ip.ljust(15))
             req_msg = create_read_manufacture_code_message()
             res_msg = ctrl.post_message(req_msg, node)
@@ -78,15 +80,16 @@ if __name__ == '__main__':
                         prop_msg += '(%s) ' % prop.name
 
                     # The example creates a message of ECHONET Lite for an explanation,
-                    req_msg = create_read_property_message(obj, prop)
-                    res_msg = ctrl.post_message(req_msg, node)
+                    # req_msg = create_read_property_message(obj, prop)
+                    # res_msg = ctrl.post_message(req_msg, node)
                     # However, you can post the same message using Property.post_message() more easily
                     # as the following.
-                    # res_msg = prop.post_message(ESV.READ_REQUEST)
+                    prop.send_message(ESV.READ_REQUEST)
+                    res_msg = prop.post_message(ESV.READ_REQUEST)
 
                     if res_msg is not None:
                         for res_prop in res_msg.properties:
-                            prop_msg += '%s ' % res_prop.data.hex()
+                            prop_msg += '%s ' % res_prop.data.hex().upper()
                     print(prop_msg)
 
     ctrl.stop()
