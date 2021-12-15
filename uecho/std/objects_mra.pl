@@ -55,15 +55,23 @@ def get_all_std_mra_objects() -> dict:
 HEADER
 
 
-my $mra_root_dir = $mra_root_dir . "/mraData/devices/";
+my @mra_sub_dirs = (
+  "/mraData/superClass/",
+  "/mraData/nodeProfile/",
+  "/mraData/devices/"
+);
+
 my @device_json_files;
-find sub {
-    my $file = $_;
-    my $path = $File::Find::name;
-    if(-f $file){
-      push(@device_json_files, $path);
-    }
-}, $mra_root_dir;
+foreach my $mra_sub_dir(@mra_sub_dirs){
+  my $mra_root_dir = $mra_root_dir . $mra_sub_dir;
+  find sub {
+      my $file = $_;
+      my $path = $File::Find::name;
+      if(-f $file){
+        push(@device_json_files, $path);
+      }
+  }, $mra_root_dir;
+}
 
 foreach my $device_json_file(@device_json_files){
   open(DEV_JSON_FILE, $device_json_file) or die "$!";
