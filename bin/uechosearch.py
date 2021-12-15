@@ -65,7 +65,11 @@ if __name__ == '__main__':
             if res_msg is not None:
                 if 0 < len(res_msg.properties):
                     res_prop = res_msg.properties[0]
-                    node_msg += '(%s)' % ctrl.get_standard_manufacturer_name(res_prop.data)
+                    man_str = ctrl.get_standard_manufacturer_name(res_prop.data)
+                    if man_str is not None:
+                        node_msg += '(%s)' % man_str
+                    else:
+                        node_msg += '(%s)' % res_prop.data.hex().upper()
             print(node_msg)
             for j, obj in enumerate(node.objects):
                 obj_msg = '[%d] %06X ' % (j, obj.code)
