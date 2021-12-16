@@ -19,14 +19,18 @@ def test_manufacture_database():
     db = Database()
 
     expecteds = [
-        [0x00000B, "Panasonic"],
-        [0x000005, "Sharp"],
+        ["Panasonic", 0x00000B],
+        ["Panasonic", bytes([0x00, 0x00, 0x0B])],
+        ["Panasonic", bytearray([0x00, 0x00, 0x0B])],
+        ["Sharp", 0x000005],
+        ["Sharp", bytes([0x00, 0x00, 0x05])],
+        ["Sharp", bytearray([0x00, 0x00, 0x05])],
     ]
 
     for expected in expecteds:
-        man = db.get_manufacturer(expected[0])
+        man = db.get_manufacturer(expected[1])
         assert man
-        assert man.name.startswith(expected[1])
+        assert man.name.startswith(expected[0])
 
 
 def test_object_database():
