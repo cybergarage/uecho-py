@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import Union
+
 
 class Bytes():
     """
@@ -27,7 +29,7 @@ class Bytes():
         return bytes(byte_buf)
 
     @classmethod
-    def to_int(cls, byte_buf: bytes) -> int:
+    def to_int(cls, byte_buf: Union[bytes, bytearray]) -> int:
         val = 0
         bytes_size = len(byte_buf)
         for n in range(bytes_size):
