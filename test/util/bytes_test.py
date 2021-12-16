@@ -17,13 +17,21 @@ from uecho.util import Bytes
 
 def test_convert_bytes():
     for n in range(0xFF + 1):
-        assert n == Bytes.to_int(Bytes.from_int(n, 1))
+        ibytes = Bytes.from_int(n, 1)
+        assert n == Bytes.to_int(ibytes)
+        assert n == Bytes.to_int(bytearray(ibytes))
 
     for n in range(0, (0xFFFF + 1), int(0xFFFF / 0xFF)):
-        assert n == Bytes.to_int(Bytes.from_int(n, 2))
+        ibytes = Bytes.from_int(n, 2)
+        assert n == Bytes.to_int(ibytes)
+        assert n == Bytes.to_int(bytearray(ibytes))
 
     for n in range(0, (0xFFFFFF + 1), int(0xFFFFFF / 0xFF)):
-        assert n == Bytes.to_int(Bytes.from_int(n, 3))
+        ibytes = Bytes.from_int(n, 3)
+        assert n == Bytes.to_int(ibytes)
+        assert n == Bytes.to_int(bytearray(ibytes))
 
     for n in range(0, (0xFFFFFFFF + 1), int(0xFFFFFFFF / 0xFF)):
-        assert n == Bytes.to_int(Bytes.from_int(n, 4))
+        ibytes = Bytes.from_int(n, 4)
+        assert n == Bytes.to_int(ibytes)
+        assert n == Bytes.to_int(bytearray(ibytes))
