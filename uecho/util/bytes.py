@@ -24,7 +24,7 @@ class Bytes():
         for n in range(bytes_size):
             idx = (bytes_size - 1) - n
             byte_buf[idx] = ((val >> (n * 8)) & 0xFF)
-        return byte_buf
+        return bytes(byte_buf)
 
     @classmethod
     def to_int(cls, byte_buf: bytes) -> int:
