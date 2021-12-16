@@ -36,15 +36,15 @@ class Database():
         except KeyError:
             return None
 
-    def get_manufacturer(self, code: Union[int, bytes]) -> Optional[Manufacture]:
+    def get_manufacturer(self, code: Union[int, bytes, bytearray]) -> Optional[Manufacture]:
         man_code = 0
         if isinstance(code, int):
             man_code = code
-        elif isinstance(code, bytes):
+        elif isinstance(code, bytes) or isinstance(code, bytearray):
             man_code = Bytes.to_int(code)
         return self.__get_manufacturer(man_code)
 
-    def get_manufacturer_name(self, code: Union[int, bytes]) -> Optional[str]:
+    def get_manufacturer_name(self, code: Union[int, bytes, bytearray]) -> Optional[str]:
         man = self.get_manufacturer(code)
         if man is not None:
             return man.name
