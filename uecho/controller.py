@@ -44,6 +44,10 @@ class ControleListener(metaclass=abc.ABCMeta):
     def node_updated(self, node: RemoteNode):
         pass
 
+    @abc.abstractmethod
+    def property_updated(self, node: RemoteNode, obj: Object, prop: Property):
+        pass
+
 
 class Controller(Observer):
     """The Controller and find any devices of Echonet Lite,
@@ -120,14 +124,6 @@ class Controller(Observer):
         """
         self.__listeners.remove(listener)
 
-    def __notify_node_added(self, node: RemoteNode):
-        for listener in self.__listeners:
-            listener.node_add(node)
-
-    def __notify_node_updated(self, node: RemoteNode):
-        for listener in self.__listeners:
-            listener.node_add(node)
-
     def get_standard_manufacturer(self, code: Union[int, bytes]) -> Optional[Manufacture]:
         return self.__database.get_manufacturer(code)
 
@@ -136,13 +132,6 @@ class Controller(Observer):
 
     def get_standard_object(self, code: Union[Object, int, Tuple[int, int]]) -> Optional[Object]:
         return self.__database.get_object(code)
-
-    def _is_node_profile_message(self, msg: ProtocolMessage):
-        if msg.ESV != ESV.NOTIFICATION and msg.ESV != ESV.READ_RESPONSE:
-            return False
-        if msg.DEOJ != NodeProfile.CODE and msg.DEOJ != NodeProfile.CODE_READ_ONLY:
-            return False
-        return True
 
     def get_node(self, addr: Union[str, Tuple[str, int]]) -> Optional[RemoteNode]:
         """ Returns the node specified the IP address.
@@ -164,30 +153,6 @@ class Controller(Observer):
                 if addr[0] == addr_key:
                     return node
         return None
-
-    def _add_found_node(self, node):
-        if not isinstance(node, RemoteNode):
-            return False
-        node.controller = self
-
-        # Adds standard object attributes and properties
-        for obj in node.objects:
-            std_obj = self.get_standard_object((obj.group_code, obj.class_code))
-            if isinstance(std_obj, Object):
-                obj.name = std_obj.name
-                for std_prop in std_obj.properties:
-                    prop = std_prop.copy()
-                    obj.add_property(prop)
-
-        if node.ip not in self.__found_nodes:
-            self.__notify_node_added(node)
-        else:
-            self.__notify_node_updated(node)
-
-        self.__found_nodes[node.ip] = node
-        node.controller = self
-
-        return True
 
     def announce_message(self, msg: Message) -> bool:
         """Posts a multicast message to the same local network asynchronously.
@@ -256,13 +221,68 @@ class Controller(Observer):
             return False
         return True
 
+    def __notify_node_added(self, node: RemoteNode):
+        for listener in self.__listeners:
+            listener.node_add(node)
+
+    def __notify_node_updated(self, node: RemoteNode):
+        for listener in self.__listeners:
+            listener.node_add(node)
+
+    def __notify_property_updated(self, node: RemoteNode, obj: Object, prop: Property):
+        for listener in self.__listeners:
+            listener.property_updated(node, obj, prop)
+
+    def _add_found_node(self, node):
+        if not isinstance(node, RemoteNode):
+            return False
+        node.controller = self
+
+        # Adds standard object attributes and properties
+        for obj in node.objects:
+            std_obj = self.get_standard_object((obj.group_code, obj.class_code))
+            if isinstance(std_obj, Object):
+                obj.name = std_obj.name
+                for std_prop in std_obj.properties:
+                    prop = std_prop.copy()
+                    obj.add_property(prop)
+
+        if node.ip not in self.__found_nodes:
+            self.__notify_node_added(node)
+        else:
+            self.__notify_node_updated(node)
+
+        self.__found_nodes[node.ip] = node
+        node.controller = self
+
+        return True
+
+    def _update_properties(self, msg: Message) -> None:
+        node = self.get_node(msg.from_addr)
+        if node is Node:
+            return
+        obj = node.get_object(msg.DEOJ)
+        if obj is None:
+            return
+        for n in range(msg.OPC):
+            msg_prop = msg.properties[n]
+            obj_prop = obj.get_property(msg_prop.code)
+            if obj_prop is None:
+                continue
+            if obj_prop.data != msg_prop.data:
+                obj_prop.data = msg_prop.data
+                self.__notify_property_updated(node, obj, obj_prop)
+
     def message_received(self, prpto_msg: ProtocolMessage):
         msg = Message(prpto_msg)
 
-        if self._is_node_profile_message(msg):
+        if msg.is_node_profile_message():
             node = RemoteNode(msg.from_addr)
             if node.parse_message(msg):
                 self._add_found_node(node)
+
+        if msg.is_notification() or msg.is_read_response():
+            self._update_properties(msg)
 
         if self.__last_post_msg.is_waiting():
             if self.__last_post_msg.request.is_response(msg):
