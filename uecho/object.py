@@ -240,6 +240,6 @@ class Object(object):
         obj = Object()
         obj.code = self.code
         obj.name = self.name
-        for prop in self.__properties:
+        for prop in self.__properties.values():
             obj.add_property(prop.copy())
         return obj
