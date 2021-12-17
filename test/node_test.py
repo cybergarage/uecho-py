@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from uecho import Node
+from uecho.std import Database
 
 
 def test_node():
@@ -21,3 +22,11 @@ def test_node():
     assert node.set_address(addr)
     assert node.ip == addr[0]
     assert node.port == Node.PORT
+
+    obj = Database().get_object((0x02, 0x91)).copy()
+    obj.set_code(0x029101)
+    node.add_object(obj)
+    assert node.get_object(0x029100) is None
+    assert node.get_object(0x029101)
+    assert node.get_object((0x02, 0x91, 0x00)) is None
+    assert node.get_object((0x02, 0x91, 0x01))

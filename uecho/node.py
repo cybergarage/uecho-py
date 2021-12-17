@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import List, Tuple, Optional, Dict
+from typing import Union, List, Tuple, Optional, Dict
 from .object import Object
 
 
@@ -65,3 +65,18 @@ class Node(object):
 
     def has_object(self, code: int) -> bool:
         return code in self.__objects.keys()
+
+    def get_object(self, code: Union[int, Tuple[int, int, int]]) -> Optional[Object]:
+        """ Returns the object specified the code.
+
+        Args:
+            code (Union[str, Tuple[int, int, int]]): A object code.
+
+        Returns:
+            Optional[Object]: Returns the object when the node has the object specified by the code, otherwise None.
+        """
+        obj = Object(code)
+        try:
+            return self.__objects[obj.code]
+        except KeyError:
+            return None
