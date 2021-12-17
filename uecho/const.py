@@ -12,5 +12,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEFAULT_POST_MSG_RERTY = 10
-DEFAULT_POST_MSG_WAIT = 0.2
+DEFAULT_POST_MSG_RERTY = 20
+DEFAULT_POST_MSG_WAIT = 0.1
