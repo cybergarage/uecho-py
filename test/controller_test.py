@@ -23,7 +23,7 @@ def test_controller():
     assert ctrl.stop()
 
 
-def test_controller_message_received():
+def test_controllermessage_received():
     msg_strs = ["108100010EF0010EF0017201D6040105FF01", "108100010EF0010EF0017201D607020F2001029101"]
 
     for msg_str in msg_strs:
@@ -31,7 +31,7 @@ def test_controller_message_received():
         msg.from_addr = ("127.0.0.1", 80)
         assert msg.parse_hexstring(msg_str)
         ctrl = Controller()
-        ctrl._message_received(msg)
+        ctrl.message_received(msg)
 
 
 def test_controller_nodes():

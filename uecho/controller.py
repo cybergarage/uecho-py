@@ -256,7 +256,7 @@ class Controller(Observer):
             return False
         return True
 
-    def _message_received(self, prpto_msg: ProtocolMessage):
+    def message_received(self, prpto_msg: ProtocolMessage):
         msg = Message(prpto_msg)
 
         if self._is_node_profile_message(msg):
