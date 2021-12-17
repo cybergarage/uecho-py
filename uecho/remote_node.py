@@ -57,7 +57,3 @@ class RemoteNode(Node):
             self.add_object(Object(0x0EF001))
 
         return True
-
-    def update_properties(self, msg: Message):
-        for n in range(msg.OPC):
-            msg.properties[n]
