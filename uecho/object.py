@@ -51,8 +51,8 @@ class Object(object):
     __properties: Dict[int, Property]
     node: Optional[Any]
 
-    def __init__(self, code: int = 0):
-        self.code = code
+    def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = 0):
+        self.set_code(code)
         self.name = ""
         self.__properties = {}
         self.node = None
