@@ -19,13 +19,15 @@ from .object import Object
 from .node_profile import NodeProfile
 from .message import Message
 
+from typing import Tuple
+
 
 class RemoteNode(Node):
 
     controller: Optional[Any]
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, addr: Optional[Tuple[str, int]] = None):
+        super().__init__(addr)
         self.controller = None
 
     def parse_message(self, msg: Message) -> bool:
@@ -55,3 +57,7 @@ class RemoteNode(Node):
             self.add_object(Object(0x0EF001))
 
         return True
+
+    def update_properties(self, msg: Message):
+        for n in range(msg.OPC):
+            msg.properties[n]

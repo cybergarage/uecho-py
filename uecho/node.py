@@ -22,11 +22,12 @@ class Node(object):
     __address: Optional[Tuple[str, int]]
     __objects: Dict[int, Object]
 
-    def __init__(self):
+    def __init__(self, addr: Optional[Tuple[str, int]] = None):
         self.__address = ()
         self.__objects = {}
+        self.set_address(addr)
 
-    def set_address(self, addr) -> bool:
+    def set_address(self, addr: Tuple[str, int]) -> bool:
         if not isinstance(addr, tuple) or len(addr) != 2:
             return False
         self.__address = addr

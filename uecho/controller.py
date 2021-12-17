@@ -238,8 +238,7 @@ class Controller(Observer):
         msg = Message(prpto_msg)
 
         if self.__is_node_profile_message(msg):
-            node = RemoteNode()
-            node.set_address(msg.from_addr)
+            node = RemoteNode(msg.from_addr)
             if node.parse_message(msg):
                 self.__add_found_node(node)
 
