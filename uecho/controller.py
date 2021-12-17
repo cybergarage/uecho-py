@@ -14,6 +14,7 @@
 
 import time
 import abc
+import socket
 from typing import Any, Union, List, Tuple, Optional
 
 from .object import Object
@@ -136,14 +137,35 @@ class Controller(Observer):
     def get_standard_object(self, code: Union[Object, int, Tuple[int, int]]) -> Optional[Object]:
         return self.__database.get_object(code)
 
-    def __is_node_profile_message(self, msg: ProtocolMessage):
+    def _is_node_profile_message(self, msg: ProtocolMessage):
         if msg.ESV != ESV.NOTIFICATION and msg.ESV != ESV.READ_RESPONSE:
             return False
         if msg.DEOJ != NodeProfile.CODE and msg.DEOJ != NodeProfile.CODE_READ_ONLY:
             return False
         return True
 
-    def __add_found_node(self, node):
+    def get_node(self, addr: Union[str, Tuple[str, int]]) -> Optional[RemoteNode]:
+        """ Returns the node specified the IP address.
+
+        Args:
+            addr (Union[str, Tuple[str, int]]): A hostname or an IP address.
+
+        Returns:
+            Optional[RemoteNode]: Returns the node that is already found by the specified address, otherwise None.
+        """
+        for addr_key, node in self.__found_nodes.items():
+            if isinstance(addr, str):
+                if addr == addr_key:
+                    return node
+                ipaddr = socket.gethostbyname(addr)
+                if ipaddr == addr_key:
+                    return node
+            if isinstance(addr, tuple):
+                if addr[0] == addr_key:
+                    return node
+        return None
+
+    def _add_found_node(self, node):
         if not isinstance(node, RemoteNode):
             return False
         node.controller = self
@@ -237,10 +259,10 @@ class Controller(Observer):
     def _message_received(self, prpto_msg: ProtocolMessage):
         msg = Message(prpto_msg)
 
-        if self.__is_node_profile_message(msg):
+        if self._is_node_profile_message(msg):
             node = RemoteNode(msg.from_addr)
             if node.parse_message(msg):
-                self.__add_found_node(node)
+                self._add_found_node(node)
 
         if self.__last_post_msg.is_waiting():
             if self.__last_post_msg.request.is_response(msg):

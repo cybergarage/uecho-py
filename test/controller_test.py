@@ -12,13 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import uecho.log as log
-from uecho import Controller
+from uecho import Controller, RemoteNode
 from uecho.protocol import Message
 
 
 def test_controller():
-    log.setLevel(log.DEBUG)
     ctrl = Controller()
     assert ctrl.start()
     assert ctrl.search()
@@ -34,3 +32,13 @@ def test_controller_message_received():
         assert msg.parse_hexstring(msg_str)
         ctrl = Controller()
         ctrl._message_received(msg)
+
+
+def test_controller_nodes():
+    ctrl = Controller()
+    addr = ("127.0.0.1", 80)
+    node = RemoteNode(addr)
+    assert ctrl._add_found_node(node)
+    assert ctrl.get_node(addr[0])
+    assert ctrl.get_node(addr)
+    assert ctrl.get_node("localhost")
