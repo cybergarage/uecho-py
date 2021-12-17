@@ -17,5 +17,5 @@ from ..protocol.message import Message
 
 class Observer(object):
 
-    def _message_received(self, msg: Message):
+    def message_received(self, msg: Message):
         pass
