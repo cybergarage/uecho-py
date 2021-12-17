@@ -19,6 +19,7 @@ from .util.bytes import Bytes
 from .property import Property
 from .object import Object
 from .node_profile import NodeProfile
+from .esv import ESV
 
 
 class Message(ProtocolMessage):
@@ -29,6 +30,13 @@ class Message(ProtocolMessage):
             self.parse_bytes(msg.to_bytes())
             self.from_addr = msg.from_addr
             self.to_addr = msg.to_addr
+
+    def is_node_profile_message(self):
+        if self.ESV != ESV.NOTIFICATION and self.ESV != ESV.READ_RESPONSE:
+            return False
+        if self.DEOJ != NodeProfile.CODE and self.DEOJ != NodeProfile.CODE_READ_ONLY:
+            return False
+        return True
 
     def add_property(self, prop: Union[Property, Tuple[int, bytes], int]) -> bool:
         """Adds the specified property to the message.
