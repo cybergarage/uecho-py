@@ -37,8 +37,8 @@ def create_read_property_message(obj: Object, prop: Property) -> Message:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Searches ECHONET Lite nodes.')
-    parser.add_argument("-v", "--verbose", help="output found nodes in more detail", action="store_true")
-    parser.add_argument("-d", "--debug", help="output debug messages", action="store_true")
+    parser.add_argument("-v", "--verbose", help="output all mandatory read properties of found nodes", action="store_true")
+    parser.add_argument("-d", "--debug", help="output raw debug messages", action="store_true")
 
     log.setLevel(log.ERROR)
     args = parser.parse_args()
