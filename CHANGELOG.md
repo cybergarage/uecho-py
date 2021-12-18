@@ -7,6 +7,8 @@
 ## 0.8.5 - 2021/12/??
 
 - Update standard object database based on Machine Readable Appendix Release M of ECHONET consortium
+- Update uechosearch to print all mandatory read properties using the standard database in the verbose mode
+- Update ControleListener to listen object and property updates
 - Add Property::post_message() and send_message()
 
 ## 0.8.4 - 2021/12/05
