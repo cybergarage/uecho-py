@@ -25,7 +25,9 @@ You can install `uecho-py` using `pip` as the following:
 The [`uechosearch`](bin/uechosearch.py) is a sample controller to search all [ECHONET Lite][enet] nodes in the same local area network as the following usage.
 
 ```
-Usage : uechosearch
+  -h, --help     show this help message and exit
+  -v, --verbose  output all mandatory read properties of found nodes
+  -d, --debug    output raw debug messages
 ```
 
 The [`uechosearch`](bin/uechosearch.py) searches all [ECHONET Lite][enet] device and profile objects in the local area network, and prints all found objects with the IP address as the following:
