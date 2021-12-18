@@ -45,6 +45,10 @@ class ControleListener(metaclass=abc.ABCMeta):
         pass
 
     @abc.abstractmethod
+    def object_updated(self, node: RemoteNode, obj: Object):
+        pass
+
+    @abc.abstractmethod
     def property_updated(self, node: RemoteNode, obj: Object, prop: Property):
         pass
 
@@ -229,6 +233,10 @@ class Controller(Observer):
         for listener in self.__listeners:
             listener.node_add(node)
 
+    def __notify_object_updated(self, node: RemoteNode, obj: Object):
+        for listener in self.__listeners:
+            listener.object_updated(node, obj)
+
     def __notify_property_updated(self, node: RemoteNode, obj: Object, prop: Property):
         for listener in self.__listeners:
             listener.property_updated(node, obj, prop)
@@ -261,9 +269,12 @@ class Controller(Observer):
         node = self.get_node(msg.from_addr)
         if node is Node:
             return
+
         obj = node.get_object(msg.DEOJ)
         if obj is None:
             return
+
+        property_updated = False
         for n in range(msg.OPC):
             msg_prop = msg.properties[n]
             obj_prop = obj.get_property(msg_prop.code)
@@ -272,6 +283,11 @@ class Controller(Observer):
             if obj_prop.data != msg_prop.data:
                 obj_prop.data = msg_prop.data
                 self.__notify_property_updated(node, obj, obj_prop)
+                property_updated = True
+
+        if property_updated:
+            self.__notify_object_updated(node, obj)
+            self.__notify_node_updated(node)
 
     def message_received(self, prpto_msg: ProtocolMessage):
         msg = Message(prpto_msg)
