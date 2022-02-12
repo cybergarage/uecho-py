@@ -18,6 +18,7 @@ from typing import Any, Union, Tuple
 from .object import Object
 from .property import Property
 from .remote_node import RemoteNode
+from .std import Database
 
 
 class DeviceListener(metaclass=abc.ABCMeta):
@@ -31,8 +32,9 @@ class DeviceListener(metaclass=abc.ABCMeta):
 
 class Device(Object):
 
-    def __init__(self):
+    def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         super().__init__()
+        self.set_code(code)
 
     def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
         """Sets the spcecified code as the object code.
@@ -45,5 +47,9 @@ class Device(Object):
         """
         if not super().set_code(code):
             return False
+
+        std_obj = Database().get_object(code)
+        if isinstance(std_obj, Object):
+            self._set_object_properties(std_obj)
 
         return True
