@@ -22,6 +22,7 @@ class Object(object):
     """Object represents a object of ECHONET Lite, and it has child properties that includes the specification attributes and the dynamic data.
     """
 
+    CODE_UNKNOWN = -1
     CODE_MIN = 0x000000
     CODE_MAX = 0xFFFFFF
     CODE_SIZE = 3
@@ -51,7 +52,8 @@ class Object(object):
     __properties: Dict[int, Property]
     node: Optional[Any]
 
-    def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = 0):
+    def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
+        self.code = Object.CODE_UNKNOWN
         self.name = ""
         self.__properties = {}
         self.node = None
@@ -66,6 +68,8 @@ class Object(object):
         Returns:
             bool: True if the specified code is valid, otherwise False.
         """
+        if code is None:
+            return False
         if isinstance(code, Object):
             self.code = code.code
         elif type(code) is int:
