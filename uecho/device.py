@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import abc
+from typing import Any, Union, Tuple
 
 from .object import Object
 from .property import Property
@@ -31,4 +32,18 @@ class DeviceListener(metaclass=abc.ABCMeta):
 class Device(Object):
 
     def __init__(self):
-        pass
+        super().__init__()
+
+    def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
+        """Sets the spcecified code as the object code.
+
+        Args:
+            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A code or tuple code.
+
+        Returns:
+            bool: True if the specified code is valid, otherwise False.
+        """
+        if not super().set_code(code):
+            return False
+
+        return True
