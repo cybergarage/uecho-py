@@ -24,6 +24,7 @@ class LocalNode(Node, Manager):
     def __init__(self):
         super(Node, self).__init__()
         super(Manager, self).__init__()
+        self.add_observer(self)
 
     def announce_message(self, proto_msg: ProtocolMessage) -> bool:
         proto_msg.SEOJ = NodeProfile.CODE
