@@ -12,7 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import abc
+
 from .object import Object
+from .property import Property
+from .remote_node import RemoteNode
+
+
+class DeviceListener(metaclass=abc.ABCMeta):
+    """DeviceListener is an abstract listener class to listen to request messages to a device.
+    """
+
+    @abc.abstractmethod
+    def property_requested(self, node: RemoteNode, obj: Object, prop: Property):
+        pass
 
 
 class Device(Object):
