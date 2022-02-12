@@ -317,7 +317,7 @@ easily without building the binary protocol messages directly.</p>
 <dl class="class">
 <dt id="uecho.local_node.LocalNode">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.local_node.</code><code class="sig-name descname">LocalNode</code><a class="headerlink" href="#uecho.local_node.LocalNode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="uecho.transport.html#uecho.transport.manager.Manager" title="uecho.transport.manager.Manager"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.manager.Manager</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#uecho.node.Node" title="uecho.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.node.Node</span></code></a>, <a class="reference internal" href="uecho.transport.html#uecho.transport.manager.Manager" title="uecho.transport.manager.Manager"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.manager.Manager</span></code></a></p>
 <dl class="method">
 <dt id="uecho.local_node.LocalNode.announce_message">
 <code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.local_node.LocalNode.announce_message" title="Permalink to this definition">¶</a></dt>
@@ -326,11 +326,6 @@ easily without building the binary protocol messages directly.</p>
 <dl class="method">
 <dt id="uecho.local_node.LocalNode.send_message">
 <code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.local_node.LocalNode.send_message" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.local_node.LocalNode.servers">
-<code class="sig-name descname">servers</code><em class="property"> = None</em><a class="headerlink" href="#uecho.local_node.LocalNode.servers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -783,7 +778,7 @@ easily without building the binary protocol messages directly.</p>
 <span id="uecho-object-module"></span><h2>uecho.object module<a class="headerlink" href="#module-uecho.object" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="uecho.object.Object">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.object.</code><code class="sig-name descname">Object</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = 0</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.object.Object" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">uecho.object.</code><code class="sig-name descname">Object</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.object.Object" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Object represents a object of ECHONET Lite, and it has child properties that includes the specification attributes and the dynamic data.</p>
 <dl class="attribute">
@@ -1297,7 +1292,7 @@ easily without building the binary protocol messages directly.</p>
 <dl class="class">
 <dt id="uecho.LocalNode">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">LocalNode</code><a class="headerlink" href="#uecho.LocalNode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="uecho.transport.html#uecho.transport.manager.Manager" title="uecho.transport.manager.Manager"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.manager.Manager</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#uecho.node.Node" title="uecho.node.Node"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.node.Node</span></code></a>, <a class="reference internal" href="uecho.transport.html#uecho.transport.manager.Manager" title="uecho.transport.manager.Manager"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.manager.Manager</span></code></a></p>
 <dl class="method">
 <dt id="uecho.LocalNode.announce_message">
 <code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.LocalNode.announce_message" title="Permalink to this definition">¶</a></dt>
@@ -1306,11 +1301,6 @@ easily without building the binary protocol messages directly.</p>
 <dl class="method">
 <dt id="uecho.LocalNode.send_message">
 <code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.LocalNode.send_message" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.LocalNode.servers">
-<code class="sig-name descname">servers</code><em class="property"> = None</em><a class="headerlink" href="#uecho.LocalNode.servers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1476,7 +1466,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="class">
 <dt id="uecho.Object">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">Object</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = 0</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Object" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">Object</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Object" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#module-uecho.object" title="uecho.object"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
 <p>Object represents a object of ECHONET Lite, and it has child properties that includes the specification attributes and the dynamic data.</p>
 <dl class="attribute">
@@ -2264,6 +2254,44 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.Manufacture.name">
 <code class="sig-name descname">name</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#uecho.Manufacture.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.Device">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">Device</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.object.Object" title="uecho.object.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.object.Object</span></code></a></p>
+<dl class="attribute">
+<dt id="uecho.Device.code">
+<code class="sig-name descname">code</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Device.code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.Device.name">
+<code class="sig-name descname">name</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Device.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.Device.node">
+<code class="sig-name descname">node</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Device.node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.Device.set_code">
+<code class="sig-name descname">set_code</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Device.set_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the spcecified code as the object code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>Any</em><em>]</em>) – A code or tuple code.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the specified code is valid, otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
