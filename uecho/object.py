@@ -52,10 +52,10 @@ class Object(object):
     node: Optional[Any]
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = 0):
-        self.set_code(code)
         self.name = ""
         self.__properties = {}
         self.node = None
+        self.set_code(code)
 
     def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
         """Sets the spcecified code as the object code.
