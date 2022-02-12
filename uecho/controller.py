@@ -250,10 +250,7 @@ class Controller(Observer):
         for obj in node.objects:
             std_obj = self.get_standard_object((obj.group_code, obj.class_code))
             if isinstance(std_obj, Object):
-                obj.name = std_obj.name
-                for std_prop in std_obj.properties:
-                    prop = std_prop.copy()
-                    obj.add_property(prop)
+                obj._set_object_properties(std_obj)
 
         if node.ip not in self.__found_nodes:
             self.__notify_node_added(node)

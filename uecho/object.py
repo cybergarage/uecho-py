@@ -243,3 +243,11 @@ class Object(object):
         for prop in self.__properties.values():
             obj.add_property(prop.copy())
         return obj
+
+    def _set_object_properties(self, obj) -> None:
+        if not isinstance(obj, Object):
+            return
+        self.name = obj.name
+        for obj_prop in obj.properties:
+            prop = obj_prop.copy()
+            self.add_property(prop)
