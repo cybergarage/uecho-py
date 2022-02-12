@@ -13,14 +13,16 @@
 # limitations under the License.
 
 from .transport.manager import Manager
+from .node import Node
 from .node_profile import NodeProfile
 from .protocol.message import Message
 
 
-class LocalNode(Manager):
+class LocalNode(Node, Manager):
 
     def __init__(self):
-        super().__init__()
+        super(Node, self).__init__()
+        super(Manager, self).__init__()
 
     def announce_message(self, msg: Message) -> bool:
         msg.SEOJ = NodeProfile.CODE
