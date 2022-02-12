@@ -12,16 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .node import Node
-from .local_node import LocalNode
-from .remote_node import RemoteNode
-from .controller import Controller
-from .object import Object
-from .node_profile import NodeProfile
-from .message import Message
-from .esv import ESV
-from .property import Property
-from .manufacturer import Manufacture
-from .device import Device
+from uecho import Device
 
-__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device']
+
+def test_device():
+    Device()
