@@ -1,6 +1,6 @@
 # Copyright (C) 2021 The uecho-py Authors. All rights reserved.
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
+# Licensed under the Apache License, Version 2.0 (the "License")
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
@@ -12,17 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .node import Node
-from .local_node import LocalNode
-from .remote_node import RemoteNode
-from .controller import Controller
-from .object import Object
-from .node_profile import NodeProfile
-from .message import Message
-from .esv import ESV
-from .property import Property
-from .manufacturer import Manufacture
-from .device import Device
-from .profile import Profile
+from typing import Any, Union, Tuple
 
-__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'Profile']
+from .object import Object
+
+
+class Profile(Object):
+
+    def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
+        super().__init__(code)
+
+    def message_received(self, msg) -> bool:
+        if msg.is_read_request():
+            return True
+        return False
