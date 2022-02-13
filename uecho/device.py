@@ -82,13 +82,16 @@ class Device(Object):
 
         return True
 
-    def set_listener(self, listener: DeviceListener) -> None:
+    def set_listener(self, listener: DeviceListener) -> bool:
         """ Sets a DeviceListener to handle read and write requests from other controllers and devices.
 
         Args:
             listener (DeviceListener): The listener that handles read and write requests from other controllers and devices.
         """
+        if not isinstance(listener, DeviceListener):
+            return False
         self.__listener = listener
+        return True
 
     def message_received(self, msg) -> bool:
         if not isinstance(msg, Message):
