@@ -240,7 +240,7 @@ class Object(object):
             return None
         return self.node.controller.post_message(msg, self.node)
 
-    def message_received(self, msg):
+    def message_received(self, msg) -> bool:
         raise NotImplementedError()
 
     def copy(self):

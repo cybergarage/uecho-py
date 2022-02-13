@@ -53,8 +53,8 @@ class NodeProfile(Object):
 
     def __init__(self):
         self.code = NodeProfile.CODE
-        pass
 
+    
 
 class NodeProfileReadOnly(Object):
     CODE = 0x0EF002
