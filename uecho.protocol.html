@@ -189,6 +189,126 @@
 <code class="sig-name descname">WRITE_RESPONSE</code><em class="property"> = 113</em><a class="headerlink" href="#uecho.protocol.esv.ESV.WRITE_RESPONSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_notification">
+<code class="sig-name descname">is_notification</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_notification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a notification type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a notification type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_notification_request">
+<code class="sig-name descname">is_notification_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_notification_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a notification notification request type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a notification request type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_notification_response">
+<code class="sig-name descname">is_notification_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_notification_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a notification response type.
+:returns: True whether the specified code is a notification response type, otherwise False.
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_read_request">
+<code class="sig-name descname">is_read_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_read_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a read request type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a read request type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_read_response">
+<code class="sig-name descname">is_read_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_read_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a read response type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a read response type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_request">
+<code class="sig-name descname">is_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a request type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a request type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_response_required">
+<code class="sig-name descname">is_response_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_response_required" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a response required type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the ESV requires the response, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_write_request">
+<code class="sig-name descname">is_write_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_write_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a write request type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a write request type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_write_response">
+<code class="sig-name descname">is_write_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_write_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a write response type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a write response type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -553,6 +673,126 @@
 <dt id="uecho.protocol.ESV.WRITE_RESPONSE">
 <code class="sig-name descname">WRITE_RESPONSE</code><em class="property"> = 113</em><a class="headerlink" href="#uecho.protocol.ESV.WRITE_RESPONSE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.ESV.is_notification">
+<code class="sig-name descname">is_notification</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_notification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a notification type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a notification type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.ESV.is_notification_request">
+<code class="sig-name descname">is_notification_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_notification_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a notification notification request type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a notification request type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.ESV.is_notification_response">
+<code class="sig-name descname">is_notification_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_notification_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a notification response type.
+:returns: True whether the specified code is a notification response type, otherwise False.
+:rtype: bool</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.ESV.is_read_request">
+<code class="sig-name descname">is_read_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_read_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a read request type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a read request type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.ESV.is_read_response">
+<code class="sig-name descname">is_read_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_read_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a read response type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a read response type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.ESV.is_request">
+<code class="sig-name descname">is_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a request type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a request type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.ESV.is_response_required">
+<code class="sig-name descname">is_response_required</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_response_required" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a response required type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the ESV requires the response, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.ESV.is_write_request">
+<code class="sig-name descname">is_write_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_write_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a write request type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a write request type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.ESV.is_write_response">
+<code class="sig-name descname">is_write_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_write_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a write response type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a write response type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
