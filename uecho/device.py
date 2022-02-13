@@ -26,11 +26,28 @@ class DeviceListener(metaclass=abc.ABCMeta):
     """
 
     @abc.abstractmethod
-    def property_read_requested(self, prop: Property):
+    def property_read_requested(self, prop: Property) -> bool:
+        """ Handles a read request message, and updates the propery data if needed.
+
+        Args:
+            prop (Property): The target property.
+
+        Returns:
+            bool: True if allowed the access, otherwise False.
+        """
         pass
 
     @abc.abstractmethod
-    def property_write_requested(self, prop: Property, data: bytes):
+    def property_write_requested(self, prop: Property, data: bytes) -> bool:
+        """ Handles a write request message, and updates the propery data by the specified data if allowed.
+
+        Args:
+            prop (Property): The target property.
+            data (bytes): The update data.
+
+        Returns:
+            bool: True if allowed the update, otherwise False.
+        """
         pass
 
 
@@ -61,12 +78,13 @@ class Device(Object):
 
         return True
 
-    def message_received(self, msg: Message):
+    def message_received(self, msg) -> bool:
         if not isinstance(msg, Message):
-            return
+            return False
 
         for msg_prop in msg.properties:
             prop = self.get_property(msg_prop.code)
+            # (C) Processing when the controlled object exists but the controlled property does not exist or can be processed only partially
             if prop is None:
                 continue
             for listener in self.__listeners:
@@ -74,3 +92,5 @@ class Device(Object):
                     listener.property_read_requested(self, prop)
                 elif msg.is_write_request():
                     listener.property_write_requested(self, prop, msg_prop.data)
+
+        return True
