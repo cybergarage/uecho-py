@@ -38,6 +38,26 @@ class ESV(object):
     def __init__(self, code=UNKNOWN):
         self.ESV = code
 
+    def is_request(self) -> bool:
+        """ Checks the ESV whether it is classified as a request type.
+
+        Returns:
+            bool: True whether the specified code is a request type, otherwise False.
+        """
+        if self.ESV == ESV.WRITE_REQUEST:
+            return True
+        if self.ESV == ESV.WRITE_REQUEST_RESPONSE_REQUIRED:
+            return True
+        if self.ESV == ESV.READ_REQUEST:
+            return True
+        if self.ESV == ESV.NOTIFICATION_REQUEST:
+            return True
+        if self.ESV == ESV.WRITE_READ_REQUEST:
+            return True
+        if self.ESV == ESV.NOTIFICATION_RESPONSE_REQUIRED:
+            return True
+        return False
+
     def is_write_request(self) -> bool:
         """ Checks the ESV whether it is classified as a write request type.
 
