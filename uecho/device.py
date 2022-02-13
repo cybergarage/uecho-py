@@ -17,8 +17,8 @@ from typing import Any, Union, Tuple
 
 from .object import Object
 from .property import Property
-from .std import Database
 from .message import Message
+from .std import Database
 
 
 class DeviceListener(metaclass=abc.ABCMeta):
