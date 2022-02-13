@@ -82,15 +82,19 @@ class Device(Object):
         if not isinstance(msg, Message):
             return False
 
+        are_all_requests_accepted = True
+
         for msg_prop in msg.properties:
             prop = self.get_property(msg_prop.code)
-            # (C) Processing when the controlled object exists but the controlled property does not exist or can be processed only partially
             if prop is None:
+                are_all_requests_accepted = False
                 continue
             for listener in self.__listeners:
                 if msg.is_read_request():
-                    listener.property_read_requested(self, prop)
+                    if not listener.property_read_requested(self, prop):
+                        are_all_requests_accepted = False
                 elif msg.is_write_request():
-                    listener.property_write_requested(self, prop, msg_prop.data)
+                    if not listener.property_write_requested(self, prop, msg_prop.data):
+                        are_all_requests_accepted = False
 
-        return True
+        return are_all_requests_accepted
