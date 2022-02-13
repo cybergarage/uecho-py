@@ -22,7 +22,7 @@ from .message import Message
 from .esv import ESV
 from .property import Property
 from .manufacturer import Manufacture
-from .device import Device
+from .device import Device, DeviceListener
 from .profile import Profile
 
-__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'Profile']
+__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'DeviceListener', 'Profile']
