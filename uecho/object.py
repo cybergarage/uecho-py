@@ -217,7 +217,7 @@ class Object(object):
         for obj_prop in obj.properties:
             prop = obj_prop.copy()
             self.add_property(prop)
-        return False
+        return True
 
     def send_message(self, esv: int, props: List[Tuple[int, bytes]]) -> bool:
         """Sends a unicast message to the specified property asynchronously.
