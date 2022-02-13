@@ -12,16 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .object import Object
+from .profile import Profile
 
 
-class NodeProfile(Object):
+class NodeProfile(Profile):
     CODE = 0x0EF001
     CLASS_CODE = 0xF0
     INSTANCE_GENERAL_CODE = 0x01
     INSTANCE_TRANSMISSION_ONLY_CODE = 0x02
 
-    CLASS_OPERATING_STATUS = Object.OPERATING_STATUS
+    CLASS_OPERATING_STATUS = Profile.OPERATING_STATUS
     CLASS_VERSION_INFORMATION = 0x82
     CLASS_IDENTIFICATION_NUMBER = 0x83
     CLASS_FAULT_CONTENT = 0x89
@@ -45,19 +45,18 @@ class NodeProfile(Object):
     CLASS_SELF_NODE_CLASS_LIST_S_MAX = 0xFF
     CLASS_INSTANCE_LIST_NOTIFICATION_MAX = CLASS_SELF_NODE_INSTANCE_LIST_S_MAX
 
-    CLASS_OPERATING_STATUS_ON = Object.OPERATING_STATUS_ON
-    CLASS_OPERATING_STATUS_OFF = Object.OPERATING_STATUS_OFF
+    CLASS_OPERATING_STATUS_ON = Profile.OPERATING_STATUS_ON
+    CLASS_OPERATING_STATUS_OFF = Profile.OPERATING_STATUS_OFF
     CLASS_BOOTING = 0x30
     CLASS_NOT_BOOTING = 0x31
     LOWER_COMMUNICATION_LAYER_PROTOCOL_TYPE = 0xFE
 
     def __init__(self):
-        self.code = NodeProfile.CODE
+        super().__init__(NodeProfile.CODE)
 
 
-class NodeProfileReadOnly(Object):
+class NodeProfileReadOnly(NodeProfile):
     CODE = 0x0EF002
 
     def __init__(self):
-        super().__init__()
-        self.code = NodeProfileReadOnly.CODE
+        super().__init__(NodeProfileReadOnly.CODE)
