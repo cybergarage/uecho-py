@@ -53,6 +53,8 @@ class DeviceListener(metaclass=abc.ABCMeta):
 
 class Device(Object):
 
+    SUPER_CLASS_CODE = 0x0000
+
     __listener: DeviceListener
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
@@ -72,9 +74,11 @@ class Device(Object):
         if not super().set_code(code):
             return False
 
-        std_obj = Database().get_object(code)
-        if isinstance(std_obj, Object):
-            self._set_object_properties(std_obj)
+        std_db = Database()
+        if not self._set_object_properties(std_db.get_object(Device.SUPER_CLASS_CODE)):
+            return False
+        if not self._set_object_properties(std_db.get_object(code)):
+            return False
 
         return True
 
