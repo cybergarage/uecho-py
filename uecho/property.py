@@ -41,7 +41,7 @@ class Property(ProtocolProperty):
 
     def __init__(self):
         super().__init__()
-        self.attrs = [Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED]
+        self.attrs = [Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED]
         self.object = None
 
     def set_attribute(self, typ: int, attr: int):
@@ -51,15 +51,21 @@ class Property(ProtocolProperty):
         return self.attrs[typ]
 
     def __is_attribute_enabled(self, val) -> bool:
-        if (val & Property.REQUIRED):
+        if val == Property.REQUIRED:
             return True
-        if (val & Property.OPTIONAL):
+        if val == Property.OPTIONAL:
             return True
         return False
 
     def __is_attribute_required(self, val) -> bool:
-        if (val & Property.REQUIRED):
+        if val == Property.REQUIRED:
             return True
+        return False
+
+    def is_mandatory(self) -> bool:
+        for attr in self.attrs:
+            if attr == Property.REQUIRED:
+                return True
         return False
 
     def is_read_enabled(self) -> bool:
