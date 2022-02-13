@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import abc
-from typing import Any, Union, Tuple, List
+from typing import Any, Union, Tuple
 
 from .object import Object
 from .property import Property
@@ -53,12 +53,12 @@ class DeviceListener(metaclass=abc.ABCMeta):
 
 class Device(Object):
 
-    __listeners: List[DeviceListener]
+    __listener: DeviceListener
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         super().__init__()
         self.set_code(code)
-        self.__listeners = []
+        self.__listener = None
 
     def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
         """Sets the spcecified code as the object code.
@@ -78,8 +78,19 @@ class Device(Object):
 
         return True
 
+    def set_listener(self, listener: DeviceListener) -> None:
+        """ Sets a DeviceListener to handle read and write requests from other controllers and devices.
+
+        Args:
+            listener (DeviceListener): The listener that handles read and write requests from other controllers and devices.
+        """
+        self.__listener = listener
+
     def message_received(self, msg) -> bool:
         if not isinstance(msg, Message):
+            return False
+
+        if self.__listener is None:
             return False
 
         are_all_requests_accepted = True
@@ -89,12 +100,11 @@ class Device(Object):
             if prop is None:
                 are_all_requests_accepted = False
                 continue
-            for listener in self.__listeners:
-                if msg.is_read_request():
-                    if not listener.property_read_requested(self, prop):
-                        are_all_requests_accepted = False
-                elif msg.is_write_request():
-                    if not listener.property_write_requested(self, prop, msg_prop.data):
-                        are_all_requests_accepted = False
+            if msg.is_read_request():
+                if not self.__listener.property_read_requested(self, prop):
+                    are_all_requests_accepted = False
+            elif msg.is_write_request():
+                if not self.__listener.property_write_requested(self, prop, msg_prop.data):
+                    are_all_requests_accepted = False
 
         return are_all_requests_accepted
