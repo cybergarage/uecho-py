@@ -191,6 +191,12 @@ class Object(object):
         except KeyError:
             return None
 
+    def has_property(self, code: int) -> bool:
+        prop = self.get_property(code)
+        if not isinstance(prop, Property):
+            return False
+        return True
+
     def __create_message(self, esv: int, props: List[Tuple[int, bytes]]):
         msg = ProtocolMessage()
         msg.DEOJ = self.code
