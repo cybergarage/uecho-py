@@ -54,7 +54,6 @@ class NodeProfile(Object):
     def __init__(self):
         self.code = NodeProfile.CODE
 
-    
 
 class NodeProfileReadOnly(Object):
     CODE = 0x0EF002

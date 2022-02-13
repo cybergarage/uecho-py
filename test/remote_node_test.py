@@ -12,15 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho import RemoteNode, Message, Object
+from uecho.util import Bytes
+from uecho import RemoteNode, Message, Object, Property, NodeProfile
 
 
 def test_remote_node_parse():
     obj = Object()
     obj.set_code(0x0EF001)
 
+    prop = Property()
+    prop.code = NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S
+    prop_data = bytearray([1])
+    prop_data.extend(Bytes.from_int(obj.code, Object.CODE_SIZE))
+    prop.data = prop_data
+
     msg = Message()
-    msg.add_object_as_class_instance_list_property(obj)
+    msg.add_property(prop)
 
     node = RemoteNode()
     assert node.parse_message(msg)

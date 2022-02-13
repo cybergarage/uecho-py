@@ -15,9 +15,7 @@
 from typing import Tuple, Union
 
 from .protocol.message import Message as ProtocolMessage
-from .util.bytes import Bytes
 from .property import Property
-from .object import Object
 from .node_profile import NodeProfile
 from .esv import ESV
 
@@ -58,14 +56,3 @@ class Message(ProtocolMessage):
             new_prop.code = prop[0]
             new_prop.data = prop[1]
         return super().add_property(new_prop)
-
-    def add_object_as_class_instance_list_property(self, obj: Object) -> bool:
-        if not isinstance(obj, Object):
-            return False
-        prop = Property()
-        prop.code = NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S
-        prop_data = bytearray([1])
-        prop_data.extend(Bytes.from_int(obj.code, Object.CODE_SIZE))
-        prop.data = prop_data
-        self.add_property(prop)
-        return True
