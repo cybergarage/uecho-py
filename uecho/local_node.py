@@ -35,8 +35,22 @@ class LocalNode(Node, Manager):
         return super().send_message(proto_msg, addr)
 
     def message_received(self, proto_msg: ProtocolMessage):
+        # 4.2.2 Basic Sequences for Object Control in General
         msg = Message(proto_msg)
+
+        # (A) Processing when the controlled object does not exist
         obj = self.get_object(msg.DEOJ)
         if obj is None:
             return
+
+        # (B) Basic sequence for receiving a request (response required)
+        if not msg.is_request():
+            return
+
+        # (C) Basic sequence for processing a notification request
+        # (D) Basic sequence for autonomous notification
+        # (E) Basic sequence for processing a request requiring a notification response
         obj.message_received(msg)
+
+        if not msg.is_response_required():
+            return
