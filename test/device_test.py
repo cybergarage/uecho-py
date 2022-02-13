@@ -12,10 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho import Device, Profile, Property
+from uecho import Device, DeviceListener, Property
 
 
-class MonoLight(Device):
+class MonoLight(Device, DeviceListener):
 
     def __init__(self):
         super().__init__()
@@ -29,10 +29,13 @@ class MonoLight(Device):
 
 def test_device():
     dev = MonoLight()
-    assert dev.set_code(0x029101) # Mono functional lighting
+    assert dev.set_code(0x029101)    # Mono functional lighting
+
     # Mandatory properties of device super class
-    assert dev.has_property(0x80) # Operation status
-    assert dev.has_property(0x8A) # Manufacturer code
+    assert dev.has_property(0x80)    # Operation status
+    assert dev.has_property(0x8A)    # Manufacturer code
     # Mandatory properties of mono functional lighting
-    assert dev.has_property(0x80) # Operation status
-    assert dev.has_property(0xB0) # Illuminance Level Setting
+    assert dev.has_property(0x80)    # Operation status
+    assert dev.has_property(0xB0)    # Illuminance Level Setting
+
+    assert dev.set_listener(dev)
