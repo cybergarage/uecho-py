@@ -13,6 +13,8 @@
 # limitations under the License.
 
 from .profile import Profile
+from .object import Object
+from .std import Database
 
 
 class NodeProfile(Profile):
@@ -53,10 +55,14 @@ class NodeProfile(Profile):
 
     def __init__(self):
         super().__init__(NodeProfile.CODE)
+        std_obj = Database().get_object(NodeProfile.CODE)
+        if isinstance(std_obj, Object):
+            self._set_object_properties(std_obj)
 
 
 class NodeProfileReadOnly(NodeProfile):
     CODE = 0x0EF002
 
     def __init__(self):
-        super().__init__(NodeProfileReadOnly.CODE)
+        super().__init__()
+        self.set_code(NodeProfileReadOnly.CODE)
