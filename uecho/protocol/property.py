@@ -21,6 +21,6 @@ class Property(object):
     code: int
     data: bytes
 
-    def __init__(self):
-        self.code = 0
-        self.data = bytes()
+    def __init__(self, code: int = 0, data: bytes = bytes()):
+        self.code = code
+        self.data = data

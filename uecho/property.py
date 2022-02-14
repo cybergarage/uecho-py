@@ -39,8 +39,8 @@ class Property(ProtocolProperty):
     anno_status: bool
     object: Optional[Any]
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, code: int = 0, data: bytes = bytes()):
+        super().__init__(code, data)
         self.attrs = [Property.PROHIBITED, Property.PROHIBITED, Property.PROHIBITED]
         self.object = None
 
