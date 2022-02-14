@@ -13,12 +13,13 @@
 # limitations under the License.
 
 import abc
-from typing import Any, Union, Tuple
+from typing import Any, Union, Tuple, Optional
 
 from .object import Object
 from .property import Property
 from .message import Message
 from .std import Database
+from .esv import ESV
 
 
 class DeviceListener(metaclass=abc.ABCMeta):
@@ -93,25 +94,39 @@ class Device(Object):
         self.__listener = listener
         return True
 
-    def message_received(self, msg) -> bool:
-        if not isinstance(msg, Message):
-            return False
+    def message_received(self, req_msg: Message) -> Optional[Message]:
+        if not isinstance(req_msg, Message):
+            return None
 
         if self.__listener is None:
-            return False
+            return None
 
-        are_all_requests_accepted = True
+        opc = req_msg.OPC
 
-        for msg_prop in msg.properties:
-            prop = self.get_property(msg_prop.code)
-            if prop is None:
-                are_all_requests_accepted = False
-                continue
-            if msg.is_read_request():
-                if not self.__listener.property_read_requested(self, prop):
-                    are_all_requests_accepted = False
-            elif msg.is_write_request():
-                if not self.__listener.property_write_requested(self, prop, msg_prop.data):
-                    are_all_requests_accepted = False
+        accepted_request_cnt = 0
+        res_msg = Message()
+        res_msg.set_response_headert(req_msg)
 
-        return are_all_requests_accepted
+        for msg_prop in req_msg.properties:
+            res_prop = Property(msg_prop.code)
+
+            obj_prop = self.get_property(msg_prop.code)
+            if obj_prop is not None:
+                if req_msg.is_read_request():
+                    if self.__listener.property_read_requested(self, obj_prop):
+                        res_prop.data = obj_prop.data
+                        accepted_request_cnt += 1
+                elif req_msg.is_write_request():
+                    if self.__listener.property_write_requested(self, obj_prop, msg_prop.data):
+                        accepted_request_cnt += 1
+
+            req_msg.add_property(res_prop)
+
+        res_msg.ESV = req_msg.ESV
+        if req_msg.is_read_request():
+            if accepted_request_cnt == opc:
+                res_msg.ESV = ESV.READ_RESPONSE
+            else:
+                res_msg.ESV = ESV.READ_REQUEST_ERROR
+
+        return res_msg
