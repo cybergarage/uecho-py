@@ -72,6 +72,10 @@ class Message(ESV):
     def OPCGet(self) -> int:
         return len(self.get_properties)
 
+    @property
+    def all_properties(self) -> List[Property]:
+        return self.properties + self.set_properties + self.get_properties
+
     def add_property(self, prop: Any) -> bool:
         if not isinstance(prop, Property):
             return False
