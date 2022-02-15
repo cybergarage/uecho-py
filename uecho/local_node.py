@@ -17,6 +17,7 @@ from .node import Node
 from .node_profile import NodeProfile
 from .protocol.message import Message as ProtocolMessage
 from .message import Message
+from .esv import ESV
 
 
 class LocalNode(Node, Manager):
@@ -35,22 +36,22 @@ class LocalNode(Node, Manager):
         return super().send_message(proto_msg, addr)
 
     def message_received(self, proto_msg: ProtocolMessage):
-        # 4.2.2 Basic Sequences for Object Control in General
-        msg = Message(proto_msg)
+        # 4.2.1 Basic Sequences for Service Content
+        req_msg = Message(proto_msg)
 
-        # (A) Processing when the controlled object does not exist
-        obj = self.get_object(msg.DEOJ)
-        if obj is None:
+        dest_obj = self.get_object(req_msg.DEOJ)
+        if dest_obj is None:
             return
 
-        # (B) Basic sequence for receiving a request (response required)
-        if not msg.is_request():
+        res_msg = dest_obj.message_received(req_msg)
+
+        # (A) Basic sequence for receiving a request (no response required)
+        if res_msg is None:
             return
 
-        # (C) Basic sequence for processing a notification request
-        # (D) Basic sequence for autonomous notification
-        # (E) Basic sequence for processing a request requiring a notification response
-        obj.message_received(msg)
-
-        if not msg.is_response_required():
-            return
+        if res_msg.ESV != ESV.NOTIFICATION:
+            # (C) Basic sequence for processing a notification request
+            self.notify(res_msg)
+        else:
+            # (B) Basic sequence for receiving a request (response required)
+            self.send_message(res_msg, req_msg.from_addr)
