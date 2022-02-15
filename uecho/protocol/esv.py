@@ -156,3 +156,25 @@ class ESV(object):
         if self.ESV == ESV.NOTIFICATION_RESPONSE_REQUIRED:
             return True
         return False
+
+    def is_write_read_request(self) -> bool:
+        """ Checks the ESV whether it is classified as a write and read request type.
+
+        Returns:
+            bool: True whether the specified code is a write and read request type, otherwise False.
+        """
+        if self.ESV == ESV.WRITE_READ_REQUEST:
+            return True
+        return False
+
+    def is_write_read_response(self) -> bool:
+        """ Checks the ESV whether it is classified as a write and read response type.
+
+        Returns:
+            bool: True whether the specified code is a write and read response type, otherwise False.
+        """
+        if self.ESV == ESV.WRITE_READ_RESPONSE:
+            return True
+        if self.ESV == ESV.WRITE_READ_REQUEST_ERROR:
+            return True
+        return False
