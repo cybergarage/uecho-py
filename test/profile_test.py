@@ -23,3 +23,8 @@ def test_node_profile():
     assert prop
     assert len(prop.data) == NodeProfile.CLASS_NUMBER_OF_SELF_NODE_INSTANCES_SIZE
     assert Bytes.to_int(prop.data) == 0
+
+    prop = prof.get_property(NodeProfile.CLASS_NUMBER_OF_SELF_NODE_CLASSES)
+    assert prop
+    assert len(prop.data) == NodeProfile.CLASS_NUMBER_OF_SELF_NODE_CLASSES_SIZE
+    assert Bytes.to_int(prop.data) == 1
