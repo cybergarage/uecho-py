@@ -282,6 +282,34 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_write_read_request">
+<code class="sig-name descname">is_write_read_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_write_read_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a write and read request type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a write and read request type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.esv.ESV.is_write_read_response">
+<code class="sig-name descname">is_write_read_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_write_read_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a write and read response type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a write and read response type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="uecho.protocol.esv.ESV.is_write_request">
 <code class="sig-name descname">is_write_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.esv.ESV.is_write_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks the ESV whether it is classified as a write request type.</p>
@@ -364,6 +392,16 @@
 <em class="property">property </em><code class="sig-name descname">OPC</code><a class="headerlink" href="#uecho.protocol.message.Message.OPC" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="uecho.protocol.message.Message.OPCGet">
+<em class="property">property </em><code class="sig-name descname">OPCGet</code><a class="headerlink" href="#uecho.protocol.message.Message.OPCGet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.message.Message.OPCSet">
+<em class="property">property </em><code class="sig-name descname">OPCSet</code><a class="headerlink" href="#uecho.protocol.message.Message.OPCSet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="exception">
 <dt id="uecho.protocol.message.Message.ParserError">
 <em class="property">exception </em><code class="sig-name descname">ParserError</code><a class="headerlink" href="#uecho.protocol.message.Message.ParserError" title="Permalink to this definition">¶</a></dt>
@@ -395,9 +433,19 @@
 <code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Any</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.message.Message.add_property" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="uecho.protocol.message.Message.all_properties">
+<em class="property">property </em><code class="sig-name descname">all_properties</code><a class="headerlink" href="#uecho.protocol.message.Message.all_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="uecho.protocol.message.Message.from_addr">
 <code class="sig-name descname">from_addr</code><em class="property">: Optional[Tuple[str, int]]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.message.Message.from_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.get_properties">
+<code class="sig-name descname">get_properties</code><em class="property">: List[Property]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.message.Message.get_properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -418,6 +466,11 @@
 <dl class="attribute">
 <dt id="uecho.protocol.message.Message.properties">
 <code class="sig-name descname">properties</code><em class="property">: List[Property]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.message.Message.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.message.Message.set_properties">
+<code class="sig-name descname">set_properties</code><em class="property">: List[Property]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.message.Message.set_properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -442,7 +495,7 @@
 <span id="uecho-protocol-property-module"></span><h2>uecho.protocol.property module<a class="headerlink" href="#module-uecho.protocol.property" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="uecho.protocol.property.Property">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.property.</code><code class="sig-name descname">Property</code><a class="headerlink" href="#uecho.protocol.property.Property" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.property.</code><code class="sig-name descname">Property</code><span class="sig-paren">(</span><em class="sig-param">code: int = 0</em>, <em class="sig-param">data: bytes = b''</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.property.Property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Property represents a property in a protocol message of Echonet Lite.</p>
 <dl class="attribute">
@@ -511,6 +564,16 @@
 <em class="property">property </em><code class="sig-name descname">OPC</code><a class="headerlink" href="#uecho.protocol.Message.OPC" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="uecho.protocol.Message.OPCGet">
+<em class="property">property </em><code class="sig-name descname">OPCGet</code><a class="headerlink" href="#uecho.protocol.Message.OPCGet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.Message.OPCSet">
+<em class="property">property </em><code class="sig-name descname">OPCSet</code><a class="headerlink" href="#uecho.protocol.Message.OPCSet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="exception">
 <dt id="uecho.protocol.Message.ParserError">
 <em class="property">exception </em><code class="sig-name descname">ParserError</code><a class="headerlink" href="#uecho.protocol.Message.ParserError" title="Permalink to this definition">¶</a></dt>
@@ -542,9 +605,19 @@
 <code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Any</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.Message.add_property" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="uecho.protocol.Message.all_properties">
+<em class="property">property </em><code class="sig-name descname">all_properties</code><a class="headerlink" href="#uecho.protocol.Message.all_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="uecho.protocol.Message.from_addr">
 <code class="sig-name descname">from_addr</code><em class="property">: Optional[Tuple[str, int]]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Message.from_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.get_properties">
+<code class="sig-name descname">get_properties</code><em class="property">: List[Property]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Message.get_properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -565,6 +638,11 @@
 <dl class="attribute">
 <dt id="uecho.protocol.Message.properties">
 <code class="sig-name descname">properties</code><em class="property">: List[Property]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Message.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Message.set_properties">
+<code class="sig-name descname">set_properties</code><em class="property">: List[Property]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Message.set_properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -767,6 +845,34 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="uecho.protocol.ESV.is_write_read_request">
+<code class="sig-name descname">is_write_read_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_write_read_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a write and read request type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a write and read request type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.ESV.is_write_read_response">
+<code class="sig-name descname">is_write_read_response</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_write_read_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the ESV whether it is classified as a write and read response type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True whether the specified code is a write and read response type, otherwise False.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="uecho.protocol.ESV.is_write_request">
 <code class="sig-name descname">is_write_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.ESV.is_write_request" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks the ESV whether it is classified as a write request type.</p>
@@ -798,7 +904,7 @@
 
 <dl class="class">
 <dt id="uecho.protocol.Property">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.</code><code class="sig-name descname">Property</code><a class="headerlink" href="#uecho.protocol.Property" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.</code><code class="sig-name descname">Property</code><span class="sig-paren">(</span><em class="sig-param">code: int = 0</em>, <em class="sig-param">data: bytes = b''</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.Property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Property represents a property in a protocol message of Echonet Lite.</p>
 <dl class="attribute">
