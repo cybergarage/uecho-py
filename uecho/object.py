@@ -197,6 +197,13 @@ class Object(object):
             return False
         return True
 
+    def set_property_data(self, code: int, data: bytes) -> bool:
+        prop = self.get_property(code)
+        if prop is None:
+            return False
+        prop.data = data
+        return True
+
     def __create_message(self, esv: int, props: List[Tuple[int, bytes]]):
         msg = ProtocolMessage()
         msg.DEOJ = self.code
