@@ -22,18 +22,17 @@ from .esv import ESV
 
 class LocalNode(Node, Manager):
 
+    __node_profile_obj: NodeProfile
+
     def __init__(self):
         super(Node, self).__init__()
         super(Manager, self).__init__()
         self.add_observer(self)
+        self.__node_profile_obj = NodeProfile()
+        # self.add_object(self.__node_profile_obj)
 
-    def announce_message(self, proto_msg: ProtocolMessage) -> bool:
-        proto_msg.SEOJ = NodeProfile.CODE
-        return super().announce_message(proto_msg)
-
-    def send_message(self, proto_msg: ProtocolMessage, addr) -> bool:
-        proto_msg.SEOJ = NodeProfile.CODE
-        return super().send_message(proto_msg, addr)
+    # def add_object(self, obj: Object) -> bool:
+    #     return super(Node, self).add_object(obj)
 
     def message_received(self, proto_msg: ProtocolMessage):
         # 4.2.1 Basic Sequences for Service Content
@@ -51,7 +50,7 @@ class LocalNode(Node, Manager):
 
         if res_msg.ESV != ESV.NOTIFICATION:
             # (C) Basic sequence for processing a notification request
-            self.notify(res_msg)
+            self.announce_message(res_msg)
         else:
             # (B) Basic sequence for receiving a request (response required)
             self.send_message(res_msg, req_msg.from_addr)

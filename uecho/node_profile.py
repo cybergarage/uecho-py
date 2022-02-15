@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import List
 from .profile import Profile
 from .object import Object
 from .std import Database
@@ -58,6 +59,12 @@ class NodeProfile(Profile):
         std_obj = Database().get_object(NodeProfile.CODE)
         if isinstance(std_obj, Object):
             self._set_object_properties(std_obj)
+
+    def message_received(self, msg) -> bool:
+        return True
+
+    def update_instance_properties(self, objs: List[Object]) -> bool:
+        return True
 
 
 class NodeProfileReadOnly(NodeProfile):
