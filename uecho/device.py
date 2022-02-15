@@ -105,7 +105,7 @@ class Device(Object):
         res_msg = Message()
         res_msg.set_response_headert(req_msg)
 
-        for msg_prop in req_msg.properties:
+        for msg_prop in req_msg.all_properties:
             res_prop = Property(msg_prop.code)
 
             obj_prop = self.get_property(msg_prop.code)
