@@ -162,6 +162,7 @@ class Controller(Observer):
     def announce_message(self, msg: Message) -> bool:
         """Posts a multicast message to the same local network asynchronously.
         """
+        msg.SEOJ = NodeProfile.CODE
         return self.__node.announce_message(msg)
 
     def send_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> bool:
@@ -174,6 +175,7 @@ class Controller(Observer):
         Returns:
             bool: True if successful, otherwise False.
         """
+        msg.SEOJ = NodeProfile.CODE
         to_addr = addr
         if isinstance(addr, RemoteNode):
             to_addr = (addr.ip, addr.port)
