@@ -78,15 +78,42 @@ class NodeProfile(Profile):
             instance_cnt += 1
             instance_list.extend(Bytes.from_int(obj.code, 3))
 
-        self.set_property_data(NodeProfile.CLASS_NUMBER_OF_SELF_NODE_INSTANCES, Bytes.from_int(instance_cnt, 3))
+        if not self.set_property_data(NodeProfile.CLASS_NUMBER_OF_SELF_NODE_INSTANCES, Bytes.from_int(instance_cnt, NodeProfile.CLASS_NUMBER_OF_SELF_NODE_INSTANCES_SIZE)):
+            return False
 
         instance_list_bytes = bytearray(Bytes.from_int(instance_cnt, 1))
         instance_list_bytes.extend(instance_list)
-        self.set_property_data(NodeProfile.CLASS_INSTANCE_LIST_NOTIFICATION, instance_list_bytes)
-        self.set_property_data(NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S, instance_list_bytes)
+        if not self.set_property_data(NodeProfile.CLASS_INSTANCE_LIST_NOTIFICATION, instance_list_bytes):
+            return False
+        if not self.set_property_data(NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S, instance_list_bytes):
+            return False
+
+        return True
+
+    def __update_class_properties(self, objs: List[Object]) -> bool:
+        class_cnt = 0
+        class_list = bytearray()
+        for obj in objs:
+            class_cnt += 1
+            if self.__is_node_profile_object(obj):
+                continue
+            class_list.extend(Bytes.from_int(obj.code, 3))
+
+        if not self.set_property_data(NodeProfile.CLASS_NUMBER_OF_SELF_NODE_CLASSES, Bytes.from_int(class_cnt, NodeProfile.CLASS_NUMBER_OF_SELF_NODE_CLASSES_SIZE)):
+            return False
+
+        class_list_bytes = bytearray(Bytes.from_int(len(class_list), 1))
+        class_list_bytes.extend(class_list)
+        if not self.set_property_data(NodeProfile.CLASS_SELF_NODE_CLASS_LIST_S, class_list_bytes):
+            return False
+
+        return True
 
     def update_class_instance_properties(self, objs: List[Object]) -> bool:
-        self.__update_instance_properties(objs)
+        if not self.__update_instance_properties(objs):
+            return False
+        if not self.__update_class_properties(objs):
+            return False
         return True
 
 
@@ -96,3 +123,4 @@ class NodeProfileReadOnly(NodeProfile):
     def __init__(self):
         super().__init__()
         self.set_code(NodeProfileReadOnly.CODE)
+
