@@ -39,6 +39,8 @@ class Message(ESV):
     SEOJ: int
     DEOJ: int
     properties: List[Property]
+    set_properties: List[Property]
+    get_properties: List[Property]
     from_addr: Optional[Tuple[str, int]]
     to_addr: Optional[Tuple[str, int]]
 
@@ -48,6 +50,8 @@ class Message(ESV):
         self.SEOJ = 0
         self.DEOJ = 0
         self.properties = []
+        self.set_properties = []
+        self.get_properties = []
         self.from_addr = None
         self.to_addr = None
 
@@ -71,6 +75,26 @@ class Message(ESV):
             return False
         return True
 
+    def __parse_property_bytes(self, msg_bytes, offset) -> Tuple[int, List[Property]]:
+        # Propety data
+        properties = []
+        opc = msg_bytes[offset]
+        offset += 1
+        for n in range(opc):
+            if len(msg_bytes) < (offset + 1):
+                raise Message.ParserError()
+            prop = Property()
+            prop.code = msg_bytes[offset]
+            offset += 1
+            pdc = msg_bytes[offset]
+            offset += 1
+            if len(msg_bytes) < (offset + pdc):
+                raise Message.ParserError()
+            prop.data = msg_bytes[offset:(offset + pdc)]
+            properties.append(prop)
+            offset += pdc
+        return offset, properties
+
     def parse_bytes(self, msg_bytes) -> bool:
         # Frame heade
         if len(msg_bytes) < Message.FORMAT1_HEADER_SIZE:
@@ -87,21 +111,11 @@ class Message(ESV):
         self.ESV = msg_bytes[10]
 
         # Propety data
-        opc = msg_bytes[11]
-        offset = 12
-        for n in range(opc):
-            if len(msg_bytes) < (offset + 1):
-                raise Message.ParserError()
-            prop = Property()
-            prop.code = msg_bytes[offset]
-            offset += 1
-            pdc = msg_bytes[offset]
-            offset += 1
-            if len(msg_bytes) < (offset + pdc):
-                raise Message.ParserError()
-            prop.data = msg_bytes[offset:(offset + pdc)]
-            self.properties.append(prop)
-            offset += pdc
+        if self.ESV != ESV.WRITE_READ_REQUEST:
+            _, self.properties = self.__parse_property_bytes(msg_bytes, 11)
+        else:
+            offset, self.set_properties = self.__parse_property_bytes(msg_bytes, 11)
+            _, self.get_properties = self.__parse_property_bytes(msg_bytes, offset)
 
         return True
 
