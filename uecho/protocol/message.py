@@ -119,11 +119,11 @@ class Message(ESV):
         self.ESV = msg_bytes[10]
 
         # Propety data
-        if self.ESV != ESV.WRITE_READ_REQUEST:
-            _, self.properties = self.__parse_property_bytes(msg_bytes, 11)
-        else:
+        if self.is_write_read_request() or self.is_write_read_response():
             offset, self.set_properties = self.__parse_property_bytes(msg_bytes, 11)
             _, self.get_properties = self.__parse_property_bytes(msg_bytes, offset)
+        else:
+            _, self.properties = self.__parse_property_bytes(msg_bytes, 11)
 
         return True
 
@@ -144,11 +144,11 @@ class Message(ESV):
         msg_bytes.extend(Bytes.from_int(self.DEOJ, 3))
         msg_bytes.append(self.ESV)
 
-        if self.ESV != ESV.WRITE_READ_REQUEST:
-            self.__append_property_bytes(msg_bytes, self.properties)
-        else:
+        if self.is_write_read_request() or self.is_write_read_response():
             self.__append_property_bytes(msg_bytes, self.set_properties)
             self.__append_property_bytes(msg_bytes, self.get_properties)
+        else:
+            self.__append_property_bytes(msg_bytes, self.properties)
 
         return msg_bytes
 
