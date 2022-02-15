@@ -97,7 +97,14 @@ class NodeProfile(Profile):
             class_cnt += 1
             if self.__is_node_profile_object(obj):
                 continue
-            class_list.extend(Bytes.from_int(obj.code, 3))
+            has_same_class = False
+            for n in range(0, len(class_list), 2):
+                if class_list[n] == obj.group_code and class_list[n + 1] == obj.class_code:
+                    has_same_class = True
+                    break
+            if has_same_class:
+                continue
+            class_list.extend(bytes([obj.group_code, obj.class_code]))
 
         if not self.set_property_data(NodeProfile.CLASS_NUMBER_OF_SELF_NODE_CLASSES, Bytes.from_int(class_cnt, NodeProfile.CLASS_NUMBER_OF_SELF_NODE_CLASSES_SIZE)):
             return False
@@ -123,4 +130,3 @@ class NodeProfileReadOnly(NodeProfile):
     def __init__(self):
         super().__init__()
         self.set_code(NodeProfileReadOnly.CODE)
-
