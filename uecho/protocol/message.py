@@ -68,6 +68,10 @@ class Message(ESV):
     def OPCSet(self) -> int:
         return len(self.set_properties)
 
+    @property
+    def OPCGet(self) -> int:
+        return len(self.get_properties)
+
     def add_property(self, prop: Any) -> bool:
         if not isinstance(prop, Property):
             return False
@@ -126,6 +130,13 @@ class Message(ESV):
     def parse_hexstring(self, hes_string: str) -> bool:
         return self.parse_bytes(Bytes.from_string(hes_string))
 
+    def __append_property_bytes(self, msg_bytes, properties) -> bytes:
+        msg_bytes.append(len(properties))
+        for prop in properties:
+            msg_bytes.append(prop.code)
+            msg_bytes.append(len(prop.data))
+            msg_bytes.extend(prop.data)
+
     def to_bytes(self) -> bytes:
         msg_bytes = bytearray([Message.EHD1_ECHONET, Message.EHD2_FORMAT1])
         msg_bytes.extend(Bytes.from_int(self.TID, 2))
@@ -133,11 +144,11 @@ class Message(ESV):
         msg_bytes.extend(Bytes.from_int(self.DEOJ, 3))
         msg_bytes.append(self.ESV)
 
-        msg_bytes.append(len(self.properties))
-        for prop in self.properties:
-            msg_bytes.append(prop.code)
-            msg_bytes.append(len(prop.data))
-            msg_bytes.extend(prop.data)
+        if self.ESV != ESV.WRITE_READ_REQUEST:
+            self.__append_property_bytes(msg_bytes, self.properties)
+        else:
+            self.__append_property_bytes(msg_bytes, self.set_properties)
+            self.__append_property_bytes(msg_bytes, self.get_properties)
 
         return msg_bytes
 
