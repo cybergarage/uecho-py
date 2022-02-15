@@ -131,16 +131,16 @@ def test_parse_read_write_message():
             opc,
             1,
             1,
-            0x41,    # a
+            0x78,    # x
             2,
             2,
-            0x41,    # a
-            0x42,    # b
+            0x78,    # x
+            0x79,    # y
             3,
             3,
-            0x41,    # a
-            0x42,    # b
-            0x43,    # c
+            0x78,    # x
+            0x79,    # y
+            0x7A,    # z
         ])
 
         return msg_bytes
@@ -165,13 +165,13 @@ def test_parse_read_write_message():
             assert prop.code == (n + 1)
             assert len(prop.data) == (n + 1)
             for i in range(len(prop.data)):
-                assert prop.data[i] == (0x41 + i)
+                assert prop.data[i] == (0x78 + i)
 
     msg = Message()
     assert msg.parse_bytes(generate_test_msg_bytes())
     assert_test_msg(msg)
 
-    # msg_bytes = msg.to_bytes()
-    # msg = Message()
-    # assert msg.parse_bytes(msg_bytes)
-    # assert_test_msg(msg)
+    msg_bytes = msg.to_bytes()
+    msg = Message()
+    assert msg.parse_bytes(msg_bytes)
+    assert_test_msg(msg)
