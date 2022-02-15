@@ -101,8 +101,6 @@ class Device(Object):
         if self.__listener is None:
             return None
 
-        opc = req_msg.OPC
-
         accepted_request_cnt = 0
         res_msg = Message()
         res_msg.set_response_headert(req_msg)
@@ -119,13 +117,29 @@ class Device(Object):
                 elif req_msg.is_write_request():
                     if self.__listener.property_write_requested(self, obj_prop, msg_prop.data):
                         accepted_request_cnt += 1
+                    else:
+                        res_prop.data = obj_prop.data
 
             req_msg.add_property(res_prop)
+
+        opc = req_msg.OPC
+
+        # 4.2.3.1 Property value write service (no response required) [0x60, 0x50]
+        if req_msg.ESV == ESV.WRITE_REQUEST:
+            if accepted_request_cnt == opc:
+                return None
+            else:
+                res_msg.ESV = ESV.WRITE_REQUEST_ERROR
 
         res_msg.ESV = req_msg.ESV
         if req_msg.is_read_request():
             if accepted_request_cnt == opc:
                 res_msg.ESV = ESV.READ_RESPONSE
+            else:
+                res_msg.ESV = ESV.READ_REQUEST_ERROR
+        elif req_msg.is_write_request():
+            if accepted_request_cnt == opc:
+                res_msg.ESV = ESV.WRITE_RESPONSE
             else:
                 res_msg.ESV = ESV.READ_REQUEST_ERROR
 
