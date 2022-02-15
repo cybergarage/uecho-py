@@ -150,9 +150,18 @@ def test_parse_read_write_message():
         assert msg.SEOJ == seoj
         assert msg.DEOJ == deoj
         assert msg.ESV == ESV.WRITE_READ_REQUEST
+
         assert msg.OPCSet == opc
         for n in range(opc):
             prop = msg.set_properties[n]
+            assert prop.code == (n + 1)
+            assert len(prop.data) == (n + 1)
+            for i in range(len(prop.data)):
+                assert prop.data[i] == (0x41 + i)
+
+        assert msg.OPCGet == opc
+        for n in range(opc):
+            prop = msg.get_properties[n]
             assert prop.code == (n + 1)
             assert len(prop.data) == (n + 1)
             for i in range(len(prop.data)):
