@@ -74,7 +74,6 @@ def test_parse_message():
         assert msg.DEOJ == deoj
         assert msg.ESV == ESV.NOTIFICATION
         assert msg.OPC == opc
-        assert len(msg.properties) == opc
         for n in range(opc):
             prop = msg.properties[n]
             assert prop.code == (n + 1)
@@ -151,14 +150,13 @@ def test_parse_read_write_message():
         assert msg.SEOJ == seoj
         assert msg.DEOJ == deoj
         assert msg.ESV == ESV.WRITE_READ_REQUEST
-        # assert msg.OPC == opc
-        # assert len(msg.set_properties) == opc
-        # for n in range(opc):
-        #     prop = msg.properties[n]
-        #     assert prop.code == (n + 1)
-        #     assert len(prop.data) == (n + 1)
-        #     for i in range(len(prop.data)):
-        #         assert prop.data[i] == (0x41 + i)
+        assert msg.OPCSet == opc
+        for n in range(opc):
+            prop = msg.set_properties[n]
+            assert prop.code == (n + 1)
+            assert len(prop.data) == (n + 1)
+            for i in range(len(prop.data)):
+                assert prop.data[i] == (0x41 + i)
 
     msg = Message()
     assert msg.parse_bytes(generate_test_msg_bytes())

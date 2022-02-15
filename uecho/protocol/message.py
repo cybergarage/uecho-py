@@ -64,6 +64,10 @@ class Message(ESV):
     def OPC(self) -> int:
         return len(self.properties)
 
+    @property
+    def OPCSet(self) -> int:
+        return len(self.set_properties)
+
     def add_property(self, prop: Any) -> bool:
         if not isinstance(prop, Property):
             return False
