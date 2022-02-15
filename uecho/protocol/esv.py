@@ -145,7 +145,7 @@ class ESV(object):
         Returns:
             bool: True whether the ESV requires the response, otherwise False.
         """
-        if self.ESV == ESV.WRITE_REQUEST:
+        if self.ESV == ESV.READ_REQUEST:
             return True
         if self.ESV == ESV.NOTIFICATION_REQUEST:
             return True
