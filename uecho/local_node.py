@@ -12,27 +12,45 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from typing import List
 from .transport.manager import Manager
 from .node import Node
 from .node_profile import NodeProfile
 from .protocol.message import Message as ProtocolMessage
 from .message import Message
 from .esv import ESV
+from .object import Object
 
 
-class LocalNode(Node, Manager):
+class LocalNode(Node):
 
+    __manager: Manager
     __node_profile_obj: NodeProfile
 
     def __init__(self):
-        super(Node, self).__init__()
-        super(Manager, self).__init__()
-        self.add_observer(self)
+        super().__init__()
+        self.__manager = Manager()
+        self.__manager.add_observer(self)
         self.__node_profile_obj = NodeProfile()
-        # self.add_object(self.__node_profile_obj)
+        self.add_object(self.__node_profile_obj)
 
-    # def add_object(self, obj: Object) -> bool:
-    #     return super(Node, self).add_object(obj)
+    def add_object(self, obj: Object) -> bool:
+        return super().add_object(obj)
+
+    def add_observer(self, observer):
+        return self.__manager.add_observer(observer)
+
+    def announce_message(self, msg: Message) -> bool:
+        return self.__manager.announce_message(msg)
+
+    def send_message(self, msg: Message, addr) -> bool:
+        return self.__manager.send_message(msg, addr)
+
+    def start(self, ifaddrs: List[str] = []) -> bool:
+        return self.__manager.start()
+
+    def stop(self) -> bool:
+        return self.__manager.stop()
 
     def message_received(self, proto_msg: ProtocolMessage):
         # 4.2.1 Basic Sequences for Service Content
