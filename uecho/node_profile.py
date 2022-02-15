@@ -16,6 +16,7 @@ from typing import List
 from .profile import Profile
 from .object import Object
 from .std import Database
+from .util.bytes import Bytes
 
 
 class NodeProfile(Profile):
@@ -59,11 +60,33 @@ class NodeProfile(Profile):
         std_obj = Database().get_object(NodeProfile.CODE)
         if isinstance(std_obj, Object):
             self._set_object_properties(std_obj)
+        self.update_class_instance_properties([self])
 
-    def message_received(self, msg) -> bool:
-        return True
+    def __is_node_profile_object(self, obj):
+        if obj.code == NodeProfile.CODE:
+            return True
+        if obj.code == NodeProfileReadOnly.CODE:
+            return True
+        return False
 
-    def update_instance_properties(self, objs: List[Object]) -> bool:
+    def __update_instance_properties(self, objs: List[Object]) -> bool:
+        instance_cnt = 0
+        instance_list = bytearray()
+        for obj in objs:
+            if self.__is_node_profile_object(obj):
+                continue
+            instance_cnt += 1
+            instance_list.extend(Bytes.from_int(obj.code, 3))
+
+        self.set_property_data(NodeProfile.CLASS_NUMBER_OF_SELF_NODE_INSTANCES, Bytes.from_int(instance_cnt, 3))
+
+        instance_list_bytes = bytearray(Bytes.from_int(instance_cnt, 1))
+        instance_list_bytes.extend(instance_list)
+        self.set_property_data(NodeProfile.CLASS_INSTANCE_LIST_NOTIFICATION, instance_list_bytes)
+        self.set_property_data(NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S, instance_list_bytes)
+
+    def update_class_instance_properties(self, objs: List[Object]) -> bool:
+        self.__update_instance_properties(objs)
         return True
 
 

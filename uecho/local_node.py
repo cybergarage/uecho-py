@@ -35,7 +35,9 @@ class LocalNode(Node):
         self.add_object(self.__node_profile_obj)
 
     def add_object(self, obj: Object) -> bool:
-        return super().add_object(obj)
+        if not super().add_object(obj):
+            return False
+        return self.__node_profile_obj.update_class_instance_properties(self.objects)
 
     def add_observer(self, observer):
         return self.__manager.add_observer(observer)
