@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Any, List
+from typing import List
 from .interface import Interface
 from .multicast_server import MulticastServer
 from .unicast_server import UnicastServer
@@ -73,7 +73,7 @@ class Manager(object):
                     return True
         return False
 
-    def start(self, ifaddrs: List[str] = []) -> Any:
+    def start(self, ifaddrs: List[str] = []) -> bool:
         if not self.stop():
             return False
 
@@ -103,7 +103,7 @@ class Manager(object):
 
         return True
 
-    def stop(self) -> Any:
+    def stop(self) -> bool:
         for server in self.servers:
             server.stop()
         self.servers = []
