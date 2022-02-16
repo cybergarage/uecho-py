@@ -71,8 +71,14 @@ class Server(threading.Thread):
             except:
                 break
 
-    def add_observer(self, observer):
+    def add_observer(self, observer) -> bool:
+        if object is None:
+            return False
+        for added_observer in self.observers:
+            if observer == added_observer:
+                return True
         self.observers.append(observer)
+        return True
 
     def notify(self, msg: Message):
         for observer in self.observers:
