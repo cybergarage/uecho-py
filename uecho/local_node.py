@@ -30,7 +30,6 @@ class LocalNode(Node):
     def __init__(self):
         super().__init__()
         self.__manager = Manager()
-        self.__manager.add_observer(self)
         self.__node_profile_obj = NodeProfile()
         self.add_object(self.__node_profile_obj)
 
@@ -49,7 +48,10 @@ class LocalNode(Node):
         return self.__manager.send_message(msg, addr)
 
     def start(self, ifaddrs: List[str] = []) -> bool:
-        return self.__manager.start()
+        if not self.__manager.start():
+            return False
+        self.__manager.add_observer(self)
+        return True
 
     def stop(self) -> bool:
         return self.__manager.stop()
