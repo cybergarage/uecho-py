@@ -18,7 +18,6 @@ import socket
 from typing import Any, Union, List, Tuple, Optional
 
 from .object import Object
-from .transport.observer import Observer
 from .local_node import LocalNode
 from .node_profile import NodeProfile
 from .esv import ESV
@@ -53,7 +52,7 @@ class ControleListener(metaclass=abc.ABCMeta):
         pass
 
 
-class Controller(Observer):
+class Controller(LocalNode):
     """The Controller and find any devices of Echonet Lite,
     send any requests to the found devices and receive the responses
     easily without building the binary protocol messages directly.
@@ -87,19 +86,18 @@ class Controller(Observer):
             prop.data = bytearray()
             self.add_property(prop)
 
-    __node: LocalNode
     __found_nodes: dict
     __last_post_msg: Any    # Controller.__PostMessage
     __database: Database
     __listeners: List[ControleListener]
 
     def __init__(self):
-        self.__node = LocalNode()
+        super().__init__()
         self.__found_nodes = {}
         self.__last_post_msg = Controller.__PostMessage()
         self.__database = Database()
         self.__listeners = []
-        self.__node.add_observer(self)
+        self.add_observer(self)
 
     @property
     def nodes(self) -> List[RemoteNode]:
@@ -163,7 +161,7 @@ class Controller(Observer):
         """Posts a multicast message to the same local network asynchronously.
         """
         msg.SEOJ = NodeProfile.CODE
-        return self.__node.announce_message(msg)
+        return super().announce_message(msg)
 
     def send_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> bool:
         """Posts a unicast message to the specified node asynchronously.
@@ -181,7 +179,7 @@ class Controller(Observer):
             to_addr = (addr.ip, addr.port)
         elif isinstance(addr, str):
             to_addr = (addr, Node.PORT)
-        return self.__node.send_message(msg, to_addr)
+        return super().send_message(msg, to_addr)
 
     def search(self) -> bool:
         """Posts a multicast read request to search all nodes in the same local network asynchronously.
@@ -212,18 +210,18 @@ class Controller(Observer):
 
         return self.__last_post_msg.response
 
-    def start(self) -> Any:
+    def start(self) -> bool:
         """Starts the controller to listen to any multicast and unicast messages from other nodes in the same local network, and executes search() after starting.
         """
-        if not self.__node.start():
+        if not super().start():
             return False
         self.search()
         return True
 
-    def stop(self) -> Any:
+    def stop(self) -> bool:
         """ Stops the controller not to listen to any messages.
         """
-        if not self.__node.stop():
+        if not super().stop():
             return False
         return True
 
@@ -246,7 +244,6 @@ class Controller(Observer):
     def _add_found_node(self, node):
         if not isinstance(node, RemoteNode):
             return False
-        node.controller = self
 
         # Adds standard object attributes and properties
         for obj in node.objects:

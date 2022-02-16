@@ -26,6 +26,7 @@ class MonoLight(Device, DeviceListener):
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
         pass
 
+
 def create_test_device():
     dev = MonoLight()
     assert dev.set_code(0x029101)    # Mono functional lighting
@@ -41,11 +42,11 @@ def create_test_device():
 
     return dev
 
+
 def test_device():
     dev = create_test_device()
-    assert(dev)
+    assert (dev)
 
     node = LocalNode()
     assert node.start()
     assert node.stop()
-    
