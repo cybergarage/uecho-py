@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho import Device, DeviceListener, Property
+from uecho import Device, DeviceListener, Property, LocalNode
 
 
 class MonoLight(Device, DeviceListener):
@@ -26,8 +26,7 @@ class MonoLight(Device, DeviceListener):
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
         pass
 
-
-def test_device():
+def create_test_device():
     dev = MonoLight()
     assert dev.set_code(0x029101)    # Mono functional lighting
 
@@ -39,3 +38,14 @@ def test_device():
     assert dev.has_property(0xB0)    # Illuminance Level Setting
 
     assert dev.set_listener(dev)
+
+    return dev
+
+def test_device():
+    dev = create_test_device()
+    assert(dev)
+
+    node = LocalNode()
+    assert node.start()
+    assert node.stop()
+    
