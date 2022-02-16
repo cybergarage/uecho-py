@@ -97,7 +97,6 @@ class Controller(LocalNode):
         self.__last_post_msg = Controller.__PostMessage()
         self.__database = Database()
         self.__listeners = []
-        self.add_observer(self)
 
     @property
     def nodes(self) -> List[RemoteNode]:
@@ -215,6 +214,7 @@ class Controller(LocalNode):
         """
         if not super().start():
             return False
+        self.add_observer(self)
         self.search()
         return True
 
