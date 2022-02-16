@@ -161,7 +161,7 @@
 <dl class="class">
 <dt id="uecho.controller.Controller">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.controller.</code><code class="sig-name descname">Controller</code><a class="headerlink" href="#uecho.controller.Controller" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="uecho.transport.html#uecho.transport.observer.Observer" title="uecho.transport.observer.Observer"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.observer.Observer</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#uecho.local_node.LocalNode" title="uecho.local_node.LocalNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.local_node.LocalNode</span></code></a></p>
 <p>The Controller and find any devices of Echonet Lite,
 send any requests to the found devices and receive the responses
 easily without building the binary protocol messages directly.</p>
@@ -289,13 +289,13 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.controller.Controller.start">
-<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#uecho.controller.Controller.start" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.controller.Controller.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts the controller to listen to any multicast and unicast messages from other nodes in the same local network, and executes search() after starting.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="uecho.controller.Controller.stop">
-<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#uecho.controller.Controller.stop" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.controller.Controller.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stops the controller not to listen to any messages.</p>
 </dd></dl>
 
@@ -1303,7 +1303,7 @@ easily without building the binary protocol messages directly.</p>
 <dl class="class">
 <dt id="uecho.Controller">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">Controller</code><a class="headerlink" href="#uecho.Controller" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="uecho.transport.html#uecho.transport.observer.Observer" title="uecho.transport.observer.Observer"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.observer.Observer</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#uecho.local_node.LocalNode" title="uecho.local_node.LocalNode"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.local_node.LocalNode</span></code></a></p>
 <p>The Controller and find any devices of Echonet Lite,
 send any requests to the found devices and receive the responses
 easily without building the binary protocol messages directly.</p>
@@ -1431,13 +1431,13 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.Controller.start">
-<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#uecho.Controller.start" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Controller.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Starts the controller to listen to any multicast and unicast messages from other nodes in the same local network, and executes search() after starting.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="uecho.Controller.stop">
-<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#uecho.Controller.stop" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Controller.stop" title="Permalink to this definition">¶</a></dt>
 <dd><p>Stops the controller not to listen to any messages.</p>
 </dd></dl>
 
