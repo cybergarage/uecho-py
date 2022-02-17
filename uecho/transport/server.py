@@ -54,10 +54,6 @@ class Server(threading.Thread):
 
                 recv_msg_bytes, recv_from = self.sock.recvfrom(1024)
 
-                # Ignores self messages
-                if recv_from == (self.ifaddr, self.port):
-                    continue
-
                 recv_msg_prefix = '%s:%s <- %s:%s' % (self.ifaddr.ljust(15), str(self.port).ljust(5), recv_from[0].ljust(15), str(recv_from[1]).ljust(5))
 
                 msg = Message()
