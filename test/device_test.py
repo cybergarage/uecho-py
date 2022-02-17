@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho import Device, DeviceListener, Property, LocalNode
+import time
+from uecho import Device, DeviceListener, Property, Controller, IGNORE_SELF_MESSAGE
 
 
 class MonoLight(Device, DeviceListener):
@@ -44,9 +45,17 @@ def create_test_device():
 
 
 def test_device():
+    ctrl = node = Controller()
+    ctrl.set_enabled(IGNORE_SELF_MESSAGE, False)
+
     dev = create_test_device()
     assert (dev)
 
-    node = LocalNode()
-    assert node.start()
-    assert node.stop()
+    assert node.add_object(dev)
+
+    assert ctrl.start()
+    time.sleep(1.0)
+
+    found_nodes = ctrl.nodes
+    assert 1 < len(found_nodes)
+    assert ctrl.stop()
