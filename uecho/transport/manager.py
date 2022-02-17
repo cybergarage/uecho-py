@@ -39,14 +39,14 @@ class Manager(object):
     def ifaddr(self) -> str:
         for server in self.servers:
             if isinstance(server, UnicastServer):
-                return self.ifaddr
+                return server.ifaddr
         return ""
 
     @property
     def port(self) -> int:
         for server in self.servers:
             if isinstance(server, UnicastServer):
-                return self.port
+                return server.port
         return 0
 
     def add_observer(self, observer):
