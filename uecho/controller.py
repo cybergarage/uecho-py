@@ -29,6 +29,7 @@ from .node import Node
 from .manufacturer import Manufacture
 from .std import Database
 from .const import DEFAULT_POST_MSG_RERTY, DEFAULT_POST_MSG_WAIT
+from .option import IGNORE_SELF_MESSAGE
 
 
 class ControleListener(metaclass=abc.ABCMeta):
@@ -285,8 +286,12 @@ class Controller(LocalNode):
             self.__notify_object_updated(node, obj)
             self.__notify_node_updated(node)
 
-    def message_received(self, prpto_msg: ProtocolMessage):
-        msg = Message(prpto_msg)
+    def message_received(self, proto_msg: ProtocolMessage):
+        if self.is_enabled(IGNORE_SELF_MESSAGE):
+            if proto_msg.from_addr == self.address:
+                return
+
+        msg = Message(proto_msg)
 
         if msg.is_node_profile_message():
             node = RemoteNode(msg.from_addr)
