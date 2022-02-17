@@ -24,5 +24,6 @@ from .property import Property
 from .manufacturer import Manufacture
 from .device import Device, DeviceListener
 from .profile import Profile
+from .option import IGNORE_SELF_MESSAGE
 
-__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'DeviceListener', 'Profile']
+__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'DeviceListener', 'Profile', 'IGNORE_SELF_MESSAGE']
