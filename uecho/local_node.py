@@ -20,17 +20,20 @@ from .protocol.message import Message as ProtocolMessage
 from .message import Message
 from .esv import ESV
 from .object import Object
+from .option import IGNORE_SELF_MESSAGE
 
 
 class LocalNode(Node):
 
     __manager: Manager
     __node_profile_obj: NodeProfile
+    __options: int
 
     def __init__(self):
         super().__init__()
         self.__manager = Manager()
         self.__node_profile_obj = NodeProfile()
+        self.__options = IGNORE_SELF_MESSAGE
         self.add_object(self.__node_profile_obj)
 
     def add_object(self, obj: Object) -> bool:
@@ -47,9 +50,22 @@ class LocalNode(Node):
     def send_message(self, msg: Message, addr) -> bool:
         return self.__manager.send_message(msg, addr)
 
+    def set_enabled(self, opt: int, v: bool) -> bool:
+        if v:
+            self.__options |= opt
+        else:
+            self.__options &= ~opt
+        return True
+
+    def is_enabled(self, opt: int) -> bool:
+        if (self.__options & opt) == 0:
+            return False
+        return True
+
     def start(self, ifaddrs: List[str] = []) -> bool:
         if not self.__manager.start():
             return False
+        self.set_address((self.__manager.ifaddr, self.__manager.port))
         self.__manager.add_observer(self)
         return True
 
@@ -57,6 +73,10 @@ class LocalNode(Node):
         return self.__manager.stop()
 
     def message_received(self, proto_msg: ProtocolMessage):
+        if self.is_enabled(IGNORE_SELF_MESSAGE):
+            if proto_msg.from_addr == self.address:
+                return
+
         # 4.2.1 Basic Sequences for Service Content
         req_msg = Message(proto_msg)
 

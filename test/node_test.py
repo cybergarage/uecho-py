@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho import Node
+from uecho import Node, LocalNode, IGNORE_SELF_MESSAGE
 from uecho.std import Database
 
 
@@ -30,3 +30,10 @@ def test_node():
     assert node.get_object(0x029101)
     assert node.get_object((0x02, 0x91, 0x00)) is None
     assert node.get_object((0x02, 0x91, 0x01))
+
+
+def test_local_node():
+    node = LocalNode()
+    assert node.is_enabled(IGNORE_SELF_MESSAGE)
+    assert node.set_enabled(IGNORE_SELF_MESSAGE, False)
+    assert not node.is_enabled(IGNORE_SELF_MESSAGE)
