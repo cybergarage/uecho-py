@@ -58,6 +58,9 @@ class ESV(object):
             return True
         return False
 
+    def is_response(self) -> bool:
+        return not self.is_request()
+
     def is_write_request(self) -> bool:
         """ Checks the ESV whether it is classified as a write request type.
 
