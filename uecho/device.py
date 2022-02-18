@@ -98,6 +98,9 @@ class Device(Object):
         if not isinstance(req_msg, Message):
             return None
 
+        if req_msg.is_read_response():
+            return None
+
         if self.__listener is None:
             return None
 
