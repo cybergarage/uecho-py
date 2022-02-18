@@ -25,4 +25,6 @@ class Profile(Object):
     def message_received(self, msg) -> bool:
         if msg.is_read_request():
             return True
+        if msg.is_notification_request():
+            return True
         return False

@@ -46,7 +46,8 @@ def create_test_device():
 
 def test_device():
     ctrl = node = Controller()
-    ctrl.set_enabled(IGNORE_SELF_MESSAGE, False)
+    assert ctrl.set_enabled(IGNORE_SELF_MESSAGE, False)
+    assert not ctrl.is_enabled(IGNORE_SELF_MESSAGE)
 
     dev = create_test_device()
     assert (dev)
