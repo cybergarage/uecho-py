@@ -286,12 +286,12 @@ class Controller(LocalNode):
             self.__notify_node_updated(node)
 
     def message_received(self, proto_msg: ProtocolMessage):
-        if proto_msg.is_request():
-            super().message_received(proto_msg)
-
         if self.is_enabled(IGNORE_SELF_MESSAGE):
             if self._is_self_message(proto_msg):
                 return
+
+        if proto_msg.is_request():
+            super().message_received(proto_msg)
 
         msg = Message(proto_msg)
 
