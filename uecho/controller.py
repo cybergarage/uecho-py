@@ -289,7 +289,7 @@ class Controller(LocalNode):
         # super().message_received(proto_msg)
 
         if self.is_enabled(IGNORE_SELF_MESSAGE):
-            if proto_msg.from_addr == self.address:
+            if self._is_self_message(proto_msg):
                 return
 
         msg = Message(proto_msg)
