@@ -286,7 +286,7 @@ class Controller(LocalNode):
             self.__notify_node_updated(node)
 
     def message_received(self, proto_msg: ProtocolMessage):
-        super().message_received(proto_msg)
+        # super().message_received(proto_msg)
 
         if self.is_enabled(IGNORE_SELF_MESSAGE):
             if proto_msg.from_addr == self.address:

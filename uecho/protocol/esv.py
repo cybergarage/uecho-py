@@ -66,9 +66,9 @@ class ESV(object):
         """
         if self.ESV == ESV.WRITE_REQUEST:
             return True
-        if self.ESV == ESV.WRITE_REQUEST_RESPONSE_REQUIRED:
-            return True
         if self.ESV == ESV.WRITE_READ_REQUEST:
+            return True
+        if self.ESV == ESV.WRITE_REQUEST_RESPONSE_REQUIRED:
             return True
         return False
 
@@ -78,7 +78,7 @@ class ESV(object):
         Returns:
             bool: True whether the specified code is a read request type, otherwise False.
         """
-        if self.ESV == ESV.WRITE_REQUEST:
+        if self.ESV == ESV.READ_REQUEST:
             return True
         if self.ESV == ESV.WRITE_READ_REQUEST:
             return True
