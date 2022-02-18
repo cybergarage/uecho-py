@@ -216,7 +216,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.controller.Controller.message_received">
-<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">prpto_msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.controller.Controller.message_received" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">proto_msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.controller.Controller.message_received" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -334,6 +334,11 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.local_node.LocalNode.is_enabled">
+<code class="sig-name descname">is_enabled</code><span class="sig-paren">(</span><em class="sig-param">opt: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.local_node.LocalNode.is_enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="uecho.local_node.LocalNode.message_received">
 <code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">proto_msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.local_node.LocalNode.message_received" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -341,6 +346,11 @@ easily without building the binary protocol messages directly.</p>
 <dl class="method">
 <dt id="uecho.local_node.LocalNode.send_message">
 <code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.local_node.LocalNode.send_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.local_node.LocalNode.set_enabled">
+<code class="sig-name descname">set_enabled</code><span class="sig-paren">(</span><em class="sig-param">opt: int</em>, <em class="sig-param">v: bool</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.local_node.LocalNode.set_enabled" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1263,6 +1273,11 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.LocalNode.is_enabled">
+<code class="sig-name descname">is_enabled</code><span class="sig-paren">(</span><em class="sig-param">opt: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.LocalNode.is_enabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
 <dt id="uecho.LocalNode.message_received">
 <code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">proto_msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.LocalNode.message_received" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1270,6 +1285,11 @@ easily without building the binary protocol messages directly.</p>
 <dl class="method">
 <dt id="uecho.LocalNode.send_message">
 <code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.LocalNode.send_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.LocalNode.set_enabled">
+<code class="sig-name descname">set_enabled</code><span class="sig-paren">(</span><em class="sig-param">opt: int</em>, <em class="sig-param">v: bool</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.LocalNode.set_enabled" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1358,7 +1378,7 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.Controller.message_received">
-<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">prpto_msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Controller.message_received" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">proto_msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Controller.message_received" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
