@@ -18,7 +18,6 @@ from .node import Node
 from .node_profile import NodeProfile
 from .protocol.message import Message as ProtocolMessage
 from .message import Message
-from .esv import ESV
 from .object import Object
 from .option import IGNORE_SELF_MESSAGE
 
@@ -72,9 +71,13 @@ class LocalNode(Node):
     def stop(self) -> bool:
         return self.__manager.stop()
 
+    def _is_self_message(self, proto_msg: ProtocolMessage):
+        if proto_msg.from_addr != self.address:
+            return False
+
     def message_received(self, proto_msg: ProtocolMessage):
         if self.is_enabled(IGNORE_SELF_MESSAGE):
-            if proto_msg.from_addr == self.address:
+            if self._is_self_message(proto_msg):
                 return
 
         # 4.2.1 Basic Sequences for Service Content
@@ -90,7 +93,7 @@ class LocalNode(Node):
         if res_msg is None:
             return
 
-        if res_msg.ESV != ESV.NOTIFICATION:
+        if res_msg.is_notification():
             # (C) Basic sequence for processing a notification request
             self.announce_message(res_msg)
         else:
