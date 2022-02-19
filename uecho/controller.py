@@ -290,8 +290,11 @@ class Controller(LocalNode):
             if self._is_self_message(proto_msg):
                 return
 
-        if not proto_msg.is_response():
+        if proto_msg.is_request():
             super().message_received(proto_msg)
+
+        if not proto_msg.is_response():
+            return
 
         msg = Message(proto_msg)
 
