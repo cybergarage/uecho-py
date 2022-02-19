@@ -244,8 +244,6 @@ class Object(object):
         Args:
             listener (ObjectListener): The listener that handles read and write requests from other controllers and devices.
         """
-        if not isinstance(listener, ObjectListener):
-            return False
         self.__listener = listener
         return True
 
