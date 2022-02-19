@@ -17,6 +17,8 @@ from .profile import Profile
 from .object import Object
 from .std import Database
 from .util.bytes import Bytes
+from .property import Property
+from .node import Node
 
 
 class NodeProfile(Profile):
@@ -61,6 +63,7 @@ class NodeProfile(Profile):
         if isinstance(std_obj, Object):
             self._set_object_properties(std_obj)
         self.update_class_instance_properties([self])
+        self.set_listener(self)
 
     def __is_node_profile_object(self, obj):
         if obj.code == NodeProfile.CODE:
@@ -122,6 +125,14 @@ class NodeProfile(Profile):
         if not self.__update_class_properties(objs):
             return False
         return True
+
+    def property_read_requested(self, prop: Property) -> bool:
+        if isinstance(self.node, Node):
+            self.update_class_instance_properties(self.node.objects)
+        return True
+
+    def property_write_requested(self, prop: Property, data: bytes) -> bool:
+        return False
 
 
 class NodeProfileReadOnly(NodeProfile):
