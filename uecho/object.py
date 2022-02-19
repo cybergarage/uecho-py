@@ -316,7 +316,9 @@ class Object(object):
             return None
 
         res_msg = Message()
-        res_msg.set_response_headert(req_msg)
+        res_msg.TID = req_msg.TID
+        res_msg.DEOJ = req_msg.SEOJ
+        res_msg.SEOJ = req_msg.DEOJ
 
         accepted_request_cnt = 0
 
@@ -333,7 +335,7 @@ class Object(object):
                         accepted_request_cnt += 1
                     else:
                         res_prop.data = obj_prop.data
-            req_msg.add_property(res_prop)
+            res_msg.add_property(res_prop)
 
         opc = req_msg.OPC
         opc_set = req_msg.OPCSet
