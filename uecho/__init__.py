@@ -16,7 +16,7 @@ from .node import Node
 from .local_node import LocalNode
 from .remote_node import RemoteNode
 from .controller import Controller
-from .object import Object, ObjectListener
+from .object import Object, ObjectRequestHandler
 from .node_profile import NodeProfile
 from .message import Message
 from .esv import ESV
@@ -27,4 +27,4 @@ from .profile import Profile
 from .option import IGNORE_SELF_MESSAGE
 from .messages import SearchMessage, ReadMessage, WriteMessage
 
-__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'ObjectListener', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'Profile', 'IGNORE_SELF_MESSAGE', 'SearchMessage', 'ReadMessage', 'WriteMessage']
+__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'ObjectRequestHandler', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'Profile', 'IGNORE_SELF_MESSAGE', 'SearchMessage', 'ReadMessage', 'WriteMessage']

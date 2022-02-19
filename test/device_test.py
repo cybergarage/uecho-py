@@ -13,11 +13,11 @@
 # limitations under the License.
 
 import time
-from uecho import Device, ObjectListener, Property, Controller, IGNORE_SELF_MESSAGE, ReadMessage
+from uecho import Device, ObjectRequestHandler, Property, Controller, IGNORE_SELF_MESSAGE, ReadMessage
 from uecho.node_profile import NodeProfile
 
 
-class MonoLight(Device, ObjectListener):
+class MonoLight(Device, ObjectRequestHandler):
 
     def __init__(self):
         super().__init__()
@@ -40,7 +40,7 @@ def create_test_device():
     assert dev.has_property(0x80)    # Operation status
     assert dev.has_property(0xB0)    # Illuminance Level Setting
 
-    assert dev.set_listener(dev)
+    assert dev.set_request_handler(dev)
 
     return dev
 
@@ -65,6 +65,8 @@ def test_device():
 
     remote_dev_node = None
     for remote_node in found_nodes:
+        if remote_node.address != node.address:
+            continue
         req_msg = ReadMessage(NodeProfile.CODE)
         req_msg.add_property(NodeProfile.IDENTIFICATION_NUMBER)
         res_msg = ctrl.post_message(req_msg, remote_node)

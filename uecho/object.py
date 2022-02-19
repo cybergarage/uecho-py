@@ -21,8 +21,8 @@ from .esv import ESV
 from .util.bytes import Bytes
 
 
-class ObjectListener(metaclass=abc.ABCMeta):
-    """ObjectListener is an abstract listener class to listen to request messages to a device.
+class ObjectRequestHandler(metaclass=abc.ABCMeta):
+    """ObjectRequestHandler is an abstract listener class to listen to request messages to a device.
     """
 
     @abc.abstractmethod
@@ -84,14 +84,14 @@ class Object(object):
     name: str
     node: Optional[Any]
     __properties: Dict[int, Property]
-    __listener: ObjectListener
+    __request_handler: ObjectRequestHandler
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         self.code = Object.CODE_UNKNOWN
         self.name = ""
         self.__properties = {}
         self.node = None
-        self.__listener = None
+        self.__request_handler = None
         self.set_code(code)
 
     def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
@@ -245,13 +245,13 @@ class Object(object):
     def set_property_integer(self, code: int, data: int, size: int) -> bool:
         return self.set_property_data(code, Bytes.from_int(data, size))
 
-    def set_listener(self, listener: ObjectListener) -> bool:
-        """ Sets a ObjectListener to handle read and write requests from other controllers and devices.
+    def set_request_handler(self, listener: ObjectRequestHandler) -> bool:
+        """ Sets a ObjectRequestHandler to handle read and write requests from other controllers and devices.
 
         Args:
-            listener (ObjectListener): The listener that handles read and write requests from other controllers and devices.
+            listener (ObjectRequestHandler): The listener that handles read and write requests from other controllers and devices.
         """
-        self.__listener = listener
+        self.__request_handler = listener
         return True
 
     def __create_message(self, esv: int, props: List[Tuple[int, bytes]]):
@@ -319,7 +319,7 @@ class Object(object):
         if not req_msg.is_request():
             return None
 
-        if self.__listener is None:
+        if self.__request_handler is None:
             return None
 
         res_msg = Message()
@@ -334,11 +334,11 @@ class Object(object):
             obj_prop = self.get_property(msg_prop.code)
             if obj_prop is not None:
                 if req_msg.is_read_request():
-                    if self.__listener.property_read_requested(obj_prop):
+                    if self.__request_handler.property_read_requested(obj_prop):
                         res_prop.data = obj_prop.data
                         accepted_request_cnt += 1
                 elif req_msg.is_write_request():
-                    if self.__listener.property_write_requested(obj_prop, msg_prop.data):
+                    if self.__request_handler.property_write_requested(obj_prop, msg_prop.data):
                         accepted_request_cnt += 1
                     else:
                         res_prop.data = obj_prop.data
