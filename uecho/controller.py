@@ -304,5 +304,5 @@ class Controller(LocalNode):
             self._update_properties(msg)
 
         if self.__last_post_msg.is_waiting():
-            if self.__last_post_msg.request.is_response(msg):
+            if self.__last_post_msg.request.is_response_message(msg):
                 self.__last_post_msg.response = msg
