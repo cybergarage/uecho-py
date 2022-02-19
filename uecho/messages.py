@@ -12,19 +12,29 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from .node import Node
-from .local_node import LocalNode
-from .remote_node import RemoteNode
-from .controller import Controller
-from .object import Object, ObjectListener
-from .node_profile import NodeProfile
 from .message import Message
 from .esv import ESV
+from .node_profile import NodeProfile
 from .property import Property
-from .manufacturer import Manufacture
-from .device import Device
-from .profile import Profile
-from .option import IGNORE_SELF_MESSAGE
-from .messages import SearchMessage, ReadMessage
 
-__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'ObjectListener', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'Profile', 'IGNORE_SELF_MESSAGE', 'SearchMessage', 'ReadMessage']
+
+class SearchMessage(Message):
+
+    def __init__(self):
+        super().__init__()
+        self.ESV = ESV.READ_REQUEST
+        self.SEOJ = NodeProfile.CODE
+        self.DEOJ = NodeProfile.CODE
+        prop = Property()
+        prop.code = NodeProfile.SELF_NODE_INSTANCE_LIST_S
+        prop.data = bytearray()
+        self.add_property(prop)
+
+
+class ReadMessage(Message):
+
+    def __init__(self, DEOJ: int):
+        super().__init__()
+        self.ESV = ESV.READ_REQUEST
+        self.SEOJ = NodeProfile.CODE
+        self.DEOJ = DEOJ

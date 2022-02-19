@@ -20,7 +20,6 @@ from typing import Any, Union, List, Tuple, Optional
 from .object import Object
 from .local_node import LocalNode
 from .node_profile import NodeProfile
-from .esv import ESV
 from .message import Message
 from .protocol.message import Message as ProtocolMessage
 from .property import Property
@@ -30,6 +29,7 @@ from .manufacturer import Manufacture
 from .std import Database
 from .const import DEFAULT_POST_MSG_RERTY, DEFAULT_POST_MSG_WAIT
 from .option import IGNORE_SELF_MESSAGE
+from .messages import SearchMessage
 
 
 class ControleListener(metaclass=abc.ABCMeta):
@@ -74,18 +74,6 @@ class Controller(LocalNode):
             if self.response is not None:
                 return False
             return True
-
-    class __SearchMessage(Message):
-
-        def __init__(self):
-            super().__init__()
-            self.ESV = ESV.READ_REQUEST
-            self.SEOJ = NodeProfile.CODE
-            self.DEOJ = NodeProfile.CODE
-            prop = Property()
-            prop.code = NodeProfile.SELF_NODE_INSTANCE_LIST_S
-            prop.data = bytearray()
-            self.add_property(prop)
 
     __found_nodes: dict
     __last_post_msg: Any    # Controller.__PostMessage
@@ -184,7 +172,7 @@ class Controller(LocalNode):
     def search(self) -> bool:
         """Posts a multicast read request to search all nodes in the same local network asynchronously.
         """
-        msg = Controller.__SearchMessage()
+        msg = SearchMessage()
         return self.announce_message(msg)
 
     def post_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> Optional[Message]:
