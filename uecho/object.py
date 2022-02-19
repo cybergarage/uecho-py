@@ -18,6 +18,7 @@ from typing import Optional, Union, Tuple, Dict, Any, List
 from .property import Property
 from .protocol.message import Message
 from .esv import ESV
+from .util.bytes import Bytes
 
 
 class ObjectListener(metaclass=abc.ABCMeta):
@@ -237,6 +238,12 @@ class Object(object):
             return False
         prop.data = data
         return True
+
+    def set_property_string(self, code: int, data: bytes) -> bool:
+        return self.set_property_data(code, data)
+
+    def set_property_integer(self, code: int, data: int, size: int) -> bool:
+        return self.set_property_data(code, Bytes.from_int(data, size))
 
     def set_listener(self, listener: ObjectListener) -> bool:
         """ Sets a ObjectListener to handle read and write requests from other controllers and devices.
