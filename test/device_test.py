@@ -13,10 +13,10 @@
 # limitations under the License.
 
 import time
-from uecho import Device, DeviceListener, Property, Controller, IGNORE_SELF_MESSAGE
+from uecho import Device, ObjectListener, Property, Controller, IGNORE_SELF_MESSAGE
 
 
-class MonoLight(Device, DeviceListener):
+class MonoLight(Device, ObjectListener):
 
     def __init__(self):
         super().__init__()

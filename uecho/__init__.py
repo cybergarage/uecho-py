@@ -16,14 +16,14 @@ from .node import Node
 from .local_node import LocalNode
 from .remote_node import RemoteNode
 from .controller import Controller
-from .object import Object
+from .object import Object, ObjectListener
 from .node_profile import NodeProfile
 from .message import Message
 from .esv import ESV
 from .property import Property
 from .manufacturer import Manufacture
-from .device import Device, DeviceListener
+from .device import Device
 from .profile import Profile
 from .option import IGNORE_SELF_MESSAGE
 
-__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'DeviceListener', 'Profile', 'IGNORE_SELF_MESSAGE']
+__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'ObjectListener', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'Profile', 'IGNORE_SELF_MESSAGE']
