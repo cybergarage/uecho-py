@@ -12,9 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Any, Union, Tuple
+from typing import Any, Union, Tuple, Optional
 
 from .object import Object
+from .protocol.message import Message
 
 
 class Profile(Object):
@@ -22,9 +23,5 @@ class Profile(Object):
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         super().__init__(code)
 
-    def message_received(self, msg) -> bool:
-        if msg.is_read_request():
-            return True
-        if msg.is_notification_request():
-            return True
-        return False
+    def message_received(self, msg) -> Optional[Message]:
+        raise NotImplementedError()
