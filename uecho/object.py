@@ -15,7 +15,7 @@
 from typing import Optional, Union, Tuple, Dict, Any, List
 
 from .property import Property
-from .protocol.message import Message as ProtocolMessage
+from .protocol.message import Message
 
 
 class Object(object):
@@ -205,7 +205,7 @@ class Object(object):
         return True
 
     def __create_message(self, esv: int, props: List[Tuple[int, bytes]]):
-        msg = ProtocolMessage()
+        msg = Message()
         msg.DEOJ = self.code
         msg.ESV = esv
         if not isinstance(props, list):
@@ -262,7 +262,7 @@ class Object(object):
             return None
         return self.node.controller.post_message(msg, self.node)
 
-    def message_received(self, msg) -> bool:
+    def message_received(self, msg) -> Optional[Message]:
         raise NotImplementedError()
 
     def copy(self):
