@@ -22,10 +22,10 @@ clean:
 	rm -rf tests/*/__pycache__
 
 format:
-	yapf -ir --style setup.cfg uecho bin test
+	yapf -ir --style setup.cfg uecho bin test examples
 
 lint: format
-	flake8 uecho bin test
+	flake8 uecho bin test examples
 	# find uecho -name "*.py" | xargs pylint 
 
 type: format
