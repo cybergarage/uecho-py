@@ -21,7 +21,7 @@ def test_remote_node_parse():
     obj.set_code(0x0EF001)
 
     prop = Property()
-    prop.code = NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S
+    prop.code = NodeProfile.SELF_NODE_INSTANCE_LIST_S
     prop_data = bytearray([1])
     prop_data.extend(Bytes.from_int(obj.code, Object.CODE_SIZE))
     prop.data = prop_data

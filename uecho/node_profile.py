@@ -27,34 +27,34 @@ class NodeProfile(Profile):
     INSTANCE_GENERAL_CODE = 0x01
     INSTANCE_TRANSMISSION_ONLY_CODE = 0x02
 
-    CLASS_OPERATING_STATUS = Profile.OPERATING_STATUS
-    CLASS_VERSION_INFORMATION = 0x82
-    CLASS_IDENTIFICATION_NUMBER = 0x83
-    CLASS_FAULT_CONTENT = 0x89
-    CLASS_UNIQUE_IDENTIFIER_DATA = 0xBF
-    CLASS_NUMBER_OF_SELF_NODE_INSTANCES = 0xD3
-    CLASS_NUMBER_OF_SELF_NODE_CLASSES = 0xD4
-    CLASS_INSTANCE_LIST_NOTIFICATION = 0xD5
-    CLASS_SELF_NODE_INSTANCE_LIST_S = 0xD6
-    CLASS_SELF_NODE_CLASS_LIST_S = 0xD7
+    OPERATING_STATUS = Profile.OPERATING_STATUS
+    VERSION_INFORMATION = 0x82
+    IDENTIFICATION_NUMBER = 0x83
+    FAULT_CONTENT = 0x89
+    UNIQUE_IDENTIFIER_DATA = 0xBF
+    NUMBER_OF_SELF_NODE_INSTANCES = 0xD3
+    NUMBER_OF_SELF_NODE_CLASSES = 0xD4
+    INSTANCE_LIST_NOTIFICATION = 0xD5
+    SELF_NODE_INSTANCE_LIST_S = 0xD6
+    SELF_NODE_CLASS_LIST_S = 0xD7
 
-    CLASS_OPERATING_STATUS_SIZE = 1
-    CLASS_VERSION_INFORMATION_SIZE = 4
-    CLASS_IDENTIFICATION_MANUFACTURER_CODE_SIZE = 3
-    CLASS_IDENTIFICATION_UNIQUE_ID_SIZE = 13
-    CLASS_IDENTIFICATION_NUMBER_SIZE = 1 + CLASS_IDENTIFICATION_MANUFACTURER_CODE_SIZE + CLASS_IDENTIFICATION_UNIQUE_ID_SIZE
-    CLASS_FAULT_CONTENT_SIZE = 2
-    CLASS_UNIQUE_IDENTIFIER_DATA_SIZE = 2
-    CLASS_NUMBER_OF_SELF_NODE_INSTANCES_SIZE = 3
-    CLASS_NUMBER_OF_SELF_NODE_CLASSES_SIZE = 2
-    CLASS_SELF_NODE_INSTANCE_LIST_S_MAX = 0xFF
-    CLASS_SELF_NODE_CLASS_LIST_S_MAX = 0xFF
-    CLASS_INSTANCE_LIST_NOTIFICATION_MAX = CLASS_SELF_NODE_INSTANCE_LIST_S_MAX
+    OPERATING_STATUS_SIZE = 1
+    VERSION_INFORMATION_SIZE = 4
+    IDENTIFICATION_MANUFACTURER_CODE_SIZE = 3
+    IDENTIFICATION_UNIQUE_ID_SIZE = 13
+    IDENTIFICATION_NUMBER_SIZE = 1 + IDENTIFICATION_MANUFACTURER_CODE_SIZE + IDENTIFICATION_UNIQUE_ID_SIZE
+    FAULT_CONTENT_SIZE = 2
+    UNIQUE_IDENTIFIER_DATA_SIZE = 2
+    NUMBER_OF_SELF_NODE_INSTANCES_SIZE = 3
+    NUMBER_OF_SELF_NODE_CLASSES_SIZE = 2
+    SELF_NODE_INSTANCE_LIST_S_MAX = 0xFF
+    SELF_NODE_CLASS_LIST_S_MAX = 0xFF
+    INSTANCE_LIST_NOTIFICATION_MAX = SELF_NODE_INSTANCE_LIST_S_MAX
 
-    CLASS_OPERATING_STATUS_ON = Profile.OPERATING_STATUS_ON
-    CLASS_OPERATING_STATUS_OFF = Profile.OPERATING_STATUS_OFF
-    CLASS_BOOTING = 0x30
-    CLASS_NOT_BOOTING = 0x31
+    OPERATING_STATUS_ON = Profile.OPERATING_STATUS_ON
+    OPERATING_STATUS_OFF = Profile.OPERATING_STATUS_OFF
+    BOOTING = 0x30
+    NOT_BOOTING = 0x31
     LOWER_COMMUNICATION_LAYER_PROTOCOL_TYPE = 0xFE
 
     def __init__(self):
@@ -81,14 +81,14 @@ class NodeProfile(Profile):
             instance_cnt += 1
             instance_list.extend(Bytes.from_int(obj.code, 3))
 
-        if not self.set_property_data(NodeProfile.CLASS_NUMBER_OF_SELF_NODE_INSTANCES, Bytes.from_int(instance_cnt, NodeProfile.CLASS_NUMBER_OF_SELF_NODE_INSTANCES_SIZE)):
+        if not self.set_property_data(NodeProfile.NUMBER_OF_SELF_NODE_INSTANCES, Bytes.from_int(instance_cnt, NodeProfile.NUMBER_OF_SELF_NODE_INSTANCES_SIZE)):
             return False
 
         instance_list_bytes = bytearray(Bytes.from_int(instance_cnt, 1))
         instance_list_bytes.extend(instance_list)
-        if not self.set_property_data(NodeProfile.CLASS_INSTANCE_LIST_NOTIFICATION, instance_list_bytes):
+        if not self.set_property_data(NodeProfile.INSTANCE_LIST_NOTIFICATION, instance_list_bytes):
             return False
-        if not self.set_property_data(NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S, instance_list_bytes):
+        if not self.set_property_data(NodeProfile.SELF_NODE_INSTANCE_LIST_S, instance_list_bytes):
             return False
 
         return True
@@ -109,12 +109,12 @@ class NodeProfile(Profile):
                 continue
             class_list.extend(bytes([obj.group_code, obj.class_code]))
 
-        if not self.set_property_data(NodeProfile.CLASS_NUMBER_OF_SELF_NODE_CLASSES, Bytes.from_int(class_cnt, NodeProfile.CLASS_NUMBER_OF_SELF_NODE_CLASSES_SIZE)):
+        if not self.set_property_data(NodeProfile.NUMBER_OF_SELF_NODE_CLASSES, Bytes.from_int(class_cnt, NodeProfile.NUMBER_OF_SELF_NODE_CLASSES_SIZE)):
             return False
 
         class_list_bytes = bytearray(Bytes.from_int(len(class_list), 1))
         class_list_bytes.extend(class_list)
-        if not self.set_property_data(NodeProfile.CLASS_SELF_NODE_CLASS_LIST_S, class_list_bytes):
+        if not self.set_property_data(NodeProfile.SELF_NODE_CLASS_LIST_S, class_list_bytes):
             return False
 
         return True

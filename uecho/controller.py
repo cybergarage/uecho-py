@@ -83,7 +83,7 @@ class Controller(LocalNode):
             self.SEOJ = NodeProfile.CODE
             self.DEOJ = NodeProfile.CODE
             prop = Property()
-            prop.code = NodeProfile.CLASS_SELF_NODE_INSTANCE_LIST_S
+            prop.code = NodeProfile.SELF_NODE_INSTANCE_LIST_S
             prop.data = bytearray()
             self.add_property(prop)
 

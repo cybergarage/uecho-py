@@ -60,7 +60,4 @@ def test_device():
     found_nodes = ctrl.nodes
     assert 1 < len(found_nodes)
 
-    # while True:
-    #     time.sleep(1.0)
-
     assert ctrl.stop()
