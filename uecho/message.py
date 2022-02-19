@@ -29,11 +29,6 @@ class Message(ProtocolMessage):
             self.from_addr = msg.from_addr
             self.to_addr = msg.to_addr
 
-    def set_response_headert(self, msg: ProtocolMessage):
-        self.TID = msg.TID
-        self.DEOJ = msg.SEOJ
-        self.SEOJ = msg.DEOJ
-
     def is_node_profile_message(self):
         if self.ESV != ESV.NOTIFICATION and self.ESV != ESV.READ_RESPONSE:
             return False
