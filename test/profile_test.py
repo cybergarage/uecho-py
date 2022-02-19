@@ -19,6 +19,15 @@ from uecho.util import Bytes
 def test_node_profile():
     prof = NodeProfile()
 
+    prop = prof.get_property(NodeProfile.OPERATING_STATUS)
+    assert prop
+    assert len(prop.data) == NodeProfile.OPERATING_STATUS_SIZE
+    assert Bytes.to_int(prop.data) == NodeProfile.BOOTING
+
+    prop = prof.get_property(NodeProfile.IDENTIFICATION_NUMBER)
+    assert prop
+    assert len(prop.data) == NodeProfile.IDENTIFICATION_NUMBER_SIZE
+
     prop = prof.get_property(NodeProfile.NUMBER_OF_SELF_NODE_INSTANCES)
     assert prop
     assert len(prop.data) == NodeProfile.NUMBER_OF_SELF_NODE_INSTANCES_SIZE
