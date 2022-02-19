@@ -25,6 +25,6 @@ from .manufacturer import Manufacture
 from .device import Device
 from .profile import Profile
 from .option import IGNORE_SELF_MESSAGE
-from .messages import SearchMessage, ReadMessage
+from .messages import SearchMessage, ReadMessage, WriteMessage
 
-__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'ObjectListener', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'Profile', 'IGNORE_SELF_MESSAGE', 'SearchMessage', 'ReadMessage']
+__all__ = ['Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'ObjectListener', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'Profile', 'IGNORE_SELF_MESSAGE', 'SearchMessage', 'ReadMessage', 'WriteMessage']
