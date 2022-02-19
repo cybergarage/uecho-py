@@ -80,9 +80,9 @@ class LocalNode(Node):
             if self._is_self_message(proto_msg):
                 return
 
-        # 4.2.1 Basic Sequences for Service Content
         req_msg = Message(proto_msg)
 
+        # 4.2.1 Basic Sequences for Service Content
         dest_obj = self.get_object(req_msg.DEOJ)
         if dest_obj is None:
             return
