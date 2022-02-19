@@ -327,11 +327,11 @@ class Object(object):
             obj_prop = self.get_property(msg_prop.code)
             if obj_prop is not None:
                 if req_msg.is_read_request():
-                    if self.__listener.property_read_requested(self, obj_prop):
+                    if self.__listener.property_read_requested(obj_prop):
                         res_prop.data = obj_prop.data
                         accepted_request_cnt += 1
                 elif req_msg.is_write_request():
-                    if self.__listener.property_write_requested(self, obj_prop, msg_prop.data):
+                    if self.__listener.property_write_requested(obj_prop, msg_prop.data):
                         accepted_request_cnt += 1
                     else:
                         res_prop.data = obj_prop.data
