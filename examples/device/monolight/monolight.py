@@ -18,17 +18,55 @@ import argparse
 from uecho import LocalNode, Device, Property, ObjectRequestHandler
 import uecho.log as log
 
-class MonoLight(Device, ObjectRequestHandler):
+
+class MonoLightDevice(Device, ObjectRequestHandler):
 
     def __init__(self):
         super().__init__(0x029101)
         self.set_request_handler(self)
+
+    def on(self):
+        self.set_property_integer(0x80, 0x30, 1)
+
+    def off(self):
+        self.set_property_integer(0x80, 0x31, 1)
 
     def property_read_requested(self, prop: Property) -> bool:
         return True
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
         return True
+
+
+class MonoLightNode(LocalNode):
+
+    dev: MonoLightDevice
+
+    def __init__(self):
+        super().__init__()
+        self.dev = MonoLightDevice()
+        self.add_object(self.dev)
+
+    def on(self):
+        self.set_property_integer(0x80, 0x30, 1)
+
+    def off(self):
+        self.set_property_integer(0x80, 0x31, 1)
+
+    def property_read_requested(self, prop: Property) -> bool:
+        return True
+
+    def property_write_requested(self, prop: Property, data: bytes) -> bool:
+        return True
+
+    def start(self) -> bool:
+        self.dev.on()
+        return super().start()
+
+    def stop(self) -> bool:
+        self.dev.off()
+        return super().stop()
+
 
 args = sys.argv
 
@@ -42,9 +80,7 @@ if __name__ == '__main__':
     if args.debug:
         log.setLevel(log.DEBUG)
 
-    node = LocalNode()
-    dev = MonoLight()
-    node.add_object(dev)
+    node = MonoLightNode()
     node.start()
 
     try:
