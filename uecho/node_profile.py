@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import random
+
 from typing import List
 from .profile import Profile
 from .object import Object
@@ -62,10 +64,18 @@ class NodeProfile(Profile):
         std_obj = Database().get_object(NodeProfile.CODE)
         if isinstance(std_obj, Object):
             self._set_object_properties(std_obj)
-        self.update_class_instance_properties([self])
         self.set_listener(self)
+        self.__update_initial_properties()
+        self.update_class_instance_properties([self])
 
-    def __is_node_profile_object(self, obj):
+    def __update_initial_properties(self) -> bool:
+        id = random.randint(1, int(pow(2, 14)))
+        id_bytes = Bytes.from_int((id | 0xC0), 2)
+        if not self.set_property_data(NodeProfile.IDENTIFICATION_NUMBER, id_bytes):
+            return False
+        return True
+
+    def __is_node_profile_object(self, obj) -> bool:
         if obj.code == NodeProfile.CODE:
             return True
         if obj.code == NodeProfileReadOnly.CODE:
