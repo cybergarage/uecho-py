@@ -38,3 +38,12 @@ class ReadMessage(Message):
         self.ESV = ESV.READ_REQUEST
         self.SEOJ = NodeProfile.CODE
         self.DEOJ = DEOJ
+
+
+class WriteMessage(Message):
+
+    def __init__(self, DEOJ: int):
+        super().__init__()
+        self.ESV = ESV.WRITE_REQUEST
+        self.SEOJ = NodeProfile.CODE
+        self.DEOJ = DEOJ
