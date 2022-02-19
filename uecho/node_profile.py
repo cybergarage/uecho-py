@@ -64,7 +64,7 @@ class NodeProfile(Profile):
         std_obj = Database().get_object(NodeProfile.CODE)
         if isinstance(std_obj, Object):
             self._set_object_properties(std_obj)
-        self.set_listener(self)
+        self.set_request_handler(self)
         self.__update_initial_properties()
         self.update_class_instance_properties([self])
 
