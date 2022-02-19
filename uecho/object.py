@@ -12,10 +12,42 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import abc
 from typing import Optional, Union, Tuple, Dict, Any, List
 
 from .property import Property
 from .protocol.message import Message
+from .esv import ESV
+
+
+class ObjectListener(metaclass=abc.ABCMeta):
+    """ObjectListener is an abstract listener class to listen to request messages to a device.
+    """
+
+    @abc.abstractmethod
+    def property_read_requested(self, prop: Property) -> bool:
+        """ Handles a read request message, and updates the propery data if needed.
+
+        Args:
+            prop (Property): The target property.
+
+        Returns:
+            bool: True if allowed the access, otherwise False.
+        """
+        pass
+
+    @abc.abstractmethod
+    def property_write_requested(self, prop: Property, data: bytes) -> bool:
+        """ Handles a write request message, and updates the propery data by the specified data if allowed.
+
+        Args:
+            prop (Property): The target property.
+            data (bytes): The update data.
+
+        Returns:
+            bool: True if allowed the update, otherwise False.
+        """
+        pass
 
 
 class Object(object):
@@ -49,14 +81,16 @@ class Object(object):
 
     code: int
     name: str
-    __properties: Dict[int, Property]
     node: Optional[Any]
+    __properties: Dict[int, Property]
+    __listener: ObjectListener
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         self.code = Object.CODE_UNKNOWN
         self.name = ""
         self.__properties = {}
         self.node = None
+        self.__listener = None
         self.set_code(code)
 
     def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
@@ -204,6 +238,17 @@ class Object(object):
         prop.data = data
         return True
 
+    def set_listener(self, listener: ObjectListener) -> bool:
+        """ Sets a ObjectListener to handle read and write requests from other controllers and devices.
+
+        Args:
+            listener (ObjectListener): The listener that handles read and write requests from other controllers and devices.
+        """
+        if not isinstance(listener, ObjectListener):
+            return False
+        self.__listener = listener
+        return True
+
     def __create_message(self, esv: int, props: List[Tuple[int, bytes]]):
         msg = Message()
         msg.DEOJ = self.code
@@ -262,8 +307,91 @@ class Object(object):
             return None
         return self.node.controller.post_message(msg, self.node)
 
-    def message_received(self, msg) -> Optional[Message]:
-        raise NotImplementedError()
+    def message_received(self, req_msg: Message) -> Optional[Message]:
+        if not isinstance(req_msg, Message):
+            return None
+
+        if not req_msg.is_request():
+            return None
+
+        if self.__listener is None:
+            return None
+
+        res_msg = Message()
+        res_msg.set_response_headert(req_msg)
+
+        accepted_request_cnt = 0
+
+        for msg_prop in req_msg.all_properties:
+            res_prop = Property(msg_prop.code)
+            obj_prop = self.get_property(msg_prop.code)
+            if obj_prop is not None:
+                if req_msg.is_read_request():
+                    if self.__listener.property_read_requested(self, obj_prop):
+                        res_prop.data = obj_prop.data
+                        accepted_request_cnt += 1
+                elif req_msg.is_write_request():
+                    if self.__listener.property_write_requested(self, obj_prop, msg_prop.data):
+                        accepted_request_cnt += 1
+                    else:
+                        res_prop.data = obj_prop.data
+            req_msg.add_property(res_prop)
+
+        opc = req_msg.OPC
+        opc_set = req_msg.OPCSet
+        opc_get = req_msg.OPCGet
+
+        # 4.2.3.1 Property value write service (no response required) [0x60, 0x50]
+        if req_msg.ESV == ESV.WRITE_REQUEST:
+            if accepted_request_cnt == opc:
+                return None
+            else:
+                res_msg.ESV = ESV.WRITE_REQUEST_ERROR
+                return res_msg
+
+        # 4.2.3.2 Property value write service (response required) [0x61,0x71,0x51]
+        if req_msg.ESV == ESV.WRITE_REQUEST_RESPONSE_REQUIRED:
+            if accepted_request_cnt == opc:
+                res_msg.ESV = ESV.WRITE_RESPONSE
+                return res_msg
+            else:
+                res_msg.ESV = ESV.WRITE_REQUEST_ERROR
+                return res_msg
+
+        # 4.2.3.3 Property value read service [0x62,0x72,0x52]
+        if req_msg.ESV == ESV.READ_REQUEST:
+            if accepted_request_cnt == opc:
+                res_msg.ESV = ESV.READ_RESPONSE
+                return res_msg
+            else:
+                res_msg.ESV = ESV.READ_REQUEST_ERROR
+                return res_msg
+
+        # 4.2.3.4 Property value write & read service [0x6E,0x7E,0x5E]
+        if req_msg.ESV == ESV.WRITE_READ_REQUEST:
+            if accepted_request_cnt == (opc_set + opc_get):
+                res_msg.ESV = ESV.WRITE_READ_RESPONSE
+                return res_msg
+            else:
+                res_msg.ESV = ESV.WRITE_READ_REQUEST_ERROR
+                return res_msg
+
+        # 4.2.3.5 Property value notification service [0x63,0x73,0x53]
+        if req_msg.ESV == ESV.NOTIFICATION_REQUEST:
+            if accepted_request_cnt == opc:
+                res_msg.ESV = ESV.NOTIFICATION
+                return res_msg
+            else:
+                res_msg.ESV = ESV.NOTIFICATION_REQUEST_ERROR
+                return res_msg
+
+        # 4.2.3.6 Property value notification service (response required) [0x74, 0x7A]
+        if req_msg.ESV == ESV.NOTIFICATION_RESPONSE_REQUIRED:
+            if accepted_request_cnt == opc:
+                res_msg.ESV = ESV.NOTIFICATION_RESPONSE
+                return res_msg
+
+        return None
 
     def copy(self):
         obj = Object()

@@ -12,12 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import List, Optional
+from typing import List
 from .profile import Profile
 from .object import Object
 from .std import Database
 from .util.bytes import Bytes
-from .protocol.message import Message
 
 
 class NodeProfile(Profile):
@@ -123,13 +122,6 @@ class NodeProfile(Profile):
         if not self.__update_class_properties(objs):
             return False
         return True
-
-    def message_received(self, msg) -> Optional[Message]:
-        if msg.is_read_request():
-            return None
-        if msg.is_notification_request():
-            return None
-        return None
 
 
 class NodeProfileReadOnly(NodeProfile):
