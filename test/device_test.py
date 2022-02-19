@@ -13,7 +13,8 @@
 # limitations under the License.
 
 import time
-from uecho import Device, ObjectListener, Property, Controller, IGNORE_SELF_MESSAGE
+from uecho import Device, ObjectListener, Property, Controller, IGNORE_SELF_MESSAGE, ReadMessage
+from uecho.node_profile import NodeProfile
 
 
 class MonoLight(Device, ObjectListener):
@@ -54,10 +55,29 @@ def test_device():
 
     assert node.add_object(dev)
 
+    node_id = node.get_object(NodeProfile.CODE).get_property(NodeProfile.IDENTIFICATION_NUMBER).data
+
     assert ctrl.start()
     time.sleep(1.0)
 
     found_nodes = ctrl.nodes
     assert 1 < len(found_nodes)
+
+    remote_dev_node = None
+    for remote_node in found_nodes:
+        req_msg = ReadMessage(NodeProfile.CODE)
+        req_msg.add_property(NodeProfile.IDENTIFICATION_NUMBER)
+        res_msg = ctrl.post_message(req_msg, remote_node)
+        if res_msg is None:
+            continue
+        prop = res_msg.properties[0]
+        assert prop
+        prop_id = prop.data
+        if prop_id != node_id:
+            continue
+        remote_dev_node = remote_node
+        break
+        
+    assert remote_dev_node
 
     assert ctrl.stop()
