@@ -20,13 +20,13 @@ from uecho.node_profile import NodeProfile
 class MonoLight(Device, ObjectRequestHandler):
 
     def __init__(self):
-        super().__init__()
+        super().__init__(0x029101)
 
     def property_read_requested(self, prop: Property) -> bool:
-        pass
+        return True
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
-        pass
+        return True
 
 
 def create_test_device():

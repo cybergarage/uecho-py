@@ -21,14 +21,14 @@ import uecho.log as log
 class MonoLight(Device, ObjectRequestHandler):
 
     def __init__(self):
-        super().__init__()
+        super().__init__(0x029101)
         self.set_request_handler(self)
 
     def property_read_requested(self, prop: Property) -> bool:
-        pass
+        return True
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
-        pass
+        return True
 
 args = sys.argv
 
