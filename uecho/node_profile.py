@@ -156,7 +156,7 @@ class NodeProfile(Profile):
         set_list = []
         for obj in objs:
             for prop in obj.properties:
-                if prop.is_announce_enabled():
+                if prop.is_announce_required():
                     anno_list.append(prop.code)
                 if prop.is_read_enabled():
                     get_list.append(prop.code)
@@ -178,7 +178,7 @@ class NodeProfile(Profile):
             return False
         if not self.__update_class_properties(objs):
             return False
-        if not self.__update_property_map_properties(objs):
+        if not self.__update_property_map_properties([self]):
             return False
         return True
 
