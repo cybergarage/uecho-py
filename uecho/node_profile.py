@@ -135,17 +135,50 @@ class NodeProfile(Profile):
         if not self.set_property_data(NodeProfile.NUMBER_OF_SELF_NODE_CLASSES, Bytes.from_int(class_cnt, NodeProfile.NUMBER_OF_SELF_NODE_CLASSES_SIZE)):
             return False
 
-        class_list_bytes = bytearray(Bytes.from_int(len(class_list), 1))
+        class_list_bytes = bytearray(Bytes.from_int(class_cnt, 1))
         class_list_bytes.extend(class_list)
         if not self.set_property_data(NodeProfile.SELF_NODE_CLASS_LIST_S, class_list_bytes):
             return False
 
         return True
 
+    def __set_property_map_property(self, code: int, prop_map: List[int]) -> bool:
+        map_bytes = bytearray(bytes([len(prop_map)]))
+        for prop_code in prop_map:
+            map_bytes.extend(bytes([prop_code]))
+        if not self.set_property_data(code, map_bytes):
+            return False
+        return True
+
+    def __update_property_map_properties(self, objs: List[Object]) -> bool:
+        anno_list = []
+        get_list = []
+        set_list = []
+        for obj in objs:
+            for prop in obj.properties:
+                if prop.is_announce_enabled():
+                    anno_list.append(prop.code)
+                if prop.is_read_enabled():
+                    get_list.append(prop.code)
+                if prop.is_write_enabled():
+                    set_list.append(prop.code)
+        anno_map = list(set(anno_list))
+        get_map = list(set(get_list))
+        set_map = list(set(set_list))
+        if not self.__set_property_map_property(NodeProfile.ANNO_PROPERTY_MAP, anno_map):
+            return False
+        if not self.__set_property_map_property(NodeProfile.GET_PROPERTY_MAP, get_map):
+            return False
+        if not self.__set_property_map_property(NodeProfile.SET_PROPERTY_MAP, set_map):
+            return False
+        return True
+
     def update_class_instance_properties(self, objs: List[Object]) -> bool:
         if not self.__update_instance_properties(objs):
             return False
         if not self.__update_class_properties(objs):
+            return False
+        if not self.__update_property_map_properties(objs):
             return False
         return True
 
