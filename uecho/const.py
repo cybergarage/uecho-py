@@ -12,5 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ECHONET_LITE_VERSION = 0x010D0100
 DEFAULT_POST_MSG_RERTY = 20
 DEFAULT_POST_MSG_WAIT = 0.1
