@@ -31,8 +31,8 @@ class Manager(object):
 
     def __next_TID(self) -> int:
         self.__TID += 1
-        if 0xFF < self.__TID:
-            self.__TID = 0
+        if 0xFFFF < self.__TID:
+            self.__TID = 1
         return self.__TID
 
     @property
@@ -58,14 +58,16 @@ class Manager(object):
             server.notify(msg)
 
     def announce_message(self, msg: Message) -> bool:
-        msg.TID = self.__next_TID()
+        if msg.TID == 0:
+            msg.TID = self.__next_TID()
         for server in self.servers:
             if isinstance(server, UnicastServer):
                 server.announce_message(msg)
         return True
 
     def send_message(self, msg: Message, addr) -> bool:
-        msg.TID = self.__next_TID()
+        if msg.TID == 0:
+            msg.TID = self.__next_TID()
         for server in self.servers:
             # TODO: Select an appropriate server from the specified address
             if isinstance(server, UnicastServer):
