@@ -15,6 +15,7 @@
 import random
 
 from typing import List
+from .const import ECHONET_LITE_VERSION
 from .profile import Profile
 from .object import Object
 from .std import Database
@@ -70,7 +71,9 @@ class NodeProfile(Profile):
 
     def __update_initial_properties(self) -> bool:
         self.set_property_integer(NodeProfile.OPERATING_STATUS, NodeProfile.BOOTING, NodeProfile.OPERATING_STATUS_SIZE)
+        self.set_property_integer(NodeProfile.VERSION_INFORMATION, ECHONET_LITE_VERSION, NodeProfile.VERSION_INFORMATION_SIZE)
         self.__update_id_number()
+        self.__update_unique_id()
         return True
 
     def __update_id_number(self) -> bool:
@@ -78,6 +81,12 @@ class NodeProfile(Profile):
         for _ in range(NodeProfile.IDENTIFICATION_UNIQUE_ID_SIZE):
             id_bytes.append(random.randint(1, 0xFF))
         return self.set_property_data(NodeProfile.IDENTIFICATION_NUMBER, id_bytes)
+
+    def __update_unique_id(self) -> bool:
+        id_bytes = bytearray()
+        id_bytes.append(random.randint(1, 0xFF) & 0xC0)
+        id_bytes.append(random.randint(1, 0xFF))
+        return self.set_property_data(NodeProfile.UNIQUE_IDENTIFIER_DATA, id_bytes)
 
     def __is_node_profile_object(self, obj) -> bool:
         if obj.code == NodeProfile.CODE:
