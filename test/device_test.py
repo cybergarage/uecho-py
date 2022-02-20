@@ -63,7 +63,7 @@ def test_device():
     found_nodes = ctrl.nodes
     assert 1 < len(found_nodes)
 
-    # remote_dev_node = None
+    remote_dev_node = None
     for remote_node in found_nodes:
         if remote_node.address != node.address:
             continue
@@ -77,9 +77,9 @@ def test_device():
         prop_id = prop.data
         if prop_id != node_id:
             continue
-        # remote_dev_node = remote_node
+        remote_dev_node = remote_node
         break
 
     assert ctrl.stop()
 
-    # assert remote_dev_node
+    assert remote_dev_node
