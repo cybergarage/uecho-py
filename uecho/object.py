@@ -226,6 +226,12 @@ class Object(object):
         except KeyError:
             return None
 
+    def get_property_data(self, code: int) -> Optional[bytes]:
+        try:
+            return self.__properties[code].data
+        except KeyError:
+            return None
+
     def has_property(self, code: int) -> bool:
         prop = self.get_property(code)
         if not isinstance(prop, Property):
