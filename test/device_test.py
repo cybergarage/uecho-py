@@ -26,7 +26,6 @@ class MonoLight(Device, ObjectRequestHandler):
 
     def __init__(self):
         super().__init__(MonoLight.CODE)
-        self.set_property_data(MonoLight.OPERATING_STATUS, bytes([MonoLight.OPERATING_STATUS_OFF]))
 
     def property_read_requested(self, prop: Property) -> bool:
         return True
@@ -37,7 +36,6 @@ class MonoLight(Device, ObjectRequestHandler):
 
 def create_test_device():
     dev = MonoLight()
-    assert dev.set_code(MonoLight.CODE)    # Mono functional lighting
 
     # Mandatory properties of device super class
     assert dev.has_property(0x80)    # Operation status
@@ -47,6 +45,8 @@ def create_test_device():
     assert dev.has_property(0xB0)    # Illuminance Level Setting
 
     assert dev.set_request_handler(dev)
+
+    assert dev.set_property_data(MonoLight.OPERATING_STATUS, bytes([MonoLight.OPERATING_STATUS_OFF]))
 
     return dev
 
@@ -89,9 +89,11 @@ def test_device():
     assert remote_dev_node
 
     # Read message
-    msg = ReadMessage(NodeProfile.CODE)
-    msg.add_property(MonoLight.OPERATION_STATUS)
-    assert ctrl.send_message(msg, remote_dev_node)
+    req_msg = ReadMessage(NodeProfile.CODE)
+    req_msg.add_property(MonoLight.OPERATION_STATUS)
+    res_msg = ctrl.post_message(req_msg, remote_dev_node)
+    assert res_msg
+    assert res_msg.OPC == 1
+    # assert res_msg.properties[0].data == bytes([MonoLight.OPERATING_STATUS_OFF])
 
     assert ctrl.stop()
-
