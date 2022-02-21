@@ -61,7 +61,7 @@ def test_device():
     time.sleep(1.0)
 
     found_nodes = ctrl.nodes
-    assert 1 < len(found_nodes)
+    assert 1 <= len(found_nodes)
 
     remote_dev_node = None
     for remote_node in found_nodes:
@@ -80,6 +80,7 @@ def test_device():
         remote_dev_node = remote_node
         break
 
+    assert remote_dev_node
+
     assert ctrl.stop()
 
-    assert remote_dev_node
