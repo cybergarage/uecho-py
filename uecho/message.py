@@ -45,8 +45,10 @@ class Message(ProtocolMessage):
         Returns:
             bool: Returns True when the specified property is added, Otherwise False.
         """
-        new_prop = prop
-        if isinstance(prop, int):
+        new_prop = None
+        if isinstance(prop, Property):
+            new_prop = prop
+        elif isinstance(prop, int):
             new_prop = Property()
             new_prop.code = prop
         elif isinstance(prop, tuple):
@@ -55,4 +57,8 @@ class Message(ProtocolMessage):
             new_prop = Property()
             new_prop.code = prop[0]
             new_prop.data = prop[1]
+
+        if new_prop is None:
+            return False
+
         return super().add_property(new_prop)
