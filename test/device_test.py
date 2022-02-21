@@ -19,8 +19,14 @@ from uecho.node_profile import NodeProfile
 
 class MonoLight(Device, ObjectRequestHandler):
 
+    CODE = 0x029101
+    OPERATION_STATUS = 0x80
+    OPERATING_STATUS_ON = 0x30
+    OPERATING_STATUS_OFF = 0x31
+
     def __init__(self):
-        super().__init__(0x029101)
+        super().__init__(MonoLight.CODE)
+        self.set_property_data(MonoLight.OPERATING_STATUS, bytes([MonoLight.OPERATING_STATUS_OFF]))
 
     def property_read_requested(self, prop: Property) -> bool:
         return True
@@ -31,7 +37,7 @@ class MonoLight(Device, ObjectRequestHandler):
 
 def create_test_device():
     dev = MonoLight()
-    assert dev.set_code(0x029101)    # Mono functional lighting
+    assert dev.set_code(MonoLight.CODE)    # Mono functional lighting
 
     # Mandatory properties of device super class
     assert dev.has_property(0x80)    # Operation status
@@ -81,6 +87,11 @@ def test_device():
         break
 
     assert remote_dev_node
+
+    # Read message
+    msg = ReadMessage(NodeProfile.CODE)
+    msg.add_property(MonoLight.OPERATION_STATUS)
+    assert ctrl.send_message(msg, remote_dev_node)
 
     assert ctrl.stop()
 
