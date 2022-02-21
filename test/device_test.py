@@ -46,7 +46,9 @@ def create_test_device():
 
     assert dev.set_request_handler(dev)
 
-    assert dev.set_property_data(MonoLight.OPERATING_STATUS, bytes([MonoLight.OPERATING_STATUS_OFF]))
+    status_off = bytearray([MonoLight.OPERATING_STATUS_OFF])
+    assert dev.set_property_data(MonoLight.OPERATING_STATUS, status_off)
+    assert dev.get_property_data(MonoLight.OPERATING_STATUS) == status_off
 
     return dev
 
