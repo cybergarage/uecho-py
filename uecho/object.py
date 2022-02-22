@@ -243,7 +243,7 @@ class Object(object):
         prop = self.get_property(code)
         if prop is None:
             return False
-        prop.data = data
+        prop.data = copy.deepcopy(data)
         return True
 
     def set_property_string(self, code: int, data: bytes) -> bool:
