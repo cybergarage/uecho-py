@@ -13,7 +13,6 @@
 # limitations under the License.
 
 import abc
-import copy
 from typing import Optional, Union, Tuple, Dict, Any, List
 
 from .property import Property
@@ -243,11 +242,11 @@ class Object(object):
         prop = self.get_property(code)
         if prop is None:
             return False
-        prop.data = copy.deepcopy(data)
+        prop.data = data
         return True
 
-    def set_property_string(self, code: int, data: bytes) -> bool:
-        return self.set_property_data(code, data)
+    def set_property_string(self, code: int, data: str) -> bool:
+        return self.set_property_data(code, data.encode('utf-8'))
 
     def set_property_integer(self, code: int, data: int, size: int) -> bool:
         return self.set_property_data(code, Bytes.from_int(data, size))
@@ -342,7 +341,7 @@ class Object(object):
             if obj_prop is not None:
                 if req_msg.is_read_request():
                     if self.__request_handler.property_read_requested(obj_prop):
-                        res_prop.data = copy.deepcopy(obj_prop.data)
+                        res_prop.data = obj_prop.data
                         accepted_request_cnt += 1
                 elif req_msg.is_write_request():
                     if self.__request_handler.property_write_requested(obj_prop, msg_prop.data):

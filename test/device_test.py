@@ -15,6 +15,7 @@
 import time
 from uecho import Device, ObjectRequestHandler, Property, Controller, IGNORE_SELF_MESSAGE, ReadMessage
 from uecho.node_profile import NodeProfile
+from uecho.util import Bytes
 
 
 class MonoLight(Device, ObjectRequestHandler):
@@ -46,7 +47,9 @@ def create_test_device():
 
     assert dev.set_request_handler(dev)
 
-    status_off = bytearray([MonoLight.OPERATING_STATUS_OFF])
+    # status_off = bytearray([MonoLight.OPERATING_STATUS_OFF])
+    status_off = Bytes.from_int(MonoLight.OPERATING_STATUS_OFF, 1)
+
     assert dev.set_property_data(MonoLight.OPERATING_STATUS, status_off)
     assert dev.get_property_data(MonoLight.OPERATING_STATUS) == status_off
 
