@@ -350,13 +350,11 @@ class Object(object):
                         res_prop.data = obj_prop.data
             res_msg.add_property(res_prop)
 
-        opc = req_msg.OPC
-        opc_set = req_msg.OPCSet
-        opc_get = req_msg.OPCGet
+        all_request_cnt = req_msg.OPC + req_msg.OPCSet + req_msg.OPCGet
 
         # 4.2.3.1 Property value write service (no response required) [0x60, 0x50]
         if req_msg.ESV == ESV.WRITE_REQUEST:
-            if accepted_request_cnt == opc:
+            if accepted_request_cnt == all_request_cnt:
                 return None
             else:
                 res_msg.ESV = ESV.WRITE_REQUEST_ERROR
@@ -364,7 +362,7 @@ class Object(object):
 
         # 4.2.3.2 Property value write service (response required) [0x61,0x71,0x51]
         if req_msg.ESV == ESV.WRITE_REQUEST_RESPONSE_REQUIRED:
-            if accepted_request_cnt == opc:
+            if accepted_request_cnt == all_request_cnt:
                 res_msg.ESV = ESV.WRITE_RESPONSE
                 return res_msg
             else:
@@ -373,7 +371,7 @@ class Object(object):
 
         # 4.2.3.3 Property value read service [0x62,0x72,0x52]
         if req_msg.ESV == ESV.READ_REQUEST:
-            if accepted_request_cnt == opc:
+            if accepted_request_cnt == all_request_cnt:
                 res_msg.ESV = ESV.READ_RESPONSE
                 return res_msg
             else:
@@ -382,7 +380,7 @@ class Object(object):
 
         # 4.2.3.4 Property value write & read service [0x6E,0x7E,0x5E]
         if req_msg.ESV == ESV.WRITE_READ_REQUEST:
-            if accepted_request_cnt == (opc_set + opc_get):
+            if accepted_request_cnt == all_request_cnt:
                 res_msg.ESV = ESV.WRITE_READ_RESPONSE
                 return res_msg
             else:
@@ -391,7 +389,7 @@ class Object(object):
 
         # 4.2.3.5 Property value notification service [0x63,0x73,0x53]
         if req_msg.ESV == ESV.NOTIFICATION_REQUEST:
-            if accepted_request_cnt == opc:
+            if accepted_request_cnt == all_request_cnt:
                 res_msg.ESV = ESV.NOTIFICATION
                 return res_msg
             else:
@@ -400,7 +398,7 @@ class Object(object):
 
         # 4.2.3.6 Property value notification service (response required) [0x74, 0x7A]
         if req_msg.ESV == ESV.NOTIFICATION_RESPONSE_REQUIRED:
-            if accepted_request_cnt == opc:
+            if accepted_request_cnt == all_request_cnt:
                 res_msg.ESV = ESV.NOTIFICATION_RESPONSE
                 return res_msg
 
