@@ -1,53 +1,53 @@
-uecho.transport package
+uecho.frame package
 =======================
 
 Submodules
 ----------
 
-uecho.transport.interface module
+uecho.frame.interface module
 --------------------------------
 
-.. automodule:: uecho.transport.interface
+.. automodule:: uecho.frame.interface
    :members:
    :undoc-members:
    :show-inheritance:
 
-uecho.transport.manager module
+uecho.frame.manager module
 ------------------------------
 
-.. automodule:: uecho.transport.manager
+.. automodule:: uecho.frame.manager
    :members:
    :undoc-members:
    :show-inheritance:
 
-uecho.transport.multicast\_server module
+uecho.frame.multicast\_server module
 ----------------------------------------
 
-.. automodule:: uecho.transport.multicast_server
+.. automodule:: uecho.frame.multicast_server
    :members:
    :undoc-members:
    :show-inheritance:
 
-uecho.transport.observer module
+uecho.frame.observer module
 -------------------------------
 
-.. automodule:: uecho.transport.observer
+.. automodule:: uecho.frame.observer
    :members:
    :undoc-members:
    :show-inheritance:
 
-uecho.transport.server module
+uecho.frame.server module
 -----------------------------
 
-.. automodule:: uecho.transport.server
+.. automodule:: uecho.frame.server
    :members:
    :undoc-members:
    :show-inheritance:
 
-uecho.transport.unicast\_server module
+uecho.frame.unicast\_server module
 --------------------------------------
 
-.. automodule:: uecho.transport.unicast_server
+.. automodule:: uecho.frame.unicast_server
    :members:
    :undoc-members:
    :show-inheritance:
@@ -55,7 +55,7 @@ uecho.transport.unicast\_server module
 Module contents
 ---------------
 
-.. automodule:: uecho.transport
+.. automodule:: uecho.frame
    :members:
    :undoc-members:
    :show-inheritance:
