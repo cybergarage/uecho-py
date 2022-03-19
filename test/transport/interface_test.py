@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho.transport import Interface
+from uecho.frame import Interface
 
 
 def test_interface():

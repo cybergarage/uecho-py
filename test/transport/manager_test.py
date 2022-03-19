@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho.transport import Manager
+from uecho.frame import Manager
 
 
 def test_manager():
