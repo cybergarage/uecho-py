@@ -9,7 +9,7 @@ Subpackages
 
    uecho.log
    uecho.protocol
-   uecho.transport
+   uecho.frame
    uecho.util
 
 Submodules

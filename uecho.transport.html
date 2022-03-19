@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>uecho.transport package &mdash; uEcho for Python 0.8.2 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>uecho.frame package &mdash; uEcho for Python 0.8.2 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -15,9 +15,7 @@
         <script src="_static/language_data.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="uecho.util package" href="uecho.util.html" />
-    <link rel="prev" title="uecho.protocol package" href="uecho.protocol.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -36,38 +34,8 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="uecho.html">uecho package</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="uecho.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="uecho.log.html">uecho.log package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="uecho.protocol.html">uecho.protocol package</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">uecho.transport package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.interface">uecho.transport.interface module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.manager">uecho.transport.manager module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.multicast_server">uecho.transport.multicast_server module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.observer">uecho.transport.observer module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.server">uecho.transport.server module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport.unicast_server">uecho.transport.unicast_server module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-uecho.transport">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="uecho.util.html">uecho.util package</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.controller">uecho.controller module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.esv">uecho.esv module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.local_node">uecho.local_node module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.message">uecho.message module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.node">uecho.node module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.node_profile">uecho.node_profile module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.object">uecho.object module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.property">uecho.property module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.remote_node">uecho.remote_node module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho">Module contents</a></li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="uecho.html">uecho package</a></li>
 </ul>
 
         </div>
@@ -84,8 +52,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-          <li><a href="uecho.html">uecho package</a> &raquo;</li>
-      <li>uecho.transport package</li>
+      <li>uecho.frame package</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/uecho.transport.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -95,181 +62,181 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="uecho-transport-package">
-<h1>uecho.transport package<a class="headerlink" href="#uecho-transport-package" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="uecho-frame-package">
+<h1>uecho.frame package<a class="headerlink" href="#uecho-frame-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="module-uecho.transport.interface">
-<span id="uecho-transport-interface-module"></span><h2>uecho.transport.interface module<a class="headerlink" href="#module-uecho.transport.interface" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.frame.interface">
+<span id="uecho-frame-interface-module"></span><h2>uecho.frame.interface module<a class="headerlink" href="#module-uecho.frame.interface" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="uecho.transport.interface.Interface">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.interface.</code><code class="sig-name descname">Interface</code><a class="headerlink" href="#uecho.transport.interface.Interface" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.interface.Interface">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.interface.</code><code class="sig-name descname">Interface</code><a class="headerlink" href="#uecho.frame.interface.Interface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="method">
-<dt id="uecho.transport.interface.Interface.get_all_ipaddrs">
-<em class="property">static </em><code class="sig-name descname">get_all_ipaddrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#uecho.transport.interface.Interface.get_all_ipaddrs" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.interface.Interface.get_all_ipaddrs">
+<em class="property">static </em><code class="sig-name descname">get_all_ipaddrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#uecho.frame.interface.Interface.get_all_ipaddrs" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-uecho.transport.manager">
-<span id="uecho-transport-manager-module"></span><h2>uecho.transport.manager module<a class="headerlink" href="#module-uecho.transport.manager" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.frame.manager">
+<span id="uecho-frame-manager-module"></span><h2>uecho.frame.manager module<a class="headerlink" href="#module-uecho.frame.manager" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="uecho.transport.manager.Manager">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.manager.</code><code class="sig-name descname">Manager</code><a class="headerlink" href="#uecho.transport.manager.Manager" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.manager.Manager">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.manager.</code><code class="sig-name descname">Manager</code><a class="headerlink" href="#uecho.frame.manager.Manager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="method">
-<dt id="uecho.transport.manager.Manager.add_observer">
-<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.manager.Manager.add_observer" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.manager.Manager.add_observer">
+<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.manager.Manager.add_observer" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.manager.Manager.announce_message">
-<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.manager.Manager.announce_message" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.manager.Manager.announce_message">
+<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.manager.Manager.announce_message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.manager.Manager.ifaddr">
-<em class="property">property </em><code class="sig-name descname">ifaddr</code><a class="headerlink" href="#uecho.transport.manager.Manager.ifaddr" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.manager.Manager.ifaddr">
+<em class="property">property </em><code class="sig-name descname">ifaddr</code><a class="headerlink" href="#uecho.frame.manager.Manager.ifaddr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.manager.Manager.notify">
-<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.manager.Manager.notify" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.manager.Manager.notify">
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.manager.Manager.notify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.manager.Manager.port">
-<em class="property">property </em><code class="sig-name descname">port</code><a class="headerlink" href="#uecho.transport.manager.Manager.port" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.manager.Manager.port">
+<em class="property">property </em><code class="sig-name descname">port</code><a class="headerlink" href="#uecho.frame.manager.Manager.port" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.manager.Manager.send_message">
-<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.manager.Manager.send_message" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.manager.Manager.send_message">
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.manager.Manager.send_message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.manager.Manager.servers">
-<code class="sig-name descname">servers</code><em class="property">: List[Server]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.manager.Manager.servers" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.manager.Manager.servers">
+<code class="sig-name descname">servers</code><em class="property">: List[Server]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.manager.Manager.servers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.manager.Manager.start">
-<code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param">ifaddrs: List[str] = []</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.manager.Manager.start" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.manager.Manager.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param">ifaddrs: List[str] = []</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.manager.Manager.start" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.manager.Manager.stop">
-<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.manager.Manager.stop" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.manager.Manager.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.manager.Manager.stop" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-uecho.transport.multicast_server">
-<span id="uecho-transport-multicast-server-module"></span><h2>uecho.transport.multicast_server module<a class="headerlink" href="#module-uecho.transport.multicast_server" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.frame.multicast_server">
+<span id="uecho-frame-multicast-server-module"></span><h2>uecho.frame.multicast_server module<a class="headerlink" href="#module-uecho.frame.multicast_server" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="uecho.transport.multicast_server.MulticastServer">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.multicast_server.</code><code class="sig-name descname">MulticastServer</code><a class="headerlink" href="#uecho.transport.multicast_server.MulticastServer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#uecho.transport.server.Server" title="uecho.transport.server.Server"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.server.Server</span></code></a></p>
+<dt id="uecho.frame.multicast_server.MulticastServer">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.multicast_server.</code><code class="sig-name descname">MulticastServer</code><a class="headerlink" href="#uecho.frame.multicast_server.MulticastServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.frame.server.Server" title="uecho.frame.server.Server"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.frame.server.Server</span></code></a></p>
 <dl class="attribute">
-<dt id="uecho.transport.multicast_server.MulticastServer.ADDRESS">
-<code class="sig-name descname">ADDRESS</code><em class="property"> = '224.0.23.0'</em><a class="headerlink" href="#uecho.transport.multicast_server.MulticastServer.ADDRESS" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.multicast_server.MulticastServer.ADDRESS">
+<code class="sig-name descname">ADDRESS</code><em class="property"> = '224.0.23.0'</em><a class="headerlink" href="#uecho.frame.multicast_server.MulticastServer.ADDRESS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.multicast_server.MulticastServer.bind">
-<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param">ifaddr: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.multicast_server.MulticastServer.bind" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.multicast_server.MulticastServer.bind">
+<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param">ifaddr: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.multicast_server.MulticastServer.bind" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.multicast_server.MulticastServer.ifaddr">
-<code class="sig-name descname">ifaddr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.multicast_server.MulticastServer.ifaddr" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.multicast_server.MulticastServer.ifaddr">
+<code class="sig-name descname">ifaddr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.multicast_server.MulticastServer.ifaddr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.multicast_server.MulticastServer.observers">
-<code class="sig-name descname">observers</code><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.multicast_server.MulticastServer.observers" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.multicast_server.MulticastServer.observers">
+<code class="sig-name descname">observers</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.multicast_server.MulticastServer.observers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.multicast_server.MulticastServer.port">
-<code class="sig-name descname">port</code><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.multicast_server.MulticastServer.port" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.multicast_server.MulticastServer.port">
+<code class="sig-name descname">port</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.multicast_server.MulticastServer.port" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.multicast_server.MulticastServer.sock">
-<code class="sig-name descname">sock</code><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.multicast_server.MulticastServer.sock" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.multicast_server.MulticastServer.sock">
+<code class="sig-name descname">sock</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.multicast_server.MulticastServer.sock" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-uecho.transport.observer">
-<span id="uecho-transport-observer-module"></span><h2>uecho.transport.observer module<a class="headerlink" href="#module-uecho.transport.observer" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.frame.observer">
+<span id="uecho-frame-observer-module"></span><h2>uecho.frame.observer module<a class="headerlink" href="#module-uecho.frame.observer" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="uecho.transport.observer.Observer">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.observer.</code><code class="sig-name descname">Observer</code><a class="headerlink" href="#uecho.transport.observer.Observer" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.observer.Observer">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.observer.</code><code class="sig-name descname">Observer</code><a class="headerlink" href="#uecho.frame.observer.Observer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="method">
-<dt id="uecho.transport.observer.Observer.message_received">
-<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.observer.Observer.message_received" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.observer.Observer.message_received">
+<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.observer.Observer.message_received" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-uecho.transport.server">
-<span id="uecho-transport-server-module"></span><h2>uecho.transport.server module<a class="headerlink" href="#module-uecho.transport.server" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.frame.server">
+<span id="uecho-frame-server-module"></span><h2>uecho.frame.server module<a class="headerlink" href="#module-uecho.frame.server" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="uecho.transport.server.Server">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.server.</code><code class="sig-name descname">Server</code><a class="headerlink" href="#uecho.transport.server.Server" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.server.</code><code class="sig-name descname">Server</code><a class="headerlink" href="#uecho.frame.server.Server" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
 <dl class="attribute">
-<dt id="uecho.transport.server.Server.PORT">
-<code class="sig-name descname">PORT</code><em class="property"> = 3610</em><a class="headerlink" href="#uecho.transport.server.Server.PORT" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.PORT">
+<code class="sig-name descname">PORT</code><em class="property"> = 3610</em><a class="headerlink" href="#uecho.frame.server.Server.PORT" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.server.Server.add_observer">
-<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.server.Server.add_observer" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.add_observer">
+<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.server.Server.add_observer" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.server.Server.bind">
-<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param">ifaddr: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.server.Server.bind" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.bind">
+<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param">ifaddr: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.server.Server.bind" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.server.Server.create_udp_socket">
-<code class="sig-name descname">create_udp_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; socket.socket<a class="headerlink" href="#uecho.transport.server.Server.create_udp_socket" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.create_udp_socket">
+<code class="sig-name descname">create_udp_socket</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; socket.socket<a class="headerlink" href="#uecho.frame.server.Server.create_udp_socket" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.server.Server.ifaddr">
-<code class="sig-name descname">ifaddr</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.server.Server.ifaddr" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.ifaddr">
+<code class="sig-name descname">ifaddr</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.server.Server.ifaddr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.server.Server.notify">
-<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.server.Server.notify" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.notify">
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.server.Server.notify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.server.Server.observers">
-<code class="sig-name descname">observers</code><em class="property">: List[Observer]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.server.Server.observers" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.observers">
+<code class="sig-name descname">observers</code><em class="property">: List[Observer]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.server.Server.observers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.server.Server.port">
-<code class="sig-name descname">port</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.server.Server.port" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.port">
+<code class="sig-name descname">port</code><em class="property">: int</em><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.server.Server.port" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.server.Server.run">
-<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.server.Server.run" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.server.Server.run" title="Permalink to this definition">¶</a></dt>
 <dd><p>Method representing the thread’s activity.</p>
 <p>You may override this method in a subclass. The standard run() method
 invokes the callable object passed to the object’s constructor as the
@@ -278,13 +245,13 @@ from the args and kwargs arguments, respectively.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.server.Server.sock">
-<code class="sig-name descname">sock</code><em class="property">: Optional[socket.socket]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.server.Server.sock" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.sock">
+<code class="sig-name descname">sock</code><em class="property">: Optional[socket.socket]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.server.Server.sock" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.server.Server.start">
-<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#uecho.transport.server.Server.start" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#uecho.frame.server.Server.start" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start the thread’s activity.</p>
 <p>It must be called at most once per thread object. It arranges for the
 object’s run() method to be invoked in a separate thread of control.</p>
@@ -293,128 +260,128 @@ same thread object.</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.server.Server.stop">
-<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#uecho.transport.server.Server.stop" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.server.Server.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#uecho.frame.server.Server.stop" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-uecho.transport.unicast_server">
-<span id="uecho-transport-unicast-server-module"></span><h2>uecho.transport.unicast_server module<a class="headerlink" href="#module-uecho.transport.unicast_server" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.frame.unicast_server">
+<span id="uecho-frame-unicast-server-module"></span><h2>uecho.frame.unicast_server module<a class="headerlink" href="#module-uecho.frame.unicast_server" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="uecho.transport.unicast_server.UnicastServer">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.unicast_server.</code><code class="sig-name descname">UnicastServer</code><a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#uecho.transport.server.Server" title="uecho.transport.server.Server"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.transport.server.Server</span></code></a></p>
+<dt id="uecho.frame.unicast_server.UnicastServer">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.unicast_server.</code><code class="sig-name descname">UnicastServer</code><a class="headerlink" href="#uecho.frame.unicast_server.UnicastServer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.frame.server.Server" title="uecho.frame.server.Server"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.frame.server.Server</span></code></a></p>
 <dl class="method">
-<dt id="uecho.transport.unicast_server.UnicastServer.announce_message">
-<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.announce_message" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="uecho.transport.unicast_server.UnicastServer.bind">
-<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param">ifaddr: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.bind" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.transport.unicast_server.UnicastServer.ifaddr">
-<code class="sig-name descname">ifaddr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.ifaddr" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.transport.unicast_server.UnicastServer.observers">
-<code class="sig-name descname">observers</code><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.observers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.transport.unicast_server.UnicastServer.port">
-<code class="sig-name descname">port</code><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.port" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.unicast_server.UnicastServer.announce_message">
+<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.unicast_server.UnicastServer.announce_message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.unicast_server.UnicastServer.send_message">
-<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message, addr: Optional[Tuple[str, int]]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.send_message" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.unicast_server.UnicastServer.bind">
+<code class="sig-name descname">bind</code><span class="sig-paren">(</span><em class="sig-param">ifaddr: str</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.unicast_server.UnicastServer.bind" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.unicast_server.UnicastServer.sock">
-<code class="sig-name descname">sock</code><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.unicast_server.UnicastServer.sock" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.unicast_server.UnicastServer.ifaddr">
+<code class="sig-name descname">ifaddr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.unicast_server.UnicastServer.ifaddr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.frame.unicast_server.UnicastServer.observers">
+<code class="sig-name descname">observers</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.unicast_server.UnicastServer.observers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.frame.unicast_server.UnicastServer.port">
+<code class="sig-name descname">port</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.unicast_server.UnicastServer.port" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.frame.unicast_server.UnicastServer.send_message">
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message, addr: Optional[Tuple[str, int]]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.unicast_server.UnicastServer.send_message" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.frame.unicast_server.UnicastServer.sock">
+<code class="sig-name descname">sock</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.unicast_server.UnicastServer.sock" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 </div>
-<div class="section" id="module-uecho.transport">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-uecho.transport" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-uecho.frame">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-uecho.frame" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="uecho.transport.Manager">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.</code><code class="sig-name descname">Manager</code><a class="headerlink" href="#uecho.transport.Manager" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Manager">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.</code><code class="sig-name descname">Manager</code><a class="headerlink" href="#uecho.frame.Manager" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="method">
-<dt id="uecho.transport.Manager.add_observer">
-<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Manager.add_observer" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Manager.add_observer">
+<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.Manager.add_observer" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.Manager.announce_message">
-<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.Manager.announce_message" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Manager.announce_message">
+<code class="sig-name descname">announce_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.Manager.announce_message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.Manager.ifaddr">
-<em class="property">property </em><code class="sig-name descname">ifaddr</code><a class="headerlink" href="#uecho.transport.Manager.ifaddr" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Manager.ifaddr">
+<em class="property">property </em><code class="sig-name descname">ifaddr</code><a class="headerlink" href="#uecho.frame.Manager.ifaddr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.Manager.notify">
-<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Manager.notify" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Manager.notify">
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.Manager.notify" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.Manager.port">
-<em class="property">property </em><code class="sig-name descname">port</code><a class="headerlink" href="#uecho.transport.Manager.port" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Manager.port">
+<em class="property">property </em><code class="sig-name descname">port</code><a class="headerlink" href="#uecho.frame.Manager.port" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.Manager.send_message">
-<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.Manager.send_message" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Manager.send_message">
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em>, <em class="sig-param">addr</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.Manager.send_message" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.transport.Manager.servers">
-<code class="sig-name descname">servers</code><em class="property">: List[Server]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.transport.Manager.servers" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Manager.servers">
+<code class="sig-name descname">servers</code><em class="property">: List[Server]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.Manager.servers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.Manager.start">
-<code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param">ifaddrs: List[str] = []</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.Manager.start" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Manager.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><em class="sig-param">ifaddrs: List[str] = []</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.Manager.start" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.transport.Manager.stop">
-<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.transport.Manager.stop" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="uecho.transport.Interface">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.</code><code class="sig-name descname">Interface</code><a class="headerlink" href="#uecho.transport.Interface" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="method">
-<dt id="uecho.transport.Interface.get_all_ipaddrs">
-<em class="property">static </em><code class="sig-name descname">get_all_ipaddrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#uecho.transport.Interface.get_all_ipaddrs" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Manager.stop">
+<code class="sig-name descname">stop</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.Manager.stop" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
-<dt id="uecho.transport.Observer">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.transport.</code><code class="sig-name descname">Observer</code><a class="headerlink" href="#uecho.transport.Observer" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Interface">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.</code><code class="sig-name descname">Interface</code><a class="headerlink" href="#uecho.frame.Interface" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <dl class="method">
-<dt id="uecho.transport.Observer.message_received">
-<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.transport.Observer.message_received" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.frame.Interface.get_all_ipaddrs">
+<em class="property">static </em><code class="sig-name descname">get_all_ipaddrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#uecho.frame.Interface.get_all_ipaddrs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.frame.Observer">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.</code><code class="sig-name descname">Observer</code><a class="headerlink" href="#uecho.frame.Observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.frame.Observer.message_received">
+<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.Observer.message_received" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -425,10 +392,7 @@ same thread object.</p>
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="uecho.protocol.html" class="btn btn-neutral float-left" title="uecho.protocol package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="uecho.util.html" class="btn btn-neutral float-right" title="uecho.util package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 
