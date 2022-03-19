@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from typing import List
-from .transport.manager import Manager
+from .frame.manager import Manager
 from .node import Node
 from .node_profile import NodeProfile
 from .protocol.message import Message as ProtocolMessage
