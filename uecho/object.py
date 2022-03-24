@@ -345,6 +345,7 @@ class Object(object):
                         accepted_request_cnt += 1
                 elif req_msg.is_write_request():
                     if self.__request_handler.property_write_requested(obj_prop, msg_prop.data):
+                        obj_prop.data = res_prop.data
                         accepted_request_cnt += 1
                     else:
                         res_prop.data = obj_prop.data
