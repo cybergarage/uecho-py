@@ -94,11 +94,11 @@ def test_device():
     assert remote_dev_node
 
     # Read message
-    req_msg = ReadMessage(NodeProfile.CODE)
+    req_msg = ReadMessage(MonoLight.CODE)
     req_msg.add_property(MonoLight.OPERATION_STATUS)
     res_msg = ctrl.post_message(req_msg, remote_dev_node)
     assert res_msg
     assert res_msg.OPC == 1
-    # assert res_msg.properties[0].data == bytes([MonoLight.OPERATING_STATUS_OFF])
+    assert res_msg.properties[0].data == bytes([MonoLight.OPERATING_STATUS_OFF])
 
     assert ctrl.stop()
