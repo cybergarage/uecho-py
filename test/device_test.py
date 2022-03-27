@@ -13,8 +13,7 @@
 # limitations under the License.
 
 import time
-from uecho import Device, ObjectRequestHandler, Property, Controller, IGNORE_SELF_MESSAGE, ReadRequest
-from uecho.messages import WriteMessage
+from uecho import Device, ObjectRequestHandler, Property, Controller, IGNORE_SELF_MESSAGE, ReadRequest, WriteRequest
 from uecho.node_profile import NodeProfile
 from uecho.util import Bytes
 
@@ -48,9 +47,7 @@ def create_test_device():
 
     assert dev.set_request_handler(dev)
 
-    # status_off = bytearray([MonoLight.OPERATING_STATUS_OFF])
     status_off = Bytes.from_int(MonoLight.OPERATING_STATUS_OFF, 1)
-
     assert dev.set_property_data(MonoLight.OPERATING_STATUS, status_off)
     assert dev.get_property_data(MonoLight.OPERATING_STATUS) == status_off
 
@@ -94,12 +91,18 @@ def test_device():
 
     assert remote_dev_node
 
-    # Read message
+    # Read a message
     req_msg = ReadRequest(MonoLight.CODE)
     req_msg.add_property(MonoLight.OPERATION_STATUS)
     res_msg = ctrl.post_message(req_msg, remote_dev_node)
     assert res_msg
     assert res_msg.OPC == 1
     assert res_msg.properties[0].data == bytes([MonoLight.OPERATING_STATUS_OFF])
+
+    # Write a message
+    req_msg = WriteRequest(MonoLight.CODE)
+    status = Bytes.from_int(MonoLight.OPERATING_STATUS_ON, 1)
+    req_msg.add_property((MonoLight.OPERATION_STATUS, status))
+    assert ctrl.send_message(req_msg, remote_dev_node)
 
     assert ctrl.stop()
