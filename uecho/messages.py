@@ -47,3 +47,12 @@ class WriteMessage(Message):
         self.ESV = ESV.WRITE_REQUEST
         self.SEOJ = NodeProfile.CODE
         self.DEOJ = DEOJ
+
+
+class WriteResponseRequiredMessage(Message):
+
+    def __init__(self, DEOJ: int):
+        super().__init__()
+        self.ESV = ESV.WRITE_REQUEST_RESPONSE_REQUIRED
+        self.SEOJ = NodeProfile.CODE
+        self.DEOJ = DEOJ
