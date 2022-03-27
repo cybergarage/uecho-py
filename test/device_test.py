@@ -13,7 +13,8 @@
 # limitations under the License.
 
 import time
-from uecho import Device, ObjectRequestHandler, Property, Controller, IGNORE_SELF_MESSAGE, ReadMessage
+from uecho import Device, ObjectRequestHandler, Property, Controller, IGNORE_SELF_MESSAGE, ReadRequest
+from uecho.messages import WriteMessage
 from uecho.node_profile import NodeProfile
 from uecho.util import Bytes
 
@@ -78,7 +79,7 @@ def test_device():
     for remote_node in found_nodes:
         if remote_node.address != node.address:
             continue
-        req_msg = ReadMessage(NodeProfile.CODE)
+        req_msg = ReadRequest(NodeProfile.CODE)
         req_msg.add_property(NodeProfile.IDENTIFICATION_NUMBER)
         res_msg = ctrl.post_message(req_msg, remote_node)
         if res_msg is None:
@@ -94,7 +95,7 @@ def test_device():
     assert remote_dev_node
 
     # Read message
-    req_msg = ReadMessage(MonoLight.CODE)
+    req_msg = ReadRequest(MonoLight.CODE)
     req_msg.add_property(MonoLight.OPERATION_STATUS)
     res_msg = ctrl.post_message(req_msg, remote_dev_node)
     assert res_msg

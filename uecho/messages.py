@@ -31,7 +31,7 @@ class SearchMessage(Message):
         self.add_property(prop)
 
 
-class ReadMessage(Message):
+class ReadRequest(Message):
 
     def __init__(self, DEOJ: int):
         super().__init__()
