@@ -40,7 +40,7 @@ class ReadRequest(Message):
         self.DEOJ = DEOJ
 
 
-class WriteMessage(Message):
+class WriteRequest(Message):
 
     def __init__(self, DEOJ: int):
         super().__init__()
