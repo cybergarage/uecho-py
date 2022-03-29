@@ -26,6 +26,9 @@ class Device(Object):
         super().__init__()
         self.set_code(code)
 
+    def __del__(self):
+        super().__del__()
+
     def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
         """Sets the spcecified code as the object code.
 
