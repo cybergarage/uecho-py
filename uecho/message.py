@@ -78,3 +78,17 @@ class Message(ProtocolMessage):
         if new_prop is None:
             return False
         return super().add_set_property(new_prop)
+
+    def add_get_property(self, prop: Union[Property, Tuple[int, bytes], int]) -> bool:
+        """Adds the specified property to the message.
+
+        Args:
+            prop (Union[Property, Tuple[int, bytes]]): The new property. The property code is required, but the property bytes are optional.
+
+        Returns:
+            bool: Returns True when the specified property is added, Otherwise False.
+        """
+        new_prop = self.__to_property(prop)
+        if new_prop is None:
+            return False
+        return super().add_get_property(new_prop)
