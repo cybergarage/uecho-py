@@ -14,7 +14,7 @@
 
 import time
 
-from uecho import Device, ObjectRequestHandler, Property, IGNORE_SELF_MESSAGE, ReadRequest, WriteRequest, ESV
+from uecho import Device, ObjectRequestHandler, Property, IGNORE_SELF_MESSAGE, ReadRequest, WriteRequest, WriteResponseRequiredRequest, ESV
 from uecho.node_profile import NodeProfile
 from uecho.util import Bytes
 import uecho.log as log
@@ -125,5 +125,16 @@ def test_device(ctrl):
     res_prop_data = res_msg.properties[0].data
     assert len(res_prop_data) == 1
     assert res_prop_data == bytes([MonoLight.OPERATING_STATUS_ON])
+
+    # Write a message
+    req_msg = WriteResponseRequiredRequest(MonoLight.CODE)
+    status = Bytes.from_int(MonoLight.OPERATING_STATUS_OFF, 1)
+    req_msg.add_property((MonoLight.OPERATION_STATUS, status))
+    res_msg = ctrl.post_message(req_msg, remote_dev_node)
+    assert res_msg
+    assert res_msg.ESV == ESV.WRITE_RESPONSE
+    assert res_msg.OPC == 1
+    res_prop_data = res_msg.properties[0].data
+    assert len(res_prop_data) == 0
 
     assert ctrl.stop()
