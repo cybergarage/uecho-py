@@ -13,9 +13,11 @@
 # limitations under the License.
 
 import time
-from uecho import Device, ObjectRequestHandler, Property, Controller, IGNORE_SELF_MESSAGE, ReadRequest, WriteRequest
+
+from uecho import Device, ObjectRequestHandler, Property, IGNORE_SELF_MESSAGE, ReadRequest, WriteRequest, ESV
 from uecho.node_profile import NodeProfile
 from uecho.util import Bytes
+import uecho.log as log
 
 
 class MonoLight(Device, ObjectRequestHandler):
@@ -27,6 +29,9 @@ class MonoLight(Device, ObjectRequestHandler):
 
     def __init__(self):
         super().__init__(MonoLight.CODE)
+
+    def __del__(self):
+        super().__del__()
 
     def property_read_requested(self, prop: Property) -> bool:
         return True
@@ -54,8 +59,10 @@ def create_test_device():
     return dev
 
 
-def test_device():
-    ctrl = node = Controller()
+def test_device(ctrl):
+    log.setLevel(log.ERROR)
+
+    node = ctrl
     assert ctrl.set_enabled(IGNORE_SELF_MESSAGE, False)
     assert not ctrl.is_enabled(IGNORE_SELF_MESSAGE)
 
@@ -96,8 +103,11 @@ def test_device():
     req_msg.add_property(MonoLight.OPERATION_STATUS)
     res_msg = ctrl.post_message(req_msg, remote_dev_node)
     assert res_msg
+    assert res_msg.ESV == ESV.READ_RESPONSE
     assert res_msg.OPC == 1
-    assert res_msg.properties[0].data == bytes([MonoLight.OPERATING_STATUS_OFF])
+    res_prop_data = res_msg.properties[0].data
+    assert len(res_prop_data) == 1
+    assert res_prop_data == bytes([MonoLight.OPERATING_STATUS_OFF])
 
     # Write a message
     req_msg = WriteRequest(MonoLight.CODE)
