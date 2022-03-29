@@ -35,6 +35,9 @@ class LocalNode(Node):
         self.__options = IGNORE_SELF_MESSAGE
         self.add_object(self.__node_profile_obj)
 
+    def __del__(self):
+        self.stop()
+
     def add_object(self, obj: Object) -> bool:
         if not super().add_object(obj):
             return False

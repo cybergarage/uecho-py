@@ -87,6 +87,9 @@ class Controller(LocalNode):
         self.__database = Database()
         self.__listeners = []
 
+    def __del__(self):
+        self.stop()
+
     @property
     def nodes(self) -> List[RemoteNode]:
         """Retures found nodes.
