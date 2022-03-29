@@ -49,7 +49,7 @@ class WriteRequest(Message):
         self.DEOJ = DEOJ
 
 
-class WriteResponseRequiredMessage(Message):
+class WriteResponseRequiredRequest(Message):
 
     def __init__(self, DEOJ: int):
         super().__init__()
