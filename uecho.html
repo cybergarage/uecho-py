@@ -376,8 +376,42 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.message.Message.add_get_property">
+<code class="sig-name descname">add_get_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Union[uecho.property.Property, Tuple[int, bytes], int]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.message.Message.add_get_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the specified property to the message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prop</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#uecho.property.Property" title="uecho.property.Property"><em>Property</em></a><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – The new property. The property code is required, but the property bytes are optional.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified property is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="uecho.message.Message.add_property">
 <code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Union[uecho.property.Property, Tuple[int, bytes], int]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.message.Message.add_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the specified property to the message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prop</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#uecho.property.Property" title="uecho.property.Property"><em>Property</em></a><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – The new property. The property code is required, but the property bytes are optional.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified property is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.message.Message.add_set_property">
+<code class="sig-name descname">add_set_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Union[uecho.property.Property, Tuple[int, bytes], int]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.message.Message.add_set_property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the specified property to the message.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2090,8 +2124,42 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.Message.add_get_property">
+<code class="sig-name descname">add_get_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Union[uecho.property.Property, Tuple[int, bytes], int]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Message.add_get_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the specified property to the message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prop</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#uecho.property.Property" title="uecho.property.Property"><em>Property</em></a><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – The new property. The property code is required, but the property bytes are optional.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified property is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="uecho.Message.add_property">
 <code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Union[uecho.property.Property, Tuple[int, bytes], int]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Message.add_property" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds the specified property to the message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>prop</strong> (<em>Union</em><em>[</em><a class="reference internal" href="#uecho.property.Property" title="uecho.property.Property"><em>Property</em></a><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>bytes</em><em>]</em><em>]</em>) – The new property. The property code is required, but the property bytes are optional.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified property is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.Message.add_set_property">
+<code class="sig-name descname">add_set_property</code><span class="sig-paren">(</span><em class="sig-param">prop: Union[uecho.property.Property, Tuple[int, bytes], int]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Message.add_set_property" title="Permalink to this definition">¶</a></dt>
 <dd><p>Adds the specified property to the message.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -2434,93 +2502,185 @@ easily without building the binary protocol messages directly.</p>
 </dd></dl>
 
 <dl class="class">
-<dt id="uecho.ReadMessage">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">ReadMessage</code><span class="sig-paren">(</span><em class="sig-param">DEOJ: int</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.ReadMessage" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.ReadRequest">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">ReadRequest</code><span class="sig-paren">(</span><em class="sig-param">DEOJ: int</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.ReadRequest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.message.Message</span></code></a></p>
 <dl class="attribute">
-<dt id="uecho.ReadMessage.DEOJ">
-<code class="sig-name descname">DEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadMessage.DEOJ" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.ReadRequest.DEOJ">
+<code class="sig-name descname">DEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadRequest.DEOJ" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.ReadMessage.SEOJ">
-<code class="sig-name descname">SEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadMessage.SEOJ" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.ReadRequest.SEOJ">
+<code class="sig-name descname">SEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadRequest.SEOJ" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.ReadMessage.TID">
-<code class="sig-name descname">TID</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadMessage.TID" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.ReadRequest.TID">
+<code class="sig-name descname">TID</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadRequest.TID" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.ReadMessage.from_addr">
-<code class="sig-name descname">from_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadMessage.from_addr" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.ReadRequest.from_addr">
+<code class="sig-name descname">from_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadRequest.from_addr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.ReadMessage.get_properties">
-<code class="sig-name descname">get_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadMessage.get_properties" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.ReadRequest.get_properties">
+<code class="sig-name descname">get_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadRequest.get_properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.ReadMessage.properties">
-<code class="sig-name descname">properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadMessage.properties" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.ReadRequest.properties">
+<code class="sig-name descname">properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadRequest.properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.ReadMessage.set_properties">
-<code class="sig-name descname">set_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadMessage.set_properties" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.ReadRequest.set_properties">
+<code class="sig-name descname">set_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadRequest.set_properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.ReadMessage.to_addr">
-<code class="sig-name descname">to_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadMessage.to_addr" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.ReadRequest.to_addr">
+<code class="sig-name descname">to_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.ReadRequest.to_addr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
-<dt id="uecho.WriteMessage">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">WriteMessage</code><span class="sig-paren">(</span><em class="sig-param">DEOJ: int</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.WriteMessage" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.WriteRequest">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">WriteRequest</code><span class="sig-paren">(</span><em class="sig-param">DEOJ: int</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.WriteRequest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.message.Message</span></code></a></p>
 <dl class="attribute">
-<dt id="uecho.WriteMessage.DEOJ">
-<code class="sig-name descname">DEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteMessage.DEOJ" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.WriteRequest.DEOJ">
+<code class="sig-name descname">DEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteRequest.DEOJ" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.WriteMessage.SEOJ">
-<code class="sig-name descname">SEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteMessage.SEOJ" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.WriteRequest.SEOJ">
+<code class="sig-name descname">SEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteRequest.SEOJ" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.WriteMessage.TID">
-<code class="sig-name descname">TID</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteMessage.TID" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.WriteRequest.TID">
+<code class="sig-name descname">TID</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteRequest.TID" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.WriteMessage.from_addr">
-<code class="sig-name descname">from_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteMessage.from_addr" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.WriteRequest.from_addr">
+<code class="sig-name descname">from_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteRequest.from_addr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.WriteMessage.get_properties">
-<code class="sig-name descname">get_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteMessage.get_properties" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.WriteRequest.get_properties">
+<code class="sig-name descname">get_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteRequest.get_properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.WriteMessage.properties">
-<code class="sig-name descname">properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteMessage.properties" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.WriteRequest.properties">
+<code class="sig-name descname">properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteRequest.properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.WriteMessage.set_properties">
-<code class="sig-name descname">set_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteMessage.set_properties" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.WriteRequest.set_properties">
+<code class="sig-name descname">set_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteRequest.set_properties" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.WriteMessage.to_addr">
-<code class="sig-name descname">to_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteMessage.to_addr" title="Permalink to this definition">¶</a></dt>
+<dt id="uecho.WriteRequest.to_addr">
+<code class="sig-name descname">to_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteRequest.to_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.WriteReadRequest">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">WriteReadRequest</code><span class="sig-paren">(</span><em class="sig-param">DEOJ: int</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.WriteReadRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.message.Message</span></code></a></p>
+<dl class="attribute">
+<dt id="uecho.WriteReadRequest.DEOJ">
+<code class="sig-name descname">DEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteReadRequest.DEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteReadRequest.SEOJ">
+<code class="sig-name descname">SEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteReadRequest.SEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteReadRequest.TID">
+<code class="sig-name descname">TID</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteReadRequest.TID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteReadRequest.from_addr">
+<code class="sig-name descname">from_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteReadRequest.from_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteReadRequest.get_properties">
+<code class="sig-name descname">get_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteReadRequest.get_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteReadRequest.properties">
+<code class="sig-name descname">properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteReadRequest.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteReadRequest.set_properties">
+<code class="sig-name descname">set_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteReadRequest.set_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteReadRequest.to_addr">
+<code class="sig-name descname">to_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteReadRequest.to_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.WriteResponseRequiredRequest">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">WriteResponseRequiredRequest</code><span class="sig-paren">(</span><em class="sig-param">DEOJ: int</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.WriteResponseRequiredRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.message.Message</span></code></a></p>
+<dl class="attribute">
+<dt id="uecho.WriteResponseRequiredRequest.DEOJ">
+<code class="sig-name descname">DEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteResponseRequiredRequest.DEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteResponseRequiredRequest.SEOJ">
+<code class="sig-name descname">SEOJ</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteResponseRequiredRequest.SEOJ" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteResponseRequiredRequest.TID">
+<code class="sig-name descname">TID</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteResponseRequiredRequest.TID" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteResponseRequiredRequest.from_addr">
+<code class="sig-name descname">from_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteResponseRequiredRequest.from_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteResponseRequiredRequest.get_properties">
+<code class="sig-name descname">get_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteResponseRequiredRequest.get_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteResponseRequiredRequest.properties">
+<code class="sig-name descname">properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteResponseRequiredRequest.properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteResponseRequiredRequest.set_properties">
+<code class="sig-name descname">set_properties</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteResponseRequiredRequest.set_properties" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.WriteResponseRequiredRequest.to_addr">
+<code class="sig-name descname">to_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteResponseRequiredRequest.to_addr" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
