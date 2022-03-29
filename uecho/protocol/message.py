@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import List, Tuple, Any, Optional
+from typing import List, Tuple, Optional
 from ..util.bytes import Bytes
 from .esv import ESV
 from .property import Property
@@ -76,10 +76,16 @@ class Message(ESV):
     def all_properties(self) -> List[Property]:
         return self.properties + self.set_properties + self.get_properties
 
-    def add_property(self, prop: Any) -> bool:
+    def add_property(self, prop: Property) -> bool:
         if not isinstance(prop, Property):
             return False
         self.properties.append(prop)
+        return True
+
+    def add_set_property(self, prop: Property) -> bool:
+        if not isinstance(prop, Property):
+            return False
+        self.set_properties.append(prop)
         return True
 
     def is_response_message(self, msg):
