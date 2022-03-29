@@ -94,6 +94,9 @@ class Object(object):
         self.__request_handler = None
         self.set_code(code)
 
+    def __del__(self):
+        pass
+
     def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
         """Sets the spcecified code as the object code.
 
