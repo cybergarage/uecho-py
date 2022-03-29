@@ -24,6 +24,9 @@ class UnicastServer(Server):
     def __init__(self):
         super().__init__()
 
+    def __del__(self):
+        super().__del__()
+
     def bind(self, ifaddr: str) -> bool:
         if not super().bind(ifaddr):
             return False

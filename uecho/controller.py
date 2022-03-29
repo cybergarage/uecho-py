@@ -88,6 +88,7 @@ class Controller(LocalNode):
         self.__listeners = []
 
     def __del__(self):
+        super().__del__()
         self.stop()
 
     @property
