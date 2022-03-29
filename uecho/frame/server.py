@@ -36,6 +36,9 @@ class Server(threading.Thread):
         self.port = Server.PORT
         self.observers = []
 
+    def __del__(self):
+        self.stop()
+
     def create_udp_socket(self) -> socket.socket:
         sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
