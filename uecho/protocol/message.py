@@ -88,6 +88,12 @@ class Message(ESV):
         self.set_properties.append(prop)
         return True
 
+    def add_get_property(self, prop: Property) -> bool:
+        if not isinstance(prop, Property):
+            return False
+        self.get_properties.append(prop)
+        return True
+
     def is_response_message(self, msg):
         if self.TID != msg.TID:
             return False
