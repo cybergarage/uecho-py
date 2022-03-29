@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Tuple, Union
+from typing import Tuple, Union, Optional
 
 from .protocol.message import Message as ProtocolMessage
 from .property import Property
@@ -36,15 +36,7 @@ class Message(ProtocolMessage):
             return False
         return True
 
-    def add_property(self, prop: Union[Property, Tuple[int, bytes], int]) -> bool:
-        """Adds the specified property to the message.
-
-        Args:
-            prop (Union[Property, Tuple[int, bytes]]): The new property. The property code is required, but the property bytes are optional.
-
-        Returns:
-            bool: Returns True when the specified property is added, Otherwise False.
-        """
+    def __to_property(self, prop: Union[Property, Tuple[int, bytes], int]) -> Optional[Property]:
         new_prop = None
         if isinstance(prop, Property):
             new_prop = prop
@@ -57,8 +49,32 @@ class Message(ProtocolMessage):
             new_prop = Property()
             new_prop.code = prop[0]
             new_prop.data = prop[1]
+        return new_prop
 
+    def add_property(self, prop: Union[Property, Tuple[int, bytes], int]) -> bool:
+        """Adds the specified property to the message.
+
+        Args:
+            prop (Union[Property, Tuple[int, bytes]]): The new property. The property code is required, but the property bytes are optional.
+
+        Returns:
+            bool: Returns True when the specified property is added, Otherwise False.
+        """
+        new_prop = self.__to_property(prop)
         if new_prop is None:
             return False
-
         return super().add_property(new_prop)
+
+    def add_set_property(self, prop: Union[Property, Tuple[int, bytes], int]) -> bool:
+        """Adds the specified property to the message.
+
+        Args:
+            prop (Union[Property, Tuple[int, bytes]]): The new property. The property code is required, but the property bytes are optional.
+
+        Returns:
+            bool: Returns True when the specified property is added, Otherwise False.
+        """
+        new_prop = self.__to_property(prop)
+        if new_prop is None:
+            return False
+        return super().add_set_property(new_prop)
