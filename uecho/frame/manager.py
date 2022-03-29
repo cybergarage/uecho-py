@@ -29,6 +29,9 @@ class Manager(object):
         self.servers = []
         self.__TID = 0
 
+    def __del__(self):
+        self.stop()
+
     def __next_TID(self) -> int:
         self.__TID += 1
         if 0xFFFF < self.__TID:
