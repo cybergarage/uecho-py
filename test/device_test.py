@@ -60,7 +60,7 @@ def create_test_device():
 
 
 def test_device(ctrl):
-    log.setLevel(log.ERROR)
+    log.setLevel(log.DEBUG)
 
     node = ctrl
     assert ctrl.set_enabled(IGNORE_SELF_MESSAGE, False)
@@ -114,5 +114,16 @@ def test_device(ctrl):
     status = Bytes.from_int(MonoLight.OPERATING_STATUS_ON, 1)
     req_msg.add_property((MonoLight.OPERATION_STATUS, status))
     assert ctrl.send_message(req_msg, remote_dev_node)
+
+    # Read a message
+    req_msg = ReadRequest(MonoLight.CODE)
+    req_msg.add_property(MonoLight.OPERATION_STATUS)
+    res_msg = ctrl.post_message(req_msg, remote_dev_node)
+    assert res_msg
+    assert res_msg.ESV == ESV.READ_RESPONSE
+    assert res_msg.OPC == 1
+    res_prop_data = res_msg.properties[0].data
+    assert len(res_prop_data) == 1
+    assert res_prop_data == bytes([MonoLight.OPERATING_STATUS_ON])
 
     assert ctrl.stop()
