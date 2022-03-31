@@ -145,12 +145,12 @@ def test_device(ctrl):
     res_msg = ctrl.post_message(req_msg, remote_dev_node)
     assert res_msg
     assert res_msg.ESV == ESV.WRITE_READ_RESPONSE
-    # assert res_msg.OPCSet == 1
-    # res_prop_data = res_msg.set_properties[0].data
-    # assert len(res_prop_data) == 0
-    # assert res_msg.OPCGet == 1
-    # res_prop_data = res_msg.get_properties[0].data
-    # assert len(res_prop_data) == 1
-    # assert res_prop_data == bytes([MonoLight.OPERATING_STATUS_ON])
+    assert res_msg.OPCSet == 1
+    res_prop_data = res_msg.set_properties[0].data
+    assert len(res_prop_data) == 0
+    assert res_msg.OPCGet == 1
+    res_prop_data = res_msg.get_properties[0].data
+    assert len(res_prop_data) == 1
+    assert res_prop_data == bytes([MonoLight.OPERATING_STATUS_ON])
 
     assert ctrl.stop()
