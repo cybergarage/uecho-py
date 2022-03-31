@@ -351,8 +351,14 @@ class Object(object):
                         obj_prop.data = msg_prop.data
                         accepted_request_cnt += 1
                     else:
-                        res_prop.data = obj_prop.data
-            res_msg.add_property(res_prop)
+                        res_prop.data = msg_prop.data
+            if req_msg.is_write_read_request():
+                if req_msg.is_read_request():
+                    res_msg.add_get_property(res_prop)
+                else:
+                    res_msg.add_set_property(res_prop)
+            else:
+                res_msg.add_property(res_prop)
 
         all_request_cnt = req_msg.OPC + req_msg.OPCSet + req_msg.OPCGet
 
