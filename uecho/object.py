@@ -338,26 +338,39 @@ class Object(object):
 
         accepted_request_cnt = 0
 
-        for msg_prop in req_msg.all_properties:
-            res_prop = Property(msg_prop.code)
-            obj_prop = self.get_property(msg_prop.code)
-            if obj_prop is not None:
-                if req_msg.is_read_request():
-                    if self.__request_handler.property_read_requested(obj_prop):
-                        res_prop.data = obj_prop.data
-                        accepted_request_cnt += 1
-                elif req_msg.is_write_request():
+        if req_msg.is_write_read_request():
+            for msg_prop in req_msg.set_properties:
+                res_prop = Property(msg_prop.code)
+                obj_prop = self.get_property(msg_prop.code)
+                if obj_prop is not None:
                     if self.__request_handler.property_write_requested(obj_prop, msg_prop.data):
                         obj_prop.data = msg_prop.data
                         accepted_request_cnt += 1
                     else:
                         res_prop.data = msg_prop.data
-            if req_msg.is_write_read_request():
-                if req_msg.is_read_request():
-                    res_msg.add_get_property(res_prop)
-                else:
-                    res_msg.add_set_property(res_prop)
-            else:
+                res_msg.add_set_property(res_prop)
+            for msg_prop in req_msg.get_properties:
+                res_prop = Property(msg_prop.code)
+                obj_prop = self.get_property(msg_prop.code)
+                if self.__request_handler.property_read_requested(obj_prop):
+                    res_prop.data = obj_prop.data
+                    accepted_request_cnt += 1
+                res_msg.add_get_property(res_prop)
+        else:
+            for msg_prop in req_msg.properties:
+                res_prop = Property(msg_prop.code)
+                obj_prop = self.get_property(msg_prop.code)
+                if obj_prop is not None:
+                    if req_msg.is_read_request():
+                        if self.__request_handler.property_read_requested(obj_prop):
+                            res_prop.data = obj_prop.data
+                            accepted_request_cnt += 1
+                    elif req_msg.is_write_request():
+                        if self.__request_handler.property_write_requested(obj_prop, msg_prop.data):
+                            obj_prop.data = msg_prop.data
+                            accepted_request_cnt += 1
+                        else:
+                            res_prop.data = msg_prop.data
                 res_msg.add_property(res_prop)
 
         all_request_cnt = req_msg.OPC + req_msg.OPCSet + req_msg.OPCGet
