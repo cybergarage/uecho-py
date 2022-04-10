@@ -34,11 +34,17 @@ class MonoLight(Device, ObjectRequestHandler):
         super().__del__()
 
     def property_read_requested(self, prop: Property) -> bool:
-        if prop.code != 0x80:
+        if prop.code != MonoLight.OPERATION_STATUS:
             return False
         return True
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
+        if prop.code != MonoLight.OPERATION_STATUS:
+            return False
+        if len(prop.data) != 1:
+            return False
+        if (data[0] != MonoLight.OPERATING_STATUS_ON) and (data[0] != MonoLight.OPERATING_STATUS_OFF):
+            return False
         return True
 
 
