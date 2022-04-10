@@ -54,6 +54,8 @@ class MonoLightNode(LocalNode):
         self.set_property_integer(0x80, 0x31, 1)
 
     def property_read_requested(self, prop: Property) -> bool:
+        if prop.code != 0x80:
+            return False
         return True
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
