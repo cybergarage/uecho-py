@@ -155,22 +155,22 @@ class Controller(LocalNode):
         msg.SEOJ = NodeProfile.CODE
         return super().announce_message(msg)
 
-    def send_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> bool:
+    def send_message(self, msg: Message, dest: Union[Tuple[str, int], str, RemoteNode]) -> bool:
         """Posts a unicast message to the specified node asynchronously.
 
         Args:
             msg (Message): The request message.
-            addr (Union[Tuple[str, int], str, RemoteNode]): The destination node.
+            dest (Union[Tuple[str, int], str, RemoteNode]): The destination target.
 
         Returns:
             bool: True if successful, otherwise False.
         """
         msg.SEOJ = NodeProfile.CODE
-        to_addr = addr
-        if isinstance(addr, RemoteNode):
-            to_addr = (addr.ip, addr.port)
-        elif isinstance(addr, str):
-            to_addr = (addr, Node.PORT)
+        to_addr = dest
+        if isinstance(dest, RemoteNode):
+            to_addr = (dest.ip, dest.port)
+        elif isinstance(dest, str):
+            to_addr = (dest, Node.PORT)
         return super().send_message(msg, to_addr)
 
     def search(self) -> bool:
@@ -184,7 +184,7 @@ class Controller(LocalNode):
 
         Args:
             msg (Message): The request message.
-            addr (Union[Tuple[str, int], str, RemoteNode]): The destination target.
+            dest (Union[Tuple[str, int], str, RemoteNode]): The destination target.
 
         Returns:
             Optional[Message]: The response message if successful receiving the response message, otherwise None.
