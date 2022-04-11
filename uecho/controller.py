@@ -179,12 +179,12 @@ class Controller(LocalNode):
         msg = SearchMessage()
         return self.announce_message(msg)
 
-    def post_message(self, msg: Message, addr: Union[Tuple[str, int], str, RemoteNode]) -> Optional[Message]:
+    def post_message(self, msg: Message, dest: Union[Tuple[str, int], str, RemoteNode]) -> Optional[Message]:
         """Posts a unicast message to the specified node and return the response message synchronously.
 
         Args:
             msg (Message): The request message.
-            addr (Union[Tuple[str, int], str, RemoteNode]): The destination node.
+            addr (Union[Tuple[str, int], str, RemoteNode]): The destination target.
 
         Returns:
             Optional[Message]: The response message if successful receiving the response message, otherwise None.
@@ -192,7 +192,7 @@ class Controller(LocalNode):
         self.__last_post_msg = Controller.__PostMessage()
         self.__last_post_msg.request = msg
 
-        if not self.send_message(msg, addr):
+        if not self.send_message(msg, dest):
             return None
 
         for i in range(DEFAULT_POST_MSG_RERTY):
