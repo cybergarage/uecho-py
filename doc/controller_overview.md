@@ -29,7 +29,7 @@ ctrl.search()
 
 ### 3. Getting Nodes and Objects
 
-After the searching, the controller has the found nodes in the `Controller::nodes` property. The [ECHONETLite](http://www.echonet.gr.jp/english/index.htm) node can have multiple objects such as the device or profile objects, and the node has the objects in the `Object.objects` property. The following example shows all objects in the found nodes.
+After the searching, the controller has the found nodes in the `Controller::nodes` property. The [ECHONETLite](http://www.echonet.gr.jp/english/index.htm) node might have multiple objects such as the device or profile objects, and the found node has the objects in the `Object.objects` property. The following example shows all objects in the found nodes.
 
 ```
 ctrl = Controller()
@@ -42,7 +42,7 @@ for i, node in enumerate(ctrl.nodes):
 
 ### 4. Creating Request Message
 
-To control the found objects, create the control message using `uecho::Message` as the following.
+To control the found objects, create the request message using `uecho::Message` as the following.
 
 ```
 from uecho import Message, Property, ESV
@@ -63,21 +63,17 @@ To send the created request message, use `Controller::send_message()` as the fol
 ```
 ctrl = Controller()
 ....
-msg = Message()
-....
-ctrl.send_message(ctrl, dstObj, msg);
-```
-
-Basically, all messages of [ECHONETLite](http://www.echonet.gr.jp/english/index.htm) is async. To handle the async response message, use `Controller::post_message()` as the following:
-
-```
-ctrl = Controller()
-....
 node = ctrl.nodes[0]
 ....
 msg = Message()
 ....
-res_msg = ctrl.post_message(node, msg);
+ctrl.send_message(msg, node);
+```
+
+Basically, all messages of [ECHONETLite](http://www.echonet.gr.jp/english/index.htm) is async. To handle the async response message, use `Controller::post_message()` instead of `Controller::send_message()` as the following:
+
+```
+res_msg = ctrl.post_message(msg, node);
 if res_msg is not None:
     print("%02X" % res_msg.ESV)
     for prop in res_msg.properties:
