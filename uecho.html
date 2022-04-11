@@ -220,13 +220,13 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.controller.Controller.post_message">
-<code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; Optional[uecho.message.Message]<a class="headerlink" href="#uecho.controller.Controller.post_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, dest: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; Optional[uecho.message.Message]<a class="headerlink" href="#uecho.controller.Controller.post_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a unicast message to the specified node and return the response message synchronously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>msg</strong> (<a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – The request message.</p></li>
-<li><p><strong>addr</strong> (<em>Union</em><em>[</em><em>Tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>, </em><em>str</em><em>, </em><a class="reference internal" href="#uecho.remote_node.RemoteNode" title="uecho.remote_node.RemoteNode"><em>RemoteNode</em></a><em>]</em>) – The destination node.</p></li>
+<li><p><strong>dest</strong> (<em>Union</em><em>[</em><em>Tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>, </em><em>str</em><em>, </em><a class="reference internal" href="#uecho.remote_node.RemoteNode" title="uecho.remote_node.RemoteNode"><em>RemoteNode</em></a><em>]</em>) – The destination target.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -257,13 +257,13 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.controller.Controller.send_message">
-<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.controller.Controller.send_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, dest: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.controller.Controller.send_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a unicast message to the specified node asynchronously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>msg</strong> (<a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – The request message.</p></li>
-<li><p><strong>addr</strong> (<em>Union</em><em>[</em><em>Tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>, </em><em>str</em><em>, </em><a class="reference internal" href="#uecho.remote_node.RemoteNode" title="uecho.remote_node.RemoteNode"><em>RemoteNode</em></a><em>]</em>) – The destination node.</p></li>
+<li><p><strong>dest</strong> (<em>Union</em><em>[</em><em>Tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>, </em><em>str</em><em>, </em><a class="reference internal" href="#uecho.remote_node.RemoteNode" title="uecho.remote_node.RemoteNode"><em>RemoteNode</em></a><em>]</em>) – The destination target.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1491,13 +1491,13 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.Controller.post_message">
-<code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; Optional[uecho.message.Message]<a class="headerlink" href="#uecho.Controller.post_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, dest: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; Optional[uecho.message.Message]<a class="headerlink" href="#uecho.Controller.post_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a unicast message to the specified node and return the response message synchronously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>msg</strong> (<a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – The request message.</p></li>
-<li><p><strong>addr</strong> (<em>Union</em><em>[</em><em>Tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>, </em><em>str</em><em>, </em><a class="reference internal" href="#uecho.remote_node.RemoteNode" title="uecho.remote_node.RemoteNode"><em>RemoteNode</em></a><em>]</em>) – The destination node.</p></li>
+<li><p><strong>dest</strong> (<em>Union</em><em>[</em><em>Tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>, </em><em>str</em><em>, </em><a class="reference internal" href="#uecho.remote_node.RemoteNode" title="uecho.remote_node.RemoteNode"><em>RemoteNode</em></a><em>]</em>) – The destination target.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1528,13 +1528,13 @@ easily without building the binary protocol messages directly.</p>
 
 <dl class="method">
 <dt id="uecho.Controller.send_message">
-<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, addr: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Controller.send_message" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">send_message</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.message.Message, dest: Union[Tuple[str, int], str, uecho.remote_node.RemoteNode]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Controller.send_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a unicast message to the specified node asynchronously.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>msg</strong> (<a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – The request message.</p></li>
-<li><p><strong>addr</strong> (<em>Union</em><em>[</em><em>Tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>, </em><em>str</em><em>, </em><a class="reference internal" href="#uecho.remote_node.RemoteNode" title="uecho.remote_node.RemoteNode"><em>RemoteNode</em></a><em>]</em>) – The destination node.</p></li>
+<li><p><strong>dest</strong> (<em>Union</em><em>[</em><em>Tuple</em><em>[</em><em>str</em><em>, </em><em>int</em><em>]</em><em>, </em><em>str</em><em>, </em><a class="reference internal" href="#uecho.remote_node.RemoteNode" title="uecho.remote_node.RemoteNode"><em>RemoteNode</em></a><em>]</em>) – The destination target.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
