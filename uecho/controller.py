@@ -207,7 +207,8 @@ class Controller(LocalNode):
         """
         if not super().start():
             return False
-        self.search()
+        if not self.search():
+            return False
         return True
 
     def stop(self) -> bool:
