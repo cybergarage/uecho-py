@@ -51,6 +51,8 @@ if __name__ == '__main__':
 
     ctrl = Controller()
     ctrl.start()
+    ctrl.search()
+
     time.sleep(1)
 
     res_msg = ctrl.post_message(msg, ipaddr)
