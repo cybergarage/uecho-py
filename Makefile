@@ -31,7 +31,7 @@ lint: format
 type: format
 	mypy uecho
 
-test: lint
+test: 
 	env PYTHONPATH=`pwd` py.test -v test
 
 build:
