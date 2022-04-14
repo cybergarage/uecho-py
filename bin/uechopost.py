@@ -15,6 +15,7 @@
 
 import sys
 import time
+from ast import literal_eval as make_tuple
 from uecho import Controller, Message, Property
 from uecho.util import Hex
 import uecho.log as log
@@ -23,7 +24,7 @@ args = sys.argv
 
 
 def usage():
-    print('Usage : uechopost <address> <obj> <esv> <property (code, data) ...>')
+    print('Usage : uechopost <address> <obj> <esv> <(code, data) ...>')
 
 
 if __name__ == '__main__':
@@ -40,6 +41,11 @@ if __name__ == '__main__':
     msg.DEOJ = Hex.from_string(args[2])
     msg.ESV = Hex.from_string(args[3])
     for n in range(4, len(args)):
+        tuple_str = args[n]
+        
+        make_tuple
+
+
         prop_bytes = args[4]
         if len(prop_bytes) < 2:
             continue

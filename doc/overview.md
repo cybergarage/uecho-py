@@ -22,10 +22,10 @@ You can install `uecho-py` using `pip` as the following:
 ## Table of Contents
 
 - Controller
-  - [Overview of Controller](controller_overview.md)
+  - [Overview of Controller](./controller_overview.md)
 - Device
-  - [Overview of Device](device_overview.md)
-- [Examples](examples.md)
+  - [Overview of Device](./device_overview.md)
+- [Examples](./examples.md)
 
 ## References
 
