@@ -24,7 +24,7 @@ args = sys.argv
 
 
 def usage():
-    print('Usage : uechopost <address> <obj> <esv> <(code, data) ...>')
+    print('Usage : uechopost <address> <obj> <esv> <"(code, data)" ...>')
 
 
 if __name__ == '__main__':
@@ -41,18 +41,11 @@ if __name__ == '__main__':
     msg.DEOJ = Hex.from_string(args[2])
     msg.ESV = Hex.from_string(args[3])
     for n in range(4, len(args)):
-        tuple_str = args[n]
-        
-        make_tuple
-
-
-        prop_bytes = args[4]
-        if len(prop_bytes) < 2:
-            continue
+        props = make_tuple(args[n])
         prop = Property()
-        prop.code = Hex.from_string(prop_bytes[:2])
-        if 2 < len(prop_bytes):
-            prop.data = bytes.fromhex(prop_bytes[2:])
+        prop.code = Hex.from_string(str(props[0]))
+        if 1 < len(props):
+            prop.data = bytes.fromhex(str(props[1]))
         msg.add_property(prop)
 
     ctrl = Controller()
