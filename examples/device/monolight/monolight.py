@@ -50,6 +50,10 @@ class MonoLightDevice(Device, ObjectRequestHandler):
             return False
         if (data[0] != MonoLightDevice.OPERATING_STATUS_ON) and (data[0] != MonoLightDevice.OPERATING_STATUS_OFF):
             return False
+        if data[0] == MonoLightDevice.OPERATING_STATUS_ON:
+            print("ON")
+        else:
+            print("ON")
         return True
 
 
