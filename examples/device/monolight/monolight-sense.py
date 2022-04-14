@@ -42,16 +42,16 @@ class MonoLightDevice(Device, ObjectRequestHandler):
         self.set_property_integer(MonoLightDevice.OPERATION_STATUS, MonoLightDevice.OPERATING_STATUS_OFF, 1)
         self.led_off()
 
-    def property_read_requested(self, prop: Property) -> bool:
-        if prop.code != MonoLightDevice.OPERATION_STATUS:
-            return False
-        return True
-
     def led_on(self):
         self.sense.clear([0xFF, 0xFF, 0xFF])
 
     def led_off(self):
         self.sense.clear([0x00, 0x00, 0x00])
+
+    def property_read_requested(self, prop: Property) -> bool:
+        if prop.code != MonoLightDevice.OPERATION_STATUS:
+            return False
+        return True
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
         if prop.code != MonoLightDevice.OPERATION_STATUS:
