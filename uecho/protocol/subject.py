@@ -27,6 +27,15 @@ class Subject():
         self.observers = []
 
     def add_observer(self, observer) -> bool:
+        """ Adds a message observer to the subject.
+
+        Args:
+            observer Observer: A message observer.
+
+        Returns:
+            bool: Returns True when the specified observer is added, Otherwise False.
+
+        """
         if object is None:
             return False
         for added_observer in self.observers:
@@ -36,5 +45,10 @@ class Subject():
         return True
 
     def notify(self, msg: Message):
+        """Notifies the specified message to the added observers.
+
+        Args:
+            msg (Message): A notify message 
+        """
         for observer in self.observers:
             observer.message_received(msg)

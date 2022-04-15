@@ -72,9 +72,23 @@ class Server(threading.Thread):
                 break
 
     def add_observer(self, observer) -> bool:
+        """ Adds a message observer to the subject.
+
+        Args:
+            observer Observer: A message observer.
+
+        Returns:
+            bool: Returns True when the specified observer is added, Otherwise False.
+
+        """
         return self.__msg_subject.add_observer(observer)
 
     def notify(self, msg: Message):
+        """Notifies the specified message to the added observers.
+
+        Args:
+            msg (Message): A notify message 
+        """
         self.__msg_subject.notify(msg)
 
     def start(self) -> Any:
