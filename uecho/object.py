@@ -17,6 +17,7 @@ from typing import Optional, Union, Tuple, Dict, Any, List
 
 from .property import Property
 from .protocol.message import Message
+from .protocol.subject import Subject
 from .esv import ESV
 from .util.bytes import Bytes
 
@@ -85,6 +86,7 @@ class Object(object):
     node: Optional[Any]
     __properties: Dict[int, Property]
     __request_handler: ObjectRequestHandler
+    __msg_subject: Subject
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         self.code = Object.CODE_UNKNOWN
@@ -93,6 +95,7 @@ class Object(object):
         self.node = None
         self.__request_handler = None
         self.set_code(code)
+        self.__msg_subject = Subject()
 
     def __del__(self):
         pass
@@ -290,6 +293,12 @@ class Object(object):
             prop = obj_prop.copy()
             self.add_property(prop)
         return True
+
+    def add_observer(self, observer) -> bool:
+        return self.__msg_subject.add_observer(observer)
+
+    def notify(self, msg: Message):
+        self.__msg_subject.notify(msg)
 
     def send_message(self, esv: int, props: List[Tuple[int, bytes]]) -> bool:
         """Sends a unicast message to the specified property asynchronously.
