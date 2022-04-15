@@ -14,6 +14,5 @@
 
 from .manager import Manager
 from .interface import Interface
-from .observer import Observer
 
-__all__ = ['Manager', 'Interface', 'Observer']
+__all__ = ['Manager', 'Interface']

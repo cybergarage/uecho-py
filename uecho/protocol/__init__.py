@@ -18,5 +18,7 @@ This module includes internal classes to handle any messages of Echonet Lite pro
 from .message import Message
 from .esv import ESV
 from .property import Property
+from .observer import Observer
+from .subject import Subject
 
-__all__ = ['Message', 'ESV', 'Property']
+__all__ = ['Message', 'ESV', 'Property', 'Observer', 'Subject']

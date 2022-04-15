@@ -17,8 +17,9 @@ import threading
 from typing import Any, Optional, List
 
 from ..protocol.message import Message
+from ..protocol.observer import Observer
+from ..protocol.subject import Subject
 from ..log.logger import error, debug
-from .observer import Observer
 
 
 class Server(threading.Thread):
@@ -27,14 +28,14 @@ class Server(threading.Thread):
     sock: Optional[socket.socket]
     ifaddr: str
     port: int
-    observers: List[Observer]
+    __msg_subject: Subject
 
     def __init__(self):
         super().__init__()
         self.sock = None
         self.ifaddr = ""
         self.port = Server.PORT
-        self.observers = []
+        self.__msg_subject = Subject()
 
     def __del__(self):
         self.stop()
@@ -71,17 +72,10 @@ class Server(threading.Thread):
                 break
 
     def add_observer(self, observer) -> bool:
-        if object is None:
-            return False
-        for added_observer in self.observers:
-            if observer == added_observer:
-                return True
-        self.observers.append(observer)
-        return True
+        return self.__msg_subject.add_observer(observer)
 
     def notify(self, msg: Message):
-        for observer in self.observers:
-            observer.message_received(msg)
+        self.__msg_subject.notify(msg)
 
     def start(self) -> Any:
         if self.sock is None:
