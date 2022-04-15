@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: clean format build uninstall upload doc
+.PHONY: clean format build uninstall upload doc test
 
 all: test
 
