@@ -334,6 +334,8 @@ class Object(object):
         if not isinstance(req_msg, Message):
             return None
 
+        self.notify(req_msg)
+
         if not req_msg.is_request():
             return None
 
