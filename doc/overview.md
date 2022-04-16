@@ -26,7 +26,7 @@ You can install `uecho-py` using `pip` as the following:
 - Device
   - [Overview of Device](https://github.com/cybergarage/uecho-py/blob/master/doc/device_overview.md)
   - [Inside of Device](https://github.com/cybergarage/uecho-py/blob/master/doc/device_inside.md)
-  - [Examples](https://github.com/cybergarage/uecho-py/blob/master/doc/examples.md)
+- [Examples](https://github.com/cybergarage/uecho-py/blob/master/doc/examples.md)
 
 ## References
 
