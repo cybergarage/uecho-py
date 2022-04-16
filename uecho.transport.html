@@ -157,11 +157,6 @@
 <dd></dd></dl>
 
 <dl class="attribute">
-<dt id="uecho.frame.multicast_server.MulticastServer.observers">
-<code class="sig-name descname">observers</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.multicast_server.MulticastServer.observers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="uecho.frame.multicast_server.MulticastServer.port">
 <code class="sig-name descname">port</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.multicast_server.MulticastServer.port" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -174,19 +169,8 @@
 </dd></dl>
 
 </div>
-<div class="section" id="module-uecho.frame.observer">
-<span id="uecho-frame-observer-module"></span><h2>uecho.frame.observer module<a class="headerlink" href="#module-uecho.frame.observer" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="uecho.frame.observer.Observer">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.observer.</code><code class="sig-name descname">Observer</code><a class="headerlink" href="#uecho.frame.observer.Observer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="method">
-<dt id="uecho.frame.observer.Observer.message_received">
-<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.observer.Observer.message_received" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<div class="section" id="uecho-frame-observer-module">
+<h2>uecho.frame.observer module<a class="headerlink" href="#uecho-frame-observer-module" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-uecho.frame.server">
 <span id="uecho-frame-server-module"></span><h2>uecho.frame.server module<a class="headerlink" href="#module-uecho.frame.server" title="Permalink to this headline">¶</a></h2>
@@ -202,7 +186,19 @@
 <dl class="method">
 <dt id="uecho.frame.server.Server.add_observer">
 <code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.frame.server.Server.add_observer" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adds a message observer to the subject.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Observer</strong> (<em>observer</em>) – A message observer.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified observer is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="uecho.frame.server.Server.bind">
@@ -222,12 +218,13 @@
 <dl class="method">
 <dt id="uecho.frame.server.Server.notify">
 <code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.server.Server.notify" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.frame.server.Server.observers">
-<code class="sig-name descname">observers</code><em class="property">: List[Observer]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.server.Server.observers" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Notifies the specified message to the added observers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference internal" href="uecho.html#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – A notify message</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="uecho.frame.server.Server.port">
@@ -286,11 +283,6 @@ same thread object.</p>
 <dl class="attribute">
 <dt id="uecho.frame.unicast_server.UnicastServer.ifaddr">
 <code class="sig-name descname">ifaddr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.unicast_server.UnicastServer.ifaddr" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="uecho.frame.unicast_server.UnicastServer.observers">
-<code class="sig-name descname">observers</code><em class="property"> = None</em><a class="headerlink" href="#uecho.frame.unicast_server.UnicastServer.observers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -371,17 +363,6 @@ same thread object.</p>
 <dl class="method">
 <dt id="uecho.frame.Interface.get_all_ipaddrs">
 <em class="property">static </em><code class="sig-name descname">get_all_ipaddrs</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; List[str]<a class="headerlink" href="#uecho.frame.Interface.get_all_ipaddrs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="uecho.frame.Observer">
-<em class="property">class </em><code class="sig-prename descclassname">uecho.frame.</code><code class="sig-name descname">Observer</code><a class="headerlink" href="#uecho.frame.Observer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="method">
-<dt id="uecho.frame.Observer.message_received">
-<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.frame.Observer.message_received" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
