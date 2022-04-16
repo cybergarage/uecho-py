@@ -948,6 +948,56 @@
 
 </dd></dl>
 
+<dl class="class">
+<dt id="uecho.protocol.Observer">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.</code><code class="sig-name descname">Observer</code><a class="headerlink" href="#uecho.protocol.Observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.protocol.Observer.message_received">
+<code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.Observer.message_received" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.protocol.Subject">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.</code><code class="sig-name descname">Subject</code><a class="headerlink" href="#uecho.protocol.Subject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.protocol.Subject.add_observer">
+<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.Subject.add_observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message observer to the subject.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Observer</strong> (<em>observer</em>) – A message observer.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified observer is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.Subject.notify">
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.Subject.notify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Notifies the specified message to the added observers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference internal" href="uecho.html#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – A notify message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.Subject.observers">
+<code class="sig-name descname">observers</code><em class="property">: List[Observer]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.Subject.observers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 

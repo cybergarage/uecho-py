@@ -853,6 +853,23 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.object.Object.add_observer">
+<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.object.Object.add_observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message observer to the subject.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Observer</strong> (<em>observer</em>) – A message observer.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified observer is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="uecho.object.Object.add_property">
 <code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.object.Object.add_property" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -965,6 +982,17 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.object.Object.node">
 <code class="sig-name descname">node</code><em class="property">: Optional[Any]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.object.Object.node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.object.Object.notify">
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.object.Object.notify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Notifies the specified message to the added observers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – A notify message</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="uecho.object.Object.post_message">
@@ -1666,6 +1694,23 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
+<dt id="uecho.Object.add_observer">
+<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Object.add_observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message observer to the subject.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Observer</strong> (<em>observer</em>) – A message observer.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified observer is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
 <dt id="uecho.Object.add_property">
 <code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Object.add_property" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1778,6 +1823,17 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.Object.node">
 <code class="sig-name descname">node</code><em class="property">: Optional[Any]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.Object.node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.Object.notify">
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Object.notify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Notifies the specified message to the added observers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – A notify message</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="method">
 <dt id="uecho.Object.post_message">
