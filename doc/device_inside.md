@@ -14,31 +14,11 @@ The node profile object is a standard profile object, [ECHONET Lite][enet] node 
 - Class code: 0xF0
 - Instance code: 0x01 (general node)
 
-The `uecho` updates the node profile class objects automatically when the children node is changed, and so the developer doesn't need to update the node profile object yourself.
-
-## Device Object Super Class
-
-[ECHONETLite][enet] device node must have some mandatory properties [\[2\]][enet-spec]. The `uecho_device_new()` addes the following mandatory properties into the device object as default, and the developer should update the properties according to the device status.
-
-| EPC | Property name | Default value |
-|---|---|---|
-| 0x80 | Operation status | 0x30 = ON |
-| 0x81 | Installation location | 0x00 |
-| 0x82 | Standard version information | Appendix F |
-| 0x88 | Fault status | 0x42 = No fault has occurred |
-| 0x8A | Manufacturer code | 0xFFFFF0 = Testing code |
-
-The `uecho` add the following mandatory properties too. However, the developer doesn't need to update the mandatory properties because the `uecho` updates the mandatory properties automatically when any properties are added or removed.
-
-| EPC | Property name |
-|---|---|
-| 0x9D | Status change announcement property map |
-| 0x9E | Set property map  |
-| 0x9F | Get property map |
+The `uecho-py` updates the node profile class objects automatically when the children objects in the node are changed, and so the developer doesn't need to update the node profile object yourself.
 
 ## Device Message Handler and Listener
 
-The `uecho` handles all request messages from other nodes automatically, the developer need only control request message permissions from other nodes and controllers to the target object properties using the object property handlers of the 'uecho'. However, the developer can set some request message listeners into the node and objects to listen the raw messages of [ECHONET Lite][enet] too. The following figure shows the message handling sequence of 'uecho'.
+The `uecho-py` handles all request messages from other nodes automatically, the developer need only control request message permissions from other nodes and controllers to the target object properties using the object property handlers of the 'uecho'. However, the developer can set some request message listeners into the node and objects to listen the raw messages of [ECHONET Lite][enet] too. The following figure shows the message handling sequence of 'uecho'.
 
 ![Node Observers](img/node_msg_handler.png)
 
@@ -52,7 +32,7 @@ The `uecho_object_setpropertyrequesthandler()` can set the following permission 
 typedef bool (*uEchoPropertyRequestHandler)(uEchoObject*, uEchoProperty*, uEchoEsv, size_t, byte *);
 ```
 
-The developer handles the request messages from other nodes. The developer should return a true if the request message is valid, otherwise false. In addition, the developer does not need to update the target property data by the request property data because the `uecho` updates the target property by the request property data automatically when the handler returns true. The following example shows to check a write request message and set the valid property data to the target property.
+The developer handles the request messages from other nodes. The developer should return a true if the request message is valid, otherwise false. In addition, the developer does not need to update the target property data by the request property data because the `uecho-py` updates the target property by the request property data automatically when the handler returns true. The following example shows to check a write request message and set the valid property data to the target property.
 
 ```
 bool object_property_handler(uEchoObject* obj, uEchoProperty* prop, uEchoEsv esv, size_t pdc, byte *edt)
@@ -63,12 +43,12 @@ bool object_property_handler(uEchoObject* obj, uEchoProperty* prop, uEchoEsv esv
 }
 ```
 
-The `uecho_object_setpropertyrequesthandler()` sets the permission handlers each ESV (ECHONET Lite Service) of [ECHONET Lite][enet]. Terefore `uecho` offers the following sugar fuctions to set the  permission handlers more easily for the read and write request messages.
+The `uecho_object_setpropertyrequesthandler()` sets the permission handlers each ESV (ECHONET Lite Service) of [ECHONET Lite][enet]. Terefore `uecho-py` offers the following sugar fuctions to set the  permission handlers more easily for the read and write request messages.
 
 - uecho_object_setpropertyreadrequesthandler()
 - uecho_object_setpropertywriterequesthandler()
 
-The `uecho` handles the read and notification request messages automatically. Threfore, the developer can create a device of [ECHONET Lite][enet] only to handle write message requests using the `uecho_object_setpropertywriterequesthandler()`.
+The `uecho-py` handles the read and notification request messages automatically. Threfore, the developer can create a device of [ECHONET Lite][enet] only to handle write message requests using the `uecho_object_setpropertywriterequesthandler()`.
 
 ### Node Message Listener
 
@@ -88,11 +68,11 @@ typedef void (*uEchoObjectMessageListener)(uEchoObject*, uEchoMessage*);
 
 ## Supported Basic Sequences
 
-The `uecho` supports the following five basic sequences in ECHONET Lite Communication Middleware Specification [\[1\]][enet-spec].
+The `uecho-py` supports the following five basic sequences in ECHONET Lite Communication Middleware Specification [\[1\]][enet-spec].
 
 ### 4.2.1 Basic Sequences for Service Content
 
-The `uecho` handles the five basic sequences automatically, thus the developer doesn't have to implement the responses directly. The property data is announced automatically when the property is changed using `uecho_property_setdata()`.
+The `uecho-py` handles the five basic sequences automatically, thus the developer doesn't have to implement the responses directly. The property data is announced automatically when the property is changed using `uecho_property_setdata()`.
 
 | Type | Description | Support |
 |---|---|---|
@@ -104,7 +84,7 @@ The `uecho` handles the five basic sequences automatically, thus the developer d
 
 ### 4.2.2 Basic Sequences for Object Control in General
 
-The `uecho` supports the following basic sequences too, and returns the error responses automatically. The developer doesn't have to receive and handle the error messages, but use `uecho_node_setmessagelistener()` if you want to listen the error messages.
+The `uecho-py` supports the following basic sequences too, and returns the error responses automatically. The developer doesn't have to receive and handle the error messages, but use `uecho_node_setmessagelistener()` if you want to listen the error messages.
 
 | Type | Description | Support |
 |---|---|---|
