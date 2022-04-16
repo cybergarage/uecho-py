@@ -23,7 +23,7 @@ from .util.bytes import Bytes
 
 
 class ObjectRequestHandler(metaclass=abc.ABCMeta):
-    """ObjectRequestHandler is an abstract listener class to listen to request messages to a device.
+    """ObjectRequestHandler is an abstract handler class to handle to request messages to a device.
     """
 
     @abc.abstractmethod
