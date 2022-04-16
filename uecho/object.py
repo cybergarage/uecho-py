@@ -306,14 +306,6 @@ class Object(object):
         """
         return self.__msg_subject.add_observer(observer)
 
-    def notify(self, msg: Message):
-        """Notifies the specified message to the added observers.
-
-        Args:
-            msg (Message): A notify message 
-        """
-        self.__msg_subject.notify(msg)
-
     def send_message(self, esv: int, props: List[Tuple[int, bytes]]) -> bool:
         """Sends a unicast message to the specified property asynchronously.
 
@@ -348,7 +340,7 @@ class Object(object):
         if not isinstance(req_msg, Message):
             return None
 
-        self.notify(req_msg)
+        self.__msg_subject.notify(req_msg)
 
         if not req_msg.is_request():
             return None
