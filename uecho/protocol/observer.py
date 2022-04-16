@@ -12,10 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import abc
 from .message import Message
 
 
-class Observer(object):
+class Observer(metaclass=abc.ABCMeta):
+    """Observer is an abstract observer class to listen to request messages to a device.
+    """
 
+    @abc.abstractmethod
     def message_received(self, msg: Message):
+        """ Listens a request message from other nodes
+
+        Args:
+            msg (Message): A request message from other nodes
+        """
         pass
