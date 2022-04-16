@@ -984,17 +984,6 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.object.Object.notify">
-<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.object.Object.notify" title="Permalink to this definition">¶</a></dt>
-<dd><p>Notifies the specified message to the added observers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>msg</strong> (<a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – A notify message</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
 <dt id="uecho.object.Object.post_message">
 <code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">esv: int, props: List[Tuple[int, bytes]]</em><span class="sig-paren">)</span> &#x2192; Optional[Any]<a class="headerlink" href="#uecho.object.Object.post_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a unicast message to the specified property asynchronously.</p>
@@ -1088,7 +1077,7 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.object.ObjectRequestHandler">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.object.</code><code class="sig-name descname">ObjectRequestHandler</code><a class="headerlink" href="#uecho.object.ObjectRequestHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>ObjectRequestHandler is an abstract listener class to listen to request messages to a device.</p>
+<p>ObjectRequestHandler is an abstract handler class to handle to request messages to a device.</p>
 <dl class="method">
 <dt id="uecho.object.ObjectRequestHandler.property_read_requested">
 <em class="property">abstract </em><code class="sig-name descname">property_read_requested</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.object.ObjectRequestHandler.property_read_requested" title="Permalink to this definition">¶</a></dt>
@@ -1825,17 +1814,6 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="method">
-<dt id="uecho.Object.notify">
-<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Object.notify" title="Permalink to this definition">¶</a></dt>
-<dd><p>Notifies the specified message to the added observers.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>msg</strong> (<a class="reference internal" href="#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – A notify message</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="method">
 <dt id="uecho.Object.post_message">
 <code class="sig-name descname">post_message</code><span class="sig-paren">(</span><em class="sig-param">esv: int, props: List[Tuple[int, bytes]]</em><span class="sig-paren">)</span> &#x2192; Optional[Any]<a class="headerlink" href="#uecho.Object.post_message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Posts a unicast message to the specified property asynchronously.</p>
@@ -1929,7 +1907,7 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.ObjectRequestHandler">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">ObjectRequestHandler</code><a class="headerlink" href="#uecho.ObjectRequestHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#module-uecho.object" title="uecho.object"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
-<p>ObjectRequestHandler is an abstract listener class to listen to request messages to a device.</p>
+<p>ObjectRequestHandler is an abstract handler class to handle to request messages to a device.</p>
 <dl class="method">
 <dt id="uecho.ObjectRequestHandler.property_read_requested">
 <em class="property">abstract </em><code class="sig-name descname">property_read_requested</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.ObjectRequestHandler.property_read_requested" title="Permalink to this definition">¶</a></dt>
