@@ -36,6 +36,9 @@ class StandardObject(Object):
         """
         if not super().set_code(code):
             return False
+        mandatory_obj = self.__database.get_object((0x00, 0x00))
+        if isinstance(mandatory_obj, Object):
+            self._set_object_properties(mandatory_obj)
         std_obj = self.__database.get_object((self.group_code, self.class_code))
         if isinstance(std_obj, Object):
             self._set_object_properties(std_obj)
