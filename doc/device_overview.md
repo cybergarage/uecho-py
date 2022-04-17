@@ -48,7 +48,7 @@ class ObjectRequestHandler(metaclass=abc.ABCMeta):
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
 ```
 
-The developer handles the request messages from other nodes. The developer should return a true if the request message is valid, otherwise false as the following.
+The handler should return true if the request message is allowed, otherwise false as the following.
 
 ```
 from uecho import Property
