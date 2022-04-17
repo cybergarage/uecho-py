@@ -1,10 +1,11 @@
 # Change Log
 
-## 0.9.0 - 2022/??/??
+## 1.0.0 - 2022/04/17
 
-- Add Device class to create original ECHONET Lite devices easily
+- Add Device class to create original devices of ECHONET Lite
+- Add StandardDevice class to create the standard devices easily
 
-## 0.8.5 - 2021/12/??
+## 0.8.5 - 2021/12/18
 
 - Update standard object database based on Machine Readable Appendix Release M of ECHONET consortium
 - Update uechosearch to print all mandatory read properties using the standard database in the verbose mode
