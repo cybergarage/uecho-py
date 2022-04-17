@@ -93,8 +93,8 @@ node.start()
 
 Let's check the following documentation to know the device functions of the `uecho-py` in more detail.
 
-- [uEcho Examples](./examples.md)
 - [Inside of uEcho Device](./device_inside.md)
+- [uEcho Examples](./examples.md)
 
 ## References
 
