@@ -67,6 +67,12 @@ for ECHONET Device objects[\[1\]][enet-spec], and the object code is below.
   - Class code : 0x91
   - Instance code 0x01
 
+### monolight-sense
+
+The `monolight-sense` is a Raspberry Pi version of the `monolight` and controls LEDs of Sense HAT as a mono light.
+
+![](img/monolight-sense.jpg)
+
 # References
 
 - \[1\] [Detailed Requirements for ECHONET Device objects][enet-spec]
