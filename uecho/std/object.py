@@ -16,7 +16,7 @@ from typing import Optional, Union, Tuple, Any
 from ..object import Object
 from .database import Database
 
-class StandardObject(Object):
+class StandardDevice(Object):
     """Standard represents a object of ECHONET Lite, and it has child properties that includes the specification attributes and the dynamic data.
     """
     __database: Database

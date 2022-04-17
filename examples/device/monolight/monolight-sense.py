@@ -15,12 +15,13 @@
 import sys
 import time
 import argparse
-from uecho import LocalNode, Device, Property, ObjectRequestHandler
+from uecho import LocalNode, Property, ObjectRequestHandler
+from uecho.std import StandardDevice
 import uecho.log as log
 from sense_hat import SenseHat
 
 
-class MonoLightDevice(Device, ObjectRequestHandler):
+class MonoLightDevice(StandardDevice, ObjectRequestHandler):
 
     CODE = 0x029101
     OPERATION_STATUS = 0x80
