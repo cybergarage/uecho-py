@@ -15,12 +15,13 @@
 import time
 
 from uecho import Device, ObjectRequestHandler, Property, IGNORE_SELF_MESSAGE, ReadRequest, WriteRequest, WriteResponseRequiredRequest, WriteReadRequest, ESV
+from uecho.std import StandardDevice
 from uecho.node_profile import NodeProfile
 from uecho.util import Bytes
 import uecho.log as log
 
 
-class MonoLight(Device, ObjectRequestHandler):
+class MonoLight(StandardDevice, ObjectRequestHandler):
 
     CODE = 0x029101
     OPERATION_STATUS = 0x80

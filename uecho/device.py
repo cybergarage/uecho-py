@@ -15,7 +15,6 @@
 from typing import Any, Union, Tuple
 
 from .object import Object
-from .std import Database
 
 
 class Device(Object):
@@ -28,23 +27,3 @@ class Device(Object):
 
     def __del__(self):
         super().__del__()
-
-    def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
-        """Sets the spcecified code as the object code.
-
-        Args:
-            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A code or tuple code.
-
-        Returns:
-            bool: True if the specified code is valid, otherwise False.
-        """
-        if not super().set_code(code):
-            return False
-
-        std_db = Database()
-        if not self._set_object_properties(std_db.get_object(Device.SUPER_CLASS_CODE)):
-            return False
-        if not self._set_object_properties(std_db.get_object(code)):
-            return False
-
-        return True
