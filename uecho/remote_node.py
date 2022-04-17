@@ -18,7 +18,7 @@ from .node import Node
 from .object import Object
 from .node_profile import NodeProfile
 from .message import Message
-from .std import StandardObject
+from .std import StandardDevice
 
 from typing import Tuple
 
@@ -50,7 +50,7 @@ class RemoteNode(Node):
         for n in range(instance_count):
             offset = (Object.CODE_SIZE * n) + 1
             code_bytes = prop.data[offset:(offset + Object.CODE_SIZE)]
-            obj = StandardObject(Bytes.to_int(code_bytes))
+            obj = StandardDevice(Bytes.to_int(code_bytes))
             self.add_object(obj)
 
         # Is the node a general node?
