@@ -16,50 +16,77 @@ To create your original device, use `uecho::LocalNode` as the following at first
 ```
 from uecho import LocalNode
 
-node = LocalNode();
+node = LocalNode()
 ```
 
 The new node has only a node profile class object, and it has no device object. The node profile object is updated automatically when new devices are added into the node or the any properties in the node are changed.
 
 ### 2. Creating Device Object
 
-To add your device objects into the created node, create a new device object using `uecho::Device`.  The `Device` create a new device object which is added some mandatory properties of ECHONET device object super class requirements [\[1\]][enet-spec].
-
-### 3. Setting 
-
-To implement the device, you have only to handle write requests from other nodes because The `uecho-py` handles other standard read and notification requests automatically. To grant the write requests and get the property data, use `uecho_object_setpropertywriterequesthandler()` as the following:
+To add your device objects into the created node, create a new device object using `uecho::Device` or `uecho::std::StandardDevice`, and add the created device object into the node as the following.
 
 ```
-bool object_propertywriterequesthandler(uEchoObject* obj, uEchoProperty* prop, uEchoEsv esv, size_t pdc, byte *edt)
-{
-  if ((pdc != 1) || !edt) {
-　  ....
-    return false;
-  }
-  ....
-  return true;
-}
+from uecho import LocalNode
+from uecho.std import StandardDevice
+
+node = LocalNode()
+dev = StandardDevice(0x029101) # Mono functional lighting class
+node.add_object(dev)
+```
+
+The `uecho::Device` creates a null device object with no properties, so you must add your own properties. In contrast, uecho::std::StandardDevice creates a standard device object with the specified object code and adds the standard properties of the ECHONET device object specification [\[1\]][enet-spec] into the device object automatically.
+
+### 3. Handling Request Messages 
+
+To implement the device object, you have only to handle request messages from other nodes because The `uecho-py` handles other standard read and notification requests automatically.  The `Object::set_request_handler()` can set the following permission handler to a device object property to handle valid request messages from other nodes. 
+
+```
+class ObjectRequestHandler(metaclass=abc.ABCMeta):
+    @abc.abstractmethod
+    def property_read_requested(self, prop: Property) -> bool:
+    @abc.abstractmethod
+    def property_write_requested(self, prop: Property, data: bytes) -> bool:
+```
+
+The developer handles the request messages from other nodes. The developer should return a true if the request message is valid, otherwise false as the following.
+
+```
+from uecho import Property
+from uecho.std import StandardDevice
+
+class MyDevice(StandardDevice):
+
+    def __init__(self):
+        super().__init__(0x029101)
+        self.set_request_handler(self)
+
+    def property_read_requested(self, prop: Property) -> bool:
+        if prop.code != 0x80:
+            return False
+        return True
+
+    def property_write_requested(self, prop: Property, data: bytes) -> bool:
+        if prop.code != 0x80:
+            return False
+        if len(prop.data) != 1:
+            return False
+        if (data[0] != 0x30) and (data[0] != 0x31):
+            return False
+        return True
+```
+
+ In addition, the developer does not need to update the target property data by the request property data because the `uecho-py` updates the target property by the request property data automatically when the handler returns true. The following example shows to check a write request message and set the valid property data to the target property.
+
+### 4. Starting Node
+
+Finally, start the node to use `Node::start()` as the following:
+
+```
+from uecho import LocalNode
+
+node = LocalNode()
 ....
-{
-  uEchoObject *obj;
-  byte prop_code;
-  ....
-  uecho_object_setpropertywriterequesthandler(obj, prop_code, object_propertywriterequesthandler)  
-}
-```
-
-The `uecho-py` updates the target property by the request property data if the hander grants the request, and returns a response when the request message requires the response. Otherwise, the `uecho-py` returns an error response.
-
-The `uecho_object_setpropertywriterequesthandler()` sets the handler for all write request types, Write (0x60) , Write Response Required (0x61) and Write & read Request (0x6E). To set handlers for each (ECHONET Lite Service) of [ECHONET Lite][enet], use `uecho_object_setpropertyrequeslistener()`, and The `uecho_object_setpropertywriterequesthandler()` is a sugar function of the `uecho_object_setpropertyrequeslistener()`.
-
-### 4. Start Node
-
-Finally, start the node to use `uecho_node_start` as the following:
-
-```
-uEchoNode *node;
-....
-uecho_node_start(node);
+node.start()
 ```
 
 ## Next Steps
