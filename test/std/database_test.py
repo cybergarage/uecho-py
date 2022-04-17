@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from uecho.std import Database, Property
+from uecho import Property
+from uecho.std import Database
 
 
 def test_manufacture_database():

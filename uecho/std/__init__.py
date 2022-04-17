@@ -13,8 +13,6 @@
 # limitations under the License.
 
 from .database import Database
-from .object import Object
-from .manufacture import Manufacture
-from .property import Property
+from .object import StandardObject
 
-__all__ = ['Database', 'ObjectDatabase', 'ManufacturerDatabase', 'Object', 'Property', 'Manufacture']
+__all__ = ['Database', 'StandardObject']

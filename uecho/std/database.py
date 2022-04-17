@@ -14,12 +14,11 @@
 
 from typing import Optional, Union, Tuple
 
-from .manufacture import Manufacture
-from .object import Object
+from ..manufacturer import Manufacture
+from ..object import Object
 from .objects import get_all_std_objects
 from .manufacturers import get_all_std_manufactures
 from ..util import Bytes
-
 
 class Database():
 
