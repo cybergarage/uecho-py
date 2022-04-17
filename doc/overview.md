@@ -9,7 +9,7 @@
 
 The `uecho-py` is a portable and cross platform development framework for creating controller applications and devices of [ECHONET Lite][enet] for Python developers. [ECHONET][enet] is an open standard specification for IoT devices in Japan, it specifies more than 100 IoT devices such as crime prevention sensor, air conditioner and refrigerator.
 
-This Python package is designed for easy development of [ECHONET Lite][enet] devices and controllers on the Raspberry Pi and has been tested on the Raspberry Pi OS too.
+The `uecho-py` is designed for easy development of [ECHONET Lite][enet] devices and controllers on the Raspberry Pi and has been tested on the Raspberry Pi OS too.
 
 ## Installation
 
