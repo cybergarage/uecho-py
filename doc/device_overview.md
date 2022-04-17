@@ -75,7 +75,7 @@ class MyDevice(StandardDevice):
         return True
 ```
 
- In addition, the developer does not need to update the target property data by the request property data because the `uecho-py` updates the target property by the request property data automatically when the handler returns true. The following example shows to check a write request message and set the valid property data to the target property.
+ In addition, the developer does not need to update the target property data by the request property data because the `uecho-py` updates the target property by the request property data automatically when the handler returns true.
 
 ### 4. Starting Node
 
