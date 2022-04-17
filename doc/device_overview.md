@@ -54,7 +54,7 @@ The handler should return true if the request message is allowed, otherwise fals
 from uecho import Property
 from uecho.std import StandardDevice
 
-class MyDevice(StandardDevice):
+class MyDevice(StandardDevice, ObjectRequestHandler):
 
     def __init__(self):
         super().__init__(0x029101)
