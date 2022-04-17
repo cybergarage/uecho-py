@@ -13,11 +13,12 @@
 # limitations under the License.
 
 from typing import Optional, Union, Tuple, Any
+from ..device import Device
 from ..object import Object
 from .database import Database
 
-class StandardDevice(Object):
-    """Standard represents a object of ECHONET Lite, and it has child properties that includes the specification attributes and the dynamic data.
+class StandardDevice(Device):
+    """StandardDevice represents a standard device object of ECHONET Lite.
     """
     __database: Database
 
