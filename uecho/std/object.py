@@ -12,13 +12,32 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ..object import Object as ObjectBase
+from typing import Optional, Union, Tuple, Any
+from ..object import Object
+from .database import Database
 
+class StandardObject(Object):
+    """Standard represents a object of ECHONET Lite, and it has child properties that includes the specification attributes and the dynamic data.
+    """
+    __database: Database
 
-class Object(ObjectBase):
+    def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
+        self.__database = Database()
+        super().__init__(code)
 
-    def __init__(self, name: str = "", grp_code: int = 0, cls_code: int = 0):
-        super().__init__()
-        self.name = name
-        self.group_code = grp_code
-        self.class_code = cls_code
+    def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
+        """Sets the spcecified code as the object code.
+
+        Args:
+            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A code or tuple code.
+
+        Returns:
+            bool: True if the specified code is valid, otherwise False.
+        """
+        if not super().set_code(code):
+            return False
+        std_obj = self.__database.get_object((self.group_code, self.class_code))
+        if isinstance(std_obj, Object):
+            self._set_object_properties(std_obj)
+
+        return True

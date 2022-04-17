@@ -12,10 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from typing import Any
-
+from typing import Optional, Union, Tuple, Any
+from ..object import Object
+from ..manufacturer import Manufacture as ManufactureBase
 from ..property import Property as PropertyBase
+from ..util import Bytes
 
+class Manufacture(ManufactureBase):
+
+    def __init__(self, code: int, name: str):
+        super().__init__()
+        self.name = name
+        self.code = code
+
+class Object(Object):
+
+    def __init__(self, name: str = "", grp_code: int = 0, cls_code: int = 0):
+        super().__init__()
+        self.name = name
+        self.group_code = grp_code
+        self.class_code = cls_code
 
 class Property(PropertyBase):
     typ: str
