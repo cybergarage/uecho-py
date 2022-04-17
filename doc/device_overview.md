@@ -79,7 +79,7 @@ class MyDevice(StandardDevice):
 
 ### 4. Starting Node
 
-Finally, start the node to use `Node::start()` as the following:
+Finally, start the created node which has your device objects to use `Node::start()` as the following:
 
 ```
 from uecho import LocalNode
