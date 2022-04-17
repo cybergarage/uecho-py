@@ -7,18 +7,35 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
+   uecho.frame
    uecho.log
    uecho.protocol
-   uecho.frame
+   uecho.std
    uecho.util
 
 Submodules
 ----------
 
+uecho.const module
+------------------
+
+.. automodule:: uecho.const
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 uecho.controller module
 -----------------------
 
 .. automodule:: uecho.controller
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+uecho.device module
+-------------------
+
+.. automodule:: uecho.device
    :members:
    :undoc-members:
    :show-inheritance:
@@ -39,10 +56,26 @@ uecho.local\_node module
    :undoc-members:
    :show-inheritance:
 
+uecho.manufacturer module
+-------------------------
+
+.. automodule:: uecho.manufacturer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 uecho.message module
 --------------------
 
 .. automodule:: uecho.message
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+uecho.messages module
+---------------------
+
+.. automodule:: uecho.messages
    :members:
    :undoc-members:
    :show-inheritance:
@@ -67,6 +100,22 @@ uecho.object module
 -------------------
 
 .. automodule:: uecho.object
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+uecho.option module
+-------------------
+
+.. automodule:: uecho.option
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+uecho.profile module
+--------------------
+
+.. automodule:: uecho.profile
    :members:
    :undoc-members:
    :show-inheritance:

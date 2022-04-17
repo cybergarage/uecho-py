@@ -44,7 +44,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-uecho.protocol.esv">uecho.protocol.esv module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-uecho.protocol.message">uecho.protocol.message module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-uecho.protocol.observer">uecho.protocol.observer module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-uecho.protocol.property">uecho.protocol.property module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-uecho.protocol.subject">uecho.protocol.subject module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-uecho.protocol">Module contents</a></li>
 </ul>
 </li>
@@ -52,13 +54,19 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.const">uecho.const module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.controller">uecho.controller module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.device">uecho.device module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.esv">uecho.esv module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.local_node">uecho.local_node module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.manufacturer">uecho.manufacturer module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.message">uecho.message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.messages">uecho.messages module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.node">uecho.node module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.node_profile">uecho.node_profile module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.object">uecho.object module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.option">uecho.option module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.profile">uecho.profile module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.property">uecho.property module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho.remote_node">uecho.remote_node module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uecho.html#module-uecho">Module contents</a></li>
@@ -505,6 +513,27 @@
 </dd></dl>
 
 </div>
+<div class="section" id="module-uecho.protocol.observer">
+<span id="uecho-protocol-observer-module"></span><h2>uecho.protocol.observer module<a class="headerlink" href="#module-uecho.protocol.observer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="uecho.protocol.observer.Observer">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.observer.</code><code class="sig-name descname">Observer</code><a class="headerlink" href="#uecho.protocol.observer.Observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Observer is an abstract observer class to listen to request messages to a device.</p>
+<dl class="method">
+<dt id="uecho.protocol.observer.Observer.message_received">
+<em class="property">abstract </em><code class="sig-name descname">message_received</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.observer.Observer.message_received" title="Permalink to this definition">¶</a></dt>
+<dd><p>Listens a request message from other nodes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference internal" href="uecho.html#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – A request message from other nodes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-uecho.protocol.property">
 <span id="uecho-protocol-property-module"></span><h2>uecho.protocol.property module<a class="headerlink" href="#module-uecho.protocol.property" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -520,6 +549,48 @@
 <dl class="attribute">
 <dt id="uecho.protocol.property.Property.data">
 <code class="sig-name descname">data</code><em class="property">: bytes</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.property.Property.data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-uecho.protocol.subject">
+<span id="uecho-protocol-subject-module"></span><h2>uecho.protocol.subject module<a class="headerlink" href="#module-uecho.protocol.subject" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="uecho.protocol.subject.Subject">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.protocol.subject.</code><code class="sig-name descname">Subject</code><a class="headerlink" href="#uecho.protocol.subject.Subject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="uecho.protocol.subject.Subject.add_observer">
+<code class="sig-name descname">add_observer</code><span class="sig-paren">(</span><em class="sig-param">observer</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.protocol.subject.Subject.add_observer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a message observer to the subject.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>Observer</strong> (<em>observer</em>) – A message observer.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Returns True when the specified observer is added, Otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="uecho.protocol.subject.Subject.notify">
+<code class="sig-name descname">notify</code><span class="sig-paren">(</span><em class="sig-param">msg: uecho.protocol.message.Message</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.protocol.subject.Subject.notify" title="Permalink to this definition">¶</a></dt>
+<dd><p>Notifies the specified message to the added observers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> (<a class="reference internal" href="uecho.html#uecho.message.Message" title="uecho.message.Message"><em>Message</em></a>) – A notify message</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.protocol.subject.Subject.observers">
+<code class="sig-name descname">observers</code><em class="property">: List[Observer]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.protocol.subject.Subject.observers" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
