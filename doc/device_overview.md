@@ -38,7 +38,7 @@ The `uecho::Device` creates a null device object with no properties, so you must
 
 ### 3. Handling Request Messages 
 
-To implement the device object, you have only to handle request messages from other nodes because the `uecho-py` handles other standard read and notification requests automatically.  The `Object::set_request_handler()` can set the following permission handler to a device object to handle valid request messages from other nodes. 
+To implement the device object, you have only to handle request messages from other nodes because the `uecho-py` handles other standard read and notification requests automatically.  The `Object::set_request_handler()` can set the following permission handler to a device object to handle request messages from other nodes. 
 
 ```
 class ObjectRequestHandler(metaclass=abc.ABCMeta):
