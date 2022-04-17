@@ -34,7 +34,7 @@ dev = StandardDevice(0x029101) # Mono functional lighting class
 node.add_object(dev)
 ```
 
-The `uecho::Device` creates a null device object with no properties, so you must add your own properties. In contrast, uecho::std::StandardDevice creates a standard device object with the specified object code and adds the standard properties of the ECHONET device object specification [\[1\]][enet-spec] into the device object automatically.
+The `uecho::Device` creates a null device object with no properties, so you must add your own properties. In contrast, The `uecho::std::StandardDevice` creates a standard device object with the specified object code and adds the standard properties of the ECHONET device object specification [\[1\]][enet-spec] into the device object automatically.
 
 ### 3. Handling Request Messages 
 
