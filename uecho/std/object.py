@@ -17,6 +17,7 @@ from ..device import Device
 from ..object import Object
 from .database import Database
 
+
 class StandardDevice(Device):
     """StandardDevice represents a standard device object of ECHONET Lite.
     """

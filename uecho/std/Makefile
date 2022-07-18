@@ -60,7 +60,7 @@ ${SCSL_DEVICE_LIST_CSV}:
 # Machine-readable database from Echonet consortium
 ############################################################
 
-MRA_JSON_DIR=MRA_V1.0.0
+MRA_JSON_DIR=MRA_V1.1.1
 
 objects_mra.py :
 	@./objects_mra.pl ${MRA_JSON_DIR} > $@

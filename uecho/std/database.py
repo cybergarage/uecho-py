@@ -20,6 +20,7 @@ from .objects import get_all_std_objects
 from .manufacturers import get_all_std_manufactures
 from ..util import Bytes
 
+
 class Database():
 
     __manufacturers: dict

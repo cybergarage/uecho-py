@@ -18,12 +18,14 @@ from ..manufacturer import Manufacture as ManufactureBase
 from ..property import Property as PropertyBase
 from ..util import Bytes
 
+
 class Manufacture(ManufactureBase):
 
     def __init__(self, code: int, name: str):
         super().__init__()
         self.name = name
         self.code = code
+
 
 class Object(Object):
 
@@ -32,6 +34,7 @@ class Object(Object):
         self.name = name
         self.group_code = grp_code
         self.class_code = cls_code
+
 
 class Property(PropertyBase):
     typ: str
