@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.0.2 - 2022/08/26
+
+- Fix to set correct description property maps
+
 ## 1.0.1 - 2022/07/18
 
 - Update manufacture database based on latest MCL of ECHONET Consortium
