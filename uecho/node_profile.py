@@ -63,9 +63,6 @@ class NodeProfile(Profile):
 
     def __init__(self):
         super().__init__(NodeProfile.CODE)
-        std_obj = Database().get_object(NodeProfile.CODE)
-        if isinstance(std_obj, Object):
-            self._set_object_properties(std_obj)
         self.set_request_handler(self)
         self.__update_initial_properties()
         self._update_map_properties([self])
