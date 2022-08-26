@@ -14,10 +14,10 @@
 
 from typing import Any, Union, Tuple
 
-from .object import Object
+from .super_object import SuperObject
 
 
-class Device(Object):
+class Device(SuperObject):
 
     SUPER_CLASS_CODE = 0x0000
 

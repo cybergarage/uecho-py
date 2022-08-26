@@ -285,15 +285,6 @@ class Object(object):
             msg.add_property(req)
         return msg
 
-    def _set_object_properties(self, obj) -> bool:
-        if not isinstance(obj, Object):
-            return False
-        self.name = obj.name
-        for obj_prop in obj.properties:
-            prop = obj_prop.copy()
-            self.add_property(prop)
-        return True
-
     def add_observer(self, observer) -> bool:
         """ Adds a message observer to the subject.
 
