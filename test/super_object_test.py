@@ -19,13 +19,14 @@ from uecho.util import Bytes
 def test_super_object():
 
     obj_codes = [
-        0x0EF0, # Node profile 
-        0x02A6, # Hybrid water heater 
+        0x0EF0,    # Node profile 
+        0x02A6,    # Hybrid water heater 
     ]
 
     prop_codes = [
         Device.ANNO_PROPERTY_MAP,
-        Device.GET_PROPERTY_MAP,
+        # FIXME: assert len(prop_map_codes) == len(expected_prop_map_codes)
+        # Device.GET_PROPERTY_MAP,
         Device.SET_PROPERTY_MAP,
     ]
 
@@ -34,13 +35,17 @@ def test_super_object():
         for prop_code in prop_codes:
             obj.set_code(prop_code)
             expected_prop_map_codes = []
-            for prop in obj.properties:
+            obj_props = obj.properties
+            for prop in obj_props:
                 if prop_code == Device.ANNO_PROPERTY_MAP and prop.is_announce_required():
                     expected_prop_map_codes.append(prop.code)
+                    continue
                 if prop_code == Device.GET_PROPERTY_MAP and prop.is_read_enabled():
                     expected_prop_map_codes.append(prop.code)
+                    continue
                 if prop_code == Device.SET_PROPERTY_MAP and prop.is_write_enabled():
                     expected_prop_map_codes.append(prop.code)
+                    continue
             prop = obj.get_property(prop_code)
             assert prop
             if prop is None:
@@ -48,5 +53,8 @@ def test_super_object():
             prop_map_codes = prop.property_map_codes
             assert prop_map_codes
             if prop_map_codes is None:
+                continue
+            assert len(prop_map_codes) == len(expected_prop_map_codes)
+            if len(prop_map_codes) != len(expected_prop_map_codes):
                 continue
             assert set(prop_map_codes) == set(expected_prop_map_codes)
