@@ -16,6 +16,7 @@ import copy
 from typing import List, Optional, Any
 from .protocol.property import Property as ProtocolProperty
 from .protocol.message import Message
+from uecho.util import Bytes
 
 
 class Property(ProtocolProperty):
@@ -110,6 +111,17 @@ class Property(ProtocolProperty):
             Optional[Message]: The response message if successful receiving the response message, otherwise None.
         """
         return self.object.post_message(esv, [(self.code, data)])
+
+    @property
+    def bytes(self):
+        return self.data
+
+    @property
+    def number(self):
+        return Bytes.to_int(self.data)
+
+    def copy(self):
+        return copy.deepcopy(self)
 
     def copy(self):
         return copy.deepcopy(self)
