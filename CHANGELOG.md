@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.2 - 2022/08/26
+## 1.0.2 - 2022/xx/xx0
 
 - Fix to set correct description property maps
 
@@ -12,7 +12,6 @@
 ## 1.0.0 - 2022/04/17
 
 - Add Device class to create original devices of ECHONET Lite
-- Add StandardDevice class to create the standard devices easily
 
 ## 0.8.5 - 2021/12/18
 
