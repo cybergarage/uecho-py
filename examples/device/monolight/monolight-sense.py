@@ -20,7 +20,7 @@ import uecho.log as log
 from sense_hat import SenseHat
 
 
-class MonoLightDevice(Device, ObjectRequestHandler):
+class MonoLight(Device, ObjectRequestHandler):
 
     CODE = 0x029101
     OPERATION_STATUS = 0x80
@@ -28,7 +28,7 @@ class MonoLightDevice(Device, ObjectRequestHandler):
     OPERATING_STATUS_OFF = 0x31
 
     def __init__(self):
-        super().__init__(MonoLightDevice.CODE)
+        super().__init__(MonoLight.CODE)
         self.set_request_handler(self)
         self.sense = SenseHat()
 
@@ -36,12 +36,12 @@ class MonoLightDevice(Device, ObjectRequestHandler):
         super().__del__()
 
     def on(self):
-        self.set_property_integer(MonoLightDevice.OPERATION_STATUS, MonoLightDevice.OPERATING_STATUS_ON, 1)
+        self.set_property_integer(MonoLight.OPERATION_STATUS, MonoLight.OPERATING_STATUS_ON, 1)
         self.led_on()
         print("ON")
 
     def off(self):
-        self.set_property_integer(MonoLightDevice.OPERATION_STATUS, MonoLightDevice.OPERATING_STATUS_OFF, 1)
+        self.set_property_integer(MonoLight.OPERATION_STATUS, MonoLight.OPERATING_STATUS_OFF, 1)
         self.led_off()
         print("OFF")
 
@@ -55,12 +55,12 @@ class MonoLightDevice(Device, ObjectRequestHandler):
         return super().property_read_requested(prop)
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
-        if prop.code == MonoLightDevice.OPERATION_STATUS:
+        if prop.code == MonoLight.OPERATION_STATUS:
             if len(prop.data) != 1:
                 return False
-            if (data[0] != MonoLightDevice.OPERATING_STATUS_ON) and (data[0] != MonoLightDevice.OPERATING_STATUS_OFF):
+            if (data[0] != MonoLight.OPERATING_STATUS_ON) and (data[0] != MonoLight.OPERATING_STATUS_OFF):
                 return False
-            if data[0] == MonoLightDevice.OPERATING_STATUS_ON:
+            if data[0] == MonoLight.OPERATING_STATUS_ON:
                 self.on()
             else:
                 self.off()
@@ -70,11 +70,11 @@ class MonoLightDevice(Device, ObjectRequestHandler):
 
 class MonoLightNode(LocalNode):
 
-    dev: MonoLightDevice
+    dev: MonoLight
 
     def __init__(self):
         super().__init__()
-        self.dev = MonoLightDevice()
+        self.dev = MonoLight()
         self.add_object(self.dev)
 
     def start(self) -> bool:
