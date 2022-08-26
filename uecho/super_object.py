@@ -96,11 +96,16 @@ class SuperObject(Object):
         return True
 
     def property_read_requested(self, prop: Property) -> bool:
-        return True
+        obj_prop = self.get_property(prop.code)
+        if obj_prop is None:
+            return False
+        return obj_prop.is_read_enabled()
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
-        return False
-
+        obj_prop = self.get_property(prop.code)
+        if obj_prop is None:
+            return False
+        return obj_prop.is_write_enabled()
 
 class SuperObjectReadOnly(SuperObject):
     CODE = 0x0EF002
