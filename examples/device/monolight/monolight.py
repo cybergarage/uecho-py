@@ -30,7 +30,6 @@ class MonoLightDevice(Device, ObjectRequestHandler):
     def __init__(self):
         super().__init__(MonoLightDevice.CODE)
         self.set_request_handler(self)
-        self.on()
 
     def __del__(self):
         super().__del__()
