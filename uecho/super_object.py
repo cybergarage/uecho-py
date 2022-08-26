@@ -26,6 +26,7 @@ class SuperObject(Object):
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         super().__init__(code)
+        self.set_request_handler(self)
 
     def add_property(self, prop: Property) -> bool:
         if not super().add_property(prop):
