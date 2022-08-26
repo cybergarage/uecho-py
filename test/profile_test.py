@@ -17,23 +17,25 @@ from uecho.util import Bytes
 
 
 def test_node_profile():
-    prof = NodeProfile()
 
-    prop = prof.get_property(NodeProfile.OPERATING_STATUS)
-    assert prop
-    assert len(prop.data) == NodeProfile.OPERATING_STATUS_SIZE
-    assert Bytes.to_int(prop.data) == NodeProfile.BOOTING
+    class Test:
 
-    prop = prof.get_property(NodeProfile.IDENTIFICATION_NUMBER)
-    assert prop
-    assert len(prop.data) == NodeProfile.IDENTIFICATION_NUMBER_SIZE
+        def __init__(self, code: int, len: int, func):
+            self.code = code
+            self.len = len
+            self.func = func
 
-    prop = prof.get_property(NodeProfile.NUMBER_OF_SELF_NODE_INSTANCES)
-    assert prop
-    assert len(prop.data) == NodeProfile.NUMBER_OF_SELF_NODE_INSTANCES_SIZE
-    assert Bytes.to_int(prop.data) == 0
+    tests = [
+        Test(NodeProfile.OPERATING_STATUS, NodeProfile.OPERATING_STATUS_SIZE, (lambda prop: prop.number == NodeProfile.BOOTING)),
+        Test(NodeProfile.IDENTIFICATION_NUMBER, NodeProfile.IDENTIFICATION_NUMBER_SIZE, None),
+        Test(NodeProfile.NUMBER_OF_SELF_NODE_INSTANCES, NodeProfile.NUMBER_OF_SELF_NODE_INSTANCES_SIZE, (lambda prop: prop.number == 0)),
+        Test(NodeProfile.NUMBER_OF_SELF_NODE_CLASSES, NodeProfile.NUMBER_OF_SELF_NODE_CLASSES_SIZE, (lambda prop: prop.number == 1)),
+    ]
 
-    prop = prof.get_property(NodeProfile.NUMBER_OF_SELF_NODE_CLASSES)
-    assert prop
-    assert len(prop.data) == NodeProfile.NUMBER_OF_SELF_NODE_CLASSES_SIZE
-    assert Bytes.to_int(prop.data) == 1
+    for test in tests:
+        prof = NodeProfile()
+        prop = prof.get_property(test.code)
+        assert len(prop.data) == test.len
+        assert prop
+        if test.func is not None:
+            assert test.func(prop)
