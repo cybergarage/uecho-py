@@ -26,8 +26,9 @@ from .device import Device
 from .profile import Profile
 from .option import IGNORE_SELF_MESSAGE
 from .messages import SearchMessage, ReadRequest, WriteRequest, WriteReadRequest, WriteResponseRequiredRequest
+from .super_object import SuperObject
 
 __all__ = [
     'Node', 'LocalNode', 'RemoteNode', 'Controller', 'Object', 'ObjectRequestHandler', 'NodeProfile', 'Message', 'ESV', 'Property', 'Manufacture', 'Device', 'Profile', 'IGNORE_SELF_MESSAGE', 'SearchMessage', 'ReadRequest', 'WriteRequest',
-    'WriteReadRequest', 'WriteResponseRequiredRequest'
+    'WriteReadRequest', 'WriteResponseRequiredRequest', 'SuperObject'
 ]

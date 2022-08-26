@@ -18,6 +18,7 @@ from typing import List
 from .const import ECHONET_LITE_VERSION
 from .profile import Profile
 from .object import Object
+from .super_object import SuperObject
 from .std import Database
 from .util.bytes import Bytes
 from .property import Property
@@ -60,10 +61,6 @@ class NodeProfile(Profile):
     NOT_BOOTING = 0x31
     LOWER_COMMUNICATION_LAYER_PROTOCOL_TYPE = 0xFE
 
-    PROPERTYMAP_FORMAT1_MAX_SIZE = 15
-    PROPERTYMAP_FORMAT2_MAP_SIZE = 16
-    PROPERTYMAP_FORMAT_MAX_SIZE  = PROPERTYMAP_FORMAT2_MAP_SIZE + 1
-
     def __init__(self):
         super().__init__(NodeProfile.CODE)
         std_obj = Database().get_object(NodeProfile.CODE)
@@ -71,7 +68,7 @@ class NodeProfile(Profile):
             self._set_object_properties(std_obj)
         self.set_request_handler(self)
         self.__update_initial_properties()
-        self.update_class_instance_properties([self])
+        self._update_map_properties([self])
 
     def __update_initial_properties(self) -> bool:
         self.set_property_integer(NodeProfile.OPERATING_STATUS, NodeProfile.BOOTING, NodeProfile.OPERATING_STATUS_SIZE)
@@ -146,68 +143,18 @@ class NodeProfile(Profile):
 
         return True
 
-    def __set_property_map_property(self, code: int, prop_map: List[int]) -> bool:
-        map_bytes = bytearray(bytes([len(prop_map)]))
-        for prop_code in prop_map:
-            map_bytes.extend(bytes([prop_code]))
-        
-        # Description Format 1
-
-        if len(prop_map) <= NodeProfile.PROPERTYMAP_FORMAT1_MAX_SIZE:
-            map_bytes = bytearray(bytes([len(prop_map)]))
-            for prop_code in prop_map:
-                map_bytes.extend(bytes([prop_code]))
-            return self.set_property_data(code, map_bytes)
-
-        # Description Format 2
-
-        prop_map_codes = [0] * NodeProfile.PROPERTYMAP_FORMAT2_MAP_SIZE
-        for prop_code in prop_map:
-            # 0 <= propCodeIdx <= 15
-            prop_code_idx = ((prop_code - Property.CODE_MIN) & 0x0F)
-            # 0 <= propCodeIdx <= 7
-            prop_code_bit = ((((prop_code - Property.CODE_MIN) & 0xF0) >> 4) & 0x0F)
-            prop_map_codes[prop_code_idx] |= ((0x01 << prop_code_bit) & 0x0F)
-        map_bytes = bytearray(bytes([NodeProfile.PROPERTYMAP_FORMAT2_MAP_SIZE]))
-        for prop_map_code in prop_map_codes:
-            map_bytes.extend(bytes([prop_map_code]))
-        return self.set_property_data(code, map_bytes)
-
-    def __update_property_map_properties(self, objs: List[Object]) -> bool:
-        anno_list = []
-        get_list = []
-        set_list = []
-        for obj in objs:
-            for prop in obj.properties:
-                if prop.is_announce_required():
-                    anno_list.append(prop.code)
-                if prop.is_read_enabled():
-                    get_list.append(prop.code)
-                if prop.is_write_enabled():
-                    set_list.append(prop.code)
-        anno_map = list(set(anno_list))
-        get_map = list(set(get_list))
-        set_map = list(set(set_list))
-        if not self.__set_property_map_property(NodeProfile.ANNO_PROPERTY_MAP, anno_map):
-            return False
-        if not self.__set_property_map_property(NodeProfile.GET_PROPERTY_MAP, get_map):
-            return False
-        if not self.__set_property_map_property(NodeProfile.SET_PROPERTY_MAP, set_map):
-            return False
-        return True
-
-    def update_class_instance_properties(self, objs: List[Object]) -> bool:
+    def _update_map_properties(self, objs: List[Object]) -> bool:
+        # if not super()._update_property_map_properties([self]):
+        #     return False
         if not self.__update_instance_properties(objs):
             return False
         if not self.__update_class_properties(objs):
-            return False
-        if not self.__update_property_map_properties([self]):
             return False
         return True
 
     def property_read_requested(self, prop: Property) -> bool:
         if isinstance(self.node, Node):
-            self.update_class_instance_properties(self.node.objects)
+            self._update_map_properties(self.node.objects)
         return True
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:

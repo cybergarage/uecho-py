@@ -14,10 +14,9 @@
 
 from typing import Any, Union, Tuple
 
-from .object import Object
+from .super_object import SuperObject
 
-
-class Profile(Object):
+class Profile(SuperObject):
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         super().__init__(code)
