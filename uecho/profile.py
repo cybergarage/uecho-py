@@ -18,6 +18,7 @@ from .super_object import SuperObject
 from .object import Object
 from .std import Database
 
+
 class Profile(SuperObject):
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):

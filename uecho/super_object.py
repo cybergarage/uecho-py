@@ -47,6 +47,10 @@ class SuperObject(Object):
         return True
 
     def __set_property_map_property(self, code: int, prop_map: List[int]) -> bool:
+        # Map property is not added yet.
+        if not self.has_property(code):
+            return False
+
         map_bytes = bytearray(bytes([len(prop_map)]))
         for prop_code in prop_map:
             map_bytes.extend(bytes([prop_code]))
