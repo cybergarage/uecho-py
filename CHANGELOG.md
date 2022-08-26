@@ -1,8 +1,8 @@
 # Change Log
 
-## 1.0.2 - 2022/xx/xx0
+## 1.0.2 - 2022/xx/xx
 
-- Fix to set correct description property maps
+- Fix Device to set correct description property maps
 
 ## 1.0.1 - 2022/07/18
 
