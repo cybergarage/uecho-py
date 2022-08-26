@@ -28,6 +28,12 @@ class SuperObject(Object):
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         super().__init__(code)
 
+    def add_property(self, prop: Property) -> bool:
+        if not super().add_property(prop):
+            return False
+        self._update_property_map_properties()
+        return True
+
     def __set_property_map_property(self, code: int, prop_map: List[int]) -> bool:
         map_bytes = bytearray(bytes([len(prop_map)]))
         for prop_code in prop_map:
@@ -55,18 +61,17 @@ class SuperObject(Object):
             map_bytes.extend(bytes([prop_map_code]))
         return self.set_property_data(code, map_bytes)
 
-    def __update_property_map_properties(self, objs: List[Object]) -> bool:
+    def _update_property_map_properties(self) -> bool:
         anno_list = []
         get_list = []
         set_list = []
-        for obj in objs:
-            for prop in obj.properties:
-                if prop.is_announce_required():
-                    anno_list.append(prop.code)
-                if prop.is_read_enabled():
-                    get_list.append(prop.code)
-                if prop.is_write_enabled():
-                    set_list.append(prop.code)
+        for prop in self.properties:
+            if prop.is_announce_required():
+                anno_list.append(prop.code)
+            if prop.is_read_enabled():
+                get_list.append(prop.code)
+            if prop.is_write_enabled():
+                set_list.append(prop.code)
         anno_map = list(set(anno_list))
         get_map = list(set(get_list))
         set_map = list(set(set_list))
@@ -75,11 +80,6 @@ class SuperObject(Object):
         if not self.__set_property_map_property(SuperObject.GET_PROPERTY_MAP, get_map):
             return False
         if not self.__set_property_map_property(SuperObject.SET_PROPERTY_MAP, set_map):
-            return False
-        return True
-
-    def _update_map_properties(self) -> bool:
-        if not self.__update_property_map_properties([self]):
             return False
         return True
 

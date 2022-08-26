@@ -144,11 +144,11 @@ class NodeProfile(Profile):
         return True
 
     def _update_map_properties(self, objs: List[Object]) -> bool:
-        # if not super()._update_property_map_properties([self]):
-        #     return False
         if not self.__update_instance_properties(objs):
             return False
         if not self.__update_class_properties(objs):
+            return False
+        if not super()._update_property_map_properties():
             return False
         return True
 
