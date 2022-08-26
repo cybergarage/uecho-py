@@ -306,12 +306,7 @@ easily without building the binary protocol messages directly.</p>
 <dl class="class">
 <dt id="uecho.device.Device">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.device.</code><code class="sig-name descname">Device</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.device.Device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#uecho.object.Object" title="uecho.object.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.object.Object</span></code></a></p>
-<dl class="attribute">
-<dt id="uecho.device.Device.SUPER_CLASS_CODE">
-<code class="sig-name descname">SUPER_CLASS_CODE</code><em class="property"> = 0</em><a class="headerlink" href="#uecho.device.Device.SUPER_CLASS_CODE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.super_object.SuperObject</span></code></p>
 <dl class="attribute">
 <dt id="uecho.device.Device.code">
 <code class="sig-name descname">code</code><em class="property"> = None</em><a class="headerlink" href="#uecho.device.Device.code" title="Permalink to this definition">¶</a></dt>
@@ -326,6 +321,23 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.device.Device.node">
 <code class="sig-name descname">node</code><em class="property"> = None</em><a class="headerlink" href="#uecho.device.Device.node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.device.Device.set_code">
+<code class="sig-name descname">set_code</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.device.Device.set_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the spcecified code as the object code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>Any</em><em>]</em>) – A code or tuple code.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the specified code is valid, otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -993,21 +1005,6 @@ easily without building the binary protocol messages directly.</p>
 <code class="sig-name descname">node</code><em class="property"> = None</em><a class="headerlink" href="#uecho.node_profile.NodeProfile.node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="uecho.node_profile.NodeProfile.property_read_requested">
-<code class="sig-name descname">property_read_requested</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.node_profile.NodeProfile.property_read_requested" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="uecho.node_profile.NodeProfile.property_write_requested">
-<code class="sig-name descname">property_write_requested</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em>, <em class="sig-param">data: bytes</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.node_profile.NodeProfile.property_write_requested" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="uecho.node_profile.NodeProfile.update_class_instance_properties">
-<code class="sig-name descname">update_class_instance_properties</code><span class="sig-paren">(</span><em class="sig-param">objs: List[uecho.object.Object]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.node_profile.NodeProfile.update_class_instance_properties" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="class">
@@ -1032,6 +1029,11 @@ easily without building the binary protocol messages directly.</p>
 <dl class="attribute">
 <dt id="uecho.node_profile.NodeProfileReadOnly.node">
 <code class="sig-name descname">node</code><em class="property"> = None</em><a class="headerlink" href="#uecho.node_profile.NodeProfileReadOnly.node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.node_profile.NodeProfileReadOnly.property_write_requested">
+<code class="sig-name descname">property_write_requested</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em>, <em class="sig-param">data: bytes</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.node_profile.NodeProfileReadOnly.property_write_requested" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1418,7 +1420,7 @@ easily without building the binary protocol messages directly.</p>
 <dl class="class">
 <dt id="uecho.profile.Profile">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.profile.</code><code class="sig-name descname">Profile</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.profile.Profile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#uecho.object.Object" title="uecho.object.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.object.Object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.super_object.SuperObject</span></code></p>
 <dl class="attribute">
 <dt id="uecho.profile.Profile.code">
 <code class="sig-name descname">code</code><em class="property"> = None</em><a class="headerlink" href="#uecho.profile.Profile.code" title="Permalink to this definition">¶</a></dt>
@@ -1433,6 +1435,23 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.profile.Profile.node">
 <code class="sig-name descname">node</code><em class="property"> = None</em><a class="headerlink" href="#uecho.profile.Profile.node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.profile.Profile.set_code">
+<code class="sig-name descname">set_code</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.profile.Profile.set_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the spcecified code as the object code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>Any</em><em>]</em>) – A code or tuple code.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the specified code is valid, otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -1475,6 +1494,21 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="uecho.property.Property.PROPERTYMAP_FORMAT1_MAX_SIZE">
+<code class="sig-name descname">PROPERTYMAP_FORMAT1_MAX_SIZE</code><em class="property"> = 15</em><a class="headerlink" href="#uecho.property.Property.PROPERTYMAP_FORMAT1_MAX_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.PROPERTYMAP_FORMAT2_MAP_SIZE">
+<code class="sig-name descname">PROPERTYMAP_FORMAT2_MAP_SIZE</code><em class="property"> = 16</em><a class="headerlink" href="#uecho.property.Property.PROPERTYMAP_FORMAT2_MAP_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.property.Property.PROPERTYMAP_FORMAT_MAX_SIZE">
+<code class="sig-name descname">PROPERTYMAP_FORMAT_MAX_SIZE</code><em class="property"> = 17</em><a class="headerlink" href="#uecho.property.Property.PROPERTYMAP_FORMAT_MAX_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="uecho.property.Property.REQUIRED">
 <code class="sig-name descname">REQUIRED</code><em class="property"> = 1</em><a class="headerlink" href="#uecho.property.Property.REQUIRED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -1492,6 +1526,11 @@ easily without building the binary protocol messages directly.</p>
 <dl class="attribute">
 <dt id="uecho.property.Property.attrs">
 <code class="sig-name descname">attrs</code><em class="property">: List[int]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.property.Property.attrs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.property.Property.bytes">
+<em class="property">property </em><code class="sig-name descname">bytes</code><a class="headerlink" href="#uecho.property.Property.bytes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -1544,6 +1583,11 @@ easily without building the binary protocol messages directly.</p>
 <code class="sig-name descname">name</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#uecho.property.Property.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="uecho.property.Property.number">
+<em class="property">property </em><code class="sig-name descname">number</code><a class="headerlink" href="#uecho.property.Property.number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="uecho.property.Property.object">
 <code class="sig-name descname">object</code><em class="property">: Optional[Any]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.property.Property.object" title="Permalink to this definition">¶</a></dt>
@@ -1568,6 +1612,11 @@ easily without building the binary protocol messages directly.</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="method">
+<dt id="uecho.property.Property.property_map_codes">
+<em class="property">property </em><code class="sig-name descname">property_map_codes</code><a class="headerlink" href="#uecho.property.Property.property_map_codes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="uecho.property.Property.send_message">
@@ -1600,6 +1649,16 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 </dd></dl>
+
+<dl class="function">
+<dt id="uecho.property.is_propertymap_description_format1">
+<code class="sig-prename descclassname">uecho.property.</code><code class="sig-name descname">is_propertymap_description_format1</code><span class="sig-paren">(</span><em class="sig-param">n: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.property.is_propertymap_description_format1" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="uecho.property.is_propertymap_description_format2">
+<code class="sig-prename descclassname">uecho.property.</code><code class="sig-name descname">is_propertymap_description_format2</code><span class="sig-paren">(</span><em class="sig-param">n: int</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.property.is_propertymap_description_format2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 <div class="section" id="module-uecho.remote_node">
@@ -2440,21 +2499,6 @@ easily without building the binary protocol messages directly.</p>
 <code class="sig-name descname">node</code><em class="property"> = None</em><a class="headerlink" href="#uecho.NodeProfile.node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="method">
-<dt id="uecho.NodeProfile.property_read_requested">
-<code class="sig-name descname">property_read_requested</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.NodeProfile.property_read_requested" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="uecho.NodeProfile.property_write_requested">
-<code class="sig-name descname">property_write_requested</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em>, <em class="sig-param">data: bytes</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.NodeProfile.property_write_requested" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="uecho.NodeProfile.update_class_instance_properties">
-<code class="sig-name descname">update_class_instance_properties</code><span class="sig-paren">(</span><em class="sig-param">objs: List[uecho.object.Object]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.NodeProfile.update_class_instance_properties" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="class">
@@ -2602,6 +2646,21 @@ easily without building the binary protocol messages directly.</p>
 <dd></dd></dl>
 
 <dl class="attribute">
+<dt id="uecho.Property.PROPERTYMAP_FORMAT1_MAX_SIZE">
+<code class="sig-name descname">PROPERTYMAP_FORMAT1_MAX_SIZE</code><em class="property"> = 15</em><a class="headerlink" href="#uecho.Property.PROPERTYMAP_FORMAT1_MAX_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.Property.PROPERTYMAP_FORMAT2_MAP_SIZE">
+<code class="sig-name descname">PROPERTYMAP_FORMAT2_MAP_SIZE</code><em class="property"> = 16</em><a class="headerlink" href="#uecho.Property.PROPERTYMAP_FORMAT2_MAP_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.Property.PROPERTYMAP_FORMAT_MAX_SIZE">
+<code class="sig-name descname">PROPERTYMAP_FORMAT_MAX_SIZE</code><em class="property"> = 17</em><a class="headerlink" href="#uecho.Property.PROPERTYMAP_FORMAT_MAX_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
 <dt id="uecho.Property.REQUIRED">
 <code class="sig-name descname">REQUIRED</code><em class="property"> = 1</em><a class="headerlink" href="#uecho.Property.REQUIRED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -2619,6 +2678,11 @@ easily without building the binary protocol messages directly.</p>
 <dl class="attribute">
 <dt id="uecho.Property.attrs">
 <code class="sig-name descname">attrs</code><em class="property">: List[int]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.Property.attrs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.Property.bytes">
+<em class="property">property </em><code class="sig-name descname">bytes</code><a class="headerlink" href="#uecho.Property.bytes" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
@@ -2671,6 +2735,11 @@ easily without building the binary protocol messages directly.</p>
 <code class="sig-name descname">name</code><em class="property">: str</em><em class="property"> = None</em><a class="headerlink" href="#uecho.Property.name" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="uecho.Property.number">
+<em class="property">property </em><code class="sig-name descname">number</code><a class="headerlink" href="#uecho.Property.number" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 <dl class="attribute">
 <dt id="uecho.Property.object">
 <code class="sig-name descname">object</code><em class="property">: Optional[Any]</em><em class="property"> = None</em><a class="headerlink" href="#uecho.Property.object" title="Permalink to this definition">¶</a></dt>
@@ -2695,6 +2764,11 @@ easily without building the binary protocol messages directly.</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="method">
+<dt id="uecho.Property.property_map_codes">
+<em class="property">property </em><code class="sig-name descname">property_map_codes</code><a class="headerlink" href="#uecho.Property.property_map_codes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="method">
 <dt id="uecho.Property.send_message">
@@ -2747,12 +2821,7 @@ easily without building the binary protocol messages directly.</p>
 <dl class="class">
 <dt id="uecho.Device">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">Device</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Device" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#uecho.object.Object" title="uecho.object.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.object.Object</span></code></a></p>
-<dl class="attribute">
-<dt id="uecho.Device.SUPER_CLASS_CODE">
-<code class="sig-name descname">SUPER_CLASS_CODE</code><em class="property"> = 0</em><a class="headerlink" href="#uecho.Device.SUPER_CLASS_CODE" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.super_object.SuperObject</span></code></p>
 <dl class="attribute">
 <dt id="uecho.Device.code">
 <code class="sig-name descname">code</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Device.code" title="Permalink to this definition">¶</a></dt>
@@ -2768,12 +2837,29 @@ easily without building the binary protocol messages directly.</p>
 <code class="sig-name descname">node</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Device.node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="method">
+<dt id="uecho.Device.set_code">
+<code class="sig-name descname">set_code</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Device.set_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the spcecified code as the object code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>Any</em><em>]</em>) – A code or tuple code.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the specified code is valid, otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="class">
 <dt id="uecho.Profile">
 <em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">Profile</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.Profile" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#uecho.object.Object" title="uecho.object.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.object.Object</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.super_object.SuperObject</span></code></p>
 <dl class="attribute">
 <dt id="uecho.Profile.code">
 <code class="sig-name descname">code</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Profile.code" title="Permalink to this definition">¶</a></dt>
@@ -2788,6 +2874,23 @@ easily without building the binary protocol messages directly.</p>
 <dt id="uecho.Profile.node">
 <code class="sig-name descname">node</code><em class="property"> = None</em><a class="headerlink" href="#uecho.Profile.node" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.Profile.set_code">
+<code class="sig-name descname">set_code</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.Profile.set_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the spcecified code as the object code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>code</strong> (<em>Union</em><em>[</em><em>int</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>Tuple</em><em>[</em><em>int</em><em>, </em><em>int</em><em>, </em><em>int</em><em>]</em><em>, </em><em>Any</em><em>]</em>) – A code or tuple code.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the specified code is valid, otherwise False.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -3017,6 +3120,47 @@ easily without building the binary protocol messages directly.</p>
 <dl class="attribute">
 <dt id="uecho.WriteResponseRequiredRequest.to_addr">
 <code class="sig-name descname">to_addr</code><em class="property"> = None</em><a class="headerlink" href="#uecho.WriteResponseRequiredRequest.to_addr" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="uecho.SuperObject">
+<em class="property">class </em><code class="sig-prename descclassname">uecho.</code><code class="sig-name descname">SuperObject</code><span class="sig-paren">(</span><em class="sig-param">code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None</em><span class="sig-paren">)</span><a class="headerlink" href="#uecho.SuperObject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#uecho.object.Object" title="uecho.object.Object"><code class="xref py py-class docutils literal notranslate"><span class="pre">uecho.object.Object</span></code></a></p>
+<dl class="attribute">
+<dt id="uecho.SuperObject.CODE">
+<code class="sig-name descname">CODE</code><em class="property"> = 0</em><a class="headerlink" href="#uecho.SuperObject.CODE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.SuperObject.add_property">
+<code class="sig-name descname">add_property</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.SuperObject.add_property" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.SuperObject.code">
+<code class="sig-name descname">code</code><em class="property"> = None</em><a class="headerlink" href="#uecho.SuperObject.code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.SuperObject.name">
+<code class="sig-name descname">name</code><em class="property"> = None</em><a class="headerlink" href="#uecho.SuperObject.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="uecho.SuperObject.node">
+<code class="sig-name descname">node</code><em class="property"> = None</em><a class="headerlink" href="#uecho.SuperObject.node" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.SuperObject.property_read_requested">
+<code class="sig-name descname">property_read_requested</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.SuperObject.property_read_requested" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="uecho.SuperObject.property_write_requested">
+<code class="sig-name descname">property_write_requested</code><span class="sig-paren">(</span><em class="sig-param">prop: uecho.property.Property</em>, <em class="sig-param">data: bytes</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#uecho.SuperObject.property_write_requested" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
