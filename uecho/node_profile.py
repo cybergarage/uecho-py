@@ -149,18 +149,12 @@ class NodeProfile(Profile):
             return False
         return True
 
-    def property_read_requested(self, prop: Property) -> bool:
-        if isinstance(self.node, Node):
-            self._update_map_properties(self.node.objects)
-        return True
-
-    def property_write_requested(self, prop: Property, data: bytes) -> bool:
-        return False
-
-
 class NodeProfileReadOnly(NodeProfile):
     CODE = 0x0EF002
 
     def __init__(self):
         super().__init__()
         self.set_code(NodeProfileReadOnly.CODE)
+
+    def property_write_requested(self, prop: Property, data: bytes) -> bool:
+        return False
