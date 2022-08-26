@@ -107,6 +107,7 @@ class SuperObject(Object):
             return False
         return obj_prop.is_write_enabled()
 
+
 class SuperObjectReadOnly(SuperObject):
     CODE = 0x0EF002
 
