@@ -21,8 +21,6 @@ from .std import Database
 
 class Device(SuperObject):
 
-    SUPER_CLASS_CODE = 0x0000
-
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]):
         super().__init__()
         std_obj = Database().get_object(SuperObject.CODE)
