@@ -17,21 +17,12 @@ import random
 from typing import Any, Union, Tuple, List
 from .object import Object
 from .util.bytes import Bytes
-from .property import Property
+from .property import Property, is_propertymap_description_format1
 
-def is_propertymap_description_format1(n: int) -> bool:
-    return n <= SuperObject.PROPERTYMAP_FORMAT1_MAX_SIZE
-
-def is_propertymap_description_format2(n: int) -> bool:
-    return is_propertymap_description_format1(n)
 
 class SuperObject(Object):
 
     CODE = 0x000000
-
-    PROPERTYMAP_FORMAT1_MAX_SIZE = 15
-    PROPERTYMAP_FORMAT2_MAP_SIZE = 16
-    PROPERTYMAP_FORMAT_MAX_SIZE = PROPERTYMAP_FORMAT2_MAP_SIZE + 1
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         super().__init__(code)
@@ -70,14 +61,14 @@ class SuperObject(Object):
 
         # Description Format 2
 
-        prop_map_codes = [0] * SuperObject.PROPERTYMAP_FORMAT2_MAP_SIZE
+        prop_map_codes = [0] * Property.PROPERTYMAP_FORMAT2_MAP_SIZE
         for prop_code in prop_map:
             # 0 <= propCodeIdx <= 15
             prop_code_idx = ((prop_code - Property.CODE_MIN) & 0x0F)
             # 0 <= propCodeIdx <= 7
             prop_code_bit = ((((prop_code - Property.CODE_MIN) & 0xF0) >> 4) & 0x0F)
             prop_map_codes[prop_code_idx] |= ((0x01 << prop_code_bit) & 0x0F)
-        map_bytes = bytearray(bytes([SuperObject.PROPERTYMAP_FORMAT2_MAP_SIZE]))
+        map_bytes = bytearray(bytes([Property.PROPERTYMAP_FORMAT2_MAP_SIZE]))
         for prop_map_code in prop_map_codes:
             map_bytes.extend(bytes([prop_map_code]))
         return self.set_property_data(code, map_bytes)
