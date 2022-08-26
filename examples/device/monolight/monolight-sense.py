@@ -31,6 +31,7 @@ class MonoLightDevice(Device, ObjectRequestHandler):
         super().__init__(MonoLightDevice.CODE)
         self.set_request_handler(self)
         self.sense = SenseHat()
+        self.on()
 
     def __del__(self):
         super().__del__()
@@ -38,10 +39,12 @@ class MonoLightDevice(Device, ObjectRequestHandler):
     def on(self):
         self.set_property_integer(MonoLightDevice.OPERATION_STATUS, MonoLightDevice.OPERATING_STATUS_ON, 1)
         self.led_on()
+        print("ON")
 
     def off(self):
         self.set_property_integer(MonoLightDevice.OPERATION_STATUS, MonoLightDevice.OPERATING_STATUS_OFF, 1)
         self.led_off()
+        print("OFF")
 
     def led_on(self):
         self.sense.clear([0xFF, 0xFF, 0xFF])
@@ -59,9 +62,9 @@ class MonoLightDevice(Device, ObjectRequestHandler):
             if (data[0] != MonoLightDevice.OPERATING_STATUS_ON) and (data[0] != MonoLightDevice.OPERATING_STATUS_OFF):
                 return False
             if data[0] == MonoLightDevice.OPERATING_STATUS_ON:
-                print("ON")
+                self.on()
             else:
-                print("OFF")
+                self.off()
             return True
         return super().property_write_requested(prop, data)
 
@@ -74,14 +77,6 @@ class MonoLightNode(LocalNode):
         super().__init__()
         self.dev = MonoLightDevice()
         self.add_object(self.dev)
-
-    def property_read_requested(self, prop: Property) -> bool:
-        if prop.code != 0x80:
-            return False
-        return True
-
-    def property_write_requested(self, prop: Property, data: bytes) -> bool:
-        return True
 
     def start(self) -> bool:
         self.dev.on()
