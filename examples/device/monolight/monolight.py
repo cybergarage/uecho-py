@@ -13,14 +13,14 @@
 # limitations under the License.
 
 import sys
+from this import d
 import time
 import argparse
-from uecho import LocalNode, Property, ObjectRequestHandler
-from uecho.std import StandardDevice
+from uecho import LocalNode, Device, Property, ObjectRequestHandler
 import uecho.log as log
 
 
-class MonoLightDevice(StandardDevice, ObjectRequestHandler):
+class MonoLightDevice(Device, ObjectRequestHandler):
 
     CODE = 0x029101
     OPERATION_STATUS = 0x80
@@ -41,22 +41,20 @@ class MonoLightDevice(StandardDevice, ObjectRequestHandler):
         self.set_property_integer(MonoLightDevice.OPERATION_STATUS, MonoLightDevice.OPERATING_STATUS_OFF, 1)
 
     def property_read_requested(self, prop: Property) -> bool:
-        if prop.code != MonoLightDevice.OPERATION_STATUS:
-            return False
-        return True
+        return super().property_read_requested(prop)
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
-        if prop.code != MonoLightDevice.OPERATION_STATUS:
-            return False
-        if len(prop.data) != 1:
-            return False
-        if (data[0] != MonoLightDevice.OPERATING_STATUS_ON) and (data[0] != MonoLightDevice.OPERATING_STATUS_OFF):
-            return False
-        if data[0] == MonoLightDevice.OPERATING_STATUS_ON:
-            print("ON")
-        else:
-            print("OFF")
-        return True
+        if prop.code == MonoLightDevice.OPERATION_STATUS:
+            if len(prop.data) != 1:
+                return False
+            if (data[0] != MonoLightDevice.OPERATING_STATUS_ON) and (data[0] != MonoLightDevice.OPERATING_STATUS_OFF):
+                return False
+            if data[0] == MonoLightDevice.OPERATING_STATUS_ON:
+                print("ON")
+            else:
+                print("OFF")
+            return True
+        return super().property_write_requested(prop, data)
 
 
 class MonoLightNode(LocalNode):

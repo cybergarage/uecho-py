@@ -13,6 +13,5 @@
 # limitations under the License.
 
 from .database import Database
-from .object import StandardDevice
 
-__all__ = ['Database', 'StandardDevice']
+__all__ = ['Database']
