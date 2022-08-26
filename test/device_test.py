@@ -56,8 +56,6 @@ def create_test_device():
     assert dev.has_property(0x80)    # Operation status
     assert dev.has_property(0xB0)    # Illuminance Level Setting
 
-    assert dev.set_request_handler(dev)
-
     status_off = Bytes.from_int(MonoLight.OPERATING_STATUS_OFF, 1)
     assert dev.set_property_data(MonoLight.OPERATING_STATUS, status_off)
     assert dev.get_property_data(MonoLight.OPERATING_STATUS) == status_off
