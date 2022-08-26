@@ -22,25 +22,14 @@ from .property import Property
 
 class SuperObject(Object):
 
+    CODE = 0x000000
+
     PROPERTYMAP_FORMAT1_MAX_SIZE = 15
     PROPERTYMAP_FORMAT2_MAP_SIZE = 16
     PROPERTYMAP_FORMAT_MAX_SIZE = PROPERTYMAP_FORMAT2_MAP_SIZE + 1
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         super().__init__(code)
-
-    def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
-        """Sets the spcecified code as the object code.
-
-        Args:
-            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A code or tuple code.
-
-        Returns:
-            bool: True if the specified code is valid, otherwise False.
-        """
-        if not super().set_code(code):
-            return False
-        return True
 
     def add_property(self, prop: Property) -> bool:
         if not super().add_property(prop):
