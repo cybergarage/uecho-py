@@ -31,7 +31,6 @@ class MonoLightDevice(Device, ObjectRequestHandler):
         super().__init__(MonoLightDevice.CODE)
         self.set_request_handler(self)
         self.sense = SenseHat()
-        self.on()
 
     def __del__(self):
         super().__del__()
