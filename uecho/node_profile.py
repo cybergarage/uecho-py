@@ -149,6 +149,7 @@ class NodeProfile(Profile):
             return False
         return True
 
+
 class NodeProfileReadOnly(NodeProfile):
     CODE = 0x0EF002
 
