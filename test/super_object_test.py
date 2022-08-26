@@ -25,8 +25,8 @@ def test_super_object():
 
     prop_codes = [
         Device.ANNO_PROPERTY_MAP,
-        # FIXME: assert len(prop_map_codes) == len(expected_prop_map_codes)
-        # Device.GET_PROPERTY_MAP,
+    # FIXME: assert len(prop_map_codes) == len(expected_prop_map_codes)
+    # Device.GET_PROPERTY_MAP,
         Device.SET_PROPERTY_MAP,
     ]
 
