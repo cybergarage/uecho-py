@@ -32,7 +32,7 @@ type: format
 	mypy uecho
 
 test: 
-	env PYTHONPATH=`pwd` py.test -v test
+	env PYTHONPATH=`pwd` py.test -vv test
 
 build:
 	rm -rf dist
