@@ -42,7 +42,7 @@ class Device(SuperObject):
         std_obj = Database().get_object(code)
         if isinstance(std_obj, Object):
             self._set_object_properties(std_obj)
-        return True
+        return self._update_property_map_properties()
 
     def __del__(self):
         super().__del__()
