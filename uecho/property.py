@@ -18,10 +18,19 @@ from .protocol.property import Property as ProtocolProperty
 from .protocol.message import Message
 from uecho.util import Bytes
 
+def is_propertymap_description_format1(n: int) -> bool:
+    return n <= Property.PROPERTYMAP_FORMAT1_MAX_SIZE
+
+def is_propertymap_description_format2(n: int) -> bool:
+    return is_propertymap_description_format1(n)
 
 class Property(ProtocolProperty):
     """Property represents a property of ECHONET Lite, and it includes the specification attributes and the dynamic data.
     """
+
+    PROPERTYMAP_FORMAT1_MAX_SIZE = 15
+    PROPERTYMAP_FORMAT2_MAP_SIZE = 16
+    PROPERTYMAP_FORMAT_MAX_SIZE = PROPERTYMAP_FORMAT2_MAP_SIZE + 1
 
     CODE_MIN = 0x80
     CODE_MAX = 0xFF
@@ -119,6 +128,43 @@ class Property(ProtocolProperty):
     @property
     def number(self):
         return Bytes.to_int(self.data)
+
+    @property
+    def property_map_codes(self):
+        if len(self.data) < 1:
+            return None
+        prop_map_code_cnt = self.data[0]
+
+        # Description Format 1
+
+        if is_propertymap_description_format1(prop_map_code_cnt):
+            prop_codes = []
+            if len(self.data) != (prop_map_code_cnt +1):
+                return False
+            for n in range(prop_map_code_cnt):
+                prop_codes.append(int(self.data[(n + 1)]))
+            return prop_codes
+
+        # Description Format 2
+
+        if len(self.data) != (Property.PROPERTYMAP_FORMAT2_MAP_SIZE + 1):
+            return None
+
+        prop_codes = [0] * prop_map_code_cnt
+        prop_code_idx = 0
+        for i in range(Property.PROPERTYMAP_FORMAT2_MAP_SIZE):
+            prop_byte_code = self.data[i + 1];
+            for j in range(8):
+                prop_byte_bit = (0x01 << j) & 0x0F;
+                if ((prop_byte_code & prop_byte_bit) == 0):
+                    continue
+                if prop_map_code_cnt <= prop_code_idx:
+                    continue
+                code = (0x10 * j) + Property.CODE_MIN;
+                code += i;
+                prop_codes[prop_code_idx] = code
+                prop_code_idx = prop_code_idx + 1
+        return prop_codes
 
     def copy(self):
         return copy.deepcopy(self)
