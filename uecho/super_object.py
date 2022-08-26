@@ -19,11 +19,12 @@ from .object import Object
 from .util.bytes import Bytes
 from .property import Property
 
+
 class SuperObject(Object):
 
     PROPERTYMAP_FORMAT1_MAX_SIZE = 15
     PROPERTYMAP_FORMAT2_MAP_SIZE = 16
-    PROPERTYMAP_FORMAT_MAX_SIZE  = PROPERTYMAP_FORMAT2_MAP_SIZE + 1
+    PROPERTYMAP_FORMAT_MAX_SIZE = PROPERTYMAP_FORMAT2_MAP_SIZE + 1
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         super().__init__(code)
@@ -38,7 +39,7 @@ class SuperObject(Object):
         map_bytes = bytearray(bytes([len(prop_map)]))
         for prop_code in prop_map:
             map_bytes.extend(bytes([prop_code]))
-        
+
         # Description Format 1
 
         if len(prop_map) <= SuperObject.PROPERTYMAP_FORMAT1_MAX_SIZE:
