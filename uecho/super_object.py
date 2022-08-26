@@ -19,6 +19,11 @@ from .object import Object
 from .util.bytes import Bytes
 from .property import Property
 
+def is_propertymap_description_format1(n: int) -> bool:
+    return n <= SuperObject.PROPERTYMAP_FORMAT1_MAX_SIZE
+
+def is_propertymap_description_format2(n: int) -> bool:
+    return is_propertymap_description_format1(n)
 
 class SuperObject(Object):
 
@@ -57,7 +62,7 @@ class SuperObject(Object):
 
         # Description Format 1
 
-        if len(prop_map) <= SuperObject.PROPERTYMAP_FORMAT1_MAX_SIZE:
+        if is_propertymap_description_format1(len(prop_map)):
             map_bytes = bytearray(bytes([len(prop_map)]))
             for prop_code in prop_map:
                 map_bytes.extend(bytes([prop_code]))
