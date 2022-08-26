@@ -29,10 +29,32 @@ class SuperObject(Object):
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any] = None):
         super().__init__(code)
 
+    def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
+        """Sets the spcecified code as the object code.
+
+        Args:
+            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A code or tuple code.
+
+        Returns:
+            bool: True if the specified code is valid, otherwise False.
+        """
+        if not super().set_code(code):
+            return False
+        return True
+
     def add_property(self, prop: Property) -> bool:
         if not super().add_property(prop):
             return False
         self._update_property_map_properties()
+        return True
+
+    def _set_object_properties(self, obj) -> bool:
+        if not isinstance(obj, Object):
+            return False
+        self.name = obj.name
+        for obj_prop in obj.properties:
+            prop = obj_prop.copy()
+            self.add_property(prop)
         return True
 
     def __set_property_map_property(self, code: int, prop_map: List[int]) -> bool:
