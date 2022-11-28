@@ -43,6 +43,10 @@ class MonoLight(Device, ObjectRequestHandler):
         print("OFF")
 
     def property_read_requested(self, prop: Property) -> bool:
+        prop = self.get_property(prop.code)
+        log.info("%02d" % (prop.code))
+        if prop is not None:
+            log.info("%02d %s" % (prop.code, prop.data.hex()))
         return super().property_read_requested(prop)
 
     def property_write_requested(self, prop: Property, data: bytes) -> bool:
