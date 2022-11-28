@@ -3,6 +3,8 @@
 ## 1.0.2 - 2022/xx/xx
 
 - Fix Device to set correct description property maps
+- Update StandardDatabase to store property types and capacities more collectly
+- Update manufacture database based on latest MCL of ECHONET Consortium
 
 ## 1.0.1 - 2022/07/18
 
