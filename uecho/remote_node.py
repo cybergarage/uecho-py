@@ -19,8 +19,8 @@ from .object import Object
 from .node_profile import NodeProfile
 from .message import Message
 from .device import Device
-
 from typing import Tuple
+from .std.object import StandardObject
 
 
 class RemoteNode(Node):
@@ -30,7 +30,7 @@ class RemoteNode(Node):
     def __init__(self, addr: Optional[Tuple[str, int]] = None):
         super().__init__(addr)
         self.controller = None
-        self.add_object(Object(0x0EF001))
+        self.add_object(StandardObject(0x0EF001))
 
     def parse_message(self, msg: Message) -> bool:
         if not isinstance(msg, Message):
@@ -51,7 +51,7 @@ class RemoteNode(Node):
         for n in range(instance_count):
             offset = (Object.CODE_SIZE * n) + 1
             code_bytes = prop.data[offset:(offset + Object.CODE_SIZE)]
-            obj = Device(Bytes.to_int(code_bytes))
+            obj = StandardObject(Bytes.to_int(code_bytes))
             self.add_object(obj)
 
         return True
