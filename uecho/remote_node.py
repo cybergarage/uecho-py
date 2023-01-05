@@ -53,8 +53,4 @@ class RemoteNode(Node):
             obj = Device(Bytes.to_int(code_bytes))
             self.add_object(obj)
 
-        # Is the node a general node?
-        if 0 < len(self.objects):
-            self.add_object(Object(0x0EF001))
-
         return True
