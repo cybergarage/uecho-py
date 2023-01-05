@@ -23,18 +23,18 @@ The new node has only a node profile class object, and it has no device object. 
 
 ### 2. Creating Device Object
 
-To add your device objects into the created node, create a new device object using `uecho::Device` or `uecho::std::StandardDevice`, and add the created device object into the node as the following.
+To add your device objects into the created node, create a new device object using `uecho::Device` or `uecho::std::StandardObject`, and add the created device object into the node as the following.
 
 ```
 from uecho import LocalNode
-from uecho.std import StandardDevice
+from uecho.std import StandardObject
 
 node = LocalNode()
-dev = StandardDevice(0x029101) # Mono functional lighting class
+dev = StandardObject(0x029101) # Mono functional lighting class
 node.add_object(dev)
 ```
 
-The `uecho::Device` creates a null device object with no properties, so you must add your own properties. In contrast, The `uecho::std::StandardDevice` creates a standard device object with the specified object code and adds the standard properties of the ECHONET device object specification [\[1\]][enet-spec] into the device object automatically.
+The `uecho::Device` creates a null device object with no properties, so you must add your own properties. In contrast, The `uecho::std::StandardObject` creates a standard device object with the specified object code and adds the standard properties of the ECHONET device object specification [\[1\]][enet-spec] into the device object automatically.
 
 ### 3. Handling Request Messages 
 
@@ -52,9 +52,9 @@ The handler should return true if the request message is allowed, otherwise fals
 
 ```
 from uecho import Property
-from uecho.std import StandardDevice
+from uecho.std import StandardObject
 
-class MyDevice(StandardDevice, ObjectRequestHandler):
+class MyDevice(StandardObject, ObjectRequestHandler):
 
     def __init__(self):
         super().__init__(0x029101)
