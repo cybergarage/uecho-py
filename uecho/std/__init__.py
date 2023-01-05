@@ -13,5 +13,6 @@
 # limitations under the License.
 
 from .database import Database
+from .object import StandardObject
 
-__all__ = ['Database']
+__all__ = ['Database', 'StandardObject']
