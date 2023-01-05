@@ -31,6 +31,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Benchmarking ECHONET Lite nodes.')
     parser.add_argument("-v", "--verbose", help="output all mandatory read properties of found nodes", action="store_true")
     parser.add_argument("-d", "--debug", help="output raw debug messages", action="store_true")
+    parser.add_argument("-n", "--number", help="number of repeat", default=1)
 
     log.setLevel(log.ERROR)
     args = parser.parse_args()
@@ -42,40 +43,42 @@ if __name__ == '__main__':
     time.sleep(1)
 
     if not args.verbose:
-        for i, node in enumerate(ctrl.nodes):
-            msg = ('%s ' % node.ip.ljust(15))
-            for j, obj in enumerate(node.objects):
-                msg += '[%d] %06X ' % (j, obj.code)
-            print(msg)
+        for _ in range(int(args.number)):
+            for i, node in enumerate(ctrl.nodes):
+                msg = ('%s ' % node.ip.ljust(15))
+                for j, obj in enumerate(node.objects):
+                    msg += '[%d] %06X ' % (j, obj.code)
+                print(msg)
     else:
-        for i, node in enumerate(ctrl.nodes):
-            if 0 < i:
-                print()
-            node_msg = ('%s ' % node.ip.ljust(15))
-            print(node_msg)
-            for j, obj in enumerate(node.objects):
-                obj_msg = '[%d] %06X ' % (j, obj.code)
-                if 0 < len(obj.name):
-                    obj_msg += '(%s) ' % obj.name
-                print(obj_msg)
-                for k, prop in enumerate(obj.properties):
-                    if not prop.is_read_required():
-                        continue
-                    prop_msg = '[%d] [%d] %02X ' % (j, k, prop.code)
-                    if 0 < len(prop.name):
-                        prop_msg += '(%s) ' % prop.name
+        for _ in range(int(args.number)):
+            for i, node in enumerate(ctrl.nodes):
+                if 0 < i:
+                    print()
+                node_msg = ('%s ' % node.ip.ljust(15))
+                print(node_msg)
+                for j, obj in enumerate(node.objects):
+                    obj_msg = '[%d] %06X ' % (j, obj.code)
+                    if 0 < len(obj.name):
+                        obj_msg += '(%s) ' % obj.name
+                    print(obj_msg)
+                    for k, prop in enumerate(obj.properties):
+                        if not prop.is_read_required():
+                            continue
+                        prop_msg = '[%d] [%d] %02X ' % (j, k, prop.code)
+                        if 0 < len(prop.name):
+                            prop_msg += '(%s) ' % prop.name
 
-                    # The example creates a message of ECHONET Lite for an explanation,
-                    # req_msg = create_read_property_message(obj, prop)
-                    # res_msg = ctrl.post_message(req_msg, node)
-                    # However, you can post the same message using Property.post_message() more easily
-                    # as the following.
-                    prop.send_message(ESV.READ_REQUEST)
-                    res_msg = prop.post_message(ESV.READ_REQUEST)
+                        # The example creates a message of ECHONET Lite for an explanation,
+                        # req_msg = create_read_property_message(obj, prop)
+                        # res_msg = ctrl.post_message(req_msg, node)
+                        # However, you can post the same message using Property.post_message() more easily
+                        # as the following.
+                        prop.send_message(ESV.READ_REQUEST)
+                        res_msg = prop.post_message(ESV.READ_REQUEST)
 
-                    if res_msg is not None:
-                        for res_prop in res_msg.properties:
-                            prop_msg += '%s ' % res_prop.data.hex().upper()
-                    print(prop_msg)
+                        if res_msg is not None:
+                            for res_prop in res_msg.properties:
+                                prop_msg += '%s ' % res_prop.data.hex().upper()
+                        print(prop_msg)
 
     ctrl.stop()
