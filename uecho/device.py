@@ -14,35 +14,10 @@
 
 from typing import Any, Union, Tuple
 
-from .super_object import SuperObject
-from .object import Object
-from .std import Database
+from .std import StandardObject
 
 
-class Device(SuperObject):
+class Device(StandardObject):
 
     def __init__(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]):
-        super().__init__()
-        std_obj = Database().get_object(SuperObject.CODE)
-        if isinstance(std_obj, Object):
-            self._set_object_properties(std_obj)
-        self.set_code(code)
-
-    def set_code(self, code: Union[int, Tuple[int, int], Tuple[int, int, int], Any]) -> bool:
-        """Sets the spcecified code as the object code.
-
-        Args:
-            code (Union[int, Tuple[int, int], Tuple[int, int, int], Any]): A code or tuple code.
-
-        Returns:
-            bool: True if the specified code is valid, otherwise False.
-        """
-        if not super().set_code(code):
-            return False
-        std_obj = Database().get_object(code)
-        if isinstance(std_obj, Object):
-            self._set_object_properties(std_obj)
-        return self._update_property_map_properties()
-
-    def __del__(self):
-        super().__del__()
+        super().__init__(code)
