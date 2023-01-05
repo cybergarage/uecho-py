@@ -68,6 +68,8 @@ while(<MANLIST>){
   }
   printf("__std_manufactures[0x%s] = Manufacture(0x%s, %s)\n", $code, $code, $name);
 }
+printf("__std_manufactures[0xFFFFFF] = Manufacture(0xFFFFFF, \"Experimental\")\n");
+printf("__std_manufactures[0xFFFFFE] = Manufacture(0xFFFFFE, \"Undefined\")\n");
 close(MANLIST);
 print<<FOTTER;
 FOTTER
