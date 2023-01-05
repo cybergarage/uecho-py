@@ -1,1 +1,1 @@
-../../../bin/uechosearch.py
+../../../bin/uechobench.py
