@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.2 - 2022/xx/xx
+## 1.0.2 - 2022/01/05
 
 - Fix Device to set correct description property maps
 - Update StandardDatabase to store property types and capacities more collectly
