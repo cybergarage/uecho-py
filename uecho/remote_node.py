@@ -30,6 +30,7 @@ class RemoteNode(Node):
     def __init__(self, addr: Optional[Tuple[str, int]] = None):
         super().__init__(addr)
         self.controller = None
+        self.add_object(Object(0x0EF001))
 
     def parse_message(self, msg: Message) -> bool:
         if not isinstance(msg, Message):

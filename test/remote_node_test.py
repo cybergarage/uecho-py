@@ -34,13 +34,11 @@ def test_remote_node_parse():
 
 
 def test_remote_node_parse_bytes():
-    obj = Object()
-    obj.set_code(0x0EF001)
-
     msg = Message()
     msg.parse_bytes(bytes.fromhex('108100010EF0010EF0017201D607020F2001029101'))
 
     node = RemoteNode()
     assert node.parse_message(msg)
+    assert node.has_object(0x0EF001)
     assert node.has_object(0x0F2001)
     assert node.has_object(0x029101)
