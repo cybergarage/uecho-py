@@ -854,6 +854,11 @@ obj.add_property(Property(0xE9, "Rated power consumption", "number", 0, "optiona
 obj.add_property(Property(0xEA, "Power consumption measurement method", "state", 1, "optional", "notApplicable", "optional"))
 __std_mra_objects[(0x02, 0x7B)] = obj
 
+# Air pressure sensor (0x002D)
+obj = Object("Air pressure sensor", 0x00, 0x2D)
+obj.add_property(Property(0xE0, "Air pressure measurement", "number", 2, "required", "notApplicable", "optional"))
+__std_mra_objects[(0x00, 0x2D)] = obj
+
 # Bath heating status sensor (0x0016)
 obj = Object("Bath heating status sensor", 0x00, 0x16)
 obj.add_property(Property(0xB0, "Detection threshold level", "level", 0, "optional", "optional", "optional"))
