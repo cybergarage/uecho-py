@@ -16,6 +16,7 @@ import time
 import abc
 import socket
 from typing import Any, Union, List, Tuple, Optional
+from threading import Condition
 
 from .object import Object
 from .local_node import LocalNode
@@ -27,7 +28,7 @@ from .remote_node import RemoteNode
 from .node import Node
 from .manufacturer import Manufacture
 from .std import Database
-from .const import DEFAULT_POST_MSG_RERTY, DEFAULT_POST_MSG_WAIT
+from .const import DEFAULT_POST_MSG_TIMEOUT
 from .option import IGNORE_SELF_MESSAGE
 from .messages import SearchMessage
 
@@ -77,6 +78,7 @@ class Controller(LocalNode):
 
     __found_nodes: dict
     __last_post_msg: Any    # Controller.__PostMessage
+    __last_post_cond: Condition
     __database: Database
     __listeners: List[ControleListener]
 
@@ -84,6 +86,7 @@ class Controller(LocalNode):
         super().__init__()
         self.__found_nodes = {}
         self.__last_post_msg = Controller.__PostMessage()
+        self.__last_post_cond = Condition()
         self.__database = Database()
         self.__listeners = []
 
@@ -195,10 +198,9 @@ class Controller(LocalNode):
         if not self.send_message(msg, dest):
             return None
 
-        for i in range(DEFAULT_POST_MSG_RERTY):
-            time.sleep(DEFAULT_POST_MSG_WAIT)
-            if self.__last_post_msg.response is not None:
-                break
+        self.__last_post_cond.acquire()
+        self.__last_post_cond.wait(timeout=DEFAULT_POST_MSG_TIMEOUT)
+        self.__last_post_cond.release()
 
         return self.__last_post_msg.response
 
@@ -296,3 +298,6 @@ class Controller(LocalNode):
         if self.__last_post_msg.is_waiting():
             if self.__last_post_msg.request.is_response_message(msg):
                 self.__last_post_msg.response = msg
+                self.__last_post_cond.acquire()
+                self.__last_post_cond.notify()
+                self.__last_post_cond.release()
