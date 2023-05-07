@@ -3,23 +3,26 @@
 ## 1.1.0 - 2023/xx/xx
 - Update Controller::post_message() to reduce the wait time
 
+## 1.0.3 - 2023/05/07
+- Updated the standard manufacturer code database based on the latest MCA (Manufacturer Code List) from the ECHONET Consortium
+- Updated the standard object database based on the latest MRA (Machine Readable Appendix) version 1.2.0 from the ECHONET Consortium
+
 ## 1.0.2 - 2023/01/05
 - Fix Device to set correct description property maps
 - Update StandardDatabase to store property types and capacities more collectly
-- Update manufacture database based on latest MCL of ECHONET Consortium
+- Updated the standard manufacturer code database based on the latest MCA (Manufacturer Code List) from the ECHONET Consortium
 - Add uechobench for benchmarking
 
 ## 1.0.1 - 2022/07/18
-
 - Update manufacture database based on latest MCL of ECHONET Consortium
-- Update standard device database based on MRA v1.1.1 of ECHONET Consortium
+- Updated the standard object database based on the latest MRA (Machine Readable Appendix) version 1.1.1 from the ECHONET Consortium
 
 ## 1.0.0 - 2022/04/17
 - Add Device class to create original devices of ECHONET Lite
 
 ## 0.8.5 - 2021/12/18
 - Add a manufacture database based on MCA (Manufacturer Code List) of ECHONET Consortium
-- Update standard object database based on MRA (Machine Readable Appendix) v1.0.0 of ECHONET consortium
+- Updated the standard object database based on the latest MRA (Machine Readable Appendix) version 1.0.0 from the ECHONET Consortium
 - Update uechosearch to print all mandatory read properties using the standard database in the verbose mode
 - Update ControleListener to listen object and property updates
 - Add Property::post_message() and send_message()
