@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/cybergarage/uecho-py/main/doc/img/logo.png?token=AAEPHD4KEMD7MIIGJNOQPX3BR7O4M)
+![logo](https://raw.githubusercontent.com/cybergarage/uecho-py/refs/heads/main/doc/img/logo.png)
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/v/tag/cybergarage/uecho-py)
 [![pytest](https://github.com/cybergarage/uecho-py/actions/workflows/pytest.yml/badge.svg)](https://github.com/cybergarage/uecho-py/actions/workflows/pytest.yml)
